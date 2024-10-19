@@ -1,1 +1,19 @@
-spring.application.name=WeLearnApp
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: ${CONTEXT_PATH}
+
+spring:
+  application:
+    name: WeLearnApp
+  profiles:
+    active: @spring.profiles.active@
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: ${DB_DRIVER_CLASSNAME}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
