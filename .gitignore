@@ -65,5 +65,7 @@ Thumbs.db
 !.gitignore
 !README.md
 
+.env.dev
+
 # Keep empty directories
 !/**/.gitkeep
