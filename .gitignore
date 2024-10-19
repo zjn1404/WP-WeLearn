@@ -56,9 +56,9 @@ Thumbs.db
 /WeLearnApp/mvnw.cmd
 
 # Environment files
-env.dev
-.env.dev
-*.env
+/WeLearnApp/env.dev
+/WeLearnApp/.env.dev
+/WeLearnApp/*.env
 
 # Exclude specific files that should be version controlled
 !pom.xml
