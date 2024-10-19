@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Remove="Views\Home.xaml" />
     <None Remove="Views\Login.xaml" />
+    <None Remove="Views\Register.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +53,11 @@
   <ItemGroup>
     <Folder Include="Controls\" />
     <Folder Include="MockData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\Login.xaml">

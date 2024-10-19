@@ -1,37 +1,57 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using TutorApp.Services.Interfaces;
-using Windows.Storage;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using Microsoft.UI.Xaml.Data;
+using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Navigation;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using TutorApp.Services;
+using TutorApp.Services.Interfaces;
+using Windows.Foundation;
+using Windows.Foundation.Collections;
+using Windows.Storage;
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace TutorApp.Views
 {
-    public sealed partial class Login : Page
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class Register : Page
     {
         private readonly INavigationService _navigationService;
 
-        public Login()
+        public Register()
         {
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
+
         }
 
-        private void Navigation_GoBack(object sender, RoutedEventArgs e)
+        private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.GoBack();
+            _navigationService.NavigateTo("Login");
         }
 
-        private async void loginButton_Click(object sender, RoutedEventArgs e)
+        private async void registerButton_Click(object sender, RoutedEventArgs e)
         {
             string username = usernameTextBox.Text;
-            string password = passwordBox.Password;
+            string email = emailTextBox.Text;
+            string password = passwordTextBox.Password;
 
             // Check input
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) 
+                || string.IsNullOrWhiteSpace(password))
             {
-                await ShowErrorDialogAsync("Please enter both username and password.");
+                await ShowErrorDialogAsync("Please enter full username, email and password.");
                 return;
             }
 
@@ -49,7 +69,7 @@ namespace TutorApp.Views
             }
             else
             {
-                await ShowErrorDialogAsync("Login failed. Please try again.");
+                await ShowErrorDialogAsync("Register failed. Please try again.");
             }
         }
 
@@ -64,11 +84,6 @@ namespace TutorApp.Views
             };
 
             await dialog.ShowAsync();
-        }
-
-        private void registerButton_Click(object sender, RoutedEventArgs e)
-        {
-            _navigationService.NavigateTo("Register");
         }
     }
 }
