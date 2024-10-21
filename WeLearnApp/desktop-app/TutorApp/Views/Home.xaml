@@ -10,7 +10,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Welcome to TutorApp" FontSize="24" Margin="0,0,0,20"/>
-        <Button Content="Go to Second Page" Click="NavigateToSecondPage_Click"/>
+        <TextBlock x:Name="testTokenBlock"
+                   FontSize="24" 
+                   Margin="0,0,0,20"/>
+        <Button x:Name="logoutButton" 
+                Click="logoutButton_Click">Logout</Button>    
     </StackPanel>
 </Page>
