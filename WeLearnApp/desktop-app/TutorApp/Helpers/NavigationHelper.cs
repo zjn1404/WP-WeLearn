@@ -15,6 +15,7 @@ namespace TutorApp.Helpers
             // Register all pages here
             navigationService.RegisterPage("Home", typeof(Home));
             navigationService.RegisterPage("Login", typeof(Login));
+            navigationService.RegisterPage("Register", typeof(Register));
 
             // Add more pages as needed
         }

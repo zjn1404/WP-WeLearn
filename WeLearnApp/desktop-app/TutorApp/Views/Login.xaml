@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="TutorApp.Views.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TutorApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical" 
+                HorizontalAlignment="Center" 
+                VerticalAlignment="Center">
+        <TextBlock Text="LOGIN"/>
+
+        <TextBox Name="usernameTextBox"
+                 Header="Enter your username:"/>
+        <PasswordBox Name="passwordBox"
+                     Header="Enter password"/>
+        <CheckBox Name="rememberCheckBox" 
+                  Content="Remember me"/>
+        <StackPanel>
+            <TextBlock Text="You don't have an account?"/>
+            <Button x:Name="registerButton" 
+                    Click="registerButton_Click">Register</Button>
+        </StackPanel>
+        <Button x:Name="loginButton" 
+                Click="loginButton_Click">Login</Button>
+    </StackPanel>
+</Page>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Page
-    x:Class="TutorApp.Views.Login"
+    x:Class="TutorApp.Views.Home"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TutorApp.Views"
@@ -9,8 +9,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <TextBlock>Hello login</TextBlock>
-        <Button Content="GO BACK" Click="Navigation_GoBack"/>
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock x:Name="testTokenBlock"
+                   FontSize="24" 
+                   Margin="0,0,0,20"/>
+        <Button x:Name="logoutButton" 
+                Click="logoutButton_Click">Logout</Button>    
+    </StackPanel>
 </Page>
