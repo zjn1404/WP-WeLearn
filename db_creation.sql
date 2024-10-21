@@ -10,6 +10,7 @@ create table `user` (
 	id varchar(50) primary key,
     username varchar(50),
     `password` varchar(50),
+    email varchar(50),
     role_name varchar(50),
     constraint fk_user_role foreign key(role_name) references `role`(`name`)
 );
@@ -23,11 +24,9 @@ create table location (
 
 create table tutor (
 	id varchar(50) primary key,
-    first_name varchar(50),
-    last_name varchar(50),
-    dob date,
-    location_id varchar(50),
-    constraint fk_tutor_location foreign key(location_id) references location(id)
+    degree varchar(50),
+    `description` text,
+    constraint fk_tutor_user foreign key(id) references `user`(id)
 );
 
 create table grade (
@@ -42,13 +41,14 @@ create table grade_tutor (
     constraint pk_grade_tutor primary key(grade_id, tutor_id)
 );
 
-create table student (
+create table user_profile (
 	id varchar(50) primary key,
     first_name varchar(50),
     last_name varchar(50),
     dob date,
     location_id varchar(50),
-    constraint fk_student_location foreign key(location_id) references location(id)
+    constraint fk_user_profile_location foreign key(location_id) references location(id),
+    constraint fk_user_profile_user foreign key(id) references `user`(id)
 );
 
 create table evaluation (
@@ -57,14 +57,18 @@ create table evaluation (
     tutor_id varchar(50),
     star int,
     comment text,
-    constraint fk_evaluation_student foreign key(student_id) references student(id),
-	constraint fk_evaluation_tutor foreign key(tutor_id) references tutor(id)
+    constraint fk_evaluation_student foreign key(student_id) references user_profile(id),
+	constraint fk_evaluation_tutor foreign key(tutor_id) references user_profile(id)
 );
+
+ALTER TABLE evaluation 
+ADD CONSTRAINT check_star 
+CHECK (star BETWEEN 1 AND 5);
 
 create table verification_code (
 	`code` varchar(50) primary key,
     user_id varchar(50),
-    constraint fk_verification_code_user foreign key(user_id) references user(id)
+    constraint fk_verification_code_user foreign key(user_id) references `user`(id)
 );
 
 create table `order` (
@@ -72,8 +76,8 @@ create table `order` (
     order_time datetime,
     student_id varchar(50),
     tutor_id varchar(50),
-    constraint fk_order_student foreign key(student_id) references student(id),
-	constraint fk_order_tutor foreign key(tutor_id) references tutor(id)
+    constraint fk_order_student foreign key(student_id) references user_profile(id),
+	constraint fk_order_tutor foreign key(tutor_id) references user_profile(id)
 );
 
 create table order_detail (
