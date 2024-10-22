@@ -11,13 +11,16 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="Views\Register.xaml">
+    <Page Update="Views\LoginAndRegisterPage\RegisterForTutor.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Login.xaml">
+    <Page Update="Views\LoginAndRegisterPage\LoginForTutor.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Home.xaml">
+    <Page Update="Views\HomePage\TutorPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\HomePage\AccountPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

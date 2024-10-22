@@ -5,6 +5,7 @@ using TutorApp.Services.Interfaces;
 using Windows.Storage;
 using System;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace TutorApp.Views
 {
@@ -69,6 +70,18 @@ namespace TutorApp.Views
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
             _navigationService.NavigateTo("Register");
+        }
+
+        private void registerButtonForTutor_Click(object sender, RoutedEventArgs e)
+        {
+            // Create new window and navigate to LoginForTutor page
+            var window = _navigationService.NavigateToNewWindow(
+                "TutorLoginWindow",  // Window key
+                "LoginForTutor"      // Page key
+            );
+
+            // Optional: Set window properties
+            window.Title = "Tutor Login";
         }
     }
 }

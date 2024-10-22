@@ -36,41 +36,38 @@ namespace TutorApp.Views
 
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
-        {
-            _navigationService.NavigateTo("Login");
-        }
+      
 
         private async void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            string username = usernameTextBox.Text;
-            string email = emailTextBox.Text;
-            string password = passwordTextBox.Password;
+            //string username = usernameTextBox.Text;
+            //string email = emailTextBox.Text;
+            //string password = passwordTextBox.Password;
 
-            // Check input
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) 
-                || string.IsNullOrWhiteSpace(password))
-            {
-                await ShowErrorDialogAsync("Please enter full username, email and password.");
-                return;
-            }
+            //// Check input
+            //if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) 
+            //    || string.IsNullOrWhiteSpace(password))
+            //{
+            //    await ShowErrorDialogAsync("Please enter full username, email and password.");
+            //    return;
+            //}
 
-            // Check valid username and password
-            // Call API to check username and password, return code and token
-            // APIResponse = await API.Login(username, password);
-            string APIResponseCode = "200"; // APIResponse.code();
-            string APIResponseToken = "kakahehe"; // APIResponse.token();
+            //// Check valid username and password
+            //// Call API to check username and password, return code and token
+            //// APIResponse = await API.Login(username, password);
+            //string APIResponseCode = "200"; // APIResponse.code();
+            //string APIResponseToken = "kakahehe"; // APIResponse.token();
 
-            if (APIResponseCode == "200")
-            {
-                var localSettings = ApplicationData.Current.LocalSettings;
-                localSettings.Values["token"] = APIResponseToken;
-                _navigationService.NavigateTo("Home");
-            }
-            else
-            {
-                await ShowErrorDialogAsync("Register failed. Please try again.");
-            }
+            //if (APIResponseCode == "200")
+            //{
+            //    var localSettings = ApplicationData.Current.LocalSettings;
+            //    localSettings.Values["token"] = APIResponseToken;
+            //    _navigationService.NavigateTo("Home");
+            //}
+            //else
+            //{
+            //    await ShowErrorDialogAsync("Register failed. Please try again.");
+            //}
         }
 
         private async Task ShowErrorDialogAsync(string message)
@@ -84,6 +81,11 @@ namespace TutorApp.Views
             };
 
             await dialog.ShowAsync();
+        }
+
+        private void loginButton_Click(object sender, RoutedEventArgs e)
+        {
+            _navigationService.NavigateTo("Login");
         }
     }
 }

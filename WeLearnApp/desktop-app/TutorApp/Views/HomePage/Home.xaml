@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="TutorApp.Views.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TutorApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <NavigationView x:Name="nvSample9"
+                        PaneDisplayMode="Left"
+                        SelectionChanged="NavigationView_SelectionChanged"
+                        IsSettingsVisible="False"
+                        IsBackEnabled="True"
+>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Content="Tutors" Tag="TutorPage" Icon="Library" />
+                <NavigationViewItem Content="Track an Order" Tag="TutorsInStackPage" Icon="Map" />
+                <NavigationViewItem Content="Order History" Tag="SamplePage3" Icon="Tag" />
+            </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Account" Tag="AccountPage" Icon="Contact" />
+                <NavigationViewItem Content="Your Cart" Tag="CartPage" Icon="Shop" />
+                <NavigationViewItem Content="Help" Tag="HelpPage" Icon="Help" />
+            </NavigationView.FooterMenuItems>
+            <Frame x:Name="contentFrame" />
+        </NavigationView>
+    </Grid>
+</Page>

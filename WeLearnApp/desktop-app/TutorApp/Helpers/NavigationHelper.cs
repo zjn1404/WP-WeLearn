@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TutorApp.Services;
 using TutorApp.Services.Interfaces;
 using TutorApp.Views;
+using TutorApp.Views.HomePage;
+using TutorApp.Views.LoginAndRegisterPage;
 
 namespace TutorApp.Helpers
 {
@@ -16,6 +19,12 @@ namespace TutorApp.Helpers
             navigationService.RegisterPage("Home", typeof(Home));
             navigationService.RegisterPage("Login", typeof(Login));
             navigationService.RegisterPage("Register", typeof(Register));
+            navigationService.RegisterPage("LoginForTutor", typeof(LoginForTutor));
+            navigationService.RegisterPage("LoginForStudent",typeof(Login));
+
+
+
+
 
             // Add more pages as needed
         }
