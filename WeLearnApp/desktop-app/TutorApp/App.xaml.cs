@@ -9,7 +9,8 @@ using System;
 namespace TutorApp
 {
     public partial class App : Application
-    {
+    {   
+
         public IServiceProvider Services { get; private set; }
         public new static App Current => (App)Application.Current;
 
@@ -32,7 +33,7 @@ namespace TutorApp
 
             var navigationService = Services.GetRequiredService<INavigationService>();
             navigationService.RegisterRoutes();
-            navigationService.NavigateTo("Home");  // Assuming you have a Home view
+            navigationService.NavigateTo("Login");  // Assuming you have a Home view
         }
 
         private IServiceProvider ConfigureServices()

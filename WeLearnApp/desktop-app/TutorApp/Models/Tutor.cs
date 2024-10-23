@@ -12,10 +12,11 @@ namespace TutorApp.Models
         public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public DateTime DatOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
         public string LocationId { get; set; }
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+      
     }
 }
