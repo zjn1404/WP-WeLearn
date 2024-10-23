@@ -1,5 +1,6 @@
 package com.welearn.WeLearnApp.mapper.userprofile;
 
+import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
 import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileCreationRequest;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.UserProfile;
@@ -15,6 +16,15 @@ public class UserProfileMapperImp implements UserProfileMapper {
 
     @Override
     public UserProfile toUserProfile(UserProfileCreationRequest request) {
+        return UserProfile.builder()
+                .firstName(request.getFirstName())
+                .lastName(request.getLastName())
+                .dob(request.getDob())
+                .build();
+    }
+
+    @Override
+    public UserProfile toUserProfile(UserCreationRequest request) {
         return UserProfile.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())

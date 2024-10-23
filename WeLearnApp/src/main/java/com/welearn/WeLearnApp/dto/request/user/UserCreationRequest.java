@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @Builder
@@ -28,7 +30,7 @@ public class UserCreationRequest {
     // User Profile
     String firstName;
     String lastName;
-    String dob;
+    LocalDate dob;
     String city;
     String district;
     String street;

@@ -4,10 +4,11 @@ import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
 import com.welearn.WeLearnApp.dto.request.user.UserUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.UserResponse;
 import com.welearn.WeLearnApp.entity.User;
+import com.welearn.WeLearnApp.entity.UserProfile;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -15,7 +16,7 @@ import org.springframework.stereotype.Component;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class UserMapperImp implements UserMapper{
 
-    BCryptPasswordEncoder passwordEncoder;
+    PasswordEncoder passwordEncoder;
 
     @Override
     public User toUser(UserCreationRequest request) {

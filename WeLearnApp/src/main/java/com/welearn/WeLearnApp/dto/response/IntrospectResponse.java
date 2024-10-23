@@ -9,11 +9,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ApiResponse <T> {
-    @Builder.Default
-    int code = 1000;
-
-    String message;
-
-    T data;
+public class IntrospectResponse {
+    boolean isValid;
 }

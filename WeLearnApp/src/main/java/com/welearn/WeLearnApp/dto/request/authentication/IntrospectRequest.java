@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.dto.response;
+package com.welearn.WeLearnApp.dto.request.authentication;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,11 +9,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ApiResponse <T> {
-    @Builder.Default
-    int code = 1000;
-
-    String message;
-
-    T data;
+public class IntrospectRequest {
+    String token;
 }
