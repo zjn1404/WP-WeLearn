@@ -1,113 +1,125 @@
 ﻿using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml;
-using System;
 using System.Collections.Generic;
+using System;
 using TutorApp.Services.Interfaces;
+using TutorApp;
+using System.Linq;
 
-namespace TutorApp.Services
+public class NavigationService : INavigationService
 {
-    public class NavigationService : INavigationService
+    private readonly Dictionary<string, Type> _pages = new();
+    private readonly Dictionary<string, MainWindow> _windows = new();
+    private Frame _frame;
+    private MainWindow _activeWindow;
+
+    public bool CanGoBack => GetCurrentFrame().CanGoBack;
+
+    public NavigationService(Frame frame)
     {
-        private readonly Dictionary<string, Type> _pages = new();
-        private readonly Dictionary<string, Window> _windows = new();
-        private Frame _frame;
+        _frame = frame ?? throw new ArgumentNullException(nameof(frame));
+    }
 
-        public NavigationService(Frame frame)
+    public void SetWindowActive(MainWindow window)
+    {
+        if (window == null)
+            throw new ArgumentNullException(nameof(window));
+
+        _activeWindow = window;
+
+        if (!_windows.ContainsValue(window))
         {
-            _frame = frame ?? throw new ArgumentNullException(nameof(frame));
+            string key = $"Window_{_windows.Count}";
+            _windows.Add(key, window);
         }
+    }
 
-        public bool CanGoBack => _frame.CanGoBack;
-
-        public void RegisterPage(string pageKey, Type pageType)
+    public Frame GetCurrentFrame()
+    {
+        if (_activeWindow != null && _activeWindow.ContentFrame != null)
         {
-            if (!_pages.ContainsKey(pageKey))
-            {
-                _pages.Add(pageKey, pageType);
-            }
+            return _activeWindow.ContentFrame;
         }
+        return _frame;
+    }
 
-        // Thêm method để đăng ký window
-        public void RegisterWindow(string windowKey, Window window)
-        {
-            if (!_windows.ContainsKey(windowKey))
-            {
-                _windows.Add(windowKey, window);
-            }
-        }
-
-        // Navigate trong cùng window
-        public bool NavigateTo(string pageKey, object parameter = null)
-        {
-            if (_pages.ContainsKey(pageKey))
-            {
-                return _frame.Navigate(_pages[pageKey], parameter);
-            }
+    public bool NavigateTo(string pageKey, object parameter = null)
+    {
+        if (!_pages.ContainsKey(pageKey))
             throw new ArgumentException($"Page not found: {pageKey}");
-        }
 
-        // Navigate đến window mới
-        public Window NavigateToNewWindow(string windowKey, string pageKey, object parameter = null)
+        Frame currentFrame = GetCurrentFrame();
+        return currentFrame.Navigate(_pages[pageKey], parameter);
+    }
+
+    public Window NavigateToNewWindow(string windowKey, string pageKey, object parameter = null)
+    {
+        MainWindow window;
+
+        if (_windows.ContainsKey(windowKey))
         {
-            if (!_windows.ContainsKey(windowKey))
+            var existingWindow = _windows[windowKey];
+            try
             {
-                // Tạo window mới nếu chưa tồn tại
-                var newWindow = new MainWindow();
-                //var newFrame = new Frame();
-                //newWindow.Content = newFrame;
-                _windows.Add(windowKey, newWindow);
-
-                if (_pages.ContainsKey(pageKey))
-                {
-                    newWindow.ContentFrame.Navigate(_pages[pageKey], parameter);
-                }
-
-                newWindow.Activate();
-                return newWindow;
+                var _ = existingWindow.Content;
+                window = existingWindow;
             }
-            else
+            catch
             {
-                // Nếu window đã tồn tại, active nó lên
-                var existingWindow = _windows[windowKey];
-                if (existingWindow.Content is Frame frame && _pages.ContainsKey(pageKey))
-                {
-                    frame.Navigate(_pages[pageKey], parameter);
-                }
-                existingWindow.Activate();
-                return existingWindow;
-            }
-        }
-
-        // Đóng window
-        public void CloseWindow(string windowKey)
-        {
-            if (_windows.ContainsKey(windowKey))
-            {
-                _windows[windowKey].Close();
                 _windows.Remove(windowKey);
+                window = CreateNewWindow(windowKey);
             }
         }
-
-        // Kiểm tra window có tồn tại
-        public bool WindowExists(string windowKey)
+        else
         {
-            return _windows.ContainsKey(windowKey);
+            window = CreateNewWindow(windowKey);
         }
 
-        public bool GoBack()
+        window.Activate();
+        SetWindowActive(window);
+
+        if (_pages.ContainsKey(pageKey))
         {
-            if (_frame.CanGoBack)
+            window.ContentFrame.Navigate(_pages[pageKey], parameter);
+        }
+
+        return window;
+    }
+
+    public void RegisterPage(string pageKey, Type pageType)
+    {
+        if (!_pages.ContainsKey(pageKey))
+        {
+            _pages.Add(pageKey, pageType);
+        }
+    }
+
+    public void GoBack()
+    {
+        Frame currentFrame = GetCurrentFrame();
+        if (currentFrame.CanGoBack)
+        {
+            currentFrame.GoBack();
+        }
+    }
+
+    public MainWindow CreateNewWindow(string windowKey)
+    {
+        var window = new MainWindow();
+
+        window.Closed += (sender, args) =>
+        {
+            if (sender is MainWindow closedWindow)
             {
-                _frame.GoBack();
-                return true;
+                var keyToRemove = _windows.FirstOrDefault(x => x.Value == closedWindow).Key;
+                if (keyToRemove != null)
+                {
+                    _windows.Remove(keyToRemove);
+                }
             }
-            return false;
-        }
+        };
 
-        // Lấy window theo key
-        public Window GetWindow(string windowKey)
-        {
-            return _windows.ContainsKey(windowKey) ? _windows[windowKey] : null;
-        }
+        _windows.Add(windowKey, window);
+        return window;
     }
 }

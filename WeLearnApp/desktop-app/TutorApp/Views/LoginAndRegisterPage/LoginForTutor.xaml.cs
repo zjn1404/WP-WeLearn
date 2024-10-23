@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,16 +34,12 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
         private void navigateToPageStudent(object sender, RoutedEventArgs e)
         {
-            // Create new window and navigate to LoginForTutor page
+            // Tạo window mới cho Student Login
             var window = _navigationService.NavigateToNewWindow(
                 "StudentLoginWindow",  // Window key
                 "LoginForStudent"      // Page key
             );
-
-            // Optional: Set window properties
             window.Title = "Student Login";
-
-
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
@@ -53,7 +49,10 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
-
+            // Navigate trong cùng window hiện tại
+            _navigationService.NavigateTo("RegisterForTutor");
         }
+
+
     }
 }

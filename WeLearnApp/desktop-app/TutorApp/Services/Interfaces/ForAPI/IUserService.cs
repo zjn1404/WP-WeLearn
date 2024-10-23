@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TutorApp.Models;
-using TutorApp.Services.Interfaces.ForAPI;
 
-namespace TutorApp.Services
+namespace TutorApp.Services.Interfaces.ForAPI
 {
-    public class UserService : IUserService
+    public interface IUserService
     {
-       
+
     }
 }

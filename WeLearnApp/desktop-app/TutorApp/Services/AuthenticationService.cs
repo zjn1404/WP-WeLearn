@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TutorApp.Models;
 using TutorApp.Services.Interfaces;
+using TutorApp.Services.Interfaces.ForAPI;
 
 namespace TutorApp.Services
 {

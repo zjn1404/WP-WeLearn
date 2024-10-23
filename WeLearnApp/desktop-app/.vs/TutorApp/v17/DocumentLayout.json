@@ -3,8 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\inavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\inavigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\iauthenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\loginfortutor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,16 +27,44 @@
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\registerfortutor.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\register.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\register.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\navigationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\navigationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\navigationawardpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\navigationawardpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\fullobservableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\fullobservableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -43,28 +83,8 @@
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\registerfortutor.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\navigationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\navigationhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\home.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\navigationawardpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\navigationawardpage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\Views\\Login.g.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,10 +113,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\tutorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\tutorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\helpers\\fullobservableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\fullobservableobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\tutorapp\\welearnapp\\desktop-app\\tutorapp\\tutorapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -134,11 +150,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 20,
               "Title": "Home.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Home.xaml.cs",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\Home.xaml.cs",
@@ -147,57 +163,30 @@
               "ViewState": "AgIAABkAAAAAAAAAAAAuwCYAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T08:33:35.771Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginForTutor.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAwwCUAAAA/AAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T16:59:54.512Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Login.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAvwFQAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T16:52:04.206Z",
+              "WhenOpened": "2024-10-23T09:42:38.212Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "INavigationService.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\INavigationService.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\INavigationService.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\INavigationService.cs",
-              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\INavigationService.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAwwBEAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T15:08:40.006Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "NavigationService.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\NavigationService.cs",
               "RelativeDocumentMoniker": "TutorApp\\Services\\NavigationService.cs",
               "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\NavigationService.cs",
               "RelativeToolTip": "TutorApp\\Services\\NavigationService.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAADgvzYAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEUAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T15:11:29.295Z",
               "EditorCaption": ""
@@ -205,129 +194,168 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "TutorApp\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MainWindow.xaml.cs",
-              "RelativeToolTip": "TutorApp\\MainWindow.xaml.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAUwBkAAAAuAAAAAAAAAA==",
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T16:26:08.364Z",
+              "WhenOpened": "2024-10-22T16:52:04.206Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T09:34:01.51Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "INavigationService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\INavigationService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\INavigationService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\INavigationService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\INavigationService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAiwBYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T15:08:40.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "RegisterForTutor.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml.cs",
               "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml.cs",
               "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml.cs",
               "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAUwCYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAUwCwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T16:51:04.75Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Register.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T15:29:01.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "LoginForTutor.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T15:14:35.444Z",
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MainWindow.xaml.cs",
+              "RelativeToolTip": "TutorApp\\MainWindow.xaml.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACwAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T16:26:08.364Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T10:53:19.394Z",
+              "DocumentIndex": 4,
+              "Title": "LoginForTutor.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAgwDcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T16:59:54.512Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "RegisterForTutor.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
-              "ViewState": "AgIAABcAAAAAAAAAAAAmwCwAAABkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T16:50:26.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "NavigationHelper.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationHelper.cs",
               "RelativeDocumentMoniker": "TutorApp\\Helpers\\NavigationHelper.cs",
               "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationHelper.cs",
               "RelativeToolTip": "TutorApp\\Helpers\\NavigationHelper.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAvwBUAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAgwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T09:49:01.266Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 8,
+              "Title": "Register.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml.cs",
+              "ViewState": "AgIAADsAAAAAAAAAAAAqwEwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T09:20:33.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml.cs",
               "RelativeDocumentMoniker": "TutorApp\\App.xaml.cs",
               "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml.cs",
               "RelativeToolTip": "TutorApp\\App.xaml.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAADgvysAAABeAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAkwDoAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T14:24:28.48Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "RelayCommand.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\RelayCommand.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Helpers\\RelayCommand.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\RelayCommand.cs",
+              "RelativeToolTip": "TutorApp\\Helpers\\RelayCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T08:51:17.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "NavigationAwardPage.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationAwardPage.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Helpers\\NavigationAwardPage.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationAwardPage.cs",
+              "RelativeToolTip": "TutorApp\\Helpers\\NavigationAwardPage.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBAAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T15:09:37.126Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "App.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\App.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml",
-              "RelativeToolTip": "TutorApp\\App.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T14:24:21.187Z",
+              "Title": "FullObservableObject.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\FullObservableObject.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Helpers\\FullObservableObject.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\FullObservableObject.cs",
+              "RelativeToolTip": "TutorApp\\Helpers\\FullObservableObject.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAABNAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-22T11:37:10.934Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "IUserService.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IUserService.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\IUserService.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IUserService.cs",
-              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\IUserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T15:12:35.509Z",
               "EditorCaption": ""
@@ -335,19 +363,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "NavigationAwardPage.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationAwardPage.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Helpers\\NavigationAwardPage.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\NavigationAwardPage.cs",
-              "RelativeToolTip": "TutorApp\\Helpers\\NavigationAwardPage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T15:09:37.126Z",
+              "WhenOpened": "2024-10-23T08:44:45.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Register.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADAAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-22T15:29:01.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LoginForTutor.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\LoginForTutor.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-22T15:14:35.444Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 16,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-22T10:53:19.394Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "RegisterForTutor.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAmwCwAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-22T16:50:26.356Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "Login.g.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\Views\\Login.g.cs",
               "RelativeDocumentMoniker": "TutorApp\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\Views\\Login.g.cs",
@@ -355,12 +431,11 @@
               "RelativeToolTip": "TutorApp\\obj\\x64\\Debug\\net8.0-windows10.0.19041.0\\win-x64\\Views\\Login.g.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAEwDIAAAB0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T15:08:46.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-22T15:08:46.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 23,
               "Title": "TutorPage.xaml",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorPage.xaml",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\TutorPage.xaml",
@@ -372,7 +447,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 24,
               "Title": "Tutor.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Models\\Tutor.cs",
               "RelativeDocumentMoniker": "TutorApp\\Models\\Tutor.cs",
@@ -384,7 +459,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 26,
               "Title": "FodyWeavers.xml",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\FodyWeavers.xml",
               "RelativeDocumentMoniker": "TutorApp\\FodyWeavers.xml",
@@ -396,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 25,
               "Title": "MockDao.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\MockDao.cs",
               "RelativeDocumentMoniker": "TutorApp\\MockData\\MockDao.cs",
@@ -408,7 +483,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 27,
               "Title": "TutorViewModel.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\TutorViewModel.cs",
               "RelativeDocumentMoniker": "TutorApp\\ViewModels\\TutorViewModel.cs",
@@ -420,7 +495,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 22,
               "Title": "TutorPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
@@ -432,19 +507,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "FullObservableObject.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\FullObservableObject.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Helpers\\FullObservableObject.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\FullObservableObject.cs",
-              "RelativeToolTip": "TutorApp\\Helpers\\FullObservableObject.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAwAAABNAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T11:37:10.934Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 30,
               "Title": "EmptyCollectionToVisibilityConverter.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\EmptyCollectionToVisibilityConverter.cs",
               "RelativeDocumentMoniker": "TutorApp\\Helpers\\EmptyCollectionToVisibilityConverter.cs",
@@ -456,7 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 28,
               "Title": "TutorApp.csproj",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\TutorApp.csproj",
               "RelativeDocumentMoniker": "TutorApp\\TutorApp.csproj",
@@ -468,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 29,
               "Title": "Home.xaml",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Home.xaml",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\Home.xaml",
@@ -480,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 31,
               "Title": "IValueConverter.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\IValueConverter.cs",
               "RelativeDocumentMoniker": "TutorApp\\Helpers\\IValueConverter.cs",
@@ -492,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 32,
               "Title": "IDAO.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\IDAO.cs",
               "RelativeDocumentMoniker": "TutorApp\\MockData\\IDAO.cs",
@@ -504,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 33,
               "Title": "AccountPage.xaml.cs",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
@@ -516,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 34,
               "Title": "AccountPage.xaml",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml",
               "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\AccountPage.xaml",
