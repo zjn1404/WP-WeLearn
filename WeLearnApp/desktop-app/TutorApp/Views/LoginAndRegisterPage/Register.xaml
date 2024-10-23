@@ -36,6 +36,9 @@
             <PasswordBox Name="passwordTextBox"
                          Header="Password:"
                          PlaceholderText="Enter your password"/>
+            <PasswordBox Name="confirmPasswordTextBox"
+              Header="Confirm Password:"
+              PlaceholderText="Enter confirm password"/>
 
 
         </StackPanel>
