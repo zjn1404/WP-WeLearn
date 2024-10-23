@@ -12,7 +12,6 @@ public class NavigationService : INavigationService
     private readonly Dictionary<string, MainWindow> _windows = new();
     private Frame _frame;
     private MainWindow _activeWindow;
-
     public bool CanGoBack => GetCurrentFrame().CanGoBack;
 
     public NavigationService(Frame frame)
@@ -20,13 +19,99 @@ public class NavigationService : INavigationService
         _frame = frame ?? throw new ArgumentNullException(nameof(frame));
     }
 
+    // Thêm phương thức mới để đóng tất cả các cửa sổ
+    public void CloseAllWindows(string exceptWindowKey = null)
+    {
+        var windowsToClose = _windows.ToList();
+
+        foreach (var window in windowsToClose)
+        {
+            // Bỏ qua cửa sổ được chỉ định (nếu có)
+            if (exceptWindowKey != null && window.Key == exceptWindowKey)
+                continue;
+
+            try
+            {
+                // Kiểm tra xem cửa sổ có tồn tại và có thể truy cập được không
+                if (window.Value != null)
+                {
+                    // Thử lấy content để kiểm tra cửa sổ còn hoạt động không
+                    var _ = window.Value.Content;
+
+                    // Gửi message để đóng cửa sổ thay vì đóng trực tiếp
+                    window.Value.DispatcherQueue.TryEnqueue(() =>
+                    {
+                        try
+                        {
+                            window.Value.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            System.Diagnostics.Debug.WriteLine($"Error closing window: {ex.Message}");
+                        }
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error handling window: {ex.Message}");
+            }
+            finally
+            {
+                // Luôn xóa cửa sổ khỏi dictionary bất kể có lỗi hay không
+                _windows.Remove(window.Key);
+            }
+        }
+
+        // Reset active window nếu nó không còn trong dictionary
+        if (_activeWindow != null && !_windows.ContainsValue(_activeWindow))
+        {
+            _activeWindow = null;
+        }
+    }
+
+    public MainWindow CreateNewWindow(string windowKey)
+    {
+        try
+        {
+            // Đóng các cửa sổ cũ một cách an toàn
+            CloseAllWindows();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error closing existing windows: {ex.Message}");
+        }
+
+        var window = new MainWindow();
+        window.Closed += (sender, args) =>
+        {
+            if (sender is MainWindow closedWindow)
+            {
+                try
+                {
+                    var keyToRemove = _windows.FirstOrDefault(x => x.Value == closedWindow).Key;
+                    if (keyToRemove != null)
+                    {
+                        _windows.Remove(keyToRemove);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error in window closed handler: {ex.Message}");
+                }
+            }
+        };
+
+        _windows.Add(windowKey, window);
+        return window;
+    }
+
+    // Các phương thức khác giữ nguyên như cũ
     public void SetWindowActive(MainWindow window)
     {
         if (window == null)
             throw new ArgumentNullException(nameof(window));
-
         _activeWindow = window;
-
         if (!_windows.ContainsValue(window))
         {
             string key = $"Window_{_windows.Count}";
@@ -47,15 +132,23 @@ public class NavigationService : INavigationService
     {
         if (!_pages.ContainsKey(pageKey))
             throw new ArgumentException($"Page not found: {pageKey}");
-
         Frame currentFrame = GetCurrentFrame();
         return currentFrame.Navigate(_pages[pageKey], parameter);
     }
 
     public Window NavigateToNewWindow(string windowKey, string pageKey, object parameter = null)
     {
-        MainWindow window;
+        try
+        {
+            // Đóng các cửa sổ cũ một cách an toàn
+            CloseAllWindows(windowKey);
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error closing windows: {ex.Message}");
+        }
 
+        MainWindow window;
         if (_windows.ContainsKey(windowKey))
         {
             var existingWindow = _windows[windowKey];
@@ -75,12 +168,19 @@ public class NavigationService : INavigationService
             window = CreateNewWindow(windowKey);
         }
 
-        window.Activate();
-        SetWindowActive(window);
-
-        if (_pages.ContainsKey(pageKey))
+        try
         {
-            window.ContentFrame.Navigate(_pages[pageKey], parameter);
+            window.Activate();
+            SetWindowActive(window);
+            if (_pages.ContainsKey(pageKey))
+            {
+                window.ContentFrame.Navigate(_pages[pageKey], parameter);
+            }
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Error navigating to page: {ex.Message}");
+            throw;
         }
 
         return window;
@@ -101,25 +201,5 @@ public class NavigationService : INavigationService
         {
             currentFrame.GoBack();
         }
-    }
-
-    public MainWindow CreateNewWindow(string windowKey)
-    {
-        var window = new MainWindow();
-
-        window.Closed += (sender, args) =>
-        {
-            if (sender is MainWindow closedWindow)
-            {
-                var keyToRemove = _windows.FirstOrDefault(x => x.Value == closedWindow).Key;
-                if (keyToRemove != null)
-                {
-                    _windows.Remove(keyToRemove);
-                }
-            }
-        };
-
-        _windows.Add(windowKey, window);
-        return window;
     }
 }
