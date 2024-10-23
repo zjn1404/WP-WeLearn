@@ -18,7 +18,7 @@ namespace TutorApp.Services.Interfaces
        
         void SetWindowActive(MainWindow window);
         Frame GetCurrentFrame();
-
+        void CloseAllWindows(string exceptWindowKey = null);
         MainWindow CreateNewWindow(string windowKey);
        
 
