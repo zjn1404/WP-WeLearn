@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="TutorApp.Views.Login"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TutorApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Width="Auto"
+                Height="Auto"
+                Padding="60,40"
+                CornerRadius="20"
+                BorderThickness="1"
+                BorderBrush="Black"
+                Background="#FFFFFFFF"
+                >
+        <TextBlock TextAlignment="Center" Margin="0,0,0,2" FontSize="25" FontWeight="Bold" Text="LOGIN"/>
+        <FontIcon Glyph="&#xE7BE;" FontSize="80"/>
+        <TextBlock TextAlignment="Center" Margin="0,0,0,50" FontSize="15" FontWeight="Bold" Text="WELCOME TO WELEARN"/>
+
+        <TextBox Width="250" Name="usernameTextBox"
+                 Header="Username:" PlaceholderText="Enter your Username"/>
+        <PasswordBox Margin="0,5,0,0" Width="250" Name="passwordBox"
+                     Header="Password:" PlaceholderText="Enter password"/>
+        <CheckBox Margin="0,5,0,5" Name="rememberCheckBox"
+                  Content="Remember me"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"  VerticalAlignment="Center">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="You don't have an account?" TextAlignment="Center"/>
+            <HyperlinkButton x:Name="registerButton"
+                             Click="registerButton_Click"
+                             Content="Register"
+                             HorizontalAlignment="Right"
+                             />
+
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Center" Text="Are you a tutor?" TextAlignment="Center" Margin="0,0,5,0"/>
+            <HyperlinkButton x:Name="registerButtonForTutor"
+                             Click="registerButtonForTutor_Click"
+                             Content="Click_here"
+                             HorizontalAlignment="Right"
+                             Margin="50,0,0,0"/>
+        </StackPanel>
+        <Button x:Name="loginButton"
+                Click="loginButton_Click"
+                Width="Auto"
+                Height="35"
+                HorizontalAlignment="Stretch"
+                Content="Login"/>
+    </StackPanel>
+
+</Page>
