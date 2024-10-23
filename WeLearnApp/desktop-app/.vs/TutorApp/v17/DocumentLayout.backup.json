@@ -150,7 +150,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
@@ -164,18 +164,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T08:33:35.771Z",
               "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IAuthenticationService.cs",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
-              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
-              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-23T09:42:38.212Z"
             },
             {
               "$type": "Document",
@@ -217,28 +205,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Register.xaml",
-              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
-              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml*",
-              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml*",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACYAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-10-22T15:29:01.662Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "RegisterForTutor.xaml",
               "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
               "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
               "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
               "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\RegisterForTutor.xaml",
-              "ViewState": "AgIAABQAAAAAAAAAAAAmwCgAAABDAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAmwCYAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2024-10-22T16:50:26.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IAuthenticationService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\IAuthenticationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-23T09:42:38.212Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Register.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\TutorApp\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Register.xaml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACYAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-22T15:29:01.662Z",
               "EditorCaption": ""
             },
             {
