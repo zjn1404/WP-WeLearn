@@ -19,10 +19,7 @@ namespace TutorApp.Views
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
         }
 
-        private void Navigation_GoBack(object sender, RoutedEventArgs e)
-        {
-            _navigationService.GoBack();
-        }
+   
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {

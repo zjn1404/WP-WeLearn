@@ -1,9 +1,11 @@
 ﻿using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TutorApp;
 
 namespace TutorApp.Services.Interfaces
 {
@@ -11,12 +13,17 @@ namespace TutorApp.Services.Interfaces
     {
         bool CanGoBack { get; }
         void RegisterPage(string pageKey, Type pageType);
-        void RegisterWindow(string windowKey, Window window);
         bool NavigateTo(string pageKey, object parameter = null);
         Window NavigateToNewWindow(string windowKey, string pageKey, object parameter = null);
-        void CloseWindow(string windowKey);
-        bool WindowExists(string windowKey);
-        bool GoBack();
-        Window GetWindow(string windowKey);
+       
+        void SetWindowActive(MainWindow window);
+        Frame GetCurrentFrame();
+
+        MainWindow CreateNewWindow(string windowKey);
+       
+
+
+
     }
 }
+
