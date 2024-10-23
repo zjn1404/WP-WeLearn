@@ -19,7 +19,7 @@ public class NavigationService : INavigationService
         _frame = frame ?? throw new ArgumentNullException(nameof(frame));
     }
 
-    // Thêm phương thức mới để đóng tất cả các cửa sổ
+   
     public void CloseAllWindows(string exceptWindowKey = null)
     {
         var windowsToClose = _windows.ToList();
@@ -106,7 +106,6 @@ public class NavigationService : INavigationService
         return window;
     }
 
-    // Các phương thức khác giữ nguyên như cũ
     public void SetWindowActive(MainWindow window)
     {
         if (window == null)
