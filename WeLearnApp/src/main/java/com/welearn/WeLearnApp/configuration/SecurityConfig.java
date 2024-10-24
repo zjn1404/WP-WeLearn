@@ -13,14 +13,17 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.List;
-
 @Configuration
 public class SecurityConfig {
 
-    private static final String[] PUBLIC_GET_ENDPOINTS = {};
+    private static final String[] PUBLIC_GET_ENDPOINTS = {
+            "/auth/refresh",
+    };
 
-    private static final String[] PUBLIC_POST_ENDPOINTS = {};
+    private static final String[] PUBLIC_POST_ENDPOINTS = {
+            "/auth/authenticate",
+            "/auth/logout",
+    };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

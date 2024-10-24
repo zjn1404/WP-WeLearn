@@ -17,3 +17,16 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+
+jwt:
+  signer-key:
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
+  duration:
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
+
+message:
+  controller:
+    authentication:
+      logout-success: "Logout successfully"
