@@ -18,6 +18,13 @@ spring:
       ddl-auto: none
     show-sql: true
 
+application-init:
+    admin:
+        username: ${ADMIN_USERNAME}
+        password: ${ADMIN_PASSWORD}
+        email: ${ADMIN_EMAIL}
+        role: ${ADMIN_ROLE}
+
 jwt:
   signer-key:
     access: ${AC_SIGNER_KEY}
