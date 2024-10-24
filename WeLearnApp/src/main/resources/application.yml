@@ -1,7 +1,7 @@
 server:
-  port: ${SERVER_PORT:8080}
+  port: ${SERVER_PORT}
   servlet:
-    context-path: ${CONTEXT_PATH:/api}
+    context-path: ${CONTEXT_PATH}
 
 spring:
   application:
@@ -9,10 +9,10 @@ spring:
 #  profiles:
 #    active: @spring.profiles.active@
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/welearn_db}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:root}
-    driverClassName: ${DB_DRIVER_CLASSNAME:com.mysql.cj.jdbc.Driver}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: ${DB_DRIVER_CLASSNAME}
   jpa:
     hibernate:
       ddl-auto: none
@@ -20,18 +20,18 @@ spring:
 
 application-init:
     admin:
-        username: ${ADMIN_USERNAME:admin}
-        password: ${ADMIN_PASSWORD:Admin123}
-        email: ${ADMIN_EMAIL:admin@gmail.com}
-        role: ${ADMIN_ROLE:ADMIN}
+        username: ${ADMIN_USERNAME}
+        password: ${ADMIN_PASSWORD}
+        email: ${ADMIN_EMAIL}
+        role: ${ADMIN_ROLE}
 
 jwt:
   signer-key:
-    access: ${AC_SIGNER_KEY:koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU}
-    refresh: ${RF_SIGNER_KEY:muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq}
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
   duration:
-    access: ${AC_DURATION:3600000}
-    refresh: ${RF_DURATION:86400000}
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
 
 message:
   controller:

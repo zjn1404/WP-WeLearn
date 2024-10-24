@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.<Void>builder()
                         .code(ErrorCode.UNCATEGORIZED_EXCEPTION.getCode())
-                        .message(e.getMessage())
+                        .message(ErrorCode.UNCATEGORIZED_EXCEPTION.getMessage())
                         .build());
     }
 
