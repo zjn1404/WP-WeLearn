@@ -20,8 +20,12 @@ import com.welearn.WeLearnApp.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -44,8 +48,10 @@ public class UserServiceImp implements UserService{
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
+        log.info("Creating user: {}", request);
+
         User user = userMapper.toUser(request);
-        Role role = roleRepository.findById("ROLE_USER")
+        Role role = roleRepository.findById(request.getRole())
                 .orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_FOUND));
         user.setRole(role);
 
@@ -55,8 +61,12 @@ public class UserServiceImp implements UserService{
         userProfile.setId(user.getId());
         userProfileRepository.save(userProfile);
 
-        Location location = locationMapper.toLocation(request);
-        locationRepository.save(location);
+        if (!Objects.isNull(request.getCity()) &&
+                !locationRepository.existsByCityAndDistrictAndStreet(request.getCity(),
+                        request.getDistrict(), request.getStreet())) {
+            Location location = locationMapper.toLocation(request);
+            locationRepository.save(location);
+        }
 
         return buildUserResponse(user);
     }

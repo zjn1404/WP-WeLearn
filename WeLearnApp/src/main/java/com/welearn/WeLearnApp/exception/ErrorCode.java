@@ -12,6 +12,10 @@ public enum ErrorCode {
     UNCATEGORIZED_EXCEPTION(9999, HttpStatus.INTERNAL_SERVER_ERROR, "Uncategorized Error"),
     //    Internal Server Error	Developer error 1xxx
     INVALID_KEY(1001, HttpStatus.INTERNAL_SERVER_ERROR, "Invalid Key"),
+    // User Input Error 2xxx
+    INVALID_USERNAME(2001, HttpStatus.BAD_REQUEST, "Invalid username"),
+    INVALID_PASSWORD(2002, HttpStatus.BAD_REQUEST, "Invalid password"),
+    REQUIRED_EMAIL(2003, HttpStatus.BAD_REQUEST, "Email is required"),
     //    Existed Error 3xxx
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),
@@ -23,6 +27,7 @@ public enum ErrorCode {
     // Authentication Error 5xxx
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),
+    UNAUTHENTICATED(5003, HttpStatus.UNAUTHORIZED, "Unauthenticated"),
     ;
 
     final Integer code;

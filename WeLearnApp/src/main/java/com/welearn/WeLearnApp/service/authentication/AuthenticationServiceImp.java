@@ -1,6 +1,7 @@
 package com.welearn.WeLearnApp.service.authentication;
 
 import com.nimbusds.jose.*;
+import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
@@ -19,16 +20,20 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -60,7 +65,7 @@ public class AuthenticationServiceImp implements AuthenticationService{
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.AUTHENTICATION_FAIL));
 
-        if (!passwordEncoder.matches(user.getPassword(), request.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new AppException(ErrorCode.AUTHENTICATION_FAIL);
         }
 
@@ -76,11 +81,7 @@ public class AuthenticationServiceImp implements AuthenticationService{
             String rfId = signedJWT.getJWTClaimsSet().getStringClaim("id");
             Date expirationTime = signedJWT.getJWTClaimsSet().getExpirationTime();
 
-            invalidatedTokenRepository.save(InvalidatedToken.builder()
-                            .acId(acId)
-                            .rfId(rfId)
-                            .expirationTime(LocalDateTime.from(expirationTime.toInstant()))
-                    .build());
+            saveInvalidatedToken(acId, rfId, expirationTime);
 
             User user = userRepository.findById(signedJWT.getJWTClaimsSet().getSubject())
                     .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
@@ -113,11 +114,8 @@ public class AuthenticationServiceImp implements AuthenticationService{
             String rfId = signedJWT.getJWTClaimsSet().getStringClaim("rfId");
             Date expirationTime = signedJWT.getJWTClaimsSet().getExpirationTime();
 
-            invalidatedTokenRepository.save(InvalidatedToken.builder()
-                            .acId(acId)
-                            .rfId(rfId)
-                            .expirationTime(LocalDateTime.from(expirationTime.toInstant()))
-                    .build());
+            saveInvalidatedToken(acId, rfId, expirationTime);
+
         } catch (Exception e) {
             throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
         }
@@ -184,8 +182,23 @@ public class AuthenticationServiceImp implements AuthenticationService{
 
         Payload payload = new Payload(claimsSet.toJSONObject());
 
-        JWSObject jweObject = new JWSObject(header, payload);
+        JWSObject jwsObject = new JWSObject(header, payload);
 
-        return jweObject.serialize();
+        try {
+            jwsObject.sign(new MACSigner(signerKey));
+            return jwsObject.serialize();
+        } catch (JOSEException e) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        }
+    }
+
+    private void saveInvalidatedToken(String acId, String rfId, Date expirationTime) {
+        ZoneId zoneId = ZoneId.systemDefault();
+        LocalDateTime localDateTime = ZonedDateTime.ofInstant(expirationTime.toInstant(), zoneId).toLocalDateTime();
+        invalidatedTokenRepository.save(InvalidatedToken.builder()
+                .acId(acId)
+                .rfId(rfId)
+                .expirationTime(localDateTime)
+                .build());
     }
 }

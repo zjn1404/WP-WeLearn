@@ -11,10 +11,9 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 
-    @Query(value = "SELECT CASE WHEN COUNT(u) > 0 THEN true ELSE false END FROM user u WHERE u.username = :username",
-            nativeQuery = true)
+    @Query("SELECT CASE WHEN COUNT(u) > 0 THEN true ELSE false END FROM User u WHERE u.username = :username")
     boolean existsByUsername(@Param("username") String username);
 
-    @Query(value = "SELECT * FROM user u WHERE u.username = :username", nativeQuery = true)
+    @Query("SELECT u FROM User u WHERE u.username = :username")
     Optional<User> findByUsername(@Param("username") String username);
 }

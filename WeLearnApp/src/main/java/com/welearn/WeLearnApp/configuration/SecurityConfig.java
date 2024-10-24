@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -21,27 +22,32 @@ public class SecurityConfig {
     };
 
     private static final String[] PUBLIC_POST_ENDPOINTS = {
+            "/user",
             "/auth/authenticate",
             "/auth/logout",
     };
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(config -> {
-            config.requestMatchers(PUBLIC_GET_ENDPOINTS)
-                    .permitAll()
-                    .requestMatchers(PUBLIC_POST_ENDPOINTS)
-                    .permitAll()
-                    .anyRequest()
-                    .authenticated();
-        });
+    public SecurityFilterChain securityFilterChain(HttpSecurity http,
+                                                   CustomJwtDecoder decoder,
+                                                    AfterBearerTokenAuthenticationExceptionHandler exceptionHandler
+    ) throws Exception {
+
+        http.addFilterBefore(exceptionHandler, LogoutFilter.class);
+
+        http.authorizeHttpRequests(config -> config.requestMatchers(PUBLIC_GET_ENDPOINTS)
+                .permitAll()
+                .requestMatchers(PUBLIC_POST_ENDPOINTS)
+                .permitAll()
+                .anyRequest()
+                .authenticated());
 
         http.oauth2ResourceServer(config -> {
-            config.jwt(jwt -> {
-                jwt.jwtAuthenticationConverter(jwtAuthenticationConverter());
-            });
+            config.jwt(jwt -> {jwt
+                    .jwtAuthenticationConverter(jwtAuthenticationConverter())
+                    .decoder(decoder);
+            }).authenticationEntryPoint(new JwtAuthenticationEntrypoint());
         });
-
 
         http.csrf(AbstractHttpConfigurer::disable);
 
@@ -75,6 +81,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(12);
     }
 }

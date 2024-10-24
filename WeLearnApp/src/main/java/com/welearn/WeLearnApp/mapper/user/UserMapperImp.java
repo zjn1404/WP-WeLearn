@@ -4,7 +4,6 @@ import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
 import com.welearn.WeLearnApp.dto.request.user.UserUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.UserResponse;
 import com.welearn.WeLearnApp.entity.User;
-import com.welearn.WeLearnApp.entity.UserProfile;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
