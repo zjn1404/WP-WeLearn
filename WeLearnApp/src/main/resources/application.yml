@@ -6,8 +6,8 @@ server:
 spring:
   application:
     name: WeLearnApp
-  profiles:
-    active: @spring.profiles.active@
+#  profiles:
+#    active: @spring.profiles.active@
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
@@ -17,3 +17,23 @@ spring:
     hibernate:
       ddl-auto: none
     show-sql: true
+
+application-init:
+    admin:
+        username: ${ADMIN_USERNAME}
+        password: ${ADMIN_PASSWORD}
+        email: ${ADMIN_EMAIL}
+        role: ${ADMIN_ROLE}
+
+jwt:
+  signer-key:
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
+  duration:
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
+
+message:
+  controller:
+    authentication:
+      logout-success: "Logout successfully"

@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.<Void>builder()
                         .code(ErrorCode.UNCATEGORIZED_EXCEPTION.getCode())
-                        .message(errorCode.getMessage())
+                        .message(ErrorCode.UNCATEGORIZED_EXCEPTION.getMessage())
                         .build());
     }
 
@@ -29,6 +29,7 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiResponse<Void>> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         ErrorCode errorCode = ErrorCode.INVALID_KEY;
 

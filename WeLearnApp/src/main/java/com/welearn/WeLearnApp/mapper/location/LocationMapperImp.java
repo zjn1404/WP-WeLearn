@@ -1,6 +1,7 @@
 package com.welearn.WeLearnApp.mapper.location;
 
 import com.welearn.WeLearnApp.dto.request.location.LocationCreationRequest;
+import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
 import com.welearn.WeLearnApp.dto.response.LocationResponse;
 import com.welearn.WeLearnApp.entity.Location;
 import lombok.AccessLevel;
@@ -15,6 +16,15 @@ public class LocationMapperImp implements LocationMapper {
 
     @Override
     public Location toLocation(LocationCreationRequest request) {
+        return Location.builder()
+                .city(request.getCity())
+                .district(request.getDistrict())
+                .street(request.getStreet())
+                .build();
+    }
+
+    @Override
+    public Location toLocation(UserCreationRequest request) {
         return Location.builder()
                 .city(request.getCity())
                 .district(request.getDistrict())
