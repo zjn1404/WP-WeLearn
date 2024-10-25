@@ -43,7 +43,7 @@ namespace TutorApp.Views
             {
                 var localSettings = ApplicationData.Current.LocalSettings;
                 localSettings.Values["token"] = APIResponseToken;
-                _navigationService.NavigateTo("Home");
+                _navigationService.NavigateTo("Dashboard");
             }
             else
             {

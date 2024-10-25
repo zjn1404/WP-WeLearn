@@ -10,5 +10,6 @@ namespace TutorApp.MockData.Tutors
     public interface IDAO
     {
         List<Tutor> GetTutors();
+        List<LearningSession> GetAllLearningSessions();
     }
 }

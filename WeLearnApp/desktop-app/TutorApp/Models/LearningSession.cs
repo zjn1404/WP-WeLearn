@@ -11,7 +11,7 @@ namespace TutorApp.Models
     {
         public string Id { get; set; }
         public string TutorId { get; set; }
-        public DateTime StartTime { get; set; }
+        public string StartTime { get; set; }
         public long Duration { get; set; }
         public int GradeId { get; set; }
         public string SubjectName { get; set; }
