@@ -41,5 +41,42 @@ namespace TutorApp.MockData
             };
             return tutors;
         }
+
+        public List<LearningSession> GetAllLearningSessions()
+        {
+           List <LearningSession> LearningSessionList = new List<LearningSession>{
+                new()
+                {
+                    Id = "1",
+                    TutorId = "1",
+                    StartTime = "01/01/2000",
+                    Duration = 60,
+                    GradeId = 1,
+                    SubjectName = "Math",
+                    LearningMethodName = "Online"
+                },
+                new()
+                {
+                    Id = "2",
+                    TutorId = "2",
+                    StartTime = "01/01/2000",
+                    Duration = 60,
+                    GradeId = 2,
+                    SubjectName = "Math",
+                    LearningMethodName = "Offline"
+                },
+                new()
+                {
+                    Id = "3",
+                    TutorId = "3",
+                    StartTime = "01/01/2000",
+                    Duration = 60,
+                    GradeId = 3,
+                    SubjectName = "Computer Science",
+                    LearningMethodName = "Online"
+                }
+            };
+            return LearningSessionList;
+        }
     }
 }

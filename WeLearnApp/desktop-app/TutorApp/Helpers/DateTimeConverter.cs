@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml.Data;
 using System;
+using System.Diagnostics;
 
 namespace TutorApp.Helpers
 {
@@ -7,23 +8,27 @@ namespace TutorApp.Helpers
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            if (value is DateTime dateTime)
+            try
             {
-
-                
-                // Trả về chuỗi định dạng "dd/MM/yyyy"
-                return dateTime.ToString("dd/MM/yyyy");
+                if (value is DateTime dateTime)
+                {
+                    return dateTime.ToString("MM/dd/yyyy hh:mm tt");
+                }
             }
-            return "Invalid Date";  // Trả về chuỗi mặc định nếu không có giá trị
-        }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"DateTime conversion error: {ex.Message}");
+            }
 
+            return "Invalid Date";
+        }
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             if (DateTime.TryParse(value?.ToString(), out DateTime result))
             {
                 return result;
             }
-            return DateTime.Now; // Trả về giá trị mặc định
+            return DateTime.Now; 
         }
     }
 }
