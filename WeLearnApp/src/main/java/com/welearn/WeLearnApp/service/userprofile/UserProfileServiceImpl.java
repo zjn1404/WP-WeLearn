@@ -41,7 +41,21 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         userProfile.setLocation(locationService.internalUpdateLocation(request));
 
-        return userProfileMapper.toUserProfileResponse(userProfileRepository.saveAndFlush(userProfile));
+        return buildUserProfileResponse(userProfile);
+    }
+
+    @Override
+    public UserProfileResponse updateMyProfile(UserProfileUpdateRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        UserProfile userProfile = userProfileRepository.findById(authentication.getName())
+                .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
+
+        userProfileMapper.updateUserProfile(userProfile, request);
+
+        userProfile.setLocation(locationService.internalUpdateLocation(request));
+
+        return buildUserProfileResponse(userProfile);
     }
 
     @Override
@@ -71,8 +85,10 @@ public class UserProfileServiceImpl implements UserProfileService {
 
     private UserProfileResponse buildUserProfileResponse(UserProfile userProfile) {
         UserProfileResponse userProfileResponse = userProfileMapper.toUserProfileResponse(userProfile);
-        LocationResponse locationResponse = locationMapper.toLocationResponse(userProfile.getLocation());
-        userProfileResponse.setLocation(locationResponse);
+        if (!Objects.isNull(userProfile.getLocation())) {
+            LocationResponse locationResponse = locationMapper.toLocationResponse(userProfile.getLocation());
+            userProfileResponse.setLocation(locationResponse);
+        }
 
         return userProfileResponse;
     }

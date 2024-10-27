@@ -8,6 +8,8 @@ import com.welearn.WeLearnApp.entity.Location;
 public interface UserProfileService {
     UserProfileResponse updateProfile(String userId, UserProfileUpdateRequest request);
 
+    UserProfileResponse updateMyProfile(UserProfileUpdateRequest request);
+
     UserProfileResponse getProfileByUserId(String userId);
 
     UserProfileResponse getMyProfile();

@@ -6,5 +6,5 @@ import com.welearn.WeLearnApp.dto.response.TutorResponse;
 public interface TutorService {
     TutorResponse getTutorInfoById(String tutorId);
 
-    TutorResponse updateTutorInfo(String tutorId, TutorUpdateRequest request);
+    TutorResponse updateTutorInfo(TutorUpdateRequest request);
 }

@@ -24,10 +24,10 @@ public class TutorController {
                     .build();
         }
 
-        @PatchMapping("/{tutorId}")
-        public ApiResponse<TutorResponse> updateTutorInfo(@PathVariable String tutorId, @RequestBody TutorUpdateRequest request) {
+        @PatchMapping
+        public ApiResponse<TutorResponse> updateTutorInfo(@RequestBody TutorUpdateRequest request) {
             return ApiResponse.<TutorResponse>builder()
-                    .data(tutorService.updateTutorInfo(tutorId, request))
+                    .data(tutorService.updateTutorInfo(request))
                     .build();
         }
 }

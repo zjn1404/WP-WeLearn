@@ -8,6 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class TutorMapperImpl implements TutorMapper {
     @Override
+    public Tutor toTutor(TutorUpdateRequest request) {
+        return Tutor.builder()
+                .degree(request.getDegree())
+                .description(request.getDescription())
+                .build();
+    }
+
+    @Override
     public void updateTutor(Tutor tutor, TutorUpdateRequest request) {
         if (request.getDegree() != null) {
             tutor.setDegree(request.getDegree());

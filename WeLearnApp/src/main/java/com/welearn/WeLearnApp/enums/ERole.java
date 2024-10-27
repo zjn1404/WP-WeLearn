@@ -3,7 +3,7 @@ package com.welearn.WeLearnApp.enums;
 import lombok.Getter;
 
 @Getter
-public enum Role {
+public enum ERole {
     ADMIN("ADMIN"),
     USER("USER"),
     TUTOR("TUTOR"),
@@ -11,7 +11,7 @@ public enum Role {
 
     final String name;
 
-    Role(String name) {
+    ERole(String name) {
         this.name = name;
     }
 }

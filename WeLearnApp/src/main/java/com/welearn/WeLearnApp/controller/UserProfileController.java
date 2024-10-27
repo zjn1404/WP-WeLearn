@@ -37,4 +37,11 @@ public class UserProfileController {
                 .data(userProfileService.updateProfile(userId, request))
                 .build();
     }
+
+    @PatchMapping("/me")
+    public ApiResponse<UserProfileResponse> updateMyProfile(@RequestBody UserProfileUpdateRequest request) {
+        return ApiResponse.<UserProfileResponse>builder()
+                .data(userProfileService.updateMyProfile(request))
+                .build();
+    }
 }
