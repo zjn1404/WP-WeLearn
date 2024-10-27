@@ -26,7 +26,7 @@ namespace TutorApp.ViewModels
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi đăng ký: {ex.Message}");
+                throw new Exception($"Registration error : {ex.Message}");
             }
         }
 
@@ -38,17 +38,17 @@ namespace TutorApp.ViewModels
                 string.IsNullOrEmpty(registerRequest.FirstName) ||
                 string.IsNullOrEmpty(registerRequest.LastName))
             {
-                return "Vui lòng nhập đầy đủ thông tin!";
+                return "Please fill in all the information";
             }
 
             if (!IsValidEmail(registerRequest.Email))
             {
-                return "Email không hợp lệ!";
+                return "Email is invalid";
             }
 
             if (!IsValidPassword(registerRequest.Password))
             {
-                return "Mật khẩu phải có ít nhất 8 ký tự, bao gồm một chữ hoa, một số và một ký tự đặc biệt!";
+                return "The password must be at least 8 characters long and include an uppercase letter, a number, and a special character!";
             }
 
             return null; 

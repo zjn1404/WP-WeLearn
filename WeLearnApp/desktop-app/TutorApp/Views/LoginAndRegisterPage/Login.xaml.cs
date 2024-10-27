@@ -14,13 +14,15 @@ namespace TutorApp.Views
     public sealed partial class Login : Page
     {
         private readonly INavigationService _navigationService;
+        private readonly IUserService _userService;
         private readonly LoginViewModel _viewModel;
 
         public Login()
         {
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
-            _viewModel = new LoginViewModel(((App)Application.Current).Services.GetRequiredService<IUserService>());
+            _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _viewModel = new LoginViewModel(_userService);
         }
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
@@ -42,8 +44,12 @@ namespace TutorApp.Views
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
-                    //var localSettings = ApplicationData.Current.LocalSettings;
-                    //localSettings.Values["token"] = response.Token;
+                    var localSettings = ApplicationData.Current.LocalSettings;
+                    localSettings.Values["accessToken"] = response.Tokens.accessToken;
+                    localSettings.Values["refreshToken"] = response.Tokens.refreshToken;
+
+          
+
 
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Home");

@@ -26,8 +26,8 @@ namespace TutorApp.ViewModels
             {
                 var loginRequest = new LoginRequest
                 {
-                    Username = username,
-                    Password = password
+                    username = username,
+                    password = password
                 };
 
                 var response = await _userService.LoginAccount(loginRequest);

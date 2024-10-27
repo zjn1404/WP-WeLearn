@@ -30,6 +30,9 @@
                          Header="Lastname:" PlaceholderText="Enter your lastname"/>
 
             </StackPanel>
+            <TextBox Name="usernameTextBox"
+                     Header="Username:"
+                     PlaceholderText="Enter your username"/>
             <TextBox Name="emailTextBox"
                      Header="Email:"
                      PlaceholderText="Enter your email"/>

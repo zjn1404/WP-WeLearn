@@ -31,15 +31,23 @@ namespace TutorApp.Services
                 var json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json,Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsync("/api/login",content);
+                var response = await _httpClient.PostAsync("/api/auth/authenticate", content);
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 if (response.IsSuccessStatusCode)
                 {
+
+                    // chuyển từ dạng json thành đối tượng
+                    var responseData = JsonSerializer.Deserialize<JsonResponseLogin>(responseContent);
                     return new LoginResponse
                     {
                         Success = true,
-                        Message = "Đăng ký thành công!"
+                        Message = "Đăng ký thành công!",
+                        Tokens = new JwtToken
+                        {
+                            accessToken = responseData.data.accessToken,
+                            refreshToken = responseData.data.refreshToken
+                        }
                     };
                 }
                 else

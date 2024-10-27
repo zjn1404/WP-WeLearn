@@ -31,6 +31,7 @@ namespace TutorApp.Views
             string username = usernameTextBox.Text;
             string email = emailTextBox.Text;
             string password = passwordTextBox.Password;
+            string confirmPassword = confirmPasswordTextBox.Password;
 
             // Tạo yêu cầu đăng ký
             var registerRequest = new RegisterRequest
@@ -40,11 +41,16 @@ namespace TutorApp.Views
                 Password = password,
                 FirstName = firstnameTextBox.Text,
                 LastName = lastnameTextBox.Text,
-                Role = "User"
+                Role = "USER"
             };
 
             // Kiểm tra đầu vào
             var validationMessage = viewModel.ValidateInput(registerRequest);
+            if (password != confirmPassword)
+            {
+                await ShowDialogAsync("Password doesn't match ConfirmPassword", false);
+                return;
+            }
             if (validationMessage != null)
             {
                 await ShowDialogAsync(validationMessage);
@@ -57,16 +63,16 @@ namespace TutorApp.Views
                 var response = await viewModel.RegisterUser(registerRequest);
                 if (response.Success)
                 {
-                    await ShowDialogAsync("Đăng ký thành công", true);
+                    await ShowDialogAsync("Registered Successfully", true);
                 }
                 else
                 {
-                    await ShowDialogAsync("Đăng ký không thành công. Vui lòng thử lại.");
+                    await ShowDialogAsync("Registration Failed. Please try again.");
                 }
             }
             catch (Exception ex)
             {
-                await ShowDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
+                await ShowDialogAsync($"Error: {ex.Message}");
             }
         }
 
@@ -74,7 +80,7 @@ namespace TutorApp.Views
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Thông báo",
+                Title = "Announcement",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot
