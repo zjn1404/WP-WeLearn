@@ -2,6 +2,7 @@ package com.welearn.WeLearnApp.mapper.userprofile;
 
 import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
 import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileCreationRequest;
+import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.UserProfile;
 import lombok.AccessLevel;
@@ -33,7 +34,7 @@ public class UserProfileMapperImp implements UserProfileMapper {
     }
 
     @Override
-    public void updateUserProfile(UserProfile userProfile, UserProfileCreationRequest request) {
+    public void updateUserProfile(UserProfile userProfile, UserProfileUpdateRequest request) {
         if (request.getFirstName() != null) {
             userProfile.setFirstName(request.getFirstName());
         }

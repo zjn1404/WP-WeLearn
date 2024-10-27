@@ -36,6 +36,13 @@ public class UserController {
                 .build();
     }
 
+    @GetMapping("/me")
+    public ApiResponse<UserResponse> getMyAccount() {
+        return ApiResponse.<UserResponse>builder()
+                .data(userService.getMyAccount())
+                .build();
+    }
+
     @PatchMapping("/{id}")
     public ApiResponse<UserResponse> updateUser(@PathVariable String id, UserUpdateRequest request) {
         return ApiResponse.<UserResponse>builder()

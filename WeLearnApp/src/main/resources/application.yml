@@ -37,3 +37,5 @@ message:
   controller:
     authentication:
       logout-success: "Logout successfully"
+    role:
+      delete-success: "Role deleted successfully"
