@@ -41,9 +41,9 @@ namespace TutorApp.Views
                 var response = await _viewModel.LoginAsync(username, password);
                 if (response.Success)
                 {
-                    // Lưu token vào LocalSettings
-                    var localSettings = ApplicationData.Current.LocalSettings;
-                    localSettings.Values["token"] = response.Token;
+                    //// Lưu token vào LocalSettings
+                    //var localSettings = ApplicationData.Current.LocalSettings;
+                    //localSettings.Values["token"] = response.Token;
 
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Home");
@@ -89,3 +89,4 @@ namespace TutorApp.Views
             window.Title = "Đăng nhập cho Gia sư";
         }
     }
+}
