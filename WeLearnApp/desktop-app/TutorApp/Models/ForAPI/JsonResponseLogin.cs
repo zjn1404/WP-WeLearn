@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace TutorApp.Models.ForAPI
 {
-    public class LoginRequest
+    public class JsonResponseLogin
     {
-        public string username { get; set; }
-        public string password { get; set; }
+        public int code { get; set; }
+        public JwtToken data { get; set; }
     }
 }

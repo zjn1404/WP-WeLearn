@@ -10,7 +10,7 @@ namespace TutorApp.Models.ForAPI
     {
         public bool Success { get; set; }
         public string Message { get; set; }
-        public string UserId { get; set; }
+        public JwtToken Tokens { get; set; }
 
     }
 }
