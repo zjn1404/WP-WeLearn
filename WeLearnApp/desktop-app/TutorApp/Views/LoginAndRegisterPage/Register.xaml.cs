@@ -1,86 +1,90 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using TutorApp.Services;
 using TutorApp.Services.Interfaces;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+using TutorApp.ViewModels;
+using TutorApp.Models.ForAPI;
+using System.Threading.Tasks;
+using System;
+using TutorApp.Services.Interfaces.ForAPI;
+
 
 namespace TutorApp.Views
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class Register : Page
     {
         private readonly INavigationService _navigationService;
+        private readonly IUserService _userService;
+        private RegisterViewModel viewModel;
 
         public Register()
         {
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
-
+            _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            viewModel = new RegisterViewModel(_userService);
         }
-
-      
 
         private async void registerButton_Click(object sender, RoutedEventArgs e)
         {
-            //string username = usernameTextBox.Text;
-            //string email = emailTextBox.Text;
-            //string password = passwordTextBox.Password;
+            // Lấy thông tin từ các trường nhập liệu
+            string username = usernameTextBox.Text;
+            string email = emailTextBox.Text;
+            string password = passwordTextBox.Password;
 
-            //// Check input
-            //if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(email) 
-            //    || string.IsNullOrWhiteSpace(password))
-            //{
-            //    await ShowErrorDialogAsync("Please enter full username, email and password.");
-            //    return;
-            //}
+            // Tạo yêu cầu đăng ký
+            var registerRequest = new RegisterRequest
+            {
+                Username = username,
+                Email = email,
+                Password = password,
+                FirstName = firstnameTextBox.Text,
+                LastName = lastnameTextBox.Text,
+                Role = "User"
+            };
 
-            //// Check valid username and password
-            //// Call API to check username and password, return code and token
-            //// APIResponse = await API.Login(username, password);
-            //string APIResponseCode = "200"; // APIResponse.code();
-            //string APIResponseToken = "kakahehe"; // APIResponse.token();
+            // Kiểm tra đầu vào
+            var validationMessage = viewModel.ValidateInput(registerRequest);
+            if (validationMessage != null)
+            {
+                await ShowDialogAsync(validationMessage);
+                return;
+            }
 
-            //if (APIResponseCode == "200")
-            //{
-            //    var localSettings = ApplicationData.Current.LocalSettings;
-            //    localSettings.Values["token"] = APIResponseToken;
-            //    _navigationService.NavigateTo("Home");
-            //}
-            //else
-            //{
-            //    await ShowErrorDialogAsync("Register failed. Please try again.");
-            //}
+            // Gọi dịch vụ đăng ký
+            try
+            {
+                var response = await viewModel.RegisterUser(registerRequest);
+                if (response.Success)
+                {
+                    await ShowDialogAsync("Đăng ký thành công", true);
+                }
+                else
+                {
+                    await ShowDialogAsync("Đăng ký không thành công. Vui lòng thử lại.");
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
+            }
         }
 
-        private async Task ShowErrorDialogAsync(string message)
+        private async Task ShowDialogAsync(string message, bool navigateAfterDialog = false)
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Error",
+                Title = "Thông báo",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot
             };
-
             await dialog.ShowAsync();
+
+            if (navigateAfterDialog)
+            {
+                _navigationService.NavigateTo("Login");
+            }
         }
 
         private void loginButton_Click(object sender, RoutedEventArgs e)

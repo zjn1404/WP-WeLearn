@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using TutorApp.Services.Interfaces;
@@ -6,48 +6,56 @@ using Windows.Storage;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using TutorApp.Services.Interfaces.ForAPI;
+using TutorApp.ViewModels;
 
 namespace TutorApp.Views
 {
     public sealed partial class Login : Page
     {
         private readonly INavigationService _navigationService;
+        private readonly LoginViewModel _viewModel;
 
         public Login()
         {
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
+            _viewModel = new LoginViewModel(((App)Application.Current).Services.GetRequiredService<IUserService>());
         }
-
-   
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             string username = usernameTextBox.Text;
             string password = passwordBox.Password;
 
-            // Check input
+            // Kiểm tra đầu vào
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                await ShowErrorDialogAsync("Please enter both username and password.");
+                await ShowErrorDialogAsync("Vui lòng nhập tên người dùng và mật khẩu.");
                 return;
             }
 
-            // Check valid username and password
-            // Call API to check username and password, return code and token
-            // APIResponse = await API.Login(username, password);
-            string APIResponseCode = "200"; // APIResponse.code();
-            string APIResponseToken = "kakahehe"; // APIResponse.token();
+            // Gọi hàm đăng nhập từ ViewModel
+            try
+            {
+                var response = await _viewModel.LoginAsync(username, password);
+                if (response.Success)
+                {
+                    // Lưu token vào LocalSettings
+                    var localSettings = ApplicationData.Current.LocalSettings;
+                    localSettings.Values["token"] = response.Token;
 
-            if (APIResponseCode == "200")
-            {
-                var localSettings = ApplicationData.Current.LocalSettings;
-                localSettings.Values["token"] = APIResponseToken;
-                _navigationService.NavigateTo("Dashboard");
+                    // Điều hướng đến Dashboard
+                    _navigationService.NavigateTo("Home");
+                }
+                else
+                {
+                    await ShowErrorDialogAsync("Đăng nhập không thành công. Vui lòng thử lại.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                await ShowErrorDialogAsync("Login failed. Please try again.");
+                await ShowErrorDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
             }
         }
 
@@ -55,7 +63,7 @@ namespace TutorApp.Views
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Error",
+                Title = "Lỗi",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot
@@ -71,14 +79,13 @@ namespace TutorApp.Views
 
         private void registerButtonForTutor_Click(object sender, RoutedEventArgs e)
         {
-            // Create new window and navigate to LoginForTutor page
+            // Tạo cửa sổ mới và điều hướng đến trang LoginForTutor
             var window = _navigationService.NavigateToNewWindow(
-                "TutorLoginWindow",  // Window key
-                "LoginForTutor"      // Page key
+                "TutorLoginWindow",  // Khóa cửa sổ
+                "LoginForTutor"      // Khóa trang
             );
 
-            // Optional: Set window properties
-            window.Title = "Tutor Login";
+            // Tùy chọn: Thiết lập thuộc tính cửa sổ
+            window.Title = "Đăng nhập cho Gia sư";
         }
     }
-}

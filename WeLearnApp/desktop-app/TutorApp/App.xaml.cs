@@ -26,14 +26,16 @@ namespace TutorApp
         {
             var services = new ServiceCollection();
 
+            var baseUrl = "http://localhost:8080";
+
             // Core services
-            services.AddSingleton<INavigationService>(sp => new NavigationService(rootFrame));
             services.AddHttpClient();
+            services.AddSingleton<INavigationService>(sp => new NavigationService(rootFrame));
+            services.AddSingleton<IUserService>(new UserService(baseUrl));
 
             // Application services
             services.AddTransient<IAuthenticationService, AuthenticationService>();
-            services.AddTransient<IUserService, UserService>();
-
+           
 
             // Register ViewModels if needed
             // services.AddTransient<HomeViewModel>();
@@ -48,6 +50,8 @@ namespace TutorApp
             rootFrame = ((MainWindow)m_window).ContentFrame;
 
             Services = ConfigureServices();
+
+          
 
             var navigationService = Services.GetRequiredService<INavigationService>();
             navigationService.RegisterRoutes();

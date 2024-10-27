@@ -1,37 +1,35 @@
 server:
-  port: ${SERVER_PORT}
+  port: 8080
   servlet:
-    context-path: ${CONTEXT_PATH}
+    context-path: /api
 
 spring:
   application:
     name: WeLearnApp
-#  profiles:
-#    active: @spring.profiles.active@
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driverClassName: ${DB_DRIVER_CLASSNAME}
+    url: jdbc:mysql://localhost:3306/welearn_db
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: none
     show-sql: true
 
 application-init:
-    admin:
-        username: ${ADMIN_USERNAME}
-        password: ${ADMIN_PASSWORD}
-        email: ${ADMIN_EMAIL}
-        role: ${ADMIN_ROLE}
+  admin:
+    username: admin
+    password: Admin123
+    email: admin@gmail.com
+    role: ADMIN
 
 jwt:
   signer-key:
-    access: ${AC_SIGNER_KEY}
-    refresh: ${RF_SIGNER_KEY}
+    access: koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU
+    refresh: muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq
   duration:
-    access: ${AC_DURATION}
-    refresh: ${RF_DURATION}
+    access: 3600000
+    refresh: 86400000
 
 message:
   controller:
