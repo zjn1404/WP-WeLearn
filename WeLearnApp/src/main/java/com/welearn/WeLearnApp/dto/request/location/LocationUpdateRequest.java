@@ -1,9 +1,7 @@
-package com.welearn.WeLearnApp.dto.request.userprofile;
+package com.welearn.WeLearnApp.dto.request.location;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -11,10 +9,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserProfileUpdateRequest {
-    String firstName;
-    String lastName;
-    LocalDate dob;
+public class LocationUpdateRequest {
     String city;
     String district;
     String street;

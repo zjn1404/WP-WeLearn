@@ -1,7 +1,8 @@
 package com.welearn.WeLearnApp.mapper.location;
 
-import com.welearn.WeLearnApp.dto.request.location.LocationCreationRequest;
+import com.welearn.WeLearnApp.dto.request.location.LocationUpdateRequest;
 import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
+import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.LocationResponse;
 import com.welearn.WeLearnApp.entity.Location;
 import lombok.AccessLevel;
@@ -15,21 +16,28 @@ import org.springframework.stereotype.Component;
 public class LocationMapperImp implements LocationMapper {
 
     @Override
-    public Location toLocation(LocationCreationRequest request) {
-        return Location.builder()
-                .city(request.getCity())
-                .district(request.getDistrict())
-                .street(request.getStreet())
-                .build();
+    public Location toLocation(LocationUpdateRequest request) {
+        return toLocation(request.getCity(), request.getDistrict(), request.getStreet());
     }
 
     @Override
     public Location toLocation(UserCreationRequest request) {
-        return Location.builder()
-                .city(request.getCity())
-                .district(request.getDistrict())
-                .street(request.getStreet())
-                .build();
+        return toLocation(request.getCity(), request.getDistrict(), request.getStreet());
+    }
+
+    @Override
+    public Location toLocation(UserProfileUpdateRequest request) {
+        return toLocation(request.getCity(), request.getDistrict(), request.getStreet());
+    }
+
+    @Override
+    public void updateLocation(Location location, LocationUpdateRequest request) {
+        updateLocation(location, request.getCity(), request.getDistrict(), request.getStreet());
+    }
+
+    @Override
+    public void updateLocation(Location location, UserProfileUpdateRequest request) {
+        updateLocation(location, request.getCity(), request.getDistrict(), request.getStreet());
     }
 
     @Override
@@ -40,4 +48,27 @@ public class LocationMapperImp implements LocationMapper {
                 .street(location.getStreet())
                 .build();
     }
+
+    private Location toLocation(String city, String district, String street) {
+        return Location.builder()
+                .city(city)
+                .district(district)
+                .street(street)
+                .build();
+    }
+
+    private void updateLocation(Location location, String city, String district, String street) {
+        if (city != null) {
+            location.setCity(city);
+        }
+
+        if (district != null) {
+            location.setDistrict(district);
+        }
+
+        if (street != null) {
+            location.setStreet(street);
+        }
+    }
+
 }

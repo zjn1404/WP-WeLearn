@@ -6,24 +6,21 @@ import com.welearn.WeLearnApp.dto.response.UserResponse;
 import com.welearn.WeLearnApp.entity.Location;
 import com.welearn.WeLearnApp.entity.Role;
 import com.welearn.WeLearnApp.entity.User;
-import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
-import com.welearn.WeLearnApp.mapper.location.LocationMapper;
 import com.welearn.WeLearnApp.mapper.role.RoleMapper;
 import com.welearn.WeLearnApp.mapper.user.UserMapper;
-import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
-import com.welearn.WeLearnApp.repository.LocationRepository;
 import com.welearn.WeLearnApp.repository.RoleRepository;
-import com.welearn.WeLearnApp.repository.UserProfileRepository;
 import com.welearn.WeLearnApp.repository.UserRepository;
+import com.welearn.WeLearnApp.service.location.LocationService;
+import com.welearn.WeLearnApp.service.userprofile.UserProfileService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Slf4j
 @Service
@@ -32,13 +29,12 @@ import java.util.Objects;
 public class UserServiceImp implements UserService{
 
     UserRepository userRepository;
-    UserProfileRepository userProfileRepository;
-    LocationRepository locationRepository;
     RoleRepository roleRepository;
 
+    UserProfileService userProfileService;
+    LocationService locationService;
+
     UserMapper userMapper;
-    UserProfileMapper userProfileMapper;
-    LocationMapper locationMapper;
     RoleMapper roleMapper;
 
     @Override
@@ -48,8 +44,6 @@ public class UserServiceImp implements UserService{
             throw new AppException(ErrorCode.USER_EXISTED);
         }
 
-        log.info("Creating user: {}", request);
-
         User user = userMapper.toUser(request);
         Role role = roleRepository.findById(request.getRole())
                 .orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_FOUND));
@@ -57,16 +51,9 @@ public class UserServiceImp implements UserService{
 
         userRepository.save(user);
 
-        UserProfile userProfile = userProfileMapper.toUserProfile(request);
-        userProfile.setId(user.getId());
-        userProfileRepository.save(userProfile);
+        Location location = locationService.internalCreateLocation(request);
 
-        if (!Objects.isNull(request.getCity()) &&
-                !locationRepository.existsByCityAndDistrictAndStreet(request.getCity(),
-                        request.getDistrict(), request.getStreet())) {
-            Location location = locationMapper.toLocation(request);
-            locationRepository.save(location);
-        }
+        userProfileService.internalCreateProfile(user.getId(), location, request);
 
         return buildUserResponse(user);
     }
@@ -74,6 +61,16 @@ public class UserServiceImp implements UserService{
     @Override
     public UserResponse getUserById(String id) {
         User user = userRepository.findById(id)
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
+
+        return buildUserResponse(user);
+    }
+
+    @Override
+    public UserResponse getMyAccount() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        User user = userRepository.findByUsername(authentication.getName())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         return buildUserResponse(user);

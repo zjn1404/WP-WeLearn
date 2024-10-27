@@ -28,6 +28,8 @@ public enum ErrorCode {
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),
     UNAUTHENTICATED(5003, HttpStatus.UNAUTHORIZED, "Unauthenticated"),
+    //    Authorization Error 6xxx
+    UNAUTHORIZED(6001, HttpStatus.FORBIDDEN, "Unauthorized"),
     ;
 
     final Integer code;

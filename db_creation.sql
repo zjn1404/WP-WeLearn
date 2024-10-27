@@ -1,6 +1,6 @@
-CREATE DATABASE `welearn_db` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE `TEST01` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
-USE `welearn_db`;
+USE `TE01`;
 
 create table `role` (
 	`name` varchar(50) primary key

@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.dto.request.location;
+package com.welearn.WeLearnApp.dto.request.tutor;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,8 +9,7 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LocationCreationRequest {
-    String city;
-    String district;
-    String street;
+public class TutorUpdateRequest {
+    String degree;
+    String description;
 }
