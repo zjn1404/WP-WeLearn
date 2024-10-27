@@ -9,7 +9,7 @@ create table `role` (
 create table `user` (
 	id varchar(50) primary key,
     username varchar(50),
-    `password` varchar(50),
+    `password` varchar(150),
     email varchar(50),
     role_name varchar(50),
     constraint fk_user_role foreign key(role_name) references `role`(`name`)
