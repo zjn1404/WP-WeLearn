@@ -2,6 +2,7 @@ package com.welearn.WeLearnApp.configuration;
 
 import com.welearn.WeLearnApp.entity.Role;
 import com.welearn.WeLearnApp.entity.User;
+import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.repository.RoleRepository;
 import com.welearn.WeLearnApp.repository.UserRepository;
 import lombok.AccessLevel;
@@ -32,10 +33,6 @@ public class ApplicationInitConfig {
     @NonFinal
     String ADMIN_EMAIL;
 
-    @Value("${application-init.admin.role}")
-    @NonFinal
-    String ADMIN_ROLE;
-
     UserRepository userRepository;
     RoleRepository roleRepository;
 
@@ -50,7 +47,9 @@ public class ApplicationInitConfig {
         return args -> {
             if (!userRepository.existsByUsername(ADMIN_USERNAME)) {
 
-                Role role = roleRepository.save(Role.builder().name(ADMIN_ROLE).build());
+                Role role = roleRepository.save(Role.builder().name(ERole.ADMIN.getName()).build());
+                roleRepository.save(Role.builder().name(ERole.USER.getName()).build());
+                roleRepository.save(Role.builder().name(ERole.TUTOR.getName()).build());
 
                 userRepository.save(User.builder()
                         .username(ADMIN_USERNAME)

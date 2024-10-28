@@ -14,6 +14,7 @@ import com.welearn.WeLearnApp.repository.RoleRepository;
 import com.welearn.WeLearnApp.repository.UserRepository;
 import com.welearn.WeLearnApp.service.location.LocationService;
 import com.welearn.WeLearnApp.service.userprofile.UserProfileService;
+import com.welearn.WeLearnApp.service.verificationcode.VerificationCodeService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -33,6 +34,7 @@ public class UserServiceImp implements UserService{
 
     UserProfileService userProfileService;
     LocationService locationService;
+    VerificationCodeService verificationCodeService;
 
     UserMapper userMapper;
     RoleMapper roleMapper;
@@ -54,6 +56,8 @@ public class UserServiceImp implements UserService{
         Location location = locationService.internalCreateLocation(request);
 
         userProfileService.internalCreateProfile(user.getId(), location, request);
+
+        verificationCodeService.sendVerificationCode(user.getId());
 
         return buildUserResponse(user);
     }

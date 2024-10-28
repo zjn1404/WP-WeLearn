@@ -16,6 +16,7 @@ public enum ErrorCode {
     INVALID_USERNAME(2001, HttpStatus.BAD_REQUEST, "Invalid username"),
     INVALID_PASSWORD(2002, HttpStatus.BAD_REQUEST, "Invalid password"),
     REQUIRED_EMAIL(2003, HttpStatus.BAD_REQUEST, "Email is required"),
+    INVALID_VERIFICATION_CODE(2004, HttpStatus.BAD_REQUEST, "Invalid verification code"),
     //    Existed Error 3xxx
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),
@@ -28,6 +29,7 @@ public enum ErrorCode {
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),
     UNAUTHENTICATED(5003, HttpStatus.UNAUTHORIZED, "Unauthenticated"),
+    NOT_VERIFIED(5004, HttpStatus.UNAUTHORIZED, "User not verified"),
     //    Authorization Error 6xxx
     UNAUTHORIZED(6001, HttpStatus.FORBIDDEN, "Unauthorized"),
     ;

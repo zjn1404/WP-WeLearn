@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "verification_code")
 @Getter
@@ -15,6 +17,9 @@ import lombok.experimental.FieldDefaults;
 public class VerificationCode {
     @Id
     String code;
+
+    @Column(name = "expiration_time")
+    LocalDateTime expirationTime;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
