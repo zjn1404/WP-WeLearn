@@ -66,6 +66,9 @@
     <Content Update="Assets\notification_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Update="Assets\pngtree-man-avatar-image-for-profile-png-image_13001877.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\HomePage\HomePage.xaml">

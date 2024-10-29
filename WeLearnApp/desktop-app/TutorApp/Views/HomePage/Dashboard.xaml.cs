@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -12,9 +12,15 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using TutorApp.Services.Interfaces;
+using TutorApp.Services.Interfaces.ForAPI;
+using TutorApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps;
+using Windows.Storage;
+
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
@@ -26,7 +32,8 @@ namespace TutorApp.Views.HomePage
     public sealed partial class Dashboard : Page
     {
         private readonly INavigationService _navigationService;
-
+        private readonly IUserService _userService;
+        private readonly LogoutViewModel _viewModel;
         public Dashboard()
         {
             this.InitializeComponent();
@@ -39,8 +46,9 @@ namespace TutorApp.Views.HomePage
             {
                 Debug.WriteLine($"Navigation failed: {ex.Message}");
             }
+            _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _viewModel = new LogoutViewModel(_userService);
         }
-
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             try
@@ -102,5 +110,43 @@ namespace TutorApp.Views.HomePage
             var selectedCategory = (CategoryFilter.SelectedItem as ComboBoxItem)?.Content?.ToString();
         }
 
+        private async void DropdownOptionLogOut_Select(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var localSettings = ApplicationData.Current.LocalSettings;
+                var accessToken = localSettings.Values["accessToken"] as string;
+                var response = await _viewModel.LogoutAsync(accessToken);
+                if (response.Success)
+                {
+                    localSettings.DeleteContainer("accessToken");
+                    localSettings.DeleteContainer("refreshToken");
+
+                    // Điều hướng đến Dashboard
+                    _navigationService.NavigateTo("Login");
+                }
+                else
+                {
+                    await ShowErrorDialogAsync("Đăng xuất không thành công. Vui lòng thử lại.");
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
+            }
+        }
+
+        private async Task ShowErrorDialogAsync(string message)
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Lỗi",
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot
+            };
+
+            await dialog.ShowAsync();
+        }
     }
 }

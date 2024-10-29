@@ -42,7 +42,7 @@ namespace TutorApp.Services
                     return new LoginResponse
                     {
                         Success = true,
-                        Message = "Đăng ký thành công!",
+                        Message = "Đăng nhập thành công!",
                         Tokens = new JwtToken
                         {
                             accessToken = responseData.data.accessToken,
@@ -55,7 +55,7 @@ namespace TutorApp.Services
                     return new LoginResponse
                     {
                         Success = false,
-                        Message = $"Đăng ký thất bại: {responseContent}"
+                        Message = $"Đăng nhập thất bại: {responseContent}"
                     };
                 }
 
@@ -106,6 +106,48 @@ namespace TutorApp.Services
             catch (Exception ex)
             {
                 return new RegisterResponse
+                {
+                    Success = false,
+                    Message = $"Lỗi kết nối: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<LogoutResponse> LogoutAccount(LogoutRequest request)
+        {
+            try
+            {
+
+                // JsonSerializer.Serialize chuyển về dạng json 
+                var json = JsonSerializer.Serialize(request);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/auth/logout", content);
+
+                //đọc kết quả trả về như là string
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new LogoutResponse
+                    {
+                        Success = true,
+                        Message = "Đăng xuất thành công!"
+                    };
+                }
+                else
+                {
+
+                    return new LogoutResponse
+                    {
+                        Success = false,
+                        Message = $"Đăng xuất thất bại: {responseContent}"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new LogoutResponse
                 {
                     Success = false,
                     Message = $"Lỗi kết nối: {ex.Message}"
