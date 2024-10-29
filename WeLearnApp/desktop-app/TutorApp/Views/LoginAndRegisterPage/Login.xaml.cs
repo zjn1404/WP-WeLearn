@@ -48,11 +48,8 @@ namespace TutorApp.Views
                     localSettings.Values["accessToken"] = response.Tokens.accessToken;
                     localSettings.Values["refreshToken"] = response.Tokens.refreshToken;
 
-          
-
-
                     // Điều hướng đến Dashboard
-                    _navigationService.NavigateTo("Home");
+                    _navigationService.NavigateTo("Dashboard");
                 }
                 else
                 {

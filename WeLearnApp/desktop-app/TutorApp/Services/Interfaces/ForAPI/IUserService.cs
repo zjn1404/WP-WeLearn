@@ -12,5 +12,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
     {
         Task<RegisterResponse> RegisterAccount(RegisterRequest request);
         Task<LoginResponse> LoginAccount(LoginRequest login);
+        Task<LogoutResponse> LogoutAccount(LogoutRequest logout);
+
     }
 }
