@@ -1,16 +1,16 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT}
   servlet:
-    context-path: /api
+    context-path: ${CONTEXT_PATH}
 
 spring:
   application:
     name: WeLearnApp
   datasource:
-    url: jdbc:mysql://localhost:3306/welearn_db
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: ${DB_DRIVER_CLASSNAME}
   jpa:
     hibernate:
       ddl-auto: none
@@ -18,18 +18,17 @@ spring:
 
 application-init:
   admin:
-    username: admin
-    password: Admin123
-    email: admin@gmail.com
-    role: ADMIN
+    username: ${ADMIN_USERNAME}
+    password: ${ADMIN_PASSWORD}
+    email: ${ADMIN_EMAIL}
 
 jwt:
   signer-key:
-    access: koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU
-    refresh: muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
   duration:
-    access: 3600000
-    refresh: 86400000
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
 
 message:
   controller:
@@ -37,3 +36,12 @@ message:
       logout-success: "Logout successfully"
     role:
       delete-success: "Role deleted successfully"
+
+verification-code:
+  duration: ${VC_DURATION} # in minutes
+
+mail:
+  api-key: ${MAIL_API_KEY}
+  sender:
+    email: ${MAIL_SENDER_EMAIL}
+    name: "${MAIL_SENDER_NAME}"

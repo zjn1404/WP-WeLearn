@@ -14,8 +14,10 @@ import com.welearn.WeLearnApp.entity.InvalidatedToken;
 import com.welearn.WeLearnApp.entity.User;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
+import com.welearn.WeLearnApp.exception.NotVerifiedException;
 import com.welearn.WeLearnApp.repository.InvalidatedTokenRepository;
 import com.welearn.WeLearnApp.repository.UserRepository;
+import com.welearn.WeLearnApp.service.verificationcode.VerificationCodeService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -58,6 +60,8 @@ public class AuthenticationServiceImp implements AuthenticationService{
     UserRepository userRepository;
     InvalidatedTokenRepository invalidatedTokenRepository;
 
+    VerificationCodeService verificationCodeService;
+
     PasswordEncoder passwordEncoder;
 
     @Override
@@ -67,6 +71,10 @@ public class AuthenticationServiceImp implements AuthenticationService{
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new AppException(ErrorCode.AUTHENTICATION_FAIL);
+        }
+
+        if (!verificationCodeService.isVerified(user.getId())) {
+            throw new NotVerifiedException(user.getId());
         }
 
         return buildAuthenticationResponse(user);

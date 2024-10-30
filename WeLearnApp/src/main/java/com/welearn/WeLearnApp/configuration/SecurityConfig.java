@@ -25,6 +25,7 @@ public class SecurityConfig {
             "/user",
             "/auth/authenticate",
             "/auth/logout",
+            "/verification-code/**",
     };
 
     @Bean

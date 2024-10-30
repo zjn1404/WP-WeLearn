@@ -68,8 +68,16 @@ CHECK (star BETWEEN 1 AND 5);
 create table verification_code (
 	`code` varchar(50) primary key,
     user_id varchar(50),
+    expiration_time datetime,
     constraint fk_verification_code_user foreign key(user_id) references `user`(id)
 );
+
+CREATE TABLE `invalidated_token` (
+                                     `ac_id` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+                                     `rf_id` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+                                     `expiration_time` datetime DEFAULT NULL,
+                                     PRIMARY KEY (`ac_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 create table `order` (
 	id varchar(50) primary key,
