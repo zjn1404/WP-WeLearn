@@ -2,6 +2,7 @@ package com.welearn.WeLearnApp.repository;
 
 import com.welearn.WeLearnApp.entity.VerificationCode;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,7 @@ public interface VerificationCodeRepository extends JpaRepository<VerificationCo
     @Query("SELECT CASE WHEN COUNT(v) > 0 THEN TRUE ELSE FALSE END FROM VerificationCode v WHERE v.user.id = :userId")
     boolean existsByUserId(String userId);
 
+    @Modifying
     @Query("DELETE FROM VerificationCode v WHERE v.user.id = :userId")
     void deleteByUserId(String userId);
 }

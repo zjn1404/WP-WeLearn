@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public ApiResponse<UserResponse> updateUser(@PathVariable String id, UserUpdateRequest request) {
+    public ApiResponse<UserResponse> updateUser(@PathVariable String id, @RequestBody UserUpdateRequest request) {
         return ApiResponse.<UserResponse>builder()
                 .data(userService.updateUser(id, request))
                 .build();

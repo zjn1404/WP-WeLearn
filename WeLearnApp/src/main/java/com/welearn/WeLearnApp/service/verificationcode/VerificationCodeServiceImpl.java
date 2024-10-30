@@ -14,6 +14,7 @@ import com.welearn.WeLearnApp.repository.UserRepository;
 import com.welearn.WeLearnApp.repository.VerificationCodeRepository;
 import com.welearn.WeLearnApp.repository.httpclient.MailClient;
 import com.welearn.WeLearnApp.utils.EmailBuilder;
+import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -48,6 +49,7 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
     VerificationCodeRepository verificationCodeRepository;
     UserRepository userRepository;
 
+    @Transactional
     @Override
     public MailResponse sendVerificationCode(String userId) {
         verificationCodeRepository.deleteByUserId(userId);
