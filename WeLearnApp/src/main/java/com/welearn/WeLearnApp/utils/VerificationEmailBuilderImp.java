@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.UUID;
 
 @Component
@@ -21,6 +22,16 @@ public class VerificationEmailBuilderImp implements EmailBuilder{
     @NonFinal
     @Value("${verification-code.duration}")
     long VERIFICATION_CODE_DURATION;
+
+    @NonFinal
+    @Value("${verification-code.length}")
+    int VERIFICATION_CODE_LENGTH;
+
+    @NonFinal
+    static String CHARACTERS = "qwe12rTYuiop3456asDf8ghjkl90zxcvtydbnmQWERUIOPASFGHJKLZXCVBNM";
+
+    @NonFinal
+    static Random RAND = new Random();
 
     VerificationCodeRepository verificationCodeRepository;
 
@@ -37,8 +48,8 @@ public class VerificationEmailBuilderImp implements EmailBuilder{
         return mailContent;
     }
 
-    VerificationCode generateVerificationCode(User user) {
-        String code = UUID.randomUUID().toString();
+    private VerificationCode generateVerificationCode(User user) {
+        String code = generateOTP();
         VerificationCode verificationCode = VerificationCode.builder()
                 .code(code)
                 .user(user)
@@ -46,5 +57,15 @@ public class VerificationEmailBuilderImp implements EmailBuilder{
                 .build();
 
         return verificationCodeRepository.save(verificationCode);
+    }
+
+    private String generateOTP() {
+        StringBuilder otpBuilder = new StringBuilder();
+        for (int i = 0; i < VERIFICATION_CODE_LENGTH; i++) {
+            int index = RAND.nextInt(CHARACTERS.length());
+            otpBuilder.append(CHARACTERS.charAt(index));
+        }
+
+        return otpBuilder.toString();
     }
 }
