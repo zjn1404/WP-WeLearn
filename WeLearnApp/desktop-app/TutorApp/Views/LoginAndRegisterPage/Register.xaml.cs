@@ -3,10 +3,12 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using TutorApp.Services.Interfaces;
 using TutorApp.ViewModels;
-using TutorApp.Models.ForAPI;
+using TutorApp.Models.ForAPI.Request;
 using System.Threading.Tasks;
 using System;
 using TutorApp.Services.Interfaces.ForAPI;
+using System.Text.Json;
+using TutorApp.Models.ForAPI.JsonResponse;
 
 
 namespace TutorApp.Views
@@ -61,9 +63,12 @@ namespace TutorApp.Views
             try
             {
                 var response = await viewModel.RegisterUser(registerRequest);
+
                 if (response.Success)
                 {
-                    await ShowDialogAsync("Registered Successfully", true);
+                    await ShowDialogAsync("Registered Successfully");
+                    await ShowDialogAsync("Please check mail to take OTP");
+                    _navigationService.NavigateTo("PageLoginTokenRequire", response.Data.id);
                 }
                 else
                 {

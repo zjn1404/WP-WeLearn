@@ -24,7 +24,7 @@ namespace TutorApp.Helpers
             navigationService.RegisterPage("RegisterForTutor", typeof(RegisterForTutor));
             navigationService.RegisterPage("LoginForTutor", typeof(LoginForTutor));
             navigationService.RegisterPage("LoginForStudent",typeof(Login));
-
+            navigationService.RegisterPage("PageLoginTokenRequire", typeof(PageLoginTokenRequire));
 
 
 

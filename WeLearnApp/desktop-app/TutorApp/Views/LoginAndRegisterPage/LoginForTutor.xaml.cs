@@ -18,6 +18,9 @@ using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.ViewModels;
 using System.Threading.Tasks;
 using Windows.Storage;
+using TutorApp.Helpers;
+using TutorApp.Models.ForAPI;
+using System.Text.Json;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -59,7 +62,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
             // Kiểm tra đầu vào
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                await ShowErrorDialogAsync("Vui lòng nhập tên người dùng và mật khẩu.");
+                await ShowErrorDialogAsync("Please type user and password.");
                 return;
             }
 
@@ -70,22 +73,40 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
-                    var localSettings = ApplicationData.Current.LocalSettings;
-                    localSettings.Values["accessToken"] = response.Tokens.accessToken;
-                    localSettings.Values["refreshToken"] = response.Tokens.refreshToken;
+                    var jwtTokens = JsonSerializer.Deserialize<JwtToken>(response.Data.ToString());
+                    var role = JwtParser.GetRole(jwtTokens.accessToken);
+                    if (role != "USER")
+                    {
+                        await ShowErrorDialogAsync("Please login user-account");
+                        return;
+                    }
 
+
+                    var localSettings = ApplicationData.Current.LocalSettings;
+                    localSettings.Values["accessToken"] = jwtTokens.accessToken;
+                    localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
 
                     // Điều hướng đến Dashboard
-                    _navigationService.NavigateTo("Home");
+                    _navigationService.NavigateTo("Dashboard");
                 }
                 else
                 {
-                    await ShowErrorDialogAsync("Đăng nhập không thành công. Vui lòng thử lại.");
+                    if (response.Code == 5004)
+                    {
+                        await ShowErrorDialogAsync("This account not verified");
+                        _navigationService.NavigateTo("PageLoginTokenRequire", response.Data.ToString());
+
+                    }
+                    else
+                    {
+                        await ShowErrorDialogAsync("Login Failed. Please try again.");
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                await ShowErrorDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
+                await ShowErrorDialogAsync($"Error: {ex.Message}");
             }
         }
 
@@ -94,7 +115,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Lỗi",
+                Title = "Announcement",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot
