@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="TutorApp.Views.LoginAndRegisterPage.PageLoginTokenRequire"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TutorApp.Views.LoginAndRegisterPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel Orientation="Vertical"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="10"
+                Padding="50,25"
+                CornerRadius="20"
+                BorderThickness="1"
+                BorderBrush="Black"
+                Background="#FFFFFFFF" >
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+            <HyperlinkButton Name="GoBack" Click="GoBack_Click">Go Back</HyperlinkButton>
+        </StackPanel>
+        <StackPanel Margin="0,0,0,30" Spacing="10">
+            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" >EMAIL VERIFICATION</TextBlock>
+            <FontIcon FontSize="80" Glyph="&#xF32A;" HorizontalAlignment="Center" />
+        </StackPanel>
+        <StackPanel>
+            <TextBox Name="yourTokenBox" Header="Your Code:" PlaceholderText="Enter your token"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Resend" Click="Resend_Click" HorizontalAlignment="Left" Width="100"/>
+            <Button Content="Next" Click="Verify_Click" HorizontalAlignment="Right" Margin="140,0,0,0" Width="100"/>
+        </StackPanel>
+    </StackPanel>
+</Page>
