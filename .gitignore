@@ -66,7 +66,12 @@ WeLearnApp/*.env
 !.gitignore
 !README.md
 
-.env.dev
+*.env*
 
 # Keep empty directories
 !/**/.gitkeep
+
+# node_modules
+node_modules/
+
+package-lock.json
