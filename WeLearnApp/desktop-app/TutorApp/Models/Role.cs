@@ -10,7 +10,7 @@ namespace TutorApp.Models
     public class Role:INotifyPropertyChanged
     {
             
-        public string RoleName { get; set; }
+        public string name { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }

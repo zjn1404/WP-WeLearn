@@ -20,7 +20,8 @@ namespace TutorApp.Services.Interfaces
         Frame GetCurrentFrame();
         void CloseAllWindows(string exceptWindowKey = null);
         MainWindow CreateNewWindow(string windowKey);
-       
+
+        public void GoBack();
 
 
 

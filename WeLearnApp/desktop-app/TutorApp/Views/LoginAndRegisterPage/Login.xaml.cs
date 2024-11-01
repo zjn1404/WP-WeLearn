@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.ViewModels;
+using TutorApp.Helpers;
+using System.Text.Json;
+using TutorApp.Models.ForAPI;
 
 namespace TutorApp.Views
 {
@@ -33,7 +36,7 @@ namespace TutorApp.Views
             // Kiểm tra đầu vào
             if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                await ShowErrorDialogAsync("Vui lòng nhập tên người dùng và mật khẩu.");
+                await ShowErrorDialogAsync("Please type user and password.");
                 return;
             }
 
@@ -44,21 +47,40 @@ namespace TutorApp.Views
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
+                    var jwtTokens = JsonSerializer.Deserialize<JwtToken>(response.Data.ToString());
+                    var role = JwtParser.GetRole(jwtTokens.accessToken);
+                    if(role != "USER")
+                    {
+                        await ShowErrorDialogAsync("Please login user-account");
+                        return;
+                    }
+
+
                     var localSettings = ApplicationData.Current.LocalSettings;
-                    localSettings.Values["accessToken"] = response.Tokens.accessToken;
-                    localSettings.Values["refreshToken"] = response.Tokens.refreshToken;
+                    localSettings.Values["accessToken"] = jwtTokens.accessToken;
+                    localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
 
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Dashboard");
                 }
                 else
                 {
-                    await ShowErrorDialogAsync("Đăng nhập không thành công. Vui lòng thử lại.");
+                    if(response.Code == 5004)
+                    {
+                        await ShowErrorDialogAsync("This account not verified");
+                        _navigationService.NavigateTo("PageLoginTokenRequire",response.Data.ToString());
+
+                    }
+                    else
+                    {
+                    await ShowErrorDialogAsync("Login Failed. Please try again.");
+
+                    }
                 }
             }
             catch (Exception ex)
             {
-                await ShowErrorDialogAsync($"Đã xảy ra lỗi: {ex.Message}");
+                await ShowErrorDialogAsync($"Error: {ex.Message}");
             }
         }
 
@@ -66,7 +88,7 @@ namespace TutorApp.Views
         {
             ContentDialog dialog = new ContentDialog()
             {
-                Title = "Lỗi",
+                Title = "Announcement",
                 Content = message,
                 CloseButtonText = "OK",
                 XamlRoot = this.XamlRoot
@@ -89,7 +111,7 @@ namespace TutorApp.Views
             );
 
             // Tùy chọn: Thiết lập thuộc tính cửa sổ
-            window.Title = "Đăng nhập cho Gia sư";
+            window.Title = "login For Tutor";
         }
     }
 }

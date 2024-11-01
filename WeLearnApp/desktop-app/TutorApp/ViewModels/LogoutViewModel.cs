@@ -4,7 +4,8 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TutorApp.Models.ForAPI;
+using TutorApp.Models.ForAPI.Response;
+using TutorApp.Models.ForAPI.Request;
 using TutorApp.Services.Interfaces.ForAPI;
 namespace TutorApp.ViewModels
 {

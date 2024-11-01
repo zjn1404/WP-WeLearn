@@ -34,7 +34,7 @@ namespace TutorApp
             services.AddSingleton<IUserService>(new UserService(baseUrl));
 
             // Application services
-            services.AddTransient<IAuthenticationService, AuthenticationService>();
+           
            
 
             // Register ViewModels if needed

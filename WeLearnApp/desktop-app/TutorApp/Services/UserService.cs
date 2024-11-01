@@ -7,7 +7,9 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using TutorApp.Models;
-using TutorApp.Models.ForAPI;
+using TutorApp.Models.ForAPI.Request;
+using TutorApp.Models.ForAPI.Response;
+using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Services.Interfaces.ForAPI;
 
 namespace TutorApp.Services
@@ -33,29 +35,28 @@ namespace TutorApp.Services
 
                 var response = await _httpClient.PostAsync("/api/auth/authenticate", content);
                 var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<JsonResponseLogin>(responseContent);
 
                 if (response.IsSuccessStatusCode)
                 {
 
                     // chuyển từ dạng json thành đối tượng
-                    var responseData = JsonSerializer.Deserialize<JsonResponseLogin>(responseContent);
                     return new LoginResponse
                     {
                         Success = true,
-                        Message = "Đăng nhập thành công!",
-                        Tokens = new JwtToken
-                        {
-                            accessToken = responseData.data.accessToken,
-                            refreshToken = responseData.data.refreshToken
-                        }
+                        Code = responseData.code,
+                        Message = "Login successfully",
+                        Data = responseData.data
                     };
-                }
+                } 
                 else
                 {
                     return new LoginResponse
                     {
                         Success = false,
-                        Message = $"Đăng nhập thất bại: {responseContent}"
+                        Code = responseData.code,
+                        Message = $"Login Failed: {responseData.message}",
+                        Data = responseData.data
                     };
                 }
 
@@ -64,7 +65,7 @@ namespace TutorApp.Services
             catch (Exception ex) {
                 return new LoginResponse
                 {
-                    Message = $"Lỗi : {ex.Message}",
+                    Message = $"Error : {ex.Message}",
                     Success = false,
                 };
             
@@ -84,13 +85,22 @@ namespace TutorApp.Services
 
                 //đọc kết quả trả về như là string
                 var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<JsonResponseRegister>(responseContent);
 
                 if (response.IsSuccessStatusCode)
                 {
                     return new RegisterResponse
                     {
                         Success = true,
-                        Message = "Đăng ký thành công!"
+                        Message = "Register successfully",
+                        Code = responseData.code,
+                        Data = new JsonResponseForDataRegister
+                        {
+                            id = responseData.data.id,
+                            email = responseData.data.email,
+                            role = responseData.data.role,
+                            username = responseData.data.username
+                        }
                     };
                 }
                 else
@@ -99,7 +109,8 @@ namespace TutorApp.Services
                     return new RegisterResponse
                     {
                         Success = false,
-                        Message = $"Đăng ký thất bại: {responseContent}"
+                        Message = $"Register Failed: {responseContent}",
+                        Code = responseData.code,
                     };
                 }
             }
@@ -108,7 +119,7 @@ namespace TutorApp.Services
                 return new RegisterResponse
                 {
                     Success = false,
-                    Message = $"Lỗi kết nối: {ex.Message}"
+                    Message = $"Error: {ex.Message}"
                 };
             }
         }
@@ -132,7 +143,7 @@ namespace TutorApp.Services
                     return new LogoutResponse
                     {
                         Success = true,
-                        Message = "Đăng xuất thành công!"
+                        Message = "Logout successfully!"
                     };
                 }
                 else
@@ -141,7 +152,7 @@ namespace TutorApp.Services
                     return new LogoutResponse
                     {
                         Success = false,
-                        Message = $"Đăng xuất thất bại: {responseContent}"
+                        Message = $"Logout failed: {responseContent}"
                     };
                 }
             }
@@ -150,8 +161,83 @@ namespace TutorApp.Services
                 return new LogoutResponse
                 {
                     Success = false,
-                    Message = $"Lỗi kết nối: {ex.Message}"
+                    Message = $"Error: {ex.Message}"
                 };
+            }
+        }
+
+        public async Task<VerifyResponse> VerifyAccount(VerifyRequest request)
+        {
+            try
+            {
+                // JsonSerializer.Serialize chuyển về dạng json 
+                var json = JsonSerializer.Serialize(request);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PostAsync("/api/verification-code/verify", content);
+
+                //đọc kết quả trả về như là string
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new VerifyResponse
+                    {
+                        Success = true,
+                        Code = responseData.code
+                    };
+                }
+                else
+                {
+
+                    return new VerifyResponse
+                    {
+                        Success = false,
+                        Code = responseData.code
+                    };
+                }
+            }
+            catch (Exception ex) {
+                throw new Exception("Error" + ex.Message);
+            }
+        }
+
+        public async Task<ResendTokenResponse> ResendVerifyToken(string _id)
+        {
+            try
+            {
+              
+                var content = new StringContent("application/json");
+                string url = "/api/verification-code/" + _id;
+
+                var response = await _httpClient.PostAsync(url, content);
+
+                //đọc kết quả trả về như là string
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<JsonResponseResendToken>(responseContent);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return new ResendTokenResponse
+                    {
+                        IsSuccess = true,
+                        Code = responseData.code
+                    };
+                }
+                else
+                {
+
+                    return new ResendTokenResponse
+                    {
+                        IsSuccess = false,
+                        Code = responseData.code
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
             }
         }
     }

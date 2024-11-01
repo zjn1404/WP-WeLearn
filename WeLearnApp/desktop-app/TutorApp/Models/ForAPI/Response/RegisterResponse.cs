@@ -14,6 +14,6 @@ namespace TutorApp.Models.ForAPI.Response
         public string Message { get; set; }
         public int Code { get; set; }
 
-        public JsonResponseRegister Data { get; set; }
+        public JsonResponseForDataRegister Data { get; set; }
     }
 }

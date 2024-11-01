@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using TutorApp.Models.ForAPI;
+using TutorApp.Models.ForAPI.Request;
+using TutorApp.Models.ForAPI.Response;
 using TutorApp.Services.Interfaces.ForAPI;
 
 namespace TutorApp.ViewModels
