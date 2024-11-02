@@ -4,6 +4,7 @@ import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.ApiResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.service.userprofile.UserProfileService;
+import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -32,14 +33,14 @@ public class UserProfileController {
 
     @PatchMapping("/{userId}")
     public ApiResponse<UserProfileResponse> updateProfile(@PathVariable("userId") String userId,
-                                                          @RequestBody UserProfileUpdateRequest request) {
+                                                          @RequestBody @Valid UserProfileUpdateRequest request) {
         return ApiResponse.<UserProfileResponse>builder()
                 .data(userProfileService.updateProfile(userId, request))
                 .build();
     }
 
     @PatchMapping("/me")
-    public ApiResponse<UserProfileResponse> updateMyProfile(@RequestBody UserProfileUpdateRequest request) {
+    public ApiResponse<UserProfileResponse> updateMyProfile(@RequestBody @Valid UserProfileUpdateRequest request) {
         return ApiResponse.<UserProfileResponse>builder()
                 .data(userProfileService.updateMyProfile(request))
                 .build();

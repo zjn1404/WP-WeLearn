@@ -25,8 +25,14 @@ public class UserProfile {
     @Column(name = "last_name")
     String lastName;
 
+    @Column(name = "phone_number")
+    String phoneNumber;
+
     @Column(name = "dob")
     LocalDate dob;
+
+    @Column(name = "avatar_url")
+    String avatarUrl;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,

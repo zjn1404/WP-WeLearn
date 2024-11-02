@@ -17,6 +17,7 @@ public enum ErrorCode {
     INVALID_PASSWORD(2002, HttpStatus.BAD_REQUEST, "Invalid password"),
     REQUIRED_EMAIL(2003, HttpStatus.BAD_REQUEST, "Email is required"),
     INVALID_VERIFICATION_CODE(2004, HttpStatus.BAD_REQUEST, "Invalid verification code"),
+    INVALID_PHONE_NUMBER(2005, HttpStatus.BAD_REQUEST, "Phone number should have 10 digits"),
     //    Existed Error 3xxx
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),

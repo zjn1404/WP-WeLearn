@@ -15,5 +15,7 @@ public class UserProfileResponse {
     String firstName;
     String lastName;
     LocalDate dob;
+    String phoneNumber;
     LocationResponse location;
+    String avatarUrl;
 }
