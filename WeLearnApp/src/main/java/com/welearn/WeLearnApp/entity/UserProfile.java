@@ -34,10 +34,9 @@ public class UserProfile {
     @Column(name = "avatar_url")
     String avatarUrl;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
-            CascadeType.REMOVE
     })
     @JoinColumn(name = "location_id")
     Location location;
