@@ -32,10 +32,11 @@ namespace TutorApp
             services.AddHttpClient();
             services.AddSingleton<INavigationService>(sp => new NavigationService(rootFrame));
             services.AddSingleton<IUserService>(new UserService(baseUrl));
+            services.AddSingleton<IThirdPartyService, ThirdPartyService>();
 
             // Application services
-           
-           
+
+
 
             // Register ViewModels if needed
             // services.AddTransient<HomeViewModel>();

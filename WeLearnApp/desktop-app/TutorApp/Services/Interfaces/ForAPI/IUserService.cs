@@ -14,10 +14,9 @@ namespace TutorApp.Services.Interfaces.ForAPI
         Task<RegisterResponse> RegisterAccount(RegisterRequest request);
         Task<LoginResponse> LoginAccount(LoginRequest login);
         Task<LogoutResponse> LogoutAccount(LogoutRequest logout);
-
         Task<VerifyResponse> VerifyAccount(VerifyRequest request);
-
         Task<ResendTokenResponse> ResendVerifyToken(string _id);
-
+        Task<UserProfileResponse> GetMyProfile(string token);
+        Task<UpdateProfileResponse> UpdateMyProfile(string token, UpdateProfileRequest request);
     }
 }

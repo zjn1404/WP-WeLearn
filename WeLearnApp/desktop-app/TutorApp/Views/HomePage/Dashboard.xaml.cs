@@ -13,6 +13,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using TutorApp.Models;
+using TutorApp.Models.ForAPI;
 using TutorApp.Services.Interfaces;
 using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.ViewModels;
@@ -34,6 +36,7 @@ namespace TutorApp.Views.HomePage
         private readonly INavigationService _navigationService;
         private readonly IUserService _userService;
         private readonly LogoutViewModel _viewModel;
+
         public Dashboard()
         {
             this.InitializeComponent();
@@ -46,6 +49,7 @@ namespace TutorApp.Views.HomePage
             {
                 Debug.WriteLine($"Navigation failed: {ex.Message}");
             }
+
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
             _viewModel = new LogoutViewModel(_userService);
         }
@@ -136,6 +140,11 @@ namespace TutorApp.Views.HomePage
             }
         }
 
+        private void DropdownOptionProfile_Select(object sender, RoutedEventArgs e)
+        {
+            contentFrame.Navigate(typeof(AccountPage));
+
+        }
         private async Task ShowErrorDialogAsync(string message)
         {
             ContentDialog dialog = new ContentDialog()
@@ -148,5 +157,7 @@ namespace TutorApp.Views.HomePage
 
             await dialog.ShowAsync();
         }
+
+
     }
 }

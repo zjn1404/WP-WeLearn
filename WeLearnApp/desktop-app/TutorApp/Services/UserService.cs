@@ -11,6 +11,7 @@ using TutorApp.Models.ForAPI.Request;
 using TutorApp.Models.ForAPI.Response;
 using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Services.Interfaces.ForAPI;
+using System.Diagnostics;
 
 namespace TutorApp.Services
 {
@@ -20,7 +21,8 @@ namespace TutorApp.Services
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl;
 
-        public UserService(string baseUrl) {
+        public UserService(string baseUrl)
+        {
             _baseUrl = baseUrl;
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
@@ -31,7 +33,7 @@ namespace TutorApp.Services
             try
             {
                 var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json,Encoding.UTF8, "application/json");
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync("/api/auth/authenticate", content);
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -48,7 +50,7 @@ namespace TutorApp.Services
                         Message = "Login successfully",
                         Data = responseData.data
                     };
-                } 
+                }
                 else
                 {
                     return new LoginResponse
@@ -62,13 +64,14 @@ namespace TutorApp.Services
 
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 return new LoginResponse
                 {
                     Message = $"Error : {ex.Message}",
                     Success = false,
                 };
-            
+
             }
         }
 
@@ -105,7 +108,7 @@ namespace TutorApp.Services
                 }
                 else
                 {
-                  
+
                     return new RegisterResponse
                     {
                         Success = false,
@@ -198,7 +201,8 @@ namespace TutorApp.Services
                     };
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw new Exception("Error" + ex.Message);
             }
         }
@@ -207,7 +211,7 @@ namespace TutorApp.Services
         {
             try
             {
-              
+
                 var content = new StringContent("application/json");
                 string url = "/api/verification-code/" + _id;
 
@@ -240,5 +244,81 @@ namespace TutorApp.Services
                 throw new Exception("Error" + ex.Message);
             }
         }
+
+        public async Task<UserProfileResponse> GetMyProfile(string token)
+        {
+            try
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var response = await _httpClient.GetAsync("/api/user-profile/me");
+
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                Debug.WriteLine("responseContent", responseContent.ToString());    
+                if (response.IsSuccessStatusCode)
+                {
+                    var userProfile = JsonSerializer.Deserialize<JsonResponseUserProfile>(responseContent);
+                    Debug.WriteLine("fistName", userProfile.data.firstName);
+                    Debug.WriteLine("lastName", userProfile.data.lastName);
+
+                    return new UserProfileResponse
+                    {
+                        firstName = userProfile.data.firstName,
+                        lastName = userProfile.data.lastName,
+                        phoneNumber = userProfile.data.phoneNumber,
+                        dob = userProfile.data.dob,
+                        location = userProfile.data.location
+                    };
+                }
+                else
+                {
+                    throw new Exception($"Failed to retrieve profile: {responseContent}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+        public async Task<UpdateProfileResponse> UpdateMyProfile(string token, UpdateProfileRequest request)
+        {
+            try
+            {
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var json = JsonSerializer.Serialize(request);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                var response = await _httpClient.PatchAsync("/api/user-profile/me", content);
+
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
+
+                Debug.WriteLine("UpdateMyProfile", responseContent.ToString());
+                if (response.IsSuccessStatusCode)
+                {
+                    return new UpdateProfileResponse
+                    {
+                        Success = true,
+                        Message = "Update successfully!"
+                    };
+                }
+                else
+                {
+
+                    return new UpdateProfileResponse
+                    {
+                        Success = false,
+                        Message = $"Update failed: {responseContent}"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+        }
+
     }
 }
