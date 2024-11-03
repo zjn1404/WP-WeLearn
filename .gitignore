@@ -60,6 +60,7 @@ Thumbs.db
 WeLearnApp/env.dev
 WeLearnApp/.env.dev
 WeLearnApp/*.env
+WeLearnApp/desktop-app/TutorApp/.env
 
 # Exclude specific files that should be version controlled
 !pom.xml

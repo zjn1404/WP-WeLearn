@@ -11,6 +11,7 @@ using TutorApp.ViewModels;
 using TutorApp.Helpers;
 using System.Text.Json;
 using TutorApp.Models.ForAPI;
+using TutorApp.Models;  
 
 namespace TutorApp.Views
 {
@@ -19,7 +20,6 @@ namespace TutorApp.Views
         private readonly INavigationService _navigationService;
         private readonly IUserService _userService;
         private readonly LoginViewModel _viewModel;
-
         public Login()
         {
             this.InitializeComponent();
@@ -59,7 +59,7 @@ namespace TutorApp.Views
                     var localSettings = ApplicationData.Current.LocalSettings;
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
-
+                    
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Dashboard");
                 }

@@ -5,6 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using TutorApp.Common;
+using TutorApp.MockData.Tutors;
+using TutorApp.Models;
 using TutorApp.Models.ForAPI.Request;
 using TutorApp.Models.ForAPI.Response;
 using TutorApp.Services.Interfaces.ForAPI;
@@ -14,6 +17,7 @@ namespace TutorApp.ViewModels
     public class UserViewModel : INotifyPropertyChanged
     {
 
+        public FullObservableCollection<User> user { get; set; }
 
         private readonly IUserService _userService;
 
@@ -124,10 +128,6 @@ namespace TutorApp.ViewModels
                    hasSpecialChar.IsMatch(password);
         }
 
-
-
-
-
         public async Task<VerifyResponse> Verify(VerifyRequest request)
         {
             try
@@ -153,7 +153,6 @@ namespace TutorApp.ViewModels
                 throw new Exception("Resend Error: " + ex.Message);
             }
         }
-
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

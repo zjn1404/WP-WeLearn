@@ -13,8 +13,10 @@ namespace TutorApp.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime Dob { get; set; }
+        public string PhoneNumber { get; set; }
         public string LocationId { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
+
