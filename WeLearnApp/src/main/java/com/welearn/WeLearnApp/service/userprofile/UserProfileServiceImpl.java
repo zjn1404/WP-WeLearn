@@ -41,6 +41,8 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         userProfile.setLocation(locationService.internalUpdateLocation(request));
 
+        userProfileRepository.save(userProfile);
+
         return buildUserProfileResponse(userProfile);
     }
 
@@ -54,6 +56,8 @@ public class UserProfileServiceImpl implements UserProfileService {
         userProfileMapper.updateUserProfile(userProfile, request);
 
         userProfile.setLocation(locationService.internalUpdateLocation(request));
+
+        userProfileRepository.save(userProfile);
 
         return buildUserProfileResponse(userProfile);
     }

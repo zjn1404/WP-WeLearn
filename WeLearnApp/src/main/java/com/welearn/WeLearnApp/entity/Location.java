@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Location {
     @Id

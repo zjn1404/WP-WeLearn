@@ -25,13 +25,18 @@ public class UserProfile {
     @Column(name = "last_name")
     String lastName;
 
+    @Column(name = "phone_number")
+    String phoneNumber;
+
     @Column(name = "dob")
     LocalDate dob;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {
+    @Column(name = "avatar_url")
+    String avatarUrl;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE,
-            CascadeType.REMOVE
     })
     @JoinColumn(name = "location_id")
     Location location;

@@ -20,7 +20,9 @@ public class UserProfileMapperImp implements UserProfileMapper {
         return UserProfile.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
+                .phoneNumber(request.getPhoneNumber())
                 .dob(request.getDob())
+                .avatarUrl(request.getAvatarUrl())
                 .build();
     }
 
@@ -44,6 +46,12 @@ public class UserProfileMapperImp implements UserProfileMapper {
         if (request.getDob() != null) {
             userProfile.setDob(request.getDob());
         }
+        if (request.getAvatarUrl() != null) {
+            userProfile.setAvatarUrl(request.getAvatarUrl());
+        }
+        if (request.getPhoneNumber() != null) {
+            userProfile.setPhoneNumber(request.getPhoneNumber());
+        }
     }
 
     @Override
@@ -52,6 +60,8 @@ public class UserProfileMapperImp implements UserProfileMapper {
                 .firstName(userProfile.getFirstName())
                 .lastName(userProfile.getLastName())
                 .dob(userProfile.getDob())
+                .phoneNumber(userProfile.getPhoneNumber())
+                .avatarUrl(userProfile.getAvatarUrl())
                 .build();
     }
 }
