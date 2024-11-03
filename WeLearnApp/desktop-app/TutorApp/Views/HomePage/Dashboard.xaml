@@ -81,7 +81,7 @@
                          StrokeThickness="1" 
                          Margin="0,0,20,0">
                         <Ellipse.Fill>
-                            <ImageBrush ImageSource="ms-appx:///Assets/pngtree-man-avatar-image-for-profile-png-image_13001877.png" Stretch="UniformToFill"/>
+                            <ImageBrush x:Name="avatarUrl" ImageSource="{Binding AvatarUrl, FallbackValue='Assets/avatar.png'}" Stretch="UniformToFill"/>
                         </Ellipse.Fill>
                     </Ellipse>
                 </DropDownButton.Content>

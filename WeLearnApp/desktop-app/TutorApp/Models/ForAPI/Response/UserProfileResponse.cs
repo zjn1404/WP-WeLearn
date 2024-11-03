@@ -15,5 +15,6 @@ namespace TutorApp.Models.ForAPI.Response
         public DateTime? dob { get; set; }
         public string? phoneNumber { get; set; }
         public LocationResponse? location { get; set; }
+        public string avatarUrl { get; set; }
     }
 }

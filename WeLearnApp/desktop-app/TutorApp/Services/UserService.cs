@@ -268,7 +268,8 @@ namespace TutorApp.Services
                         lastName = userProfile.data.lastName,
                         phoneNumber = userProfile.data.phoneNumber,
                         dob = userProfile.data.dob,
-                        location = userProfile.data.location
+                        location = userProfile.data.location,
+                        avatarUrl = userProfile.data.avatarUrl
                     };
                 }
                 else

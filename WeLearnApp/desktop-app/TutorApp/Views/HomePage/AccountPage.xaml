@@ -15,22 +15,31 @@
 
         <!-- Avatar Section -->
         <Ellipse Width="100" 
-                 Height="100" 
-                 Stroke="Gray" 
-                 StrokeThickness="1" 
-                 Margin="0,0,0,20">
+             Height="100" 
+             Stroke="Gray" 
+             StrokeThickness="1" 
+             Margin="0,0,0,20">
             <Ellipse.Fill>
-                <ImageBrush ImageSource="Assets/avatar.png" Stretch="UniformToFill"/>
+                <ImageBrush x:Name="avatarUrl" ImageSource="{Binding AvatarUrl, FallbackValue='Assets/avatar.png'}" Stretch="UniformToFill"/>
             </Ellipse.Fill>
         </Ellipse>
 
+        <!-- Change Avatar Button -->
+
+        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+            <Button Content="Change Avatar" 
+                    Width="150"
+                    HorizontalAlignment="Center"
+                    Click="ChangeAvatarButton_Click"/>
+        </StackPanel>
+
         <!-- Display Name -->
         <TextBlock Text="{Binding FirstName}" 
-                   TextAlignment="Center" 
-                   FontSize="30" 
-                   FontWeight="SemiBold"
-                   Margin="0,0,0,30"/>
-
+               TextAlignment="Center" 
+               FontSize="30" 
+               FontWeight="SemiBold"
+               Margin="0,0,0,30"/>
+        
         <Grid Height="Auto" Width="800" HorizontalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -60,19 +69,23 @@
             </StackPanel>
 
             <StackPanel Grid.Column="0" Grid.Row="2" Margin="6,0,10,15">
-                <ComboBox Name="City" Header="City:" Width="380"
-                  DisplayMemberPath="name" 
-                  SelectedValuePath="code" 
-                  SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay}"
-                  SelectionChanged="City_SelectionChanged"/>
-
+                <ComboBox Name="City" 
+                          Header="City:" 
+                          Width="380"
+                          ItemsSource="{Binding Provinces}"
+                          DisplayMemberPath="name"
+                          SelectedValuePath="code"
+                          SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          SelectionChanged="City_SelectionChanged"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="2" Margin="15,0,0,15">
-                <ComboBox Name="District" Header="District:" Width="380"
-                          DisplayMemberPath="name" 
-                          SelectedValuePath="code" 
-                          SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay}"/>
+                <ComboBox Name="District" 
+                          Header="District:" 
+                          Width="380"
+                          DisplayMemberPath="name"
+                          SelectedValuePath="code"
+                          SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="0" Grid.Row="3" Margin="0,0,10,15">

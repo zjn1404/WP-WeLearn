@@ -16,5 +16,6 @@ namespace TutorApp.Models.ForAPI.Request
         public string city { get; set; }
         public string district { get; set; }
         public string street { get; set; }
+        public string avatarUrl { get; set; }
     }
 }

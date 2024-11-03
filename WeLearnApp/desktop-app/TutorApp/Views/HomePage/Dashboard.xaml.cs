@@ -35,23 +35,35 @@ namespace TutorApp.Views.HomePage
     {
         private readonly INavigationService _navigationService;
         private readonly IUserService _userService;
+        private readonly IThirdPartyService _thirdPartyService;
         private readonly LogoutViewModel _viewModel;
+        private readonly UserProfileViewModel _userProfileViewModel;
 
         public Dashboard()
         {
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
+            _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>(); // Make sure this service is registered
+
+            _viewModel = new LogoutViewModel(_userService);
+            _userProfileViewModel = new UserProfileViewModel(_userService, _thirdPartyService); // Pass both services
+            DataContext = _userProfileViewModel;
+
+            InitializeAsync();
+        }
+        private async void InitializeAsync()
+        {
             try
             {
+                await _userProfileViewModel.InitializeAsync();
                 contentFrame.Navigate(typeof(HomePage));
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Navigation failed: {ex.Message}");
+                Debug.WriteLine($"Initialization failed: {ex.Message}");
+                await ShowErrorDialogAsync($"Failed to load profile: {ex.Message}");
             }
-
-            _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
-            _viewModel = new LogoutViewModel(_userService);
         }
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
@@ -68,7 +80,7 @@ namespace TutorApp.Views.HomePage
                             contentFrame.Navigate(typeof(HomePage));
                             break;
                         case "AccountPage":
-                            contentFrame.Navigate(typeof(AccountPage));
+                            contentFrame.Navigate(typeof(AccountPage), _userProfileViewModel);
                             break;
                         case "TutorPage":
                             contentFrame.Navigate(typeof(TutorPage));

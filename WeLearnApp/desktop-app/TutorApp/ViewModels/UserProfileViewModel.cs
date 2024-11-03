@@ -37,7 +37,7 @@ namespace TutorApp.ViewModels
                 OnPropertyChanged(nameof(City));
                 OnPropertyChanged(nameof(District));
                 OnPropertyChanged(nameof(Street));
-
+                OnPropertyChanged(nameof(AvatarUrl));
             }
         }
 
@@ -48,6 +48,7 @@ namespace TutorApp.ViewModels
         public string City => UserProfileResponse?.location?.city;
         public string District => UserProfileResponse?.location?.district;
         public string Street => UserProfileResponse?.location?.street;
+        public string AvatarUrl => UserProfileResponse?.avatarUrl;
 
         private int _selectedProvinceCode;
         private int _selectedDistrictCode;
@@ -59,6 +60,7 @@ namespace TutorApp.ViewModels
             {
                 _selectedProvinceCode = value;
                 OnPropertyChanged(nameof(SelectedProvinceCode));
+                Debug.WriteLine($"SelectedProvinceCode set to: {value}");
             }
         }
         public int SelectedDistrictCode
@@ -68,6 +70,7 @@ namespace TutorApp.ViewModels
             {
                 _selectedDistrictCode = value;
                 OnPropertyChanged(nameof(SelectedDistrictCode));
+                Debug.WriteLine($"SelectedDistrictCode set to: {value}");
             }
         }
 
@@ -75,23 +78,123 @@ namespace TutorApp.ViewModels
         {
             _userService = userService;
             _thirdPartyService = thirdPartyService;
-            LoadProfileAsync();
+        }
+        public async Task InitializeAsync()
+        {
+            await LoadProfileAsync();
+        }
+        private async Task LoadProfileAsync()
+        {
+            try
+            {
+                UserProfileResponse = await GetProfile();
+                if (UserProfileResponse == null)
+                {
+                    Debug.WriteLine("UserProfileResponse is null.");
+                    return;
+                }
+
+                // Load provinces and districts
+                await LoadProvincesAsync();
+                await LoadDistrictsAsync();
+
+                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.ToString());
+                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.city);
+                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.district);
+
+                if (UserProfileResponse.location != null)
+                {
+                    var province = Provinces?.FirstOrDefault(p =>
+                        string.Equals(p.name, UserProfileResponse.location.city, StringComparison.OrdinalIgnoreCase));
+
+                    if (province != null)
+                    {
+                        SelectedProvinceCode = province.code;
+                        Debug.WriteLine($"Setting SelectedProvinceCode to: {province.code} for city: {UserProfileResponse.location.city}");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"No matching province found for city: {UserProfileResponse.location.city}");
+                    }
+
+                    var district = Districts?.FirstOrDefault(d =>
+                            string.Equals(d.name, UserProfileResponse.location.district, StringComparison.OrdinalIgnoreCase));
+
+                    if (district != null)
+                    {
+                        SelectedDistrictCode = district.code;
+                        Debug.WriteLine($"Setting SelectedDistrictCode to: {district.code} for district: {UserProfileResponse.location.district}");
+                    }
+                    else
+                    {
+                        Debug.WriteLine($"No matching district found for district: {UserProfileResponse.location.district}");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"An error occurred in LoadProfileAsync: {ex.Message}");
+            }
         }
 
-        private async void LoadProfileAsync()
+        private async Task LoadProvincesAsync()
         {
-            UserProfileResponse = await GetProfile();
-
-            Provinces = await _thirdPartyService.GetProvinceList();
-            Districts = await _thirdPartyService.GetDistrictList();
-
-            if (UserProfileResponse?.location != null)
+            try
             {
-                var province = Provinces.FirstOrDefault(p => p.name.Equals(UserProfileResponse.location.city, StringComparison.OrdinalIgnoreCase));
-                SelectedProvinceCode = (int)province?.code;
+                Debug.WriteLine("Fetching provinces...");
+                if (_thirdPartyService == null)
+                {
+                    Debug.WriteLine("_thirdPartyService is null!");
+                    return;
+                }
 
-                var district = Districts.FirstOrDefault(d => d.name.Equals(UserProfileResponse.location.district, StringComparison.OrdinalIgnoreCase));
-                SelectedDistrictCode = (int)district?.code;
+                var provinceList = await _thirdPartyService.GetProvinceList();
+                if (provinceList == null)
+                {
+                    Debug.WriteLine("Province list returned null");
+                    Provinces = new List<Province>();
+                    return;
+                }
+
+                Provinces = provinceList;
+                Debug.WriteLine($"Fetched {Provinces.Count} provinces");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error fetching provinces: {ex.Message}");
+                Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                Provinces = new List<Province>();
+            }
+        }
+
+        private async Task LoadDistrictsAsync()
+        {
+            try
+            {
+                Debug.WriteLine("Fetching districts...");
+                if (_thirdPartyService == null)
+                {
+                    Debug.WriteLine("_thirdPartyService is null!");
+                    return;
+                }
+
+                var districtList = await _thirdPartyService.GetDistrictList();
+                if (districtList == null)
+                {
+                    Debug.WriteLine("District list returned null");
+                    Districts = new List<District>();
+                    return;
+                }
+
+                Districts = districtList;
+                Debug.WriteLine($"Fetched {Districts.Count} districts");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error fetching district: {ex.Message}");
+                Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+                Districts = new List<District>();
             }
         }
 
