@@ -69,6 +69,8 @@ public class AuthenticationServiceImp implements AuthenticationService{
         User user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.AUTHENTICATION_FAIL));
 
+        System.out.println(user.getEmail());
+
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw new AppException(ErrorCode.AUTHENTICATION_FAIL);
         }
