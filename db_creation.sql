@@ -121,16 +121,23 @@ create table learning_method_tutor (
     constraint pk_learning_method_tutor primary key(learning_method_name, tutor_id)
 );
 
-create table learning_session (
-	id varchar(50) primary key,
-    tutor_id varchar(50),
-    start_time date,
-    duration long,
-    grade_id int,
-    subject_name varchar(50),
-    learning_method_name varchar(50),
-    constraint fk_learning_session_tutor foreign key(tutor_id) references tutor(id),
-    constraint fk_learning_session_grade foreign key(grade_id) references grade(id),
-    constraint fk_learning_session_subject foreign key(subject_name) references `subject`(`name`),
-	constraint fk_learning_session_learning_method foreign key(learning_method_name) references learning_method(name)
-);
+CREATE TABLE `learning_session` (
+  `id` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `tutor_id` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `start_time` date NOT NULL,
+  `duration` mediumtext COLLATE utf8mb4_bin NOT NULL,
+  `grade_id` int NOT NULL,
+  `subject_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `learning_method_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `tuition` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_learning_session_grade` (`grade_id`),
+  KEY `fk_learning_session_learning_method` (`learning_method_name`),
+  KEY `fk_learning_session_subject` (`subject_name`),
+  KEY `fk_learning_session_tutor` (`tutor_id`),
+  CONSTRAINT `fk_learning_session_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`),
+  CONSTRAINT `fk_learning_session_learning_method` FOREIGN KEY (`learning_method_name`) REFERENCES `learning_method` (`name`),
+  CONSTRAINT `fk_learning_session_subject` FOREIGN KEY (`subject_name`) REFERENCES `subject` (`name`),
+  CONSTRAINT `fk_learning_session_tutor` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+

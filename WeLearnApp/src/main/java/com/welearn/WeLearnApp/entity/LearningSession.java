@@ -61,4 +61,7 @@ public class LearningSession {
     })
     @JoinColumn(name = "tutor_id")
     UserProfile tutor;
+
+    @Column(name = "tuition")
+    int tuition;
 }
