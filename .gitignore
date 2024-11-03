@@ -67,7 +67,7 @@ WeLearnApp/desktop-app/TutorApp/.env
 !.gitignore
 !README.md
 
-*.env*
+*.env
 
 # Keep empty directories
 !/**/.gitkeep
