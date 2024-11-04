@@ -259,8 +259,8 @@ namespace TutorApp.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var userProfile = JsonSerializer.Deserialize<JsonResponseUserProfile>(responseContent);
-                    Debug.WriteLine("fistName", userProfile.data.firstName);
-                    Debug.WriteLine("lastName", userProfile.data.lastName);
+                    //Debug.WriteLine("fistName", userProfile.data.firstName);
+                    //Debug.WriteLine("lastName", userProfile.data.lastName);
 
                     return new UserProfileResponse
                     {

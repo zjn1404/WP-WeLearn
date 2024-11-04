@@ -44,12 +44,12 @@ namespace TutorApp.MockData
 
         public List<LearningSession> GetAllLearningSessions()
         {
-           List <LearningSession> LearningSessionList = new List<LearningSession>{
+            List<LearningSession> LearningSessionList = new List<LearningSession>{
                 new()
                 {
                     Id = "1",
                     TutorId = "1",
-                    StartTime = "01/01/2000",
+                    StartTime = new DateTime(2000, 1, 1),
                     Duration = 60,
                     GradeId = 1,
                     SubjectName = "Math",
@@ -59,7 +59,7 @@ namespace TutorApp.MockData
                 {
                     Id = "2",
                     TutorId = "2",
-                    StartTime = "01/01/2000",
+                    StartTime = new DateTime(2000, 1, 1),
                     Duration = 60,
                     GradeId = 2,
                     SubjectName = "Math",
@@ -69,7 +69,7 @@ namespace TutorApp.MockData
                 {
                     Id = "3",
                     TutorId = "3",
-                    StartTime = "01/01/2000",
+                    StartTime = new DateTime(2000, 1, 1),
                     Duration = 60,
                     GradeId = 3,
                     SubjectName = "Computer Science",

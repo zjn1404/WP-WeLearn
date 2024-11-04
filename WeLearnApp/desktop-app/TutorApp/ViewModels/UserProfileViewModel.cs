@@ -98,9 +98,9 @@ namespace TutorApp.ViewModels
                 await LoadProvincesAsync();
                 await LoadDistrictsAsync();
 
-                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.ToString());
-                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.city);
-                Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.district);
+                //Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.ToString());
+                //Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.city);
+                //Debug.WriteLine("User profile loaded successfully.", UserProfileResponse.location.district);
 
                 if (UserProfileResponse.location != null)
                 {
