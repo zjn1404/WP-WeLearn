@@ -75,9 +75,9 @@ namespace TutorApp.Views.LoginAndRegisterPage
                     //// Lưu token vào LocalSettings
                     var jwtTokens = JsonSerializer.Deserialize<JwtToken>(response.Data.ToString());
                     var role = JwtParser.GetRole(jwtTokens.accessToken);
-                    if (role != "USER")
+                    if (role != "TUTOR")
                     {
-                        await ShowErrorDialogAsync("Please login user-account");
+                        await ShowErrorDialogAsync("Please login tutor-account");
                         return;
                     }
 

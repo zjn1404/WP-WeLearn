@@ -25,7 +25,6 @@ public class AfterBearerTokenAuthenticationExceptionHandler extends OncePerReque
             filterChain.doFilter(request, response);
         } catch (Exception e) {
             ErrorCode errorCode = ErrorCode.UNAUTHENTICATED;
-
             response.setStatus(errorCode.getStatus().value());
             response.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
