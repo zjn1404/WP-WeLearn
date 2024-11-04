@@ -33,13 +33,13 @@ create table grade (
 	id int primary key
 );
 
-create table grade_tutor (
-	grade_id int,
-    tutor_id varchar(50),
-    constraint fk_grade_tutor_grade foreign key(grade_id) references grade(id),
-    constraint fk_grade_tutor_tutor foreign key(tutor_id) references tutor(id),
-    constraint pk_grade_tutor primary key(grade_id, tutor_id)
-);
+-- create table grade_tutor (
+-- 	grade_id int,
+--     tutor_id varchar(50),
+--     constraint fk_grade_tutor_grade foreign key(grade_id) references grade(id),
+--     constraint fk_grade_tutor_tutor foreign key(tutor_id) references tutor(id),
+--     constraint pk_grade_tutor primary key(grade_id, tutor_id)
+-- );
 
 create table user_profile (
 	id varchar(50) primary key,
@@ -129,7 +129,7 @@ CREATE TABLE `learning_session` (
   `grade_id` int NOT NULL,
   `subject_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `learning_method_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  `tuition` int NOT NULL,
+  `tuition` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_learning_session_grade` (`grade_id`),
   KEY `fk_learning_session_learning_method` (`learning_method_name`),

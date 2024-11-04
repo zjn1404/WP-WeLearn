@@ -63,5 +63,5 @@ public class LearningSession {
     UserProfile tutor;
 
     @Column(name = "tuition")
-    int tuition;
+    double tuition;
 }
