@@ -19,12 +19,14 @@ namespace TutorApp.Helpers
             navigationService.RegisterPage("Home", typeof(Home));
             navigationService.RegisterPage("HomePage", typeof(HomePage));
             navigationService.RegisterPage("Dashboard", typeof(Dashboard));
+            navigationService.RegisterPage("DashboardForTutor", typeof(DashboardForTutor));
             navigationService.RegisterPage("Login", typeof(Login));
             navigationService.RegisterPage("Register", typeof(Register));
             navigationService.RegisterPage("RegisterForTutor", typeof(RegisterForTutor));
             navigationService.RegisterPage("LoginForTutor", typeof(LoginForTutor));
             navigationService.RegisterPage("LoginForStudent",typeof(Login));
             navigationService.RegisterPage("PageLoginTokenRequire", typeof(PageLoginTokenRequire));
+            navigationService.RegisterPage("MySessions", typeof(MySessions));
 
 
 

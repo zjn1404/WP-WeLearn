@@ -205,6 +205,7 @@ namespace TutorApp.Services
             {
                 using (var client = _httpService.CreateClient(token))
                 {
+
                     var response = await client.GetAsync("/api/user-profile/me");
                     var responseContent = await response.Content.ReadAsStringAsync();
 

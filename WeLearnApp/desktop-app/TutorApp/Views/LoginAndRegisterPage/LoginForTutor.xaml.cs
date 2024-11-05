@@ -86,8 +86,8 @@ namespace TutorApp.Views.LoginAndRegisterPage
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
 
-                    // Điều hướng đến Dashboard
-                    _navigationService.NavigateTo("Dashboard");
+                    // Điều hướng đến DashboardForTutor
+                    _navigationService.NavigateTo("DashboardForTutor");
                 }
                 else
                 {
