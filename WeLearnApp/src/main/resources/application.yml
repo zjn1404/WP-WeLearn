@@ -1,16 +1,16 @@
 server:
-  port: ${SERVER_PORT}
+  port: 8080
   servlet:
-    context-path: ${CONTEXT_PATH}
+    context-path: /api
 
 spring:
   application:
     name: WeLearnApp
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driverClassName: ${DB_DRIVER_CLASSNAME}
+    url: jdbc:mysql://localhost:3306/welearn_db
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: none
@@ -18,17 +18,17 @@ spring:
 
 application-init:
   admin:
-    username: ${ADMIN_USERNAME}
-    password: ${ADMIN_PASSWORD}
-    email: ${ADMIN_EMAIL}
+    username: admin
+    password: Admin123
+    email: admin@gmail.com
 
 jwt:
   signer-key:
-    access: ${AC_SIGNER_KEY}
-    refresh: ${RF_SIGNER_KEY}
+    access: koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU
+    refresh: muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq
   duration:
-    access: ${AC_DURATION}
-    refresh: ${RF_DURATION}
+    access: 3600
+    refresh: 86400
 
 message:
   controller:
@@ -40,11 +40,19 @@ message:
       delete-success: "Learning session deleted successfully"
 
 verification-code:
-  duration: ${VC_DURATION} # in minutes
-  length: ${VC_LENGTH}
+  duration: 5 # in minutes
+  length: 6
 
 mail:
-  api-key: ${MAIL_API_KEY}
+  api-key: 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
   sender:
-    email: ${MAIL_SENDER_EMAIL}
-    name: "${MAIL_SENDER_NAME}"
+    email: nqt460@gmail.com
+    name: "WeLearn Team"
+
+# Used in data migration
+NODE_ENV: development
+MYSQL_HOST: localhost
+MYSQL_PORT: 3306
+MYSQL_USERNAME: root
+MYSQL_PASSWORD: root
+MYSQL_DATABASE: welearn_db
