@@ -36,6 +36,8 @@ message:
       logout-success: "Logout successfully"
     role:
       delete-success: "Role deleted successfully"
+    learning-session:
+      delete-success: "Learning session deleted successfully"
 
 verification-code:
   duration: ${VC_DURATION} # in minutes
