@@ -56,10 +56,12 @@ namespace TutorApp
 
             Debug.WriteLine("test env", Env.GetString("BASE_URL"));
 
+            HttpService httpService = new HttpService(baseUrl);
+
             // Core services
             services.AddHttpClient();
             services.AddSingleton<INavigationService>(sp => new NavigationService(rootFrame));
-            services.AddSingleton<IUserService>(new UserService(baseUrl));
+            services.AddSingleton<IUserService>(new UserService(httpService));
             services.AddSingleton<IThirdPartyService, ThirdPartyService>();
             services.AddSingleton<IGradeService, GradeService>();
             services.AddSingleton<ISubjectService, SubjectService>();

@@ -77,7 +77,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
                     var role = JwtParser.GetRole(jwtTokens.accessToken);
                     if (role != "TUTOR")
                     {
-                        await ShowErrorDialogAsync("Please login user-account");
+                        await ShowErrorDialogAsync("Please login tutor-account");
                         return;
                     }
 
