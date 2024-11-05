@@ -137,13 +137,14 @@ exports.up = async function (knex) {
   await knex.raw(`
     CREATE TABLE learning_session (
       id varchar(50) PRIMARY KEY,
-      tutor_id varchar(50),
-      start_time DATE,
-      duration BIGINT,
-      grade_id INT,
+      tutor_id varchar(50) NOT NULL,
+      start_time DATE NOT NULL,
+      duration BIGINT NOT NULL,
+      grade_id INT NOT NULL,
+      tuition DOUBLE NOT NULL,
       subject_name varchar(50),
       learning_method_name varchar(50),
-      CONSTRAINT fk_learning_session_tutor FOREIGN KEY(tutor_id) REFERENCES tutor(id),
+      CONSTRAINT fk_learning_session_user_profile FOREIGN KEY(tutor_id) REFERENCES user_profile(id),
       CONSTRAINT fk_learning_session_grade FOREIGN KEY(grade_id) REFERENCES grade(id),
       CONSTRAINT fk_learning_session_subject FOREIGN KEY(subject_name) REFERENCES \`subject\`(\`name\`),
       CONSTRAINT fk_learning_session_learning_method FOREIGN KEY(learning_method_name) REFERENCES learning_method(\`name\`)
