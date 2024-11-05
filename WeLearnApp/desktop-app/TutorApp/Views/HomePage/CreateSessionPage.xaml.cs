@@ -12,7 +12,7 @@ namespace TutorApp.Views.HomePage
 {
     public sealed partial class CreateSessionPage : Page
     {
-        private LearningSessionViewModel _viewModel;
+        private LearningSessionCreationViewModel _viewModel;
         private readonly ILearningSessionService _learningSessionService;
         private readonly IGradeService _gradeService;
         private readonly ISubjectService _subjectService;
@@ -31,13 +31,13 @@ namespace TutorApp.Views.HomePage
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter is LearningSessionViewModel viewModel)
+            if (e.Parameter is LearningSessionCreationViewModel viewModel)
             {
                 _viewModel = viewModel;
             }
             else
             {
-                _viewModel = new LearningSessionViewModel(_learningSessionService, _gradeService, _learningMethodService, _subjectService);
+                _viewModel = new LearningSessionCreationViewModel(_learningSessionService, _gradeService, _learningMethodService, _subjectService);
             }
             DataContext = _viewModel;
             await _viewModel.InitializeAsync();
