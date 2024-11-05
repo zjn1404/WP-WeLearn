@@ -26,13 +26,13 @@ namespace TutorApp.Views.HomePage
     /// </summary>
     public sealed partial class MySessions : Page
     {
-        public LearningSessionViewModel ViewModel { get; }
+        public LearningSessionCreationViewModel ViewModel { get; }
 
         public MySessions()
         {
             this.InitializeComponent();
             var navigationService = App.Current.Services.GetService<INavigationService>();
-            ViewModel = new LearningSessionViewModel();
+            ViewModel = new LearningSessionCreationViewModel();
             DataContext = this;
         }
     }
