@@ -33,13 +33,13 @@ create table grade (
 	id int primary key
 );
 
-create table grade_tutor (
-	grade_id int,
-    tutor_id varchar(50),
-    constraint fk_grade_tutor_grade foreign key(grade_id) references grade(id),
-    constraint fk_grade_tutor_tutor foreign key(tutor_id) references tutor(id),
-    constraint pk_grade_tutor primary key(grade_id, tutor_id)
-);
+-- create table grade_tutor (
+-- 	grade_id int,
+--     tutor_id varchar(50),
+--     constraint fk_grade_tutor_grade foreign key(grade_id) references grade(id),
+--     constraint fk_grade_tutor_tutor foreign key(tutor_id) references tutor(id),
+--     constraint pk_grade_tutor primary key(grade_id, tutor_id)
+-- );
 
 create table user_profile (
 	id varchar(50) primary key,
@@ -126,18 +126,17 @@ CREATE TABLE `learning_session` (
   `tutor_id` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `start_time` date NOT NULL,
   `duration` mediumtext COLLATE utf8mb4_bin NOT NULL,
-  `grade_id` int NOT NULL,
+  `grade_id` double NOT NULL,
   `subject_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
   `learning_method_name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  `tuition` int NOT NULL,
+  `tuition` double NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_learning_session_grade` (`grade_id`),
   KEY `fk_learning_session_learning_method` (`learning_method_name`),
   KEY `fk_learning_session_subject` (`subject_name`),
-  KEY `fk_learning_session_tutor` (`tutor_id`),
-  CONSTRAINT `fk_learning_session_grade` FOREIGN KEY (`grade_id`) REFERENCES `grade` (`id`),
+  KEY `fk_learning_session_user_profile` (`tutor_id`),
   CONSTRAINT `fk_learning_session_learning_method` FOREIGN KEY (`learning_method_name`) REFERENCES `learning_method` (`name`),
   CONSTRAINT `fk_learning_session_subject` FOREIGN KEY (`subject_name`) REFERENCES `subject` (`name`),
-  CONSTRAINT `fk_learning_session_tutor` FOREIGN KEY (`tutor_id`) REFERENCES `tutor` (`id`)
+  CONSTRAINT `fk_learning_session_user_profile` FOREIGN KEY (`tutor_id`) REFERENCES `user_profile` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 

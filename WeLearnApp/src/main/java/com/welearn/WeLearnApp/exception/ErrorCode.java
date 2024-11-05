@@ -26,6 +26,10 @@ public enum ErrorCode {
     ROLE_NOT_FOUND(4002, HttpStatus.NOT_FOUND, "Role not found"),
     USER_PROFILE_NOT_FOUND(4003, HttpStatus.NOT_FOUND, "User profile not found"),
     LOCATION_NOT_FOUND(4004, HttpStatus.NOT_FOUND, "Location not found"),
+    GRADE_NOT_FOUND(4005, HttpStatus.NOT_FOUND, "Grade not found"),
+    SUBJECT_NOT_FOUND(4006, HttpStatus.NOT_FOUND, "Subject not found"),
+    LEARNING_SESSION_NOT_FOUND(4007, HttpStatus.NOT_FOUND, "Learning session not found"),
+    LEARNING_METHOD_NOT_FOUND(4008, HttpStatus.NOT_FOUND, "Learning method not found"),
     // Authentication Error 5xxx
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),

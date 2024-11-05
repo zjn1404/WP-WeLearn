@@ -18,17 +18,4 @@ public class Grade {
     @Id
     @Column(name = "id")
     int id;
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.DETACH
-    })
-    @JoinTable(
-            name = "grade_subject",
-            joinColumns = @JoinColumn(name = "grade_id"),
-            inverseJoinColumns = @JoinColumn(name = "subject_name")
-    )
-    List<Subject> subjects;
 }

@@ -1,8 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
+﻿using System;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -12,47 +8,42 @@ using TutorApp.Models.ForAPI.Response;
 using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Services.Interfaces.ForAPI;
 using System.Diagnostics;
+using System.Net.Http;
 
 namespace TutorApp.Services
 {
     public class UserService : IUserService
     {
+        private readonly HttpService _httpService;
 
-        private readonly HttpClient _httpClient;
-        private readonly string _baseUrl;
-
-        public UserService(string baseUrl)
+        public UserService(HttpService httpService)
         {
-            _baseUrl = baseUrl;
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(_baseUrl);
+            _httpService = httpService;
         }
 
         public async Task<LoginResponse> LoginAccount(LoginRequest request)
         {
             try
             {
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PostAsync("/api/auth/authenticate", content);
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<JsonResponseLogin>(responseContent);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient())
                 {
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                    // chuyển từ dạng json thành đối tượng
-                    return new LoginResponse
+                    var response = await client.PostAsync("/api/auth/authenticate", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseLogin>(responseContent);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        Success = true,
-                        Code = responseData.code,
-                        Message = "Login successfully",
-                        Data = responseData.data
-                    };
-                }
-                else
-                {
+                        return new LoginResponse
+                        {
+                            Success = true,
+                            Code = responseData.code,
+                            Message = "Login successfully",
+                            Data = responseData.data
+                        };
+                    }
                     return new LoginResponse
                     {
                         Success = false,
@@ -61,17 +52,14 @@ namespace TutorApp.Services
                         Data = responseData.data
                     };
                 }
-
-
             }
             catch (Exception ex)
             {
                 return new LoginResponse
                 {
-                    Message = $"Error : {ex.Message}",
+                    Message = $"Error: {ex.Message}",
                     Success = false,
                 };
-
             }
         }
 
@@ -79,36 +67,31 @@ namespace TutorApp.Services
         {
             try
             {
-
-                // JsonSerializer.Serialize chuyển về dạng json 
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PostAsync("/api/user", content);
-
-                //đọc kết quả trả về như là string
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<JsonResponseRegister>(responseContent);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient())
                 {
-                    return new RegisterResponse
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync("/api/user", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseRegister>(responseContent);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        Success = true,
-                        Message = "Register successfully",
-                        Code = responseData.code,
-                        Data = new JsonResponseForDataRegister
+                        return new RegisterResponse
                         {
-                            id = responseData.data.id,
-                            email = responseData.data.email,
-                            role = responseData.data.role,
-                            username = responseData.data.username
-                        }
-                    };
-                }
-                else
-                {
-
+                            Success = true,
+                            Message = "Register successfully",
+                            Code = responseData.code,
+                            Data = new JsonResponseForDataRegister
+                            {
+                                id = responseData.data.id,
+                                email = responseData.data.email,
+                                role = responseData.data.role,
+                                username = responseData.data.username
+                            }
+                        };
+                    }
                     return new RegisterResponse
                     {
                         Success = false,
@@ -131,27 +114,22 @@ namespace TutorApp.Services
         {
             try
             {
-
-                // JsonSerializer.Serialize chuyển về dạng json 
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PostAsync("/api/auth/logout", content);
-
-                //đọc kết quả trả về như là string
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient())
                 {
-                    return new LogoutResponse
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync("/api/auth/logout", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        Success = true,
-                        Message = "Logout successfully!"
-                    };
-                }
-                else
-                {
-
+                        return new LogoutResponse
+                        {
+                            Success = true,
+                            Message = "Logout successfully!"
+                        };
+                    }
                     return new LogoutResponse
                     {
                         Success = false,
@@ -173,37 +151,25 @@ namespace TutorApp.Services
         {
             try
             {
-                // JsonSerializer.Serialize chuyển về dạng json 
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PostAsync("/api/verification-code/verify", content);
-
-                //đọc kết quả trả về như là string
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient())
                 {
-                    return new VerifyResponse
-                    {
-                        Success = true,
-                        Code = responseData.code
-                    };
-                }
-                else
-                {
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync("/api/verification-code/verify", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
 
                     return new VerifyResponse
                     {
-                        Success = false,
+                        Success = response.IsSuccessStatusCode,
                         Code = responseData.code
                     };
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error" + ex.Message);
+                throw new Exception("Error: " + ex.Message);
             }
         }
 
@@ -211,37 +177,25 @@ namespace TutorApp.Services
         {
             try
             {
-
-                var content = new StringContent("application/json");
-                string url = "/api/verification-code/" + _id;
-
-                var response = await _httpClient.PostAsync(url, content);
-
-                //đọc kết quả trả về như là string
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<JsonResponseResendToken>(responseContent);
-
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient())
                 {
-                    return new ResendTokenResponse
-                    {
-                        IsSuccess = true,
-                        Code = responseData.code
-                    };
-                }
-                else
-                {
+                    var content = new StringContent("application/json");
+                    string url = $"/api/verification-code/{_id}";
+
+                    var response = await client.PostAsync(url, content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseResendToken>(responseContent);
 
                     return new ResendTokenResponse
                     {
-                        IsSuccess = false,
+                        IsSuccess = response.IsSuccessStatusCode,
                         Code = responseData.code
                     };
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error" + ex.Message);
+                throw new Exception("Error: " + ex.Message);
             }
         }
 
@@ -249,31 +203,27 @@ namespace TutorApp.Services
         {
             try
             {
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-                var response = await _httpClient.GetAsync("/api/user-profile/me");
-
-                var responseContent = await response.Content.ReadAsStringAsync();
-
-                Debug.WriteLine("responseContent", responseContent.ToString());    
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient(token))
                 {
-                    var userProfile = JsonSerializer.Deserialize<JsonResponseUserProfile>(responseContent);
-                    //Debug.WriteLine("fistName", userProfile.data.firstName);
-                    //Debug.WriteLine("lastName", userProfile.data.lastName);
 
-                    return new UserProfileResponse
+                    var response = await client.GetAsync("/api/user-profile/me");
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    Debug.WriteLine("responseContent", responseContent);
+
+                    if (response.IsSuccessStatusCode)
                     {
-                        firstName = userProfile.data.firstName,
-                        lastName = userProfile.data.lastName,
-                        phoneNumber = userProfile.data.phoneNumber,
-                        dob = userProfile.data.dob,
-                        location = userProfile.data.location,
-                        avatarUrl = userProfile.data.avatarUrl
-                    };
-                }
-                else
-                {
+                        var userProfile = JsonSerializer.Deserialize<JsonResponseUserProfile>(responseContent);
+                        return new UserProfileResponse
+                        {
+                            firstName = userProfile.data.firstName,
+                            lastName = userProfile.data.lastName,
+                            phoneNumber = userProfile.data.phoneNumber,
+                            dob = userProfile.data.dob,
+                            location = userProfile.data.location,
+                            avatarUrl = userProfile.data.avatarUrl
+                        };
+                    }
                     throw new Exception($"Failed to retrieve profile: {responseContent}");
                 }
             }
@@ -282,44 +232,35 @@ namespace TutorApp.Services
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
         public async Task<UpdateProfileResponse> UpdateMyProfile(string token, UpdateProfileRequest request)
         {
             try
             {
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                var response = await _httpClient.PatchAsync("/api/user-profile/me", content);
-
-                var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
-
-                Debug.WriteLine("UpdateMyProfile", responseContent.ToString());
-                if (response.IsSuccessStatusCode)
+                using (var client = _httpService.CreateClient(token))
                 {
-                    return new UpdateProfileResponse
-                    {
-                        Success = true,
-                        Message = "Update successfully!"
-                    };
-                }
-                else
-                {
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PatchAsync("/api/user-profile/me", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
+
+                    Debug.WriteLine("UpdateMyProfile", responseContent);
 
                     return new UpdateProfileResponse
                     {
-                        Success = false,
-                        Message = $"Update failed: {responseContent}"
+                        Success = response.IsSuccessStatusCode,
+                        Message = response.IsSuccessStatusCode ?
+                            "Update successfully!" :
+                            $"Update failed: {responseContent}"
                     };
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error" + ex.Message);
+                throw new Exception("Error: " + ex.Message);
             }
         }
-
     }
 }
