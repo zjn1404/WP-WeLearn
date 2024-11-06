@@ -77,12 +77,12 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
             if (isVerify.Success)
             {
-                await ShowErrorDialogAsync("Verify successfully. Please login again");
+                await ShowErrorDialogAsync("Success. Please login again");
 
                 _navigationService.GoBack();
             } else
             {
-                await ShowErrorDialogAsync("Verify fail. Please verify again");
+                await ShowErrorDialogAsync("Failed. Please verify again");
             }
 
         }

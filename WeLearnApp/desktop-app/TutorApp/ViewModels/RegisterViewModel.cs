@@ -42,6 +42,12 @@ namespace TutorApp.ViewModels
                 return "Please fill in all the information";
             }
 
+            if (!IsValidUser(registerRequest.Username))
+            {
+                return "User must be at least 5 characters";
+            }
+
+
             if (!IsValidEmail(registerRequest.Email))
             {
                 return "Email is invalid";
@@ -53,6 +59,11 @@ namespace TutorApp.ViewModels
             }
 
             return null; 
+        }
+
+        private bool IsValidUser(string user)
+        {
+            return user.Length >= 5;
         }
 
         private bool IsValidEmail(string email)

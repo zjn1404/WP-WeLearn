@@ -108,16 +108,16 @@ namespace TutorApp.Views.HomePage
 
                 if (response.Success)
                 {
-                    await ShowErrorDialogAsync("Update user profile successfully", "Cập nhật thông tin thành công.");
+                    await ShowErrorDialogAsync("Announcement", "Update information successfully.");
                 }
                 else
                 {
-                    await ShowErrorDialogAsync("Update user profile failed", "Cập nhật thông tin không thành công. Vui lòng thử lại.");
+                    await ShowErrorDialogAsync("Announcement", "Update information failed. Please try again.");
                 }
             }
             catch (Exception ex)
             {
-                await ShowErrorDialogAsync("Error", $"Đã xảy ra lỗi: {ex.Message}");
+                await ShowErrorDialogAsync("Error", $"Error: {ex.Message}");
             }
         }
 

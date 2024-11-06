@@ -21,6 +21,7 @@ using Windows.Storage;
 using TutorApp.Helpers;
 using TutorApp.Models.ForAPI;
 using System.Text.Json;
+using TutorApp.Models.ForAPI.Request;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -60,11 +61,13 @@ namespace TutorApp.Views.LoginAndRegisterPage
             string password = passwordBox.Password;
 
             // Kiểm tra đầu vào
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            var validationMessage = _viewModel.ValidateInput(new LoginRequest { username = username, password = password });
+            if (validationMessage != null)
             {
-                await ShowErrorDialogAsync("Please type user and password.");
+                await ShowErrorDialogAsync(validationMessage);
                 return;
             }
+
 
             // Gọi hàm đăng nhập từ ViewModel
             try
@@ -99,7 +102,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
                     }
                     else
                     {
-                        await ShowErrorDialogAsync("Login Failed. Please try again.");
+                        await ShowErrorDialogAsync(response.Message.ToString());
 
                     }
                 }

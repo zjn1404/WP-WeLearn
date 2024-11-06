@@ -88,6 +88,11 @@ namespace TutorApp.ViewModels
                 return "Please fill in all the information";
             }
 
+            if (!IsValidUser(registerRequest.Username))
+            {
+                return "User must be at least 5 characters";
+            }
+
             if (!IsValidEmail(registerRequest.Email))
             {
                 return "Email is invalid";
@@ -127,6 +132,12 @@ namespace TutorApp.ViewModels
                    hasLowerChar.IsMatch(password) &&
                    hasSpecialChar.IsMatch(password);
         }
+
+        private bool IsValidUser(string user)
+        {
+            return user.Length >= 5;
+        }
+
 
         public async Task<VerifyResponse> Verify(VerifyRequest request)
         {

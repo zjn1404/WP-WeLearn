@@ -78,7 +78,7 @@ namespace TutorApp.Views.HomePage
             }
             catch (Exception ex)
             {
-                var contentDialog = new ContentDialog
+                ContentDialog contentDialog = new ContentDialog
                 {
                     Title = "Error",
                     Content = $"An error occurred: {ex.Message}",

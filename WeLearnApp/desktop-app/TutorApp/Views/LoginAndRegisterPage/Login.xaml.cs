@@ -11,7 +11,7 @@ using TutorApp.ViewModels;
 using TutorApp.Helpers;
 using System.Text.Json;
 using TutorApp.Models.ForAPI;
-using TutorApp.Models;  
+using TutorApp.Models.ForAPI.Request;  
 
 namespace TutorApp.Views
 {
@@ -33,10 +33,10 @@ namespace TutorApp.Views
             string username = usernameTextBox.Text;
             string password = passwordBox.Password;
 
-            // Kiểm tra đầu vào
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            {
-                await ShowErrorDialogAsync("Please type user and password.");
+            
+            var validationMessage = _viewModel.ValidateInput(new LoginRequest { username=username,password = password});
+            if (validationMessage != null) {
+                await ShowErrorDialogAsync(validationMessage);
                 return;
             }
 
@@ -73,7 +73,7 @@ namespace TutorApp.Views
                     }
                     else
                     {
-                    await ShowErrorDialogAsync("Login Failed. Please try again.");
+                    await ShowErrorDialogAsync(response.Message.ToString());
 
                     }
                 }
