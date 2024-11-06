@@ -73,8 +73,11 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 userId = _id,
             };
             
+            LoadingOverlay.Visibility = Visibility.Visible;
+
             var isVerify = await UserViewModel.Verify(request);
 
+            LoadingOverlay.Visibility = Visibility.Collapsed;
             if (isVerify.Success)
             {
                 await ShowErrorDialogAsync("Success. Please login again");
@@ -102,7 +105,10 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
         private async void Resend_Click(object sender, RoutedEventArgs e)
         {
+
+            LoadingOverlay.Visibility = Visibility.Visible;
             var response =  await UserViewModel.ResendVerifyToken(_id);
+            LoadingOverlay.Visibility = Visibility.Collapsed;
             if (!response.IsSuccess)
             {
                 await ShowErrorDialogAsync("Resend Error. Please try again");

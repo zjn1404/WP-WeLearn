@@ -98,6 +98,62 @@ namespace TutorApp.ViewModels
 
         }
 
+
+        public string ValidateInput(
+      string tuition,
+      string grade,
+      string learningMethod,
+      string startDate,
+      string startTime,
+      string duration,
+      string subject)
+        {
+            if (string.IsNullOrEmpty(tuition?.Trim()) ||
+                string.IsNullOrEmpty(grade?.Trim()) ||
+                string.IsNullOrEmpty(learningMethod?.Trim()) ||
+                string.IsNullOrEmpty(startTime?.Trim()) ||
+                string.IsNullOrEmpty(duration?.Trim()) ||
+                string.IsNullOrEmpty(subject?.Trim()) ||
+                string.IsNullOrEmpty(startDate?.Trim()))
+            {
+                return "Please fill in all the information";
+            }
+
+            if (!decimal.TryParse(tuition, out decimal tuitionValue) || tuitionValue < 0)
+            {
+                return "Tuition must be a valid number greater than or equal to 0";
+            }
+
+            if (!int.TryParse(duration, out int durationValue) || durationValue < 0)
+            {
+                return "Duration must be a valid number greater than 0 or equal to 0";
+            }
+
+            if (!DateTime.TryParse(startDate, out DateTime startDateValue) ||
+                startDateValue.Date < DateTime.Now.Date)
+            {
+                return "Start date must be from today onwards";
+            }
+
+            if (!DateTime.TryParse(startTime, out DateTime startTimeValue))
+            {
+                return "Invalid time format";
+            }
+
+            DateTime fullStartDateTime = startDateValue.Date.Add(startTimeValue.TimeOfDay);
+
+          
+            if (fullStartDateTime < DateTime.Now)
+            {
+                return "Start date and time must be in the future";
+            }
+
+            return null;
+        }
+
+
+
+
         private async Task LoadGradesAsync()
         {
             try

@@ -72,11 +72,14 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 return;
             }
 
+            LoadingOverlay.Visibility = Visibility.Visible;
+
             // Gọi dịch vụ đăng ký
             try
             {
+                
                 var response = await viewModel.RegisterUser(registerRequest);
-
+                LoadingOverlay.Visibility = Visibility.Collapsed;
                 if (response.Success)
                 {
                     

@@ -40,10 +40,15 @@ namespace TutorApp.Views
                 return;
             }
 
-            // Gọi hàm đăng nhập từ ViewModel
+           
+            LoadingOverlay.Visibility = Visibility.Visible;
+           
+           
             try
             {
+               
                 var response = await _viewModel.LoginAsync(username, password);
+                LoadingOverlay.Visibility = Visibility.Collapsed;
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
@@ -82,6 +87,7 @@ namespace TutorApp.Views
             {
                 await ShowErrorDialogAsync($"Error: {ex.Message}");
             }
+           
         }
 
         private async Task ShowErrorDialogAsync(string message)

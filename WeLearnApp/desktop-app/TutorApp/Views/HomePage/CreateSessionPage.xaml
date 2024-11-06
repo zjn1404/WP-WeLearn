@@ -5,55 +5,77 @@
     xmlns:local="using:TutorApp.Views.HomePage"
     xmlns:viewmodel="using:TutorApp.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:common="using:TutorApp.Common" d:DataContext="{d:DesignInstance Type=common:FullObservableCollection}"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                Width="Auto" 
-                Margin="20"
-                Height="Auto">
 
-        <TextBlock Text="Create New Session" FontSize="24" FontWeight="Bold" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+    <Grid>
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="Auto"
+                    Margin="20"
+                    Height="Auto">
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+            <TextBlock Text="Create New Session" FontSize="24" FontWeight="Bold" Margin="0,0,0,0" HorizontalAlignment="Center"/>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,30,30,0">
-                <DatePicker x:Name="DatePicker" Header="Start Date" Width="300" Margin="0,0,0,10"/>
-                <TimePicker x:Name="TimePicker" Header="Start Time" Width="300" Margin="0,0,0,10"/>
-                <NumberBox x:Name="DurationNumberBox" Header="Duration" Width="300" Margin="0,0,0,10" 
-           Minimum="0" PlaceholderText="Enter duration in minutes" />
-                <TextBox x:Name="TuitionTextBox" Header="Tuition" Width="300" Margin="0,0,0,10"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,30,30,0">
+                    <DatePicker x:Name="DatePicker" Header="Start Date" Width="300" Margin="0,0,0,10"/>
+                    <TimePicker x:Name="TimePicker" Header="Start Time" Width="300" Margin="0,0,0,10"/>
+                    <NumberBox x:Name="DurationNumberBox" Header="Duration" Width="300" Margin="0,0,0,10"
+                               Minimum="0" PlaceholderText="Enter duration in minutes"/>
+
+                    <TextBox x:Name="TuitionTextBox" Header="Tuition" Width="300" Margin="0,0,0,10"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,30,0,0">
+                    <ComboBox x:Name="GradeTextBox" Header="Grade" Width="300" Margin="0,0,0,10"
+                              SelectedValue="{Binding SelectedGrade, Mode=TwoWay}"
+                              SelectedValuePath="Id"
+                              ItemsSource="{Binding Grades}"
+                              DisplayMemberPath="Id"/>
+
+                    <ComboBox x:Name="SubjectTextBox" Header="Subject" Width="300" Margin="0,0,0,10"
+                              SelectedValue="{Binding SelectedSubject, Mode=TwoWay}"
+                              SelectedValuePath="Name"
+                              ItemsSource="{Binding Subjects}"
+                              DisplayMemberPath="Name"/>
+
+                    <ComboBox x:Name="LearningMethodTextBox" Header="Learning Method" Width="300" Margin="0,0,0,10"
+                              SelectedValue="{Binding SelectedLearningMethod, Mode=TwoWay}"
+                              SelectedValuePath="Name"
+                              ItemsSource="{Binding LearningMethods}"
+                              DisplayMemberPath="Name"/>
+                </StackPanel>
+
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,30,0,0">
-                <ComboBox Header="Grade" Width="300" Margin="0,0,0,10"
-                          SelectedValue="{Binding SelectedGrade, Mode=TwoWay}"
-                          SelectedValuePath="Id"
-                          ItemsSource="{Binding Grades}"
-                          DisplayMemberPath="Id"/>
-
-                <ComboBox Header="Subject" Width="300" Margin="0,0,0,10"
-                          SelectedValue="{Binding SelectedSubject, Mode=TwoWay}"
-                          SelectedValuePath="Name"
-                          ItemsSource="{Binding Subjects}"
-                          DisplayMemberPath="Name"/>
-
-                <ComboBox Header="Learning Method" Width="300" Margin="0,0,0,10"
-                          SelectedValue="{Binding SelectedLearningMethod, Mode=TwoWay}"
-                          SelectedValuePath="Name"
-                          ItemsSource="{Binding LearningMethods}"
-                          DisplayMemberPath="Name"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
+                <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0"  Click="CancelButton_Click"/>
             </StackPanel>
-
         </StackPanel>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-            <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
-            <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0"/>
-        </StackPanel>
-    </StackPanel>
+        <!-- Loading Overlay -->
+        <Grid x:Name="LoadingOverlay"
+              Visibility="Collapsed"
+              Background="#80000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="White"
+                        Padding="20">
+                <ProgressRing
+                    x:Name="spinner"
+                    IsActive="True"
+                    Width="50"
+                    Height="50"
+                    Background="LightGray"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
 </Page>

@@ -48,41 +48,10 @@ namespace TutorApp.ViewModels
             {
                 return "Please fill in all the information";
             }
-
-            if (!IsValidUser(loginRequest.username))
-            {
-                return "User must be at least 5 characters";
-            }
-
-
-            if (!IsValidPassword(loginRequest.password))
-            {
-                return "The password must be at least 8 characters long and include an uppercase letter, a number, and a special character!";
-            }
-
             return null;
         }
 
-        private bool IsValidUser(string user)
-        {
-            return user.Length >= 5;
-        }
-
-
-        private bool IsValidPassword(string password)
-        {
-            var hasNumber = new Regex(@"[0-9]+");
-            var hasUpperChar = new Regex(@"[A-Z]+");
-            var hasLowerChar = new Regex(@"[a-z]+");
-            var hasSpecialChar = new Regex(@"[!@#$%^&*(),.?""':{}|<>]+");
-
-            return password.Length >= 8 &&
-                   hasNumber.IsMatch(password) &&
-                   hasUpperChar.IsMatch(password) &&
-                   hasLowerChar.IsMatch(password) &&
-                   hasSpecialChar.IsMatch(password);
-        }
-
+    
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)
         {

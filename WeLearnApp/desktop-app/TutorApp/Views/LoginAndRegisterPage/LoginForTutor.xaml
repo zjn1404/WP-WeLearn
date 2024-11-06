@@ -55,5 +55,24 @@
                     HorizontalAlignment="Stretch"
                     Content="Login"/>
         </StackPanel>
+
+        <!-- Loading Overlay -->
+        <Grid x:Name="LoadingOverlay"
+              Visibility="Collapsed"
+              Background="#80000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="White"
+                        Padding="20">
+                <ProgressRing
+                    x:Name="spinner"
+                    IsActive="True"
+                    Width="50"
+                    Height="50"
+                    Background="LightGray"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

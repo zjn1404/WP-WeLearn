@@ -67,12 +67,15 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 await ShowErrorDialogAsync(validationMessage);
                 return;
             }
+            
 
+            LoadingOverlay.Visibility = Visibility.Visible;
 
             // Gọi hàm đăng nhập từ ViewModel
             try
             {
                 var response = await _viewModel.LoginAsync(username, password);
+                LoadingOverlay.Visibility = Visibility.Collapsed;
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
@@ -111,6 +114,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
             {
                 await ShowErrorDialogAsync($"Error: {ex.Message}");
             }
+
         }
 
 

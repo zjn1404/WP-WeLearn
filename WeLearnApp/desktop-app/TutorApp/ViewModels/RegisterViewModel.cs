@@ -44,7 +44,7 @@ namespace TutorApp.ViewModels
 
             if (!IsValidUser(registerRequest.Username))
             {
-                return "User must be at least 5 characters";
+                return "Username must be at least 5 characters";
             }
 
 
