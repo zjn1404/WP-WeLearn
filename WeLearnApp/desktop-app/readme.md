@@ -27,6 +27,8 @@ An application that connects students and tutors, allowing students to search fo
 - Logout
   - Logout Workflow
   ![logout-workflow](https://res.cloudinary.com/duf2t1pkp/image/upload/v1730891454/0cfb09b7-f947-413f-8aa4-b105ce700ea8.png)
+- Database <br/>
+  ![database](https://res.cloudinary.com/dlksshukq/image/upload/v1730896213/Milestone%201/zlvgdwzhhjw6jljym1bq.png)
 - Send verification via email
 - Verify account
 - Update user profile
@@ -45,7 +47,7 @@ An application that connects students and tutors, allowing students to search fo
     ![tutor-login-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730886036/Milestone%201/zjbj2ke979rctx1nup4m.png)
   - Verification Page:
     ![verification-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730894171/Milestone%201/hivvhussyvyead9azgxm.png)
-  - Progress Spinner:
+  - Progress Spinner: <br />
     ![progress-spinner](https://res.cloudinary.com/dlksshukq/image/upload/v1730886419/Milestone%201/myhc3tf7rjurouxzmug6.png)
   - Displayed Tutor Page:
     ![displayed-tutor-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730886690/Milestone%201/d1nsixdauyflte0d1kox.png)
@@ -53,6 +55,8 @@ An application that connects students and tutors, allowing students to search fo
     ![profile-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730889454/Milestone%201/qjzu6uwttiwr1rqh3xh0.png)
   - Session Creation Page:
     ![session-creation-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730887355/Milestone%201/bt4lmjbyu5nstleedzar.png)
+  - Session List Page:
+    ![session-list-page](https://res.cloudinary.com/dlksshukq/image/upload/v1730889565/Milestone%201/w4inidsmwhm0bljsfn6c.png)
 - Why we have 2 pages for logging in and registration
   - Role-Specific User Experience
   - Facilitates Future Role-Specific Features
@@ -155,8 +159,9 @@ An application that connects students and tutors, allowing students to search fo
   ![git-contribute](https://res.cloudinary.com/dlksshukq/image/upload/v1730889269/Milestone%201/embqv4g2u64ydrhlguaa.png)
   - Git Branching
   ![git-branching](https://res.cloudinary.com/dlksshukq/image/upload/v1730889369/Milestone%201/aym1n6fg3mspvbsfljeo.png)
+- Use OneDrive for sharing documents
+  ![one-drive](https://res.cloudinary.com/duf2t1pkp/image/upload/v1730895761/8571ea91-f7ed-4bbc-bb19-e32db1b74d97.png)
 - Use Google Meet for planning
-- Use Google Drive for sharing documents
 - Use Messenger for discussion
 ## VII. Quality assurance
 - Manual testing for each feature
