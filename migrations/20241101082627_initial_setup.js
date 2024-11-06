@@ -55,7 +55,9 @@ exports.up = async function (knex) {
       first_name varchar(50),
       last_name varchar(50),
       dob DATE,
+      phone_number char(10),
       location_id varchar(50),
+      avatar_url varchar(250),
       CONSTRAINT fk_user_profile_location FOREIGN KEY(location_id) REFERENCES location(id),
       CONSTRAINT fk_user_profile_user FOREIGN KEY(id) REFERENCES \`user\`(id)
     );`);
