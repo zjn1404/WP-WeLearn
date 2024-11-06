@@ -46,7 +46,7 @@ create table user_profile (
     first_name varchar(50),
     last_name varchar(50),
     dob date,
-    phone_number varchar(10),
+    phone_number char(10),
     location_id varchar(50),
     avatar_url varchar(250),
     constraint fk_user_profile_location foreign key(location_id) references location(id),
