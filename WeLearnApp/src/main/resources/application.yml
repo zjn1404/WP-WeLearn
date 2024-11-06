@@ -1,0 +1,50 @@
+server:
+  port: ${SERVER_PORT}
+  servlet:
+    context-path: ${CONTEXT_PATH}
+
+spring:
+  application:
+    name: WeLearnApp
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: ${DB_DRIVER_CLASSNAME}
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+application-init:
+  admin:
+    username: ${ADMIN_USERNAME}
+    password: ${ADMIN_PASSWORD}
+    email: ${ADMIN_EMAIL}
+
+jwt:
+  signer-key:
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
+  duration:
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
+
+message:
+  controller:
+    authentication:
+      logout-success: "Logout successfully"
+    role:
+      delete-success: "Role deleted successfully"
+    learning-session:
+      delete-success: "Learning session deleted successfully"
+
+verification-code:
+  duration: ${VC_DURATION} # in minutes
+  length: ${VC_LENGTH}
+
+mail:
+  api-key: ${MAIL_API_KEY}
+  sender:
+    email: ${MAIL_SENDER_EMAIL}
+    name: "${MAIL_SENDER_NAME}"
