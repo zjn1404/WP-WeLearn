@@ -31,6 +31,14 @@ namespace TutorApp.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// this is a method for validation Input
+        /// </summary>
+        /// <param name="registerRequest">A register request containg username, password, email, firstname,lastname</param>
+        /// <returns>
+        /// Return a string if having a error, otherwise, return null
+        /// </returns>
         public string ValidateInput(RegisterRequest registerRequest)
         {
             if (string.IsNullOrEmpty(registerRequest.Username) ||

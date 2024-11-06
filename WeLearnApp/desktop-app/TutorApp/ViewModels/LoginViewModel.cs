@@ -41,6 +41,15 @@ namespace TutorApp.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// this is a method for validation Input
+        /// </summary>
+        /// <param name="loginRequest">Containing password and username</param>
+        /// <returns>
+        /// Return a string if having a error, otherwise, return null
+        /// 
+        /// </returns>
         public string ValidateInput(LoginRequest loginRequest)
         {
             if (string.IsNullOrEmpty(loginRequest.username) ||
