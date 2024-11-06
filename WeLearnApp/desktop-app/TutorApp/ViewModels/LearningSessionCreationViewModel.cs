@@ -34,6 +34,23 @@ namespace TutorApp.ViewModels
         public List<Grade> Grades { get; set; }
         public List<LearningMethod> LearningMethods { get; set; }
         public List<Subject> Subjects { get; set; }
+
+
+
+
+        /// <summary>
+        /// this is a method for validation Input
+        /// </summary>
+        /// <param name="tuition">a string tuition </param>
+        /// <param name="grade">a string grade</param>
+        /// <param name="learningMethod"> a string learning method</param>
+        /// <param name="startDate">a string start date</param>
+        /// <param name="startTime">a string start time</param>
+        /// <param name="duration">a string duration</param>
+        /// <param name="subject">a string subject</param>
+        /// <returns>
+        /// Return a string if having a error, otherwise, return null
+        /// </returns>
         public string ValidateInput(
           string tuition,
           string grade,
