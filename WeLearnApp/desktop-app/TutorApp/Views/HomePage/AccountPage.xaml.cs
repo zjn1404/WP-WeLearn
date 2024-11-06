@@ -26,10 +26,12 @@ namespace TutorApp.Views.HomePage
         private readonly IUserService _userService;
         private readonly IThirdPartyService _thirdPartyService;
         private StorageFile _selectedAvatarFile;
+        private readonly INavigationService _navigationService;
 
         public AccountPage()
         {
             this.InitializeComponent();
+            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
             _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>();
 
@@ -81,6 +83,7 @@ namespace TutorApp.Views.HomePage
         {
             try
             {
+                LoadingOverlay.Visibility = Visibility.Visible;
                 string _avatarUrl = null;
                 if (_selectedAvatarFile != null)
                 {
@@ -105,6 +108,8 @@ namespace TutorApp.Views.HomePage
                                 $"Location: City: {request.city}, District: {request.district}, Street: {request.street}");
 
                 var response = await _viewModel.UpdateProfile(request);
+
+                LoadingOverlay.Visibility= Visibility.Collapsed;
 
                 if (response.Success)
                 {
@@ -197,6 +202,11 @@ namespace TutorApp.Views.HomePage
             {
                 Console.WriteLine("No file selected.");
             }
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _navigationService.NavigateTo("Dashboard");
         }
     }
 }
