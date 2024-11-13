@@ -26,14 +26,18 @@ jwt:
   signer-key:
     access: ${AC_SIGNER_KEY}
     refresh: ${RF_SIGNER_KEY}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_SIGNER_KEY}
   duration:
     access: ${AC_DURATION}
     refresh: ${RF_DURATION}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_DURATION}
 
 message:
   controller:
     authentication:
       logout-success: "Logout successfully"
+    user:
+      update-unverified-email-success: "Email updated successfully. Please check your email to verify the new email address"
     role:
       delete-success: "Role deleted successfully"
     learning-session:

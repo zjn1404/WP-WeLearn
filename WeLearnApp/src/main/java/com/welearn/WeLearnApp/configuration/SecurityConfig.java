@@ -19,6 +19,7 @@ public class SecurityConfig {
 
     private static final String[] PUBLIC_GET_ENDPOINTS = {
             "/auth/refresh",
+            "/user/unverified-email-invitation",
     };
 
     private static final String[] PUBLIC_POST_ENDPOINTS = {
@@ -26,6 +27,10 @@ public class SecurityConfig {
             "/auth/authenticate",
             "/auth/logout",
             "/verification-code/**",
+    };
+
+    private static final String[] PUBLIC_PATCH_ENDPOINTS = {
+            "/user/unverified-email",
     };
 
     @Bean
@@ -39,6 +44,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests(config -> config.requestMatchers(PUBLIC_GET_ENDPOINTS)
                 .permitAll()
                 .requestMatchers(PUBLIC_POST_ENDPOINTS)
+                .permitAll()
+                .requestMatchers(PUBLIC_PATCH_ENDPOINTS)
                 .permitAll()
                 .anyRequest()
                 .authenticated());
