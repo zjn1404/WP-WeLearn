@@ -77,6 +77,19 @@ namespace TutorApp.ViewModels
             }
         }
 
+        public async Task<UpdateEmailResponse> UpdateEmailByUser(string id, UpdateEmailRequest request)
+        {
+            try
+            {
+                var response = await _userService.UpdateUserById(id, request);
+                return response;
+
+            }catch(Exception ex)
+            {
+                throw new Exception($"Update email by user error : {ex.Message}");
+            }
+        }
+
         public string ValidateInput(RegisterRequest registerRequest)
         {
             if (string.IsNullOrEmpty(registerRequest.Username) ||
@@ -106,7 +119,7 @@ namespace TutorApp.ViewModels
             return null;
         }
 
-        private bool IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             try
             {

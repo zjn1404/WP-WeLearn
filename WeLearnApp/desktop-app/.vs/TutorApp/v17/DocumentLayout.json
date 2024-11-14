@@ -1,12 +1,181 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\pagelogintokenrequire.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\pagelogintokenrequire.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\iuserservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\updateemailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\updateemailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\loginandregisterpage\\pagelogintokenrequire.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\loginandregisterpage\\pagelogintokenrequire.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\lqm55\\desktop\\tutorapp\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\request\\updateemailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\request\\updateemailrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RegisterResponse.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T21:09:33.291Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateEmailRequest.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\UpdateEmailRequest.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Request\\UpdateEmailRequest.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\UpdateEmailRequest.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Request\\UpdateEmailRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:53:19.795Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\UserService.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAgwA0BAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:49:13.227Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UpdateEmailResponse.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:43:17.204Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IUserService.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\IUserService.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAD4v18AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:40:33.266Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserProfileViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:37:36.658Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\UserViewModel.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\UserViewModel.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAMwF4AAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:26:56.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\Login.xaml.cs",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAYwGYAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:27:59.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PageLoginTokenRequire.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml.cs",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml.cs",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAgwKEAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T20:00:34.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PageLoginTokenRequire.xaml",
+              "DocumentMoniker": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml",
+              "ToolTip": "C:\\Users\\lqm55\\Desktop\\TutorApp\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\LoginAndRegisterPage\\PageLoginTokenRequire.xaml",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAqwEAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-11-12T19:56:07.963Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }

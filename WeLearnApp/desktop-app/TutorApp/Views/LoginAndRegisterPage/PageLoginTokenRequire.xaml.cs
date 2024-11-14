@@ -34,6 +34,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
         private readonly IUserService _userService;
         private UserViewModel UserViewModel { get; set; }
         private string _id;
+        private bool isDropdownOpen = false;
 
 
         public PageLoginTokenRequire()
@@ -49,6 +50,19 @@ namespace TutorApp.Views.LoginAndRegisterPage
             _navigationService.GoBack();
         }
 
+
+        private async Task ShowErrorDialogAsync(string message)
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Announcement",
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot
+            };
+
+            await dialog.ShowAsync();
+        }
 
         //nhận dữ liệu từ page khác
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -90,18 +104,6 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
         }
 
-        private async Task ShowErrorDialogAsync(string message)
-        {
-            ContentDialog dialog = new ContentDialog()
-            {
-                Title = "Announcement",
-                Content = message,
-                CloseButtonText = "OK",
-                XamlRoot = this.XamlRoot
-            };
-
-            await dialog.ShowAsync();
-        }
 
         private async void Resend_Click(object sender, RoutedEventArgs e)
         {
@@ -117,5 +119,51 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 await ShowErrorDialogAsync("Resend successfully. Please check your mail");
             }
         }
+
+     
+
+        private void EmailDropdownButton_Click(object sender, RoutedEventArgs e)
+        {
+            isDropdownOpen = !isDropdownOpen;
+
+            if (isDropdownOpen)
+            {
+                EmailDropdownContent.Visibility = Visibility.Visible;
+                ShowDropdownAnimation.Begin();
+            
+            }
+            else
+            {
+                EmailDropdownContent.Visibility = Visibility.Collapsed;
+                EmailDropdownContent.Opacity = 0;
+     
+            }
+        }
+
+        private async void UpdateEmail_Click(object sender, RoutedEventArgs e)
+        {
+            string newEmail = EmailBox.Text.Trim();
+
+            if (String.IsNullOrEmpty(newEmail))
+            {
+                await ShowErrorDialogAsync("Email text box not empty");
+            }
+
+            if (!UserViewModel.IsValidEmail(newEmail))
+            {
+                await ShowErrorDialogAsync("Email is invalid");
+            }
+
+            var response = await UserViewModel.UpdateEmailByUser(_id, new UpdateEmailRequest { email = newEmail });
+    
+            await ShowErrorDialogAsync(response.StatusMessage);
+       
+            
+            isDropdownOpen = false;
+            EmailDropdownContent.Visibility = Visibility.Collapsed;
+            EmailDropdownContent.Opacity = 0;
+        }
+
+      
     }
 }

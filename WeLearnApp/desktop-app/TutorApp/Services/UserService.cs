@@ -262,5 +262,43 @@ namespace TutorApp.Services
                 throw new Exception("Error: " + ex.Message);
             }
         }
+
+        public async Task<UpdateEmailResponse> UpdateUserById(string id,UpdateEmailRequest request)
+        {
+            try
+            {
+                using (var client = _httpService.CreateClient())
+                {
+                    var url = "/api/user/" + id;
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PatchAsync(url, content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return new UpdateEmailResponse
+                        {
+                            isSucess = true,
+                            StatusMessage = "Update email successfully"
+                        };
+                    } else
+                    {
+                        return new UpdateEmailResponse
+                        {
+                            isSucess = false,
+                            StatusMessage = "Update email failed"
+                        };
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }
