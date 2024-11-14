@@ -23,6 +23,7 @@
     <None Remove="Views\HomePage\DashboardForTutor.xaml" />
     <None Remove="Views\HomePage\HomePage.xaml" />
     <None Remove="Views\HomePage\MySessions.xaml" />
+    <None Remove="Views\HomePage\TutorFilterControl.xaml" />
     <None Remove="Views\HomePage\TutorPage.xaml" />
     <None Remove="Views\Login.xaml" />
     <None Remove="Views\LoginAndRegisterPage\LoginForTutor.xaml" />
@@ -85,6 +86,9 @@
     <None Update=".env">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <Page Update="Views\HomePage\TutorFilterControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Update="Views\HomePage\MySessions.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

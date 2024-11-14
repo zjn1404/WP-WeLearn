@@ -77,14 +77,27 @@ namespace TutorApp.ViewModels
             }
         }
 
-        public async Task<UpdateEmailResponse> UpdateEmailByUser(string id, UpdateEmailRequest request)
+        public async Task<UpdateEmailResponse> UpdateEmailByUser(UpdateEmailRequest request)
         {
             try
             {
-                var response = await _userService.UpdateUserById(id, request);
+                var response = await _userService.UpdateUserById(request);
                 return response;
 
             }catch(Exception ex)
+            {
+                throw new Exception($"Update email by user error : {ex.Message}");
+            }
+        }
+
+        public async Task<GetUnverifiedEmailTokenResponse> GetTokenUnverifiedEmail(string id)
+        {
+            try
+            {
+                var response = await _userService.GetUnverifiedEmailToken(id);
+                return response;
+            }
+            catch (Exception ex)
             {
                 throw new Exception($"Update email by user error : {ex.Message}");
             }

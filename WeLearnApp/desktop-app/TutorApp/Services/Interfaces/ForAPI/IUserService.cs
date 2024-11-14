@@ -93,6 +93,14 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <returns>
         /// A `Task` representing the asynchronous operation, with an `UpdateEmailResponse` object.
         /// </returns>
-        Task<UpdateEmailResponse> UpdateUserById(string id,UpdateEmailRequest request);
+        Task<UpdateEmailResponse> UpdateUserById(UpdateEmailRequest request);
+
+
+        /// <summary>
+        /// Asynchronously get token unverifed-email with the provided id .
+        /// </summary>
+        /// <param name="userId">id of user</param>
+        /// <returns> A `Task` representing the asynchronous operation, with an `UpdateEmailResponse` object.</returns>
+        Task<GetUnverifiedEmailTokenResponse> GetUnverifiedEmailToken(string userId);
     }
 }

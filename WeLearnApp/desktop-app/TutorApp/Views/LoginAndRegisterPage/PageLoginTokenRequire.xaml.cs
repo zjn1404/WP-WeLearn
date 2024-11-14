@@ -35,6 +35,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
         private UserViewModel UserViewModel { get; set; }
         private string _id;
         private bool isDropdownOpen = false;
+        private string token;
 
 
         public PageLoginTokenRequire()
@@ -122,7 +123,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
      
 
-        private void EmailDropdownButton_Click(object sender, RoutedEventArgs e)
+        private async void EmailDropdownButton_Click(object sender, RoutedEventArgs e)
         {
             isDropdownOpen = !isDropdownOpen;
 
@@ -130,7 +131,16 @@ namespace TutorApp.Views.LoginAndRegisterPage
             {
                 EmailDropdownContent.Visibility = Visibility.Visible;
                 ShowDropdownAnimation.Begin();
-            
+
+
+                LoadingOverlay.Visibility = Visibility.Visible;
+                var response = await UserViewModel.GetTokenUnverifiedEmail(_id);
+                LoadingOverlay.Visibility = Visibility.Collapsed;
+
+                if (response.isSuccess)
+                {
+                    token = response.token;
+                }
             }
             else
             {
@@ -154,8 +164,11 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 await ShowErrorDialogAsync("Email is invalid");
             }
 
-            var response = await UserViewModel.UpdateEmailByUser(_id, new UpdateEmailRequest { email = newEmail });
-    
+
+            LoadingOverlay.Visibility = Visibility.Visible;
+            var response = await UserViewModel.UpdateEmailByUser(new UpdateEmailRequest { email = newEmail, token = token });
+            LoadingOverlay.Visibility = Visibility.Collapsed;    
+
             await ShowErrorDialogAsync(response.StatusMessage);
        
             
