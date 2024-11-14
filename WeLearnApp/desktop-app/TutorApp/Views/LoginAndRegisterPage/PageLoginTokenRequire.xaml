@@ -9,9 +9,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Storyboard x:Name="ShowDropdownAnimation">
+            <DoubleAnimation
+                Storyboard.TargetName="EmailDropdownContent"
+                Storyboard.TargetProperty="Opacity"
+                From="0" To="1" Duration="0:0:0.2"/>
+        </Storyboard>
+    </Page.Resources>
+
     <Grid>
-
-
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -21,40 +28,101 @@
                     BorderThickness="1"
                     BorderBrush="Black"
                     Background="#FFFFFFFF" >
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <HyperlinkButton Name="GoBack" Click="GoBack_Click">Go Back</HyperlinkButton>
+                <HyperlinkButton Name="GoBack" Click="GoBack_Click"
+                                 Foreground="#0078D4">Go Back</HyperlinkButton>
             </StackPanel>
-            <StackPanel Margin="0,0,0,30" Spacing="10">
-                <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" >EMAIL VERIFICATION</TextBlock>
-                <FontIcon FontSize="80" Glyph="&#xF32A;" HorizontalAlignment="Center" />
+
+            <StackPanel Margin="0,0,0,20" Spacing="10">
+                <TextBlock TextAlignment="Center"
+                           FontSize="20"
+                           FontWeight="SemiBold">EMAIL VERIFICATION</TextBlock>
+                <FontIcon FontSize="80"
+                          Glyph="&#xF32A;"
+                          HorizontalAlignment="Center"
+                          Foreground="#0078D4"/>
             </StackPanel>
-            <StackPanel>
-                <TextBox Name="yourTokenBox" Header="Your Code:" PlaceholderText="Enter your token"/>
+
+            <!-- Email Section -->
+            <StackPanel x:Name="EmailSection" Spacing="8">
+                <TextBlock Text="Email:"
+                           Margin="0,0,0,4"
+                           FontWeight="SemiBold"/>
+
+                <Button x:Name="EmailDropdownButton"
+                        Click="EmailDropdownButton_Click"
+                        HorizontalAlignment="Stretch"
+                        Background="Transparent"
+                        BorderBrush="#E1E1E1"
+                        BorderThickness="1"
+                        Padding="12,8"
+                        CornerRadius="4">
+                    <Grid HorizontalAlignment="Stretch">
+                        <TextBlock Text="Change Email"
+                                   Foreground="#0078D4"/>
+                    </Grid>
+                </Button>
+
+                <StackPanel x:Name="EmailDropdownContent"
+                            Visibility="Collapsed"
+                            Opacity="0"
+                            Spacing="8"
+                            Margin="0,8,0,0">
+                    <TextBox Name="EmailBox"
+                             PlaceholderText="Enter your email"
+                             Height="32"/>
+                    <Button Content="Update Email"
+                            Click="UpdateEmail_Click"
+                            HorizontalAlignment="Right"
+                            Background="#0078D4"
+                            Foreground="White"
+                            Padding="16,8"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Resend" Click="Resend_Click" HorizontalAlignment="Left" Width="100"/>
-                <Button Content="Next" Click="Verify_Click" HorizontalAlignment="Right" Margin="140,0,0,0" Width="100"/>
+
+            <StackPanel Margin="0,16,0,0" Spacing="8">
+                <TextBlock Text="Your Code:"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,4"/>
+                <TextBox Name="yourTokenBox"
+                         PlaceholderText="Enter your token"
+                         Height="32"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal"
+                        Margin="0,20,0,0"
+                        HorizontalAlignment="Stretch">
+                <Button Content="Resend"
+                        Click="Resend_Click"
+                        Width="120"
+                        Background="Transparent"
+                        BorderBrush="#0078D4"
+                        Foreground="#0078D4"/>
+                <Button Content="Next"
+                        Click="Verify_Click"
+                        Width="120"
+                        Margin="100,0,0,0"
+                        Background="#0078D4"
+                        Foreground="White"/>
             </StackPanel>
         </StackPanel>
 
         <!-- Loading Overlay -->
         <Grid x:Name="LoadingOverlay"
               Visibility="Collapsed"
-              Background="#80000000"
-              HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
+              Background="#80000000">
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
                         Background="White"
-                        Padding="20">
+                        Padding="20"
+                        CornerRadius="8">
                 <ProgressRing
                     x:Name="spinner"
                     IsActive="True"
                     Width="50"
-                    Height="50"
-                    Background="LightGray"/>
+                    Height="50"/>
             </StackPanel>
         </Grid>
     </Grid>
-
 </Page>

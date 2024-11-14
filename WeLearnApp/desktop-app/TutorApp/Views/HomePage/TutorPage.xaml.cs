@@ -38,6 +38,25 @@ namespace TutorApp.Views.HomePage
             ViewModel = new TutorViewModel();
             DataContext = this;
         }
+
+      
+
+        private void TutorFilter_FilterChanged(object sender, Controls.FilterChangedEventArgs e)
+        {
+            // Xử lý filter theo tutor
+            var filters = e.Filters;
+
+           
+            if (filters.Location != "All Locations")
+            {
+                // Filter by location
+            }
+
+            if (filters.Subject != "All Subjects")
+            {
+                // Filter by subject
+            }
+        }
     }
 
 }

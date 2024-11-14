@@ -9,6 +9,7 @@ using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Services.Interfaces.ForAPI;
 using System.Diagnostics;
 using System.Net.Http;
+using TutorApp.Models;
 
 namespace TutorApp.Services
 {
@@ -259,6 +260,82 @@ namespace TutorApp.Services
             }
             catch (Exception ex)
             {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<UpdateEmailResponse> UpdateUserById(UpdateEmailRequest request)
+        {
+            try
+            {
+                using (var client = _httpService.CreateClient())
+                {
+                    var url = "/api/user/unverified-email";
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var response = await client.PatchAsync(url, content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return new UpdateEmailResponse
+                        {
+                            isSucess = true,
+                            StatusMessage = "Update email successfully"
+                        };
+                    } else
+                    {
+                        return new UpdateEmailResponse
+                        {
+                            isSucess = false,
+                            StatusMessage = "Update email failed"
+                        };
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<GetUnverifiedEmailTokenResponse> GetUnverifiedEmailToken(string userId)
+        {
+            try
+            {
+                using (var client = _httpService.CreateClient())
+                {
+                    var url = $"/api/user/unverified-email-invitation?userId={userId}";
+                    var response = await client.GetAsync(url);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseGetUnverifiedEmail>(responseContent);
+                    var token = JsonSerializer.Deserialize<Token>(responseData.data.ToString());
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        return new GetUnverifiedEmailTokenResponse
+                        {
+                            isSuccess = true,
+                            message = "Get unverified-email successfully",
+                            token = token.token,
+                        };
+                    } else
+                    {
+                        return new GetUnverifiedEmailTokenResponse
+                        {
+                            isSuccess = false,
+                            message = "Get unverified-email failed",
+                            token =""
+                        };
+                    }
+                }
+
+            }
+            catch (Exception ex) {
                 throw new Exception("Error: " + ex.Message);
             }
         }

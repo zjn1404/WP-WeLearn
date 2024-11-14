@@ -9,7 +9,8 @@
     xmlns:models="using:TutorApp.Models"
     xmlns:helpers="using:TutorApp.Helpers"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    xmlns:controls="using:TutorApp.Controls">
 
     <Page.Resources>
         <Style x:Key="TutorCardStyle" TargetType="Grid">
@@ -20,18 +21,24 @@
         </Style>
     </Page.Resources>
 
+
+
+
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-     
-        <TextBlock Text="Tutors"
-                 Style="{StaticResource TitleLargeTextBlockStyle}"
-                 Margin="0,0,0,20"/>
 
-      
+
+
+        <controls:TutorFilterControl
+            x:Name="TutorFilter"
+            FilterChanged="TutorFilter_FilterChanged"
+            Grid.Row="0"
+            Margin="0,0,0,10"/>
+
         <GridView Grid.Row="1"
                   ItemsSource="{x:Bind ViewModel.tutors, Mode=OneWay}"
                   SelectionMode="Single"
@@ -39,6 +46,7 @@
                   Margin="-4,0">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Tutor">
+
                     <Grid Style="{StaticResource TutorCardStyle}"
                           Width="300"
                           Height="200"
@@ -50,33 +58,33 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                      
+
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="{x:Bind FirstName}"
-                                     Style="{ThemeResource TitleTextBlockStyle}"
-                                     TextTrimming="CharacterEllipsis"/>
+                                       Style="{ThemeResource TitleTextBlockStyle}"
+                                       TextTrimming="CharacterEllipsis"/>
                             <TextBlock Text="{x:Bind LastName}"
-                                     Style="{ThemeResource SubtitleTextBlockStyle}"
-                                     TextTrimming="CharacterEllipsis"
-                                     Opacity="0.8"/>
+                                       Style="{ThemeResource SubtitleTextBlockStyle}"
+                                       TextTrimming="CharacterEllipsis"
+                                       Opacity="0.8"/>
                         </StackPanel>
 
                         <TextBlock Grid.Row="1"
-                                 Text="{x:Bind Id}"
-                                 Style="{ThemeResource CaptionTextBlockStyle}"
-                                 Opacity="0.6"
-                                 Margin="0,8,0,0"/>
+                                   Text="{x:Bind Id}"
+                                   Style="{ThemeResource CaptionTextBlockStyle}"
+                                   Opacity="0.6"
+                                   Margin="0,8,0,0"/>
 
-                        <StackPanel Grid.Row="2" 
-                                  VerticalAlignment="Bottom"
-                                  Spacing="4">
-                          
+                        <StackPanel Grid.Row="2"
+                                    VerticalAlignment="Bottom"
+                                    Spacing="4">
+
                             <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
                                 <Run Text="Birth Date: "/>
                                 <Run Text="{x:Bind DateOfBirth}"/>
                             </TextBlock>
 
-                          
+
                             <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
                                 <Run Text="Location: "/>
                                 <Run Text="{x:Bind LocationId}"/>
@@ -86,12 +94,12 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
 
-           
+
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" 
-                                 HorizontalAlignment="Center"
-                                 MaximumRowsOrColumns="4"/>
+                    <ItemsWrapGrid Orientation="Horizontal"
+                                   HorizontalAlignment="Center"
+                                   MaximumRowsOrColumns="4"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
