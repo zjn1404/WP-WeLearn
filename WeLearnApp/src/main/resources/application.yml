@@ -26,14 +26,22 @@ jwt:
   signer-key:
     access: koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU
     refresh: muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_SIGNER_KEY}
   duration:
     access: 3600
     refresh: 86400
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_DURATION}
 
 message:
   controller:
     authentication:
       logout-success: "Logout successfully"
+    user:
+      update-unverified-email-success: "Email updated successfully. Please check your email to verify the new email address"
     role:
       delete-success: "Role deleted successfully"
     learning-session:
