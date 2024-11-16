@@ -2,7 +2,7 @@ package com.welearn.WeLearnApp.mapper.orderdetail;
 
 import com.welearn.WeLearnApp.dto.response.OrderDetailResponse;
 import com.welearn.WeLearnApp.entity.OrderDetail;
-import com.welearn.WeLearnApp.mapper.learningmethod.LearningSessionMapper;
+import com.welearn.WeLearnApp.mapper.learningsession.LearningSessionMapper;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;

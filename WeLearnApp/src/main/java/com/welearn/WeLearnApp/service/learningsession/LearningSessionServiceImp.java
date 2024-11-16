@@ -7,7 +7,7 @@ import com.welearn.WeLearnApp.entity.*;
 import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
-import com.welearn.WeLearnApp.mapper.learningmethod.LearningSessionMapper;
+import com.welearn.WeLearnApp.mapper.learningsession.LearningSessionMapper;
 import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
 import com.welearn.WeLearnApp.repository.*;
 import lombok.*;

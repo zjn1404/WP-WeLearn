@@ -33,14 +33,16 @@ public class OrderController {
     }
 
     @GetMapping("/my-orders")
-    public ApiResponse<PageResponse<OrderResponse>> getMyOrders(@RequestParam("page") int page, @RequestParam("size") int size) {
+    public ApiResponse<PageResponse<OrderResponse>> getMyOrders(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                                                                @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return ApiResponse.<PageResponse<OrderResponse>>builder()
                 .data(orderService.getMyOrders(page, size))
                 .build();
     }
 
     @GetMapping("/my-coming-learning-sessions")
-    public ApiResponse<PageResponse<LearningSessionResponse>> getMyComingLearningSessions(@RequestParam("page") int page,@RequestParam("size") int size) {
+    public ApiResponse<PageResponse<LearningSessionResponse>> getMyComingLearningSessions(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                                                                                          @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return ApiResponse.<PageResponse<LearningSessionResponse>>builder()
                 .data(orderService.getMyComingLearningSessions(page, size))
                 .build();
