@@ -1,8 +1,10 @@
 package com.welearn.WeLearnApp.service.userprofile;
 
 import com.welearn.WeLearnApp.dto.request.user.UserCreationRequest;
+import com.welearn.WeLearnApp.dto.request.userprofile.TutorFilterRequest;
 import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.LocationResponse;
+import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.Location;
 import com.welearn.WeLearnApp.entity.UserProfile;
@@ -14,10 +16,14 @@ import com.welearn.WeLearnApp.repository.UserProfileRepository;
 import com.welearn.WeLearnApp.service.location.LocationService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -77,6 +83,48 @@ public class UserProfileServiceImpl implements UserProfileService {
                 .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
 
         return buildUserProfileResponse(userProfile);
+    }
+
+    @Override
+    public PageResponse<UserProfileResponse> searchProfiles(String firstName, String lastName, int page, int size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<UserProfile> userProfiles = userProfileRepository.findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(firstName, lastName, pageable);
+
+        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+
+        return PageResponse.<UserProfileResponse>builder()
+                .currentPage(page)
+                .totalPage(userProfiles.getTotalPages())
+                .totalElement(userProfiles.getTotalElements())
+                .elementPerPage(size)
+                .data(userProfileResponses)
+                .build();
+    }
+
+    @Override
+    public PageResponse<UserProfileResponse> filterProfiles(TutorFilterRequest request, int page, int size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<UserProfile> userProfiles = userProfileRepository.findAllByLocationAndGradeAndSubject(
+                request.getCity(),
+                request.getDistrict(),
+                request.getStreet(),
+                request.getGrade(),
+                request.getSubject(),
+                request.getLearningMethod(),
+                request.getTuition()
+                , pageable);
+
+        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+
+        return PageResponse.<UserProfileResponse>builder()
+                .currentPage(page)
+                .totalPage(userProfiles.getTotalPages())
+                .totalElement(userProfiles.getTotalElements())
+                .elementPerPage(size)
+                .data(userProfileResponses)
+                .build();
     }
 
     @Override

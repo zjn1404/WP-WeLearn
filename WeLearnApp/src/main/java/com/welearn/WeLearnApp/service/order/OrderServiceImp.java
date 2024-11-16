@@ -10,7 +10,7 @@ import com.welearn.WeLearnApp.entity.OrderDetail;
 import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
-import com.welearn.WeLearnApp.mapper.learningmethod.LearningSessionMapper;
+import com.welearn.WeLearnApp.mapper.learningsession.LearningSessionMapper;
 import com.welearn.WeLearnApp.mapper.order.OrderMapper;
 import com.welearn.WeLearnApp.repository.LearningSessionRepository;
 import com.welearn.WeLearnApp.repository.OrderRepository;

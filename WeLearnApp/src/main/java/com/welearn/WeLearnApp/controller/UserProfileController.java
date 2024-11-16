@@ -1,7 +1,9 @@
 package com.welearn.WeLearnApp.controller;
 
+import com.welearn.WeLearnApp.dto.request.userprofile.TutorFilterRequest;
 import com.welearn.WeLearnApp.dto.request.userprofile.UserProfileUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.ApiResponse;
+import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.service.userprofile.UserProfileService;
 import jakarta.validation.Valid;
@@ -28,6 +30,27 @@ public class UserProfileController {
     public ApiResponse<UserProfileResponse> getMyProfile() {
         return ApiResponse.<UserProfileResponse>builder()
                 .data(userProfileService.getMyProfile())
+                .build();
+    }
+
+    @GetMapping("/search")
+    public ApiResponse<PageResponse<UserProfileResponse>> searchProfiles(@RequestParam("firstName") String firstName,
+                                                                        @RequestParam("lastName") String lastName,
+                                                                        @RequestParam(value = "page", required = false, defaultValue = "1")  int page,
+                                                                        @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+
+
+        return ApiResponse.<PageResponse<UserProfileResponse>>builder()
+                .data(userProfileService.searchProfiles(firstName, lastName, page, size))
+                .build();
+    }
+
+    @GetMapping("/filter")
+    public ApiResponse<PageResponse<UserProfileResponse>> filterProfiles(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                                                                        @RequestParam(value = "size", required = false, defaultValue = "10") int size,
+                                                                         @RequestBody @Valid TutorFilterRequest request) {
+        return ApiResponse.<PageResponse<UserProfileResponse>>builder()
+                .data(userProfileService.filterProfiles(request, page, size))
                 .build();
     }
 

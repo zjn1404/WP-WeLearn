@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.mapper.learningmethod;
+package com.welearn.WeLearnApp.mapper.learningsession;
 
 import com.welearn.WeLearnApp.dto.request.learningsession.LearningSessionCreationRequest;
 import com.welearn.WeLearnApp.dto.response.LearningSessionResponse;
