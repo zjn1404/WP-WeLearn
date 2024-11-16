@@ -42,6 +42,8 @@ message:
       delete-success: "Role deleted successfully"
     learning-session:
       delete-success: "Learning session deleted successfully"
+    order:
+      cancel-success: "Order canceled successfully"
 
 verification-code:
   duration: ${VC_DURATION} # in minutes
