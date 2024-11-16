@@ -3,7 +3,7 @@ package com.welearn.WeLearnApp.dto.response;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -11,12 +11,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserProfileResponse {
+public class OrderResponse {
     String id;
-    String firstName;
-    String lastName;
-    LocalDate dob;
-    String phoneNumber;
-    LocationResponse location;
-    String avatarUrl;
+    LocalDateTime orderTime;
+    String studentId;
+    UserProfileResponse tutor;
+    OrderDetailResponse orderDetail;
 }

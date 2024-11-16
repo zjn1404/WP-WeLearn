@@ -40,8 +40,12 @@ public class LearningSessionServiceImp implements LearningSessionService {
 
     @Override
     public LearningSessionResponse createLearningSession(LearningSessionCreationRequest request) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
+        if (learningSessionRepository.existsByStartTime(request.getStartTime())) {
+            throw new AppException(ErrorCode.LEARNING_SESSION_ALREADY_EXIST);
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication.getAuthorities().stream()
                 .noneMatch(authority -> authority.getAuthority().equals(ERole.TUTOR.getName()))) {
