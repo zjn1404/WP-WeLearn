@@ -21,9 +21,9 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
     WHERE (:city IS NULL OR u.location.city = :city)
         AND (:district IS NULL OR u.location.district = :district)
         AND (:street IS NULL OR u.location.street = :street)
-        AND (:grade IS NULL OR :grade = l.grade)
-        AND (:subject IS NULL OR :subject = l.subject)
-        AND (:learningMethod IS NULL OR :learningMethod = l.learningMethod)
+        AND (:grade IS NULL OR :grade = l.grade.id)
+        AND (:subject IS NULL OR :subject = l.subject.name)
+        AND (:learningMethod IS NULL OR :learningMethod = l.learningMethod.name)
         AND (:tuition IS NULL OR :tuition = l.tuition)
     """)
     Page<UserProfile> findAllByLocationAndGradeAndSubject(
