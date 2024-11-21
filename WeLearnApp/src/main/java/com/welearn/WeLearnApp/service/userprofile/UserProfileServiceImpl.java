@@ -77,6 +77,23 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
+    public PageResponse<UserProfileResponse> getAllProfiles(int page, int size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<UserProfile> userProfiles = userProfileRepository.findAll(pageable);
+
+        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+
+        return PageResponse.<UserProfileResponse>builder()
+                .currentPage(page)
+                .totalPage(userProfiles.getTotalPages())
+                .totalElement(userProfiles.getTotalElements())
+                .elementPerPage(size)
+                .data(userProfileResponses)
+                .build();
+    }
+
+    @Override
     public UserProfileResponse getMyProfile() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserProfile userProfile = userProfileRepository.findById(Objects.requireNonNull(authentication.getName()))
