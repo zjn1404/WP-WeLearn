@@ -7,17 +7,39 @@
     mc:Ignorable="d">
 
     <UserControl.Resources>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#E6F3FF"/>
+        <SolidColorBrush x:Key="PrimaryBorderColor" Color="#0078D4"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#0078D4"/>
+
         <Style x:Key="FilterComboBoxStyle" TargetType="ComboBox">
             <Setter Property="Width" Value="150"/>
             <Setter Property="Margin" Value="4"/>
             <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
+        </Style>
+
+        <Style x:Key="SearchBoxStyle" TargetType="AutoSuggestBox">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
+        </Style>
+
+        <Style x:Key="ClearButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="4"/>
         </Style>
     </UserControl.Resources>
 
-    <Border Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
-            BorderBrush="{ThemeResource CardStrokeColorDefaultBrush}"
+    <Border Background="{StaticResource PrimaryColor}"
+            BorderBrush="{StaticResource PrimaryBorderColor}"
             BorderThickness="0,0,0,1"
-            Padding="12,8">
+            Padding="12,8"
+            CornerRadius="8">
 
         <StackPanel>
             <AutoSuggestBox PlaceholderText="Search tutor..."
@@ -26,9 +48,10 @@
                             x:Name="SearchBox"
                             Height="32"
                             Margin="0,0,0,8"
+                            Style="{StaticResource SearchBoxStyle}"
                             TextChanged="SearchBox_TextChanged"/>
 
-            <Grid MaxWidth="800">
+            <Grid MaxWidth="900">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -95,6 +118,7 @@
 
                 <Button Grid.Column="5"
                         Content="Clear"
+                        Style="{StaticResource ClearButtonStyle}"
                         Margin="4"
                         Padding="12,4"
                         Height="32"

@@ -18,29 +18,33 @@ using TutorApp.Services.Interfaces;
 using System.Diagnostics;
 using TutorApp.Models;
 using TutorApp.Helpers;
+using TutorApp.Services.Interfaces.ForAPI;
+
+using TutorApp.Services;
+using TutorApp.Models.ForAPI;
+using System.Windows.Input;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace TutorApp.Views.HomePage
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class TutorPage : Page
     {
-        public TutorViewModel ViewModel { get; }
+        public TutorViewModel _viewModel { get; }
+        private readonly ITutorService _tutorService;
 
         public TutorPage()
         {
             this.InitializeComponent();
-            var navigationService = App.Current.Services.GetService<INavigationService>();
-            ViewModel = new TutorViewModel();
-            DataContext = this;
+            _tutorService = ((App)Application.Current).Services.GetRequiredService<ITutorService>();
+            _viewModel = new TutorViewModel(_tutorService);
+            DataContext = _viewModel;
         }
 
-      
+       
 
+  
         private void TutorFilter_FilterChanged(object sender, Controls.FilterChangedEventArgs e)
         {
             // Xử lý filter theo tutor
