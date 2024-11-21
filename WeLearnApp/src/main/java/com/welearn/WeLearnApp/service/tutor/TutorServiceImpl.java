@@ -28,7 +28,7 @@ public class TutorServiceImpl implements TutorService {
 
     @Override
     public TutorResponse getTutorInfoById(String tutorId) {
-        Tutor tutor = tutorRepository.findById(tutorId).orElse(null);
+        Tutor tutor = tutorRepository.findById(tutorId).orElseThrow(() -> new AppException(ErrorCode.TUTOR_NOT_FOUND));
 
         return tutorMapper.toTutorResponse(tutor);
     }

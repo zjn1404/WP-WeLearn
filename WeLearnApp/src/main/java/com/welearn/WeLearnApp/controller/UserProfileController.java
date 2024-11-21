@@ -26,6 +26,14 @@ public class UserProfileController {
                 .build();
     }
 
+    @GetMapping
+    public ApiResponse<PageResponse<UserProfileResponse>> getAllProfiles(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                                                                         @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+        return ApiResponse.<PageResponse<UserProfileResponse>>builder()
+                .data(userProfileService.getAllProfiles(page, size))
+                .build();
+    }
+
     @GetMapping("/me")
     public ApiResponse<UserProfileResponse> getMyProfile() {
         return ApiResponse.<UserProfileResponse>builder()

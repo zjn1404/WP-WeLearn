@@ -35,6 +35,7 @@ public enum ErrorCode {
     LEARNING_SESSION_NOT_FOUND(4007, HttpStatus.NOT_FOUND, "Learning session not found"),
     LEARNING_METHOD_NOT_FOUND(4008, HttpStatus.NOT_FOUND, "Learning method not found"),
     ORDER_NOT_FOUND(4009, HttpStatus.NOT_FOUND, "Order not found"),
+    TUTOR_NOT_FOUND(4010, HttpStatus.NOT_FOUND, "Tutor not found"),
     // Authentication Error 5xxx
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),
