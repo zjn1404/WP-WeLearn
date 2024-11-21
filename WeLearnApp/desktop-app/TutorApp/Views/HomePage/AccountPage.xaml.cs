@@ -31,8 +31,8 @@ namespace TutorApp.Views.HomePage
         public AccountPage()
         {
             this.InitializeComponent();
-            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>();
 
         }

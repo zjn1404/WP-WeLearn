@@ -67,6 +67,9 @@ namespace TutorApp
             services.AddSingleton<ISubjectService, SubjectService>();
             services.AddSingleton<ILearningMethodService, LearningMethodService>();
             services.AddSingleton<ILearningSessionService>(new LearningSessionService(baseUrl));
+            services.AddSingleton<ITutorService>(new TutorService(httpService));
+
+          
 
             // Application services
 

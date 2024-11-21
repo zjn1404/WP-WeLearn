@@ -12,7 +12,7 @@ namespace TutorApp.Models
 
         public string Id { get; set; }
         public string Name { get; set; }
-        public string District { get; set; }
+        public string city { get; set; }
         public string Street { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -8,10 +8,10 @@ namespace TutorApp.Models.ForAPI.Response
 {
     public class PageResponse <T>
     {
-        public int CurrentPage { get; set; }
-        public int TotalPage { get; set; }
-        public int TotalElement {  get; set; }
-        public int ElementPerPage { get; set; }
-        public List<T> Data { get; set; }
+        public int currentPage { get; set; }
+        public int elementPerPage { get; set; }
+        public int totalPage { get; set; }
+        public int totalElement {  get; set; }
+        public List<T> data { get; set; }
     }
 }

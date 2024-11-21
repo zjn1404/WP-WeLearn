@@ -28,11 +28,11 @@ namespace TutorApp.Controls
 
         private void ClearFilters_Click(object sender, RoutedEventArgs e)
         {
-            LocationFilter.SelectedIndex = 0;
-            SubjectFilter.SelectedIndex = 0;
-            GradeFilter.SelectedIndex = 0;
-            TuitionFilter.SelectedIndex = 0;
-            RatingFilter.SelectedIndex = 0;
+            LocationFilter.SelectedIndex = -1;
+            SubjectFilter.SelectedIndex = -1;
+            GradeFilter.SelectedIndex = -1;
+            TuitionFilter.SelectedIndex = -1;
+            RatingFilter.SelectedIndex = -1;
 
             RaiseFilterChangedEvent();
         }

@@ -1,34 +1,120 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using TutorApp.Common;
-using TutorApp.Helpers;
-using TutorApp.MockData;
-using TutorApp.MockData.Tutors;
 using TutorApp.Models;
-using TutorApp.Services.Interfaces;
+using TutorApp.Services.Interfaces.ForAPI;
+using Windows.Storage;
+using TutorApp.Helpers;
 
-namespace TutorApp.ViewModels
+public class TutorViewModel : INotifyPropertyChanged
 {
-    public class TutorViewModel : INotifyPropertyChanged
+    private readonly ITutorService _tutorService;
+
+    public FullObservableCollection<Tutor> Tutors { get; set; }
+    private int _currentPage;
+    private int _perPage;
+    private int _totalPages;
+
+    public int CurrentPage
     {
-        public FullObservableCollection<Tutor> tutors { get; set; }
-
-
-        public TutorViewModel()
+        get { return _currentPage; }
+        set
         {
-            IDAO dao = new MockDao();
-            tutors = new FullObservableCollection<Tutor>(dao.GetTutors());
+            if (_currentPage != value)
+            {
+                _currentPage = value;
+                OnPropertyChanged(nameof(CurrentPage));
+                LoadTutorsCommand.Execute(null);
+            }
+        }
+    }
 
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected virtual void OnPropertyChanged(string propertyName)
+    public int PerPage
+    {
+        get { return _perPage; }
+        set
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (_perPage != value)
+            {
+                _perPage = value;
+                OnPropertyChanged(nameof(PerPage));
+            }
         }
+    }
+
+    public int TotalPages
+    {
+        get { return _totalPages; }
+        set
+        {
+            if (_totalPages != value)
+            {
+                _totalPages = value;
+                OnPropertyChanged(nameof(TotalPages));
+            }
+        }
+    }
+
+    public RelayCommand LoadTutorsCommand => new RelayCommand(async execute => await LoadTutorsAsync(), canExecute => CanLoadTutors());
+    public RelayCommand NextPageCommand => new RelayCommand(execute => increseCurrentPage(), canExecute => CanNavigateNext());
+    public RelayCommand PreviousPageCommand => new RelayCommand(execute => decreaseCurrentPage(), canExecute => CanNavigatePrevious());
+
+    public TutorViewModel(ITutorService tutorService)
+    {
+        Tutors = new FullObservableCollection<Tutor>();
+        _tutorService = tutorService;
+
+        _currentPage = 1;
+        _perPage = 3;
+
+        _ = LoadTutorsAsync();
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    private async Task LoadTutorsAsync()
+    {
+        try
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            var accessToken = localSettings.Values["accessToken"]?.ToString();
+            var response = await _tutorService.getListTutor(CurrentPage, PerPage, accessToken);
+
+
+            Tutors.Clear();
+            foreach (var tutor in response.data)
+            {
+                Tutors.Add(tutor);
+            }
+
+            Console.WriteLine(Tutors);
+
+            TotalPages = response.totalPage;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error loading tutors: {ex.Message}");
+        }
+    }
+
+    private void increseCurrentPage()
+    {
+        CurrentPage++;
+    }
+
+    private void decreaseCurrentPage()
+    {
+        CurrentPage--;
+    }
+
+    private bool CanLoadTutors() => CurrentPage > 0 && PerPage > 0;
+    private bool CanNavigateNext() => CurrentPage < TotalPages; 
+    private bool CanNavigatePrevious() => CurrentPage > 1;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }
