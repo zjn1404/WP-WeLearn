@@ -103,6 +103,13 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
+    public List<UserProfileResponse> getTopThreeTutorsByGradeAndSubject(int grade, String subject) {
+        List<UserProfile> userProfiles = userProfileRepository.findTopThreeTutorsByGradeAndSubject(grade, subject);
+
+        return userProfiles.stream().map(this::buildUserProfileResponse).toList();
+    }
+
+    @Override
     public PageResponse<UserProfileResponse> searchProfiles(String firstName, String lastName, int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 

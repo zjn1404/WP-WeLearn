@@ -25,6 +25,7 @@ public enum ErrorCode {
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),
     LEARNING_SESSION_ALREADY_EXIST(3003, HttpStatus.BAD_REQUEST, "Learning session already exist"),
+    ORDER_ALREADY_EXISTS(3004, HttpStatus.BAD_REQUEST, "Order already exists"),
     //    Not Found Error 4xxx
     USER_NOT_FOUND(4001, HttpStatus.NOT_FOUND, "User not found"),
     ROLE_NOT_FOUND(4002, HttpStatus.NOT_FOUND, "Role not found"),

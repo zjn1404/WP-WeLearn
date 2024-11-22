@@ -21,6 +21,8 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -44,9 +46,13 @@ public class OrderServiceImp implements OrderService {
 
     @Override
     public OrderResponse createOrder(OrderCreationRequest request) {
-        UserProfile student = userProfileRepository.findById(request.getStudentId())
-                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
-        UserProfile tutor = userProfileRepository.findById(request.getTutorId())
+        if (orderRepository.existsByLearningSession(request.getLearningSessionId())) {
+            throw new AppException(ErrorCode.ORDER_ALREADY_EXISTS);
+        }
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        UserProfile student = userProfileRepository.findById(authentication.getName())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
         LearningSession learningSession = learningSessionRepository.findById(request.getLearningSessionId())
                 .orElseThrow(() -> new AppException(ErrorCode.LEARNING_SESSION_NOT_FOUND));
@@ -55,14 +61,10 @@ public class OrderServiceImp implements OrderService {
             throw new AppException(ErrorCode.TUTOR_CANNOT_ORDER);
         }
 
-        if (!learningSession.getTutor().getId().equals(tutor.getId())) {
-            throw new AppException(ErrorCode.TUTOR_NOT_MATCH);
-        }
-
         Order order = Order.builder()
                 .id(UUID.randomUUID().toString())
                 .student(student)
-                .tutor(tutor)
+                .tutor(learningSession.getTutor())
                 .orderTime(LocalDateTime.now())
                 .build();
 

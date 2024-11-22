@@ -1,6 +1,7 @@
 package com.welearn.WeLearnApp.repository;
 
 import com.welearn.WeLearnApp.entity.LearningSession;
+import com.welearn.WeLearnApp.entity.UserProfile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -16,5 +17,5 @@ public interface LearningSessionRepository extends JpaRepository<LearningSession
     @Query(value = "DELETE FROM learning_session WHERE DATE_ADD(start_time, INTERVAL duration MINUTE) < :now", nativeQuery = true)
     void deleteExpiredLearningSessions(@Param("now") LocalDateTime now);
 
-    boolean existsByStartTime(LocalDateTime startTime);
+    boolean existsByStartTimeAndTutor(LocalDateTime startTime, UserProfile tutor);
 }
