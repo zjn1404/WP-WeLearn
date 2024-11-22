@@ -8,12 +8,24 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface UserProfileRepository extends JpaRepository<UserProfile, String> {
 
     Page<UserProfile> findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName, Pageable pageable);
+
+    @Query("""
+    SELECT u FROM UserProfile u
+    JOIN Order o ON u.id = o.tutor.id
+    WHERE o.orderDetail.learningSession.grade.id = :grade 
+    AND o.orderDetail.learningSession.subject.name = :subject
+    GROUP BY u.id
+    ORDER BY COUNT(o.id) DESC
+    LIMIT 3
+    """)
+    List<UserProfile> findTopThreeTutorsByGradeAndSubject(int grade, String subject);
 
     @Query("""
     SELECT u FROM UserProfile u

@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user-profile")
 @RequiredArgsConstructor
@@ -31,6 +33,14 @@ public class UserProfileController {
                                                                          @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
         return ApiResponse.<PageResponse<UserProfileResponse>>builder()
                 .data(userProfileService.getAllProfiles(page, size))
+                .build();
+    }
+
+    @GetMapping("/top-three-tutors")
+    public ApiResponse<List<UserProfileResponse>> getTopThreeTutorsByGradeAndSubject(@RequestParam("grade") int grade,
+                                                                                     @RequestParam("subject") String subject) {
+        return ApiResponse.<List<UserProfileResponse>>builder()
+                .data(userProfileService.getTopThreeTutorsByGradeAndSubject(grade, subject))
                 .build();
     }
 

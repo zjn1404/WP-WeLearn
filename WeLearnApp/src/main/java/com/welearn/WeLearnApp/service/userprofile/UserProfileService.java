@@ -7,6 +7,8 @@ import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.Location;
 
+import java.util.List;
+
 public interface UserProfileService {
     UserProfileResponse updateProfile(String userId, UserProfileUpdateRequest request);
 
@@ -15,6 +17,8 @@ public interface UserProfileService {
     UserProfileResponse getProfileByUserId(String userId);
 
     UserProfileResponse getMyProfile();
+
+    List<UserProfileResponse> getTopThreeTutorsByGradeAndSubject(int grade, String subject);
 
     PageResponse<UserProfileResponse> getAllProfiles(int page, int size);
 

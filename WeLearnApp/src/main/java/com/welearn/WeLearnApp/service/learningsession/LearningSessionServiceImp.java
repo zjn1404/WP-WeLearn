@@ -40,20 +40,19 @@ public class LearningSessionServiceImp implements LearningSessionService {
 
     @Override
     public LearningSessionResponse createLearningSession(LearningSessionCreationRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        if (learningSessionRepository.existsByStartTime(request.getStartTime())) {
+        UserProfile tutor = userProfileRepository.findById(authentication.getName())
+                .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
+
+        if (learningSessionRepository.existsByStartTimeAndTutor(request.getStartTime(), tutor)) {
             throw new AppException(ErrorCode.LEARNING_SESSION_ALREADY_EXIST);
         }
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         if (authentication.getAuthorities().stream()
                 .noneMatch(authority -> authority.getAuthority().equals(ERole.TUTOR.getName()))) {
             throw new AppException(ErrorCode.UNAUTHORIZED);
         }
-
-        UserProfile tutor = userProfileRepository.findById(authentication.getName())
-                .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
 
         Grade grade = gradeRepository.findById(request.getGrade())
                 .orElseThrow(() -> new AppException(ErrorCode.GRADE_NOT_FOUND));
