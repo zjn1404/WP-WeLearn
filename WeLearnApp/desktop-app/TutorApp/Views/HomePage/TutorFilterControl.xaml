@@ -2,128 +2,125 @@
     x:Class="TutorApp.Controls.TutorFilterControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TutorApp.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <UserControl.Resources>
-        <SolidColorBrush x:Key="PrimaryColor" Color="#E6F3FF"/>
-        <SolidColorBrush x:Key="PrimaryBorderColor" Color="#0078D4"/>
-        <SolidColorBrush x:Key="PrimaryTextColor" Color="#0078D4"/>
+    <Grid Padding="8" HorizontalAlignment="Center" RowSpacing="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-        <Style x:Key="FilterComboBoxStyle" TargetType="ComboBox">
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Margin" Value="4"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
-        </Style>
+        <!-- Top Row: Search and Location -->
+        <Grid Grid.Row="0"  HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-        <Style x:Key="SearchBoxStyle" TargetType="AutoSuggestBox">
-            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
-        </Style>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-        <Style x:Key="ClearButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="4"/>
-        </Style>
-    </UserControl.Resources>
 
-    <Border Background="{StaticResource PrimaryColor}"
-            BorderBrush="{StaticResource PrimaryBorderColor}"
-            BorderThickness="0,0,0,1"
-            Padding="12,8"
-            CornerRadius="8">
 
-        <StackPanel>
-            <AutoSuggestBox PlaceholderText="Search tutor..."
-                            QueryIcon="Find"
-                            Width="300"
-                            x:Name="SearchBox"
-                            Height="32"
-                            Margin="0,0,0,8"
-                            Style="{StaticResource SearchBoxStyle}"
-                            TextChanged="SearchBox_TextChanged"/>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <ComboBox
+                    Grid.Column="0"
+                    x:Name="CityCombobox"
+                    PlaceholderText="Province"
+                    Margin="4,0,4,0"
+                    ItemsSource="{Binding Provinces}"
+                    SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                    DisplayMemberPath="name"
+                    SelectedValuePath="code"
+                    SelectionChanged="City_SelectionChanged"
+                    DropDownOpened="City_GetListChanged"/>
 
-            <Grid MaxWidth="900">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+                <ComboBox
+                    Grid.Column="1"
+                    x:Name="DistrictComboBox"
+                    PlaceholderText="District"
+                    Margin="4,0,4,0"
+                    DisplayMemberPath="name"
+                    SelectedValuePath="code"
+                    SelectionChanged="SelectionChanged"
+                    SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <ComboBox Grid.Column="0"
-                          PlaceholderText="Location"
-                          x:Name="LocationFilter"
-                          Style="{StaticResource FilterComboBoxStyle}"
-                          SelectionChanged="Filter_SelectionChanged">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="D1"/>
-                    <ComboBoxItem Content="D2"/>
-                    <ComboBoxItem Content="D3"/>
-                </ComboBox>
+                <TextBox
+                    Grid.Column="2"
+                    Name="Street"
+                    PlaceholderText="Street"
+                    Text="{Binding Street}"
+                    SelectionChanged="SelectionChanged"
+                    Margin="4,0,0,0"/>
+            </StackPanel>
+        </Grid>
 
-                <ComboBox Grid.Column="1"
-                          PlaceholderText="Subject"
-                          x:Name="SubjectFilter"
-                          Style="{StaticResource FilterComboBoxStyle}"
-                          SelectionChanged="Filter_SelectionChanged">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="Math"/>
-                    <ComboBoxItem Content="Physics"/>
-                    <ComboBoxItem Content="Chemistry"/>
-                </ComboBox>
+        <!-- Middle Row: Filters -->
+        <Grid Grid.Row="1" ColumnSpacing="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
 
-                <ComboBox Grid.Column="2"
-                          PlaceholderText="Grade"
-                          x:Name="GradeFilter"
-                          Style="{StaticResource FilterComboBoxStyle}"
-                          SelectionChanged="Filter_SelectionChanged">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="1-5"/>
-                    <ComboBoxItem Content="6-9"/>
-                    <ComboBoxItem Content="10-12"/>
-                </ComboBox>
+            <ComboBox Grid.Column="0"
+                      x:Name="GradeTextBox"
+                      PlaceholderText="Grade"
+                      SelectedValue="{Binding SelectedGrade, Mode=TwoWay}"
+                      SelectedValuePath="Id"
+                      ItemsSource="{Binding Grades}"
+                      DisplayMemberPath="Id"
+                      SelectionChanged="SelectionChanged"
+                      DropDownOpened="Grades_GetListChanged"/>
+            <ComboBox
+                Grid.Column="1"
+                x:Name="SubjectTextBox"
+                PlaceholderText="Subject"
+                SelectedValue="{Binding SelectedSubject, Mode=TwoWay}"
+                SelectedValuePath="Name"
+                ItemsSource="{Binding Subjects}"
+                DisplayMemberPath="Name"
+                SelectionChanged="SelectionChanged"
+                DropDownOpened="Subjects_GetListChanged"
+                >
+            </ComboBox>
 
-                <ComboBox Grid.Column="3"
-                          PlaceholderText="Fee"
-                          x:Name="TuitionFilter"
-                          Style="{StaticResource FilterComboBoxStyle}"
-                          SelectionChanged="Filter_SelectionChanged">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="Under 200k"/>
-                    <ComboBoxItem Content="200k-300k"/>
-                    <ComboBoxItem Content="Higher 300k"/>
-                </ComboBox>
+            <ComboBox
+                Grid.Column="2"
+                x:Name="LearningMethodTextBox"
+                PlaceholderText="Learning Method"
+                SelectedValue="{Binding SelectedLearningMethod, Mode=TwoWay}"
+                SelectedValuePath="Name"
+                ItemsSource="{Binding LearningMethods}"
+                DisplayMemberPath="Name"
+                SelectionChanged="SelectionChanged"
+                DropDownOpened="LearningMethod_GetListChanged">
 
-                <ComboBox Grid.Column="4"
-                          PlaceholderText="Rating"
-                          x:Name="RatingFilter"
-                          Style="{StaticResource FilterComboBoxStyle}"
-                          SelectionChanged="Filter_SelectionChanged">
-                    <ComboBoxItem Content="All"/>
-                    <ComboBoxItem Content="5★"/>
-                    <ComboBoxItem Content="4★+"/>
-                    <ComboBoxItem Content="3★+"/>
-                </ComboBox>
+            </ComboBox>
 
-                <Button Grid.Column="5"
-                        Content="Clear"
-                        Style="{StaticResource ClearButtonStyle}"
-                        Margin="4"
-                        Padding="12,4"
-                        Height="32"
-                        Click="ClearFilters_Click"/>
-            </Grid>
-        </StackPanel>
-    </Border>
+            <TextBox
+                x:Name="TuitionFilter"
+                Grid.Column="3"
+                PlaceholderText="Tuition Range"
+                TextChanged="Filter_TextChanged"
+
+                />
+        </Grid>
+
+        <Button
+            Content="Clear Filters"
+            HorizontalAlignment="Right"
+            Click="ClearFilters_Click"
+            Grid.Row="2" />
+
+    </Grid>
 </UserControl>

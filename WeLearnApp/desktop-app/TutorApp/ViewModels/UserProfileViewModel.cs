@@ -138,7 +138,7 @@ namespace TutorApp.ViewModels
             }
         }
 
-        private async Task LoadProvincesAsync()
+        public async Task LoadProvincesAsync()
         {
             try
             {

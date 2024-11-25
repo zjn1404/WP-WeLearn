@@ -7,6 +7,8 @@ using TutorApp.Models;
 using TutorApp.Services.Interfaces.ForAPI;
 using Windows.Storage;
 using TutorApp.Helpers;
+using TutorApp.Models.ForAPI.Request;
+using TutorApp.Models.ForAPI.Response;
 
 public class TutorViewModel : INotifyPropertyChanged
 {
@@ -96,6 +98,98 @@ public class TutorViewModel : INotifyPropertyChanged
         catch (Exception ex)
         {
             Debug.WriteLine($"Error loading tutors: {ex.Message}");
+        }
+    }
+
+    public async Task GetListTutorByFilters(FilterTutor filters)
+    {
+        try
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            var accessToken = localSettings.Values["accessToken"]?.ToString();
+            var response = await _tutorService.GetListTutorByFilters(CurrentPage,PerPage,filters, accessToken);
+
+
+            if(response != null)
+            {
+                Tutors.Clear();
+                foreach (var tutor in response.data)
+                {
+                    Tutors.Add(tutor);
+                }
+
+                Console.WriteLine(Tutors);
+                TotalPages = response.totalPage;
+            }
+
+     
+
+            
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error loading tutors: {ex.Message}");
+        }
+    }
+
+    public async Task getListTutorBySearch(string name)
+    {
+        try
+        {
+            string[] temp;
+            if (name.Contains(" "))
+            {
+                string[] nameSplit = name.Split(' '); 
+                
+                temp = new string[2];
+                temp[0] = nameSplit[0];
+
+                string value = "";
+
+                for(int i = 1; i < nameSplit.Length; i++)
+                {
+                    value += nameSplit[i]; 
+                }
+
+                temp[1] = value;
+
+            }
+            else
+            {
+                temp = new string[] { name }; 
+            }
+
+            
+            var localSettings = ApplicationData.Current.LocalSettings;
+            var accessToken = localSettings.Values["accessToken"]?.ToString();
+            PageResponse<Tutor> response;
+
+            if (temp.Length > 1)
+            {
+                response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, temp[0], temp[1] , accessToken);
+            } else
+            {
+                response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, temp[0],"", accessToken);
+            }
+
+
+            if (response != null)
+            {
+                Tutors.Clear();
+                foreach (var tutor in response.data)
+                {
+                    Tutors.Add(tutor);
+                }
+
+                Console.WriteLine(Tutors);
+                TotalPages = response.totalPage;
+            }
+
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error load tutors by searching: {ex.Message}");
         }
     }
 
