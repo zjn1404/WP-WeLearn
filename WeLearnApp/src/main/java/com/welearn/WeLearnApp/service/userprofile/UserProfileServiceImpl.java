@@ -17,6 +17,7 @@ import com.welearn.WeLearnApp.repository.UserProfileRepository;
 import com.welearn.WeLearnApp.service.location.LocationService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE, makeFinal = true)
@@ -112,10 +114,10 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public PageResponse<UserProfileResponse> searchProfiles(String firstName, String lastName, int page, int size) {
+    public PageResponse<UserProfileResponse> searchProfiles(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
-        Page<UserProfile> userProfiles = userProfileRepository.findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(firstName, lastName, pageable);
+        Page<UserProfile> userProfiles = userProfileRepository.findAllByNameContainingIgnoreCase(keyword, pageable);
 
         return buildPageUserProfileResponse(userProfiles);
     }
@@ -125,6 +127,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         Pageable pageable = PageRequest.of(page - 1, size);
 
         Page<UserProfile> userProfiles = userProfileRepository.findAllByLocationAndGradeAndSubject(
+                ERole.TUTOR.getName(),
                 request.getCity(),
                 request.getDistrict(),
                 request.getStreet(),
