@@ -9,12 +9,18 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface UserProfileRepository extends JpaRepository<UserProfile, String> {
 
-    Page<UserProfile> findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(String firstName, String lastName, Pageable pageable);
+    @Query("""
+    SELECT u
+    FROM UserProfile u
+    JOIN User us ON u.id = us.id
+    WHERE us.role.name = 'TUTOR'
+    AND LOWER(CONCAT(u.firstName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%'))
+    """)
+    Page<UserProfile> findAllByNameContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
 
     @Query("""
     SELECT u FROM UserProfile u
@@ -29,16 +35,20 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
 
     @Query("""
     SELECT u FROM UserProfile u
+    JOIN User us ON u.id = us.id
     LEFT JOIN LearningSession l ON u.id = l.tutor.id
-    WHERE (:city IS NULL OR u.location.city = :city)
-    AND (:district IS NULL OR u.location.district = :district)
-    AND (:street IS NULL OR u.location.street = :street)
-    AND (:grade IS NULL OR l IS NULL OR :grade = l.grade.id)
-    AND (:subject IS NULL OR l IS NULL OR :subject = l.subject.name)
-    AND (:learningMethod IS NULL OR l IS NULL OR :learningMethod = l.learningMethod.name)
-    AND (:tuition IS NULL OR l IS NULL OR :tuition = l.tuition)
+    LEFT JOIN Location loc ON u.location.id = loc.id
+    WHERE us.role.name = :role
+      AND (:city IS NULL OR loc IS NULL OR :city = loc.city)
+      AND (:district IS NULL OR loc IS NULL OR :district = loc.district)
+      AND (:street IS NULL OR loc IS NULL OR :street = loc.street)
+      AND (:grade IS NULL OR l IS NULL OR :grade = l.grade.id)
+      AND (:subject IS NULL OR l IS NULL OR :subject = l.subject.name)
+      AND (:learningMethod IS NULL OR l IS NULL OR :learningMethod = l.learningMethod.name)
+      AND (:tuition IS NULL OR l IS NULL OR :tuition = l.tuition)
     """)
     Page<UserProfile> findAllByLocationAndGradeAndSubject(
+            @Param("role") String role,
             @Param("city") String city,
             @Param("district") String district,
             @Param("street") String street,

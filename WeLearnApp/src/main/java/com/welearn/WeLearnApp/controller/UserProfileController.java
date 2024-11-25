@@ -60,14 +60,13 @@ public class UserProfileController {
     }
 
     @GetMapping("/search")
-    public ApiResponse<PageResponse<UserProfileResponse>> searchProfiles(@RequestParam("firstName") String firstName,
-                                                                        @RequestParam("lastName") String lastName,
+    public ApiResponse<PageResponse<UserProfileResponse>> searchProfiles(@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
                                                                         @RequestParam(value = "page", required = false, defaultValue = "1")  int page,
                                                                         @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
 
 
         return ApiResponse.<PageResponse<UserProfileResponse>>builder()
-                .data(userProfileService.searchProfiles(firstName, lastName, page, size))
+                .data(userProfileService.searchProfiles(keyword, page, size))
                 .build();
     }
 
