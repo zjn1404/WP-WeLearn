@@ -54,3 +54,19 @@ mail:
   sender:
     email: ${MAIL_SENDER_EMAIL}
     name: ${MAIL_SENDER_NAME}
+
+payment:
+  vnp:
+    vnp-version: ${VNP_VERSION}
+    vnp_command: ${VNP_COMMAND}
+    tmn-code: ${VNP_TMN_CODE}
+    vnp-CurrCode: ${VNP_CURR_CODE}
+    vnp-Locale: ${VNP_LOCALE}
+    vnp-OrderInfo: ${VNP_ORDER_INFO}
+    vnp-OrderType: ${VNP_ORDER_TYPE}
+    vnp-ReturnUrl: ${VNP_RETURN_URL}
+    vnp-ExpireDuration: ${VNP_EXPIRE_DURATION} # in minutes
+    hash-secret: ${VNP_HASH_SECRET}
+    url: ${VNP_URL}
+    vnp-success-code: ${VNP_SUCCESS_CODE}
+    client-payment-success-url: ${CLIENT_PAYMENT_SUCCESS_URL}

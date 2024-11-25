@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.configuration;
+package com.welearn.WeLearnApp.configuration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
