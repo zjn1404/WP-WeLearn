@@ -23,6 +23,7 @@ using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.Services;
 using TutorApp.Models.ForAPI;
 using System.Windows.Input;
+using TutorApp.Models.ForAPI.Request;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -42,24 +43,22 @@ namespace TutorApp.Views.HomePage
             DataContext = _viewModel;
         }
 
-       
 
-  
-        private void TutorFilter_FilterChanged(object sender, Controls.FilterChangedEventArgs e)
+
+        private async void TutorFilter_FilterChanged(object sender, Controls.FilterChangedEventArgs e)
         {
-            // Xử lý filter theo tutor
-            var filters = e.Filters;
-
-           
-            if (filters.Location != "All Locations")
+            var filters = new FilterTutor
             {
-                // Filter by location
-            }
+                city = e.Filters.Province,
+                district = e.Filters.District,
+                street = e.Filters.Street,
+                grade = e.Filters.Grade,
+                subject = e.Filters.Subject,
+                learningMethod = e.Filters.LearningMethod,
+                tuition = e.Filters.TuitionRange,
+            };
 
-            if (filters.Subject != "All Subjects")
-            {
-                // Filter by subject
-            }
+            await _viewModel.GetListTutorByFilters(filters);
         }
     }
 

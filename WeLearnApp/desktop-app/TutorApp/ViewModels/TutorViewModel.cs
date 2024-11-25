@@ -7,6 +7,7 @@ using TutorApp.Models;
 using TutorApp.Services.Interfaces.ForAPI;
 using Windows.Storage;
 using TutorApp.Helpers;
+using TutorApp.Models.ForAPI.Request;
 
 public class TutorViewModel : INotifyPropertyChanged
 {
@@ -92,6 +93,37 @@ public class TutorViewModel : INotifyPropertyChanged
             Console.WriteLine(Tutors);
 
             TotalPages = response.totalPage;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error loading tutors: {ex.Message}");
+        }
+    }
+
+    public async Task GetListTutorByFilters(FilterTutor filters)
+    {
+        try
+        {
+            var localSettings = ApplicationData.Current.LocalSettings;
+            var accessToken = localSettings.Values["accessToken"]?.ToString();
+            var response = await _tutorService.GetListTutorByFilters(CurrentPage,PerPage,filters, accessToken);
+
+
+            if(response != null)
+            {
+                Tutors.Clear();
+                foreach (var tutor in response.data)
+                {
+                    Tutors.Add(tutor);
+                }
+
+                Console.WriteLine(Tutors);
+                TotalPages = response.totalPage;
+            }
+
+     
+
+            
         }
         catch (Exception ex)
         {

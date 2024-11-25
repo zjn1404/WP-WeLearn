@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using TutorApp.Models;
 using TutorApp.Models.ForAPI.JsonResponse;
+using TutorApp.Models.ForAPI.Request;
 using TutorApp.Models.ForAPI.Response;
 using TutorApp.Services.Interfaces.ForAPI;
 
@@ -45,6 +46,51 @@ namespace TutorApp.Services
 
             }
             catch(Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters, string token)
+        {
+            try
+            {
+                using (var httpClient = _httpService.CreateClient(token))
+                {
+                    var url = $"/api/user-profile/filter?page={page}&size={size}";
+
+
+               
+                    var dataFromRequest = JsonSerializer.Serialize(filters);
+
+         
+                    var body = new StringContent(dataFromRequest, Encoding.UTF8, "application/json");
+
+                    var request = new HttpRequestMessage(HttpMethod.Get, url)
+                    {
+                        Content = body
+                    };
+
+                    var response = await httpClient.SendAsync(request);
+
+
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var pageResponse = JsonSerializer.Deserialize<PageResponse<Tutor>>(responseData.data.ToString());
+                        return pageResponse;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+            }
+            catch (Exception ex)
             {
                 throw new Exception("Error: " + ex.Message);
             }
