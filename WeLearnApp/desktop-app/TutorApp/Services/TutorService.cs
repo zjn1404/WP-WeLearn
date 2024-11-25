@@ -111,7 +111,7 @@ namespace TutorApp.Services
             {
                 using (var httpClient = _httpService.CreateClient(token))
                 {
-                    var url = $"/api/user-profile/filter?page={page}&size={size}&firstName={firstName}&lastName={lastname}";
+                    var url = $"/api/user-profile/search?page={page}&size={size}&firstName={firstName}&lastName={lastname}";
 
 
                     var body = new StringContent("{}", Encoding.UTF8, "application/json");
