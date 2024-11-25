@@ -31,12 +31,12 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
     SELECT u FROM UserProfile u
     LEFT JOIN LearningSession l ON u.id = l.tutor.id
     WHERE (:city IS NULL OR u.location.city = :city)
-        AND (:district IS NULL OR u.location.district = :district)
-        AND (:street IS NULL OR u.location.street = :street)
-        AND (:grade IS NULL OR :grade = l.grade.id)
-        AND (:subject IS NULL OR :subject = l.subject.name)
-        AND (:learningMethod IS NULL OR :learningMethod = l.learningMethod.name)
-        AND (:tuition IS NULL OR :tuition = l.tuition)
+    AND (:district IS NULL OR u.location.district = :district)
+    AND (:street IS NULL OR u.location.street = :street)
+    AND (:grade IS NULL OR l IS NULL OR :grade = l.grade.id)
+    AND (:subject IS NULL OR l IS NULL OR :subject = l.subject.name)
+    AND (:learningMethod IS NULL OR l IS NULL OR :learningMethod = l.learningMethod.name)
+    AND (:tuition IS NULL OR l IS NULL OR :tuition = l.tuition)
     """)
     Page<UserProfile> findAllByLocationAndGradeAndSubject(
             @Param("city") String city,
@@ -48,4 +48,7 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
             @Param("tuition") Double tuition,
             Pageable pageable
     );
+
+    @Query("SELECT u FROM UserProfile u JOIN User us ON u.id = us.id WHERE us.role.name = :role")
+    Page<UserProfile> findAllByRole(String role, Pageable pageable);
 }

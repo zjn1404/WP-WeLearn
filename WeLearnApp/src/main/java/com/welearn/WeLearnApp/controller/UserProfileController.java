@@ -36,6 +36,14 @@ public class UserProfileController {
                 .build();
     }
 
+    @GetMapping("/tutors")
+    public ApiResponse<PageResponse<UserProfileResponse>> getAllTutorProfiles(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                                                                         @RequestParam(value = "size", required = false, defaultValue = "10") int size) {
+        return ApiResponse.<PageResponse<UserProfileResponse>>builder()
+                .data(userProfileService.getAllTutorProfiles(page, size))
+                .build();
+    }
+
     @GetMapping("/top-three-tutors")
     public ApiResponse<List<UserProfileResponse>> getTopThreeTutorsByGradeAndSubject(@RequestParam("grade") int grade,
                                                                                      @RequestParam("subject") String subject) {
