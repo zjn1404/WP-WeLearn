@@ -22,6 +22,8 @@ public interface UserProfileService {
 
     PageResponse<UserProfileResponse> getAllProfiles(int page, int size);
 
+    PageResponse<UserProfileResponse> getAllTutorProfiles(int page, int size);
+
     PageResponse<UserProfileResponse> searchProfiles(String firstName, String lastName, int page, int size);
 
     PageResponse<UserProfileResponse> filterProfiles(TutorFilterRequest request, int page, int size);

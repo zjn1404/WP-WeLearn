@@ -8,6 +8,7 @@ import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.Location;
 import com.welearn.WeLearnApp.entity.UserProfile;
+import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
 import com.welearn.WeLearnApp.mapper.location.LocationMapper;
@@ -82,15 +83,16 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         Page<UserProfile> userProfiles = userProfileRepository.findAll(pageable);
 
-        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+        return buildPageUserProfileResponse(userProfiles);
+    }
 
-        return PageResponse.<UserProfileResponse>builder()
-                .currentPage(page)
-                .totalPage(userProfiles.getTotalPages())
-                .totalElement(userProfiles.getTotalElements())
-                .elementPerPage(size)
-                .data(userProfileResponses)
-                .build();
+    @Override
+    public PageResponse<UserProfileResponse> getAllTutorProfiles(int page, int size) {
+        Pageable pageable = PageRequest.of(page - 1, size);
+
+        Page<UserProfile> userProfiles = userProfileRepository.findAllByRole(ERole.TUTOR.getName(), pageable);
+
+        return buildPageUserProfileResponse(userProfiles);
     }
 
     @Override
@@ -115,15 +117,7 @@ public class UserProfileServiceImpl implements UserProfileService {
 
         Page<UserProfile> userProfiles = userProfileRepository.findAllByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCase(firstName, lastName, pageable);
 
-        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
-
-        return PageResponse.<UserProfileResponse>builder()
-                .currentPage(page)
-                .totalPage(userProfiles.getTotalPages())
-                .totalElement(userProfiles.getTotalElements())
-                .elementPerPage(size)
-                .data(userProfileResponses)
-                .build();
+        return buildPageUserProfileResponse(userProfiles);
     }
 
     @Override
@@ -140,15 +134,7 @@ public class UserProfileServiceImpl implements UserProfileService {
                 request.getTuition()
                 , pageable);
 
-        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
-
-        return PageResponse.<UserProfileResponse>builder()
-                .currentPage(page)
-                .totalPage(userProfiles.getTotalPages())
-                .totalElement(userProfiles.getTotalElements())
-                .elementPerPage(size)
-                .data(userProfileResponses)
-                .build();
+        return buildPageUserProfileResponse(userProfiles);
     }
 
     @Override
@@ -167,5 +153,17 @@ public class UserProfileServiceImpl implements UserProfileService {
         }
 
         return userProfileResponse;
+    }
+
+    private PageResponse<UserProfileResponse> buildPageUserProfileResponse(Page<UserProfile> userProfiles) {
+        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+
+        return PageResponse.<UserProfileResponse>builder()
+                .currentPage(userProfiles.getNumber() + 1)
+                .totalPage(userProfiles.getTotalPages())
+                .totalElement(userProfiles.getTotalElements())
+                .elementPerPage(userProfiles.getSize())
+                .data(userProfileResponses)
+                .build();
     }
 }
