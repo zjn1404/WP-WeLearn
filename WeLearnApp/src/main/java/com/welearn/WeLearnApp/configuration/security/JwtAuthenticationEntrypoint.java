@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.configuration;
+package com.welearn.WeLearnApp.configuration.security;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

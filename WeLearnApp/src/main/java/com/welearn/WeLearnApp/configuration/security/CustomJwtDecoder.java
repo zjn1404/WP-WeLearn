@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.configuration;
+package com.welearn.WeLearnApp.configuration.security;
 
 import com.welearn.WeLearnApp.dto.request.authentication.IntrospectRequest;
 import com.welearn.WeLearnApp.dto.response.IntrospectResponse;
