@@ -60,6 +60,16 @@ namespace TutorApp.Views.HomePage
 
             await _viewModel.GetListTutorByFilters(filters);
         }
+
+        private async void SearchTutor_Click(object sender, RoutedEventArgs e)
+        {
+            string value = SearchTutorBox.Text;
+            if (!string.IsNullOrEmpty(value))
+            {
+                 await _viewModel.getListTutorBySearch(value);
+
+            }
+        }
     }
 
 }

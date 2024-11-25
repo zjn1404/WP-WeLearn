@@ -28,9 +28,18 @@ namespace TutorApp.Services
             {
                 using (var httpClient = _httpService.CreateClient(token))
                 {
-                    var url = $"/api/user-profile?page={page}&size={size}";
-                    var response = await httpClient.GetAsync(url);
+                    var url = $"/api/user-profile/filter?page={page}&size={size}";
+
+                    var body = new StringContent("{}", Encoding.UTF8, "application/json");
+
+                    var request = new HttpRequestMessage(HttpMethod.Get, url)
+                    {
+                        Content = body
+                    };
+
+                    var response = await httpClient.SendAsync(request);
                     var responseContent = await response.Content.ReadAsStringAsync();
+
                     var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
                    
 
@@ -92,6 +101,46 @@ namespace TutorApp.Services
             }
             catch (Exception ex)
             {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token)
+        {
+            try
+            {
+                using (var httpClient = _httpService.CreateClient(token))
+                {
+                    var url = $"/api/user-profile/filter?page={page}&size={size}&firstName={firstName}&lastName={lastname}";
+
+
+                    var body = new StringContent("{}", Encoding.UTF8, "application/json");
+
+                    var request = new HttpRequestMessage(HttpMethod.Get, url)
+                    {
+                        Content = body
+                    };
+
+                    var response = await httpClient.SendAsync(request);
+
+
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var pageResponse = JsonSerializer.Deserialize<PageResponse<Tutor>>(responseData.data.ToString());
+                        return pageResponse;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                
+            }
+            }
+            catch (Exception ex) {
                 throw new Exception("Error: " + ex.Message);
             }
         }

@@ -37,17 +37,31 @@
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox
+                PlaceholderText="Search Tutor:"
+                Width="300"
+                Name="SearchTutorBox"
+                />
+            <Button Content="Search" Click="SearchTutor_Click"/>
+        </StackPanel>
+
+
         <controls:TutorFilterControl
             x:Name="TutorFilter"
             FilterChanged="TutorFilter_FilterChanged"
-            Grid.Row="0"
-            Margin="0,0,0,10"/>
+            Grid.Row="1"
+            />
 
-        <GridView Grid.Row="1"
+
+
+
+        <GridView Grid.Row="2"
                   ItemsSource="{x:Bind _viewModel.Tutors, Mode=OneWay}"
                   SelectionMode="Single"
                   IsItemClickEnabled="True"
@@ -123,7 +137,7 @@
         </GridView>
 
 
-        <StackPanel Grid.Row="2"
+        <StackPanel Grid.Row="3"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
                     Spacing="8"

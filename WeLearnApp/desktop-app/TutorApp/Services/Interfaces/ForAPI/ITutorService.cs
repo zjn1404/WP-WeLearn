@@ -54,5 +54,20 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <exception cref="UnauthorizedException">Thrown when the authentication token is invalid or expired</exception>
         /// <exception cref="ArgumentException">Thrown when page or size parameters are invalid</exception>
         public Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters, string token);
+
+
+
+        /// <summary>
+        /// Retrieves a paginated list of tutors based on search criteria.
+        /// </summary>
+        /// <param name="page">The page number to retrieve.</param>
+        /// <param name="size">The number of items per page.</param>
+        /// <param name="firstName">The first name of the tutor to search for.</param>
+        /// <param name="lastname">The last name of the tutor to search for.</param>
+        /// <param name="token">The authentication token for API access.</param>
+        /// <returns>A paginated list of tutors matching the search criteria.</returns>
+        public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token);
+
+
     }
 }

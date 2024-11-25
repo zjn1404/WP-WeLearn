@@ -86,7 +86,7 @@ namespace TutorApp.Controls
             SubjectTextBox.SelectedValue = null;
             LearningMethodTextBox.SelectedValue = null;
             TuitionFilter.Text = string.Empty;
-            SearchBox.Text = string.Empty;
+           
 
 
             CityCombobox.SelectedValue = null;
@@ -127,7 +127,6 @@ namespace TutorApp.Controls
                     LearningMethod = (LearningMethodTextBox.SelectedItem as LearningMethod)?.Name,
                     TuitionRange = string.IsNullOrWhiteSpace(TuitionFilter.Text) ? (int?)null :
                    (int.TryParse(TuitionFilter.Text, out var tuition) ? tuition : (int?)null),
-                    SearchText = string.IsNullOrWhiteSpace(SearchBox.Text) ? null : SearchBox.Text
                 };
 
                 Console.WriteLine(LearningMethodTextBox.SelectedItem as string);
@@ -223,11 +222,11 @@ namespace TutorApp.Controls
                 isOpenSubjects = false;
             }
         }
-        private void SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void SelectionChanged(object sender, RoutedEventArgs e)
         {
             RaiseFilterChangedEvent();
         }
-    }
+   }
 
     public class FilterChangedEventArgs : EventArgs
     {
