@@ -36,12 +36,4 @@ public class Tutor{
     @MapsId("id")
     @JoinColumn(name = "id")
     User user;
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REMOVE,
-            CascadeType.REFRESH
-    })
-    List<LearningSession> learningSessions;
 }
