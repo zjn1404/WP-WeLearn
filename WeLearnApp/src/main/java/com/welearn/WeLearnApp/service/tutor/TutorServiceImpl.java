@@ -49,11 +49,11 @@ public class TutorServiceImpl implements TutorService {
         if (tutor == null) {
             tutor = tutorMapper.toTutor(request);
             tutor.setId(tutorId);
-            tutorRepository.save(tutor);
         } else {
             tutorMapper.updateTutor(tutor, request);
         }
 
+        tutorRepository.save(tutor);
         return tutorMapper.toTutorResponse(tutor);
 
     }
