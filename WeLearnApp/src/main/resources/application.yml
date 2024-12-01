@@ -1,16 +1,16 @@
 server:
-  port: 8080
+  port: ${SERVER_PORT}
   servlet:
-    context-path: /api
+    context-path: ${CONTEXT_PATH}
 
 spring:
   application:
     name: WeLearnApp
   datasource:
-    url: jdbc:mysql://localhost:3306/welearn_db
-    username: root
-    password: root
-    driverClassName: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driverClassName: ${DB_DRIVER_CLASSNAME}
   jpa:
     hibernate:
       ddl-auto: none
@@ -18,19 +18,19 @@ spring:
 
 application-init:
   admin:
-    username: admin
-    password: Admin123
-    email: admin@gmail.com
+    username: ${ADMIN_USERNAME}
+    password: ${ADMIN_PASSWORD}
+    email: ${ADMIN_EMAIL}
 
 jwt:
   signer-key:
-    access: koQXz++/f0WDkcQ008UNOxjNWehl9aYjsNZgyefXWtP5XRdWmBwOYMXZeGaOACqU
-    refresh: muJHr4ajU1eRCTJQpfP5+hkwx5WC6t7GHr7bVUcyWP8bq6Dcl8AuXrv4+ZqhKzQq
-    update-unverified-email: GtE6qZzlu8Y+xioGfjdP9QsavHMJrNh+tFczKHHF4M/6fFDe6fEuGIXrr5RETqaX
+    access: ${AC_SIGNER_KEY}
+    refresh: ${RF_SIGNER_KEY}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_SIGNER_KEY}
   duration:
-    access: 3600
-    refresh: 86400
-    update-unverified-email: 300
+    access: ${AC_DURATION}
+    refresh: ${RF_DURATION}
+    update-unverified-email: ${UPDATE_UNVERIFIED_EMAIL_DURATION}
 
 message:
   controller:
@@ -46,27 +46,27 @@ message:
       cancel-success: "Order canceled successfully"
 
 verification-code:
-  duration: 5 # in minutes
-  length: 6
+  duration: ${VC_DURATION} # in minutes
+  length: ${VC_LENGTH}
 
 mail:
-  api-key: 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
+  api-key: ${MAIL_API_KEY}
   sender:
-    email: nqt460@gmail.com
-    name: WeLearn Team
+    email: ${MAIL_SENDER_EMAIL}
+    name: ${MAIL_SENDER_NAME}
 
 payment:
   vnp:
-    vnp-version: 2.1.0
-    vnp_command: pay
-    tmn-code: W9N2XAIQ
-    vnp-CurrCode: VND
-    vnp-Locale: vn
-    vnp-OrderInfo: "Thanh toan hoc phi"
-    vnp-OrderType: other
-    vnp-ReturnUrl: http://localhost:8080/api/payment/vnp/callback
-    vnp-ExpireDuration: 5 # in minutes
-    hash-secret: PVBEXEXRS7C3DPG3DRW1F3V2IR7UOAVG
-    url: https://sandbox.vnpayment.vn/paymentv2/vpcpay.html
-    vnp-success-code: "00"
-    client-payment-success-url: http://localhost:3000/payment-success
+    vnp-version: ${VNP_VERSION}
+    vnp_command: ${VNP_COMMAND}
+    tmn-code: ${VNP_TMN_CODE}
+    vnp-CurrCode: ${VNP_CURR_CODE}
+    vnp-Locale: ${VNP_LOCALE}
+    vnp-OrderInfo: ${VNP_ORDER_INFO}
+    vnp-OrderType: ${VNP_ORDER_TYPE}
+    vnp-ReturnUrl: ${VNP_RETURN_URL}
+    vnp-ExpireDuration: ${VNP_EXPIRE_DURATION} # in minutes
+    hash-secret: ${VNP_HASH_SECRET}
+    url: ${VNP_URL}
+    vnp-success-code: ${VNP_SUCCESS_CODE}
+    client-payment-success-url: ${CLIENT_PAYMENT_SUCCESS_URL}
