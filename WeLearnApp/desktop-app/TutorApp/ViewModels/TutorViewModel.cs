@@ -136,42 +136,10 @@ public class TutorViewModel : INotifyPropertyChanged
     {
         try
         {
-            string[] temp;
-            if (name.Contains(" "))
-            {
-                string[] nameSplit = name.Split(' '); 
-                
-                temp = new string[2];
-                temp[0] = nameSplit[0];
-
-                string value = "";
-
-                for(int i = 1; i < nameSplit.Length; i++)
-                {
-                    value += nameSplit[i]; 
-                }
-
-                temp[1] = value;
-
-            }
-            else
-            {
-                temp = new string[] { name }; 
-            }
-
             
             var localSettings = ApplicationData.Current.LocalSettings;
             var accessToken = localSettings.Values["accessToken"]?.ToString();
-            PageResponse<Tutor> response;
-
-            if (temp.Length > 1)
-            {
-                response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, temp[0], temp[1] , accessToken);
-            } else
-            {
-                response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, temp[0],"", accessToken);
-            }
-
+            PageResponse<Tutor> response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, name, accessToken); 
 
             if (response != null)
             {

@@ -105,13 +105,13 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token)
+        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token)
         {
             try
             {
                 using (var httpClient = _httpService.CreateClient(token))
                 {
-                    var url = $"/api/user-profile/search?page={page}&size={size}&firstName={firstName}&lastName={lastname}";
+                    var url = $"/api/user-profile/search?page={page}&size={size}&keyword={name}";
 
 
                     var body = new StringContent("{}", Encoding.UTF8, "application/json");
