@@ -69,5 +69,15 @@ namespace TutorApp.Services.Interfaces.ForAPI
         public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token);
 
 
+
+        /// <summary>
+        /// Retrieves a deatail info of tutors
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns>Retrieves a deatail info of tutors</returns>
+        public Task<TutorDetail> GetDetailTutorService(string id, string token);
+
+
     }
 }

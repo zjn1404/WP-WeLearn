@@ -22,6 +22,39 @@ namespace TutorApp.Services
         {
             _httpService = httpService;
         }
+
+        public async Task<TutorDetail> GetDetailTutorService(string id, string token)
+        {
+            try
+            {
+                using (var httpClient = _httpService.CreateClient(token))
+                {
+                    var url = $"/api/tutor/{id}";
+
+                    var response = await httpClient.GetAsync(url);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var data = JsonSerializer.Deserialize<TutorDetail>(responseData.data.ToString());
+                        return data;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public async Task<PageResponse<Tutor>> getListTutor(int page, int size,string token)
         {
             try

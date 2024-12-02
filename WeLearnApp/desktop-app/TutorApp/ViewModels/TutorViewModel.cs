@@ -19,6 +19,17 @@ public class TutorViewModel : INotifyPropertyChanged
     private int _perPage;
     private int _totalPages;
 
+    private Tutor _tutor;
+    public Tutor Tutor
+    {
+        get => _tutor;
+        set
+        {
+            _tutor = value;
+            OnPropertyChanged(nameof(Tutor));
+        }
+    }
+
     public int CurrentPage
     {
         get { return _currentPage; }
@@ -91,7 +102,6 @@ public class TutorViewModel : INotifyPropertyChanged
                 Tutors.Add(tutor);
             }
 
-            Console.WriteLine(Tutors);
 
             TotalPages = response.totalPage;
         }
@@ -118,13 +128,9 @@ public class TutorViewModel : INotifyPropertyChanged
                     Tutors.Add(tutor);
                 }
 
-                Console.WriteLine(Tutors);
+               
                 TotalPages = response.totalPage;
             }
-
-     
-
-            
         }
         catch (Exception ex)
         {
@@ -149,7 +155,7 @@ public class TutorViewModel : INotifyPropertyChanged
                     Tutors.Add(tutor);
                 }
 
-                Console.WriteLine(Tutors);
+              
                 TotalPages = response.totalPage;
             }
 
@@ -159,6 +165,25 @@ public class TutorViewModel : INotifyPropertyChanged
         {
             Debug.WriteLine($"Error load tutors by searching: {ex.Message}");
         }
+    }
+
+
+    public async Task<TutorDetail> GetDetailTutor(string id)
+    {
+        try
+        {
+
+            var localSettings = ApplicationData.Current.LocalSettings;
+            var accessToken = localSettings.Values["accessToken"]?.ToString();
+            var response = await _tutorService.GetDetailTutorService(id, accessToken);
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Error load tutors by searching: {ex.Message}");
+        }
+
+        return null;
     }
 
     private void increseCurrentPage()
