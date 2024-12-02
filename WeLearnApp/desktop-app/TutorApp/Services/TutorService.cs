@@ -22,6 +22,39 @@ namespace TutorApp.Services
         {
             _httpService = httpService;
         }
+
+        public async Task<TutorDetail> GetDetailTutorService(string id, string token)
+        {
+            try
+            {
+                using (var httpClient = _httpService.CreateClient(token))
+                {
+                    var url = $"/api/tutor/{id}";
+
+                    var response = await httpClient.GetAsync(url);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var data = JsonSerializer.Deserialize<TutorDetail>(responseData.data.ToString());
+                        return data;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
         public async Task<PageResponse<Tutor>> getListTutor(int page, int size,string token)
         {
             try
@@ -105,13 +138,13 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token)
+        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token)
         {
             try
             {
                 using (var httpClient = _httpService.CreateClient(token))
                 {
-                    var url = $"/api/user-profile/search?page={page}&size={size}&firstName={firstName}&lastName={lastname}";
+                    var url = $"/api/user-profile/search?page={page}&size={size}&keyword={name}";
 
 
                     var body = new StringContent("{}", Encoding.UTF8, "application/json");

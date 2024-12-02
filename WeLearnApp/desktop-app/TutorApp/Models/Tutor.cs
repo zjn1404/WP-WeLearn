@@ -19,6 +19,9 @@ namespace TutorApp.Models
 
         public string avatarUrl { get; set; }
 
+        public string? degree { get; set; }
+        public string? description { get; set; }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
       
