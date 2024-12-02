@@ -72,6 +72,13 @@ namespace TutorApp.Views.HomePage
         }
 
 
+        private void SubmitReviewButton_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+
+
 
     }
 }
