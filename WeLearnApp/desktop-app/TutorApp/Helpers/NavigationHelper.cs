@@ -40,6 +40,7 @@ namespace TutorApp.Helpers
 
 
             // Add more pages as needed
+            navigationService.RegisterPage("DetailTutor", typeof(DetailTutor));
         }
     }
 }

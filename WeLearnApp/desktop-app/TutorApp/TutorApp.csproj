@@ -21,6 +21,7 @@
     <None Remove="Views\HomePage\CreateSessionPage.xaml" />
     <None Remove="Views\HomePage\Dashboard.xaml" />
     <None Remove="Views\HomePage\DashboardForTutor.xaml" />
+    <None Remove="Views\HomePage\DetailTutor.xaml" />
     <None Remove="Views\HomePage\HomePage.xaml" />
     <None Remove="Views\HomePage\MySessions.xaml" />
     <None Remove="Views\HomePage\SessionPage.xaml" />
@@ -88,6 +89,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Page Update="Views\HomePage\SessionPage.xaml">
+    <Page Update="Views\HomePage\DetailTutor.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Update="Views\HomePage\TutorFilterControl.xaml">
