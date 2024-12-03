@@ -102,5 +102,6 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <param name="userId">id of user</param>
         /// <returns> A `Task` representing the asynchronous operation, with an `UpdateEmailResponse` object.</returns>
         Task<GetUnverifiedEmailTokenResponse> GetUnverifiedEmailToken(string userId);
+
     }
 }

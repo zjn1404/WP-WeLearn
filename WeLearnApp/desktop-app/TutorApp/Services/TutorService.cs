@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -184,5 +186,65 @@ namespace TutorApp.Services
         }
 
 
+        public async Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string token, string id)
+        {
+            try
+            {
+                using (var client = _httpService.CreateClient(token))
+                {
+
+                    var response = await client.GetAsync($"/api/tutor/${id}");
+                    var responseContent = await response.Content.ReadAsStringAsync();
+
+                    Debug.WriteLine("responseContent", responseContent);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var tutorSpecificFields = JsonSerializer.Deserialize<JsonResponseTutorSpecificFields>(responseContent);
+                        return new TutorSpecificFieldsResponse
+                        {
+                            Degree = tutorSpecificFields.data.degree,
+                            Description = tutorSpecificFields.data.description,
+
+                        };
+                    }
+                    throw new Exception($"Failed to retrieve profile: {responseContent}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
+
+        public async Task<UpdateProfileResponse> UpdateTutorSpecificFields(string token, UpdateTutorSpecificFieldsRequest request)
+        {
+            try
+            {
+                using (var client = _httpService.CreateClient(token))
+                {
+                    var json = JsonSerializer.Serialize(request);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                    var response = await client.PatchAsync("/api/tutor", content);
+                    var responseContent = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<JsonResponseVerify>(responseContent);
+
+                    Debug.WriteLine("Update Tutor Profile", responseContent);
+
+                    return new UpdateProfileResponse
+                    {
+                        Success = response.IsSuccessStatusCode,
+                        Message = response.IsSuccessStatusCode ?
+                            "Update successfully!" :
+                            $"Update failed: {responseContent}"
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error: " + ex.Message);
+            }
+        }
     }
 }

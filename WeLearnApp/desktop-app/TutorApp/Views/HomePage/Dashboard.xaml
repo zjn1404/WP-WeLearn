@@ -127,6 +127,7 @@
 
 
             <NavigationView.FooterMenuItems>
+                <NavigationViewItem Content="Session" Tag="SessionPage" Icon="Shop" />
                 <NavigationViewItem Content="Tutor" Tag="TutorPage" Icon="OtherUser" />
                 <NavigationViewItem Content="Account" Tag="AccountPage" Icon="Contact" />
                 <NavigationViewItem Content="Help" Tag="HelpPage" Icon="Help" />

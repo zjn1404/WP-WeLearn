@@ -79,5 +79,10 @@ namespace TutorApp.Services.Interfaces.ForAPI
         public Task<TutorDetail> GetDetailTutorService(string id, string token);
 
 
+
+        public Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string token, string id);
+
+        public Task<UpdateProfileResponse> UpdateTutorSpecificFields(string token, UpdateTutorSpecificFieldsRequest request);
+
     }
 }
