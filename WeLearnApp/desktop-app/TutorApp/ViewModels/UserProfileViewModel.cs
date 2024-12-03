@@ -10,16 +10,21 @@ using TutorApp.Models;
 using TutorApp.Services;
 using System.Collections.Generic;
 using System.Linq;
+using TutorApp.Helpers;
 
 namespace TutorApp.ViewModels
 {
     public class UserProfileViewModel : INotifyPropertyChanged
     {
         private readonly IUserService _userService;
+        private readonly ITutorService _tutorService;
         private readonly IThirdPartyService _thirdPartyService;
 
         private UserProfileResponse _userProfileResponse;
+        private TutorSpecificFieldsResponse _tutorSpecificFieldsResponse;
         private string accessToken = ApplicationData.Current.LocalSettings.Values["accessToken"] as string;
+        private string role = ApplicationData.Current.LocalSettings.Values["role"] as string;
+
         public List<Province> Provinces { get; set; }
         public List<District> Districts { get; set; }
 
@@ -74,9 +79,24 @@ namespace TutorApp.ViewModels
             }
         }
 
-        public UserProfileViewModel(IUserService userService, IThirdPartyService thirdPartyService)
+        TutorSpecificFieldsResponse TutorSpecificFieldsResponse
+        {
+            get => _tutorSpecificFieldsResponse;
+            set
+            {
+                _tutorSpecificFieldsResponse = value;
+                OnPropertyChanged(nameof(Description));
+                OnPropertyChanged(nameof(Degree));
+            }
+        }
+
+        public string Description => TutorSpecificFieldsResponse?.Description;
+        public string Degree => TutorSpecificFieldsResponse?.Degree;
+
+        public UserProfileViewModel(IUserService userService, ITutorService tutorService, IThirdPartyService thirdPartyService)
         {
             _userService = userService;
+            _tutorService = tutorService;
             _thirdPartyService = thirdPartyService;
         }
         public async Task InitializeAsync()
@@ -93,6 +113,8 @@ namespace TutorApp.ViewModels
                     Debug.WriteLine("UserProfileResponse is null.");
                     return;
                 }
+
+                if (role == "TUTOR") TutorSpecificFieldsResponse = await GetTutorSpecificFields();
 
                 // Load provinces and districts
                 await LoadProvincesAsync();
@@ -222,7 +244,32 @@ namespace TutorApp.ViewModels
                 throw new Exception($"Profile loading error: {ex.Message}");
             }
         }
+        public async Task<TutorSpecificFieldsResponse> GetTutorSpecificFields()
+        {
+            try
+            {
+                Debug.WriteLine("access token", accessToken);
+                Debug.WriteLine("claims", JwtParser.GetAllClaims(accessToken));
+                Debug.WriteLine("id", JwtParser.GetId(accessToken));
+                return await _tutorService.GetTutorSpecificFields(accessToken, JwtParser.GetId(accessToken));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Profile loading error: {ex.Message}");
+            }
+        }
 
+        public async Task<UpdateProfileResponse> UpdateTutorSpecificFields(UpdateTutorSpecificFieldsRequest request)
+        {
+            try
+            {
+                return await _tutorService.UpdateTutorSpecificFields(accessToken, request);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Profile loading error: {ex.Message}");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void OnPropertyChanged(string propertyName)

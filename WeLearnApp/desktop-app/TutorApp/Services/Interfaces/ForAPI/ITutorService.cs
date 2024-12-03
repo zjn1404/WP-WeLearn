@@ -69,5 +69,10 @@ namespace TutorApp.Services.Interfaces.ForAPI
         public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token);
 
 
+
+        public Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string token, string id);
+
+        public Task<UpdateProfileResponse> UpdateTutorSpecificFields(string token, UpdateTutorSpecificFieldsRequest request);
+
     }
 }

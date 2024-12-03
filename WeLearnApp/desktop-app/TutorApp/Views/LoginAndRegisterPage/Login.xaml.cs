@@ -11,7 +11,8 @@ using TutorApp.ViewModels;
 using TutorApp.Helpers;
 using System.Text.Json;
 using TutorApp.Models.ForAPI;
-using TutorApp.Models.ForAPI.Request;  
+using TutorApp.Models.ForAPI.Request;
+using System.Diagnostics;
 
 namespace TutorApp.Views
 {
@@ -64,7 +65,14 @@ namespace TutorApp.Views
                     var localSettings = ApplicationData.Current.LocalSettings;
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
-                    
+
+                    Debug.WriteLine($"Access Token: {jwtTokens.accessToken}");
+                    Debug.WriteLine($"Extracted Role: {role}");
+                    Debug.WriteLine($"LocalSettings Role Before Save: {localSettings.Values["role"]}");
+                    localSettings.Values["role"] = role;
+                    Debug.WriteLine($"LocalSettings Role After Save: {localSettings.Values["role"]}");
+
+
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Dashboard");
                 }

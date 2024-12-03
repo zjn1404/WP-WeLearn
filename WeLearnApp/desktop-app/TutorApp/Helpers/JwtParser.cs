@@ -57,6 +57,16 @@ namespace TutorApp.Helpers
 
 
         /// <summary>
+        /// Retrieves the role from the JWT token.
+        /// </summary>
+        /// <param name="token">The JWT token as a string.</param>
+        /// <returns>The id claim, or null if the claim is not found or the token is invalid</returns>
+        public static string GetId(string token)
+        {
+            return GetClaim(token, "sub");
+        }
+
+        /// <summary>
         /// Retrieves all claims from the JWT token as a dictionary.
         /// </summary>
         /// <param name="token">The JWT token as a string.</param>
