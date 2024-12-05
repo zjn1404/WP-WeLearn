@@ -12,22 +12,24 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <StackPanel Orientation="Vertical" Margin="20">
-            <Button Content="← Back"
-                    Click="GoBackButton_Click"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    Background="#3498DB"
-                    Foreground="White"
-                    Margin="0,0,0,20"/>
 
-            <ScrollViewer>
+            <ScrollViewer VerticalScrollMode="Auto" 
+              VerticalScrollBarVisibility="Auto">
                 <Grid RowSpacing="20" Background="White" CornerRadius="12" Padding="20" BorderThickness="1" BorderBrush="#3498DB">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <Button Content="← Back"
+                    Click="GoBackButton_Click"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="#3498DB"
+                    Foreground="White"
+                    Margin="0,0,0,20"/> 
 
 
                     <Grid Grid.Row="0" ColumnSpacing="20">
@@ -128,11 +130,14 @@
                                    Foreground="#34495E"/>
 
                         <StackPanel Grid.Row="4" Spacing="10" Margin="0,20,0,0">
+
                             <TextBlock Text="Write a Review"
                                        Foreground="#2980B9"
                                        FontSize="18"
                                        FontWeight="SemiBold"
                                        Margin="0,0,0,10"/>
+
+                            <RatingControl x:Name="Rating" AutomationProperties.Name="RatingControl" IsClearEnabled="False" IsReadOnly="False" Caption="Your rating"/>
 
                             <TextBox x:Name="ReviewTextBox"
                                      PlaceholderText="Type your review here..."
@@ -142,17 +147,25 @@
                                      BorderBrush="#3498DB"
                                      CornerRadius="8"
                                      Margin="0,0,0,10"/>
-
-                            <Button Content="Submit Review"
-                                    Click="SubmitReviewButton_Click"
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Spacing="30">
+                                <Button Content="Other Reviews"
+                                    Click="ViewReviewsButton_Click"
                                     Background="#3498DB"
                                     Foreground="White"
                                     HorizontalAlignment="Right"
                                     CornerRadius="4"/>
+
+                                <Button Content="Submit Review"
+                                        Click="SubmitReviewButton_Click"
+                                        Background="#3498DB"
+                                        Foreground="White"
+                                        HorizontalAlignment="Right"
+                                        CornerRadius="4"/>
+                            </StackPanel>
                         </StackPanel>
                     </Grid>
-                </Grid>
+                </StackPanel>
+            </Grid>
             </ScrollViewer>
-        </StackPanel>
     </Grid>
 </Page>
