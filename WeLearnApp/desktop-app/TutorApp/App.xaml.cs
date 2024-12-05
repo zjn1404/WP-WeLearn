@@ -69,7 +69,7 @@ namespace TutorApp
             services.AddSingleton<ILearningSessionService>(new LearningSessionService(baseUrl));
             services.AddSingleton<ITutorService>(new TutorService(httpService));
             services.AddSingleton<IPaymentService>(new PaymentService(httpService));
-
+            services.AddSingleton<IEvaluationService>(new EvaluationService(httpService));
 
 
             // Application services

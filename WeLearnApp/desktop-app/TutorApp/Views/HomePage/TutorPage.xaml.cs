@@ -80,6 +80,7 @@ namespace TutorApp.Views.HomePage
                 _navigationService.NavigateTo("DetailTutor", selectedTutor);
             }
         }
+
     }
 
 }
