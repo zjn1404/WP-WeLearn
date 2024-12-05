@@ -12,8 +12,8 @@
       <SubType>Designer</SubType>
     </None>
     <Page Update="Views\HomePage\SessionPage.xaml">
-		<SubType>Designer</SubType>
-	</Page>
+		  <SubType>Designer</SubType>
+	  </Page>
     <Page Update="Views\HomePage\DetailTutor.xaml">
       <SubType>Designer</SubType>
     </Page>
