@@ -68,8 +68,9 @@ namespace TutorApp
             services.AddSingleton<ILearningMethodService, LearningMethodService>();
             services.AddSingleton<ILearningSessionService>(new LearningSessionService(baseUrl));
             services.AddSingleton<ITutorService>(new TutorService(httpService));
+            services.AddSingleton<IPaymentService>(new PaymentService(httpService));
 
-          
+
 
             // Application services
 

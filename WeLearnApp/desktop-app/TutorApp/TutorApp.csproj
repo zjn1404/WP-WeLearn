@@ -89,6 +89,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Page Update="Views\HomePage\SessionPage.xaml">
+		  <Generator>MSBuild:Compile</Generator>
+	  </Page>
     <Page Update="Views\HomePage\DetailTutor.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
