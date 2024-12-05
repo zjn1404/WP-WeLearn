@@ -77,6 +77,32 @@ namespace TutorApp.ViewModels
             }
         }
 
+        public async Task<UpdateEmailResponse> UpdateEmailByUser(UpdateEmailRequest request)
+        {
+            try
+            {
+                var response = await _userService.UpdateUserById(request);
+                return response;
+
+            }catch(Exception ex)
+            {
+                throw new Exception($"Update email by user error : {ex.Message}");
+            }
+        }
+
+        public async Task<GetUnverifiedEmailTokenResponse> GetTokenUnverifiedEmail(string id)
+        {
+            try
+            {
+                var response = await _userService.GetUnverifiedEmailToken(id);
+                return response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Update email by user error : {ex.Message}");
+            }
+        }
+
         public string ValidateInput(RegisterRequest registerRequest)
         {
             if (string.IsNullOrEmpty(registerRequest.Username) ||
@@ -86,6 +112,11 @@ namespace TutorApp.ViewModels
                 string.IsNullOrEmpty(registerRequest.LastName))
             {
                 return "Please fill in all the information";
+            }
+
+            if (!IsValidUser(registerRequest.Username))
+            {
+                return "User must be at least 5 characters";
             }
 
             if (!IsValidEmail(registerRequest.Email))
@@ -101,7 +132,7 @@ namespace TutorApp.ViewModels
             return null;
         }
 
-        private bool IsValidEmail(string email)
+        public bool IsValidEmail(string email)
         {
             try
             {
@@ -127,6 +158,12 @@ namespace TutorApp.ViewModels
                    hasLowerChar.IsMatch(password) &&
                    hasSpecialChar.IsMatch(password);
         }
+
+        private bool IsValidUser(string user)
+        {
+            return user.Length >= 5;
+        }
+
 
         public async Task<VerifyResponse> Verify(VerifyRequest request)
         {

@@ -4,98 +4,145 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:TutorApp.Views.HomePage"
     xmlns:viewmodels="using:TutorApp.ViewModels"
+    xmlns:helpers="using:TutorApp.Helpers"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical" 
-                HorizontalAlignment="Center" 
-                VerticalAlignment="Center" 
-                Width="Auto" 
-                Margin="20"
-                Height="Auto">
 
-        <!-- Avatar Section -->
-        <Ellipse Width="100" 
-             Height="100" 
-             Stroke="Gray" 
-             StrokeThickness="1" 
-             Margin="0,0,0,20">
-            <Ellipse.Fill>
-                <ImageBrush x:Name="avatarUrl" ImageSource="{Binding AvatarUrl, FallbackValue='Assets/avatar.png'}" Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
-
-        <!-- Change Avatar Button -->
-
-        <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
-            <Button Content="Change Avatar" 
-                    Width="150"
+    <Grid>
+        <ScrollViewer VerticalScrollMode="Auto" 
+                     VerticalScrollBarVisibility="Auto"
+                     HorizontalScrollMode="Disabled"
+                     HorizontalScrollBarVisibility="Disabled">
+            <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
-                    Click="ChangeAvatarButton_Click"/>
-        </StackPanel>
+                    VerticalAlignment="Center">
 
-        <!-- Display Name -->
-        <TextBlock Text="{Binding FirstName}" 
-               TextAlignment="Center" 
-               FontSize="30" 
-               FontWeight="SemiBold"
-               Margin="0,0,0,30"/>
-        
-        <Grid Height="Auto" Width="800" HorizontalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         Width="Auto"
+                         Margin="20"
+                         Height="Auto">     
 
-            <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,10,15">
-                <TextBox Name="FirstName" Header="First Name:" Text="{Binding FirstName}" Width="380"/>
+                    <!-- Avatar Section -->
+                    <Ellipse Width="100"
+                          Height="100"
+                          Stroke="Gray"
+                          StrokeThickness="1"
+                          Margin="0,0,0,20">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="avatarUrl" ImageSource="{Binding AvatarUrl, FallbackValue='Assets/avatar.png'}" Stretch="UniformToFill"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+
+                    <!-- Change Avatar Button -->
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0,0,0,20">
+                        <Button Content="Change Avatar"
+                             Width="150"
+                             HorizontalAlignment="Center"
+                             Click="ChangeAvatarButton_Click"/>
+                    </StackPanel>
+
+                    <!-- Display Name -->
+                    <TextBlock Text="{Binding FirstName}"
+                            TextAlignment="Center"
+                            FontSize="30"
+                            FontWeight="SemiBold"
+                            Margin="0,0,0,30"/>
+
+                    <Grid Height="Auto" Width="800" HorizontalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,10,15">
+                            <TextBox Name="FirstName" Header="First Name:" Text="{Binding FirstName}" Width="380"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,0,0,15">
+                            <TextBox Name="LastName" Header="Last Name:" Text="{Binding LastName}" Width="380"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,0,10,15">
+                            <TextBox Name="Dob" Header="Date of Birth:" Text="{Binding Dob}" Width="380"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Grid.Row="1" Margin="10,0,0,15">
+                            <TextBox Name="PhoneNumber" Header="Phone Number:" Text="{Binding PhoneNumber}" Width="380"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="0" Grid.Row="2" Margin="6,0,10,15">
+                            <ComboBox Name="City"
+                                   Header="City:"
+                                   Width="380"
+                                   ItemsSource="{Binding Provinces}"
+                                   DisplayMemberPath="name"
+                                   SelectedValuePath="code"
+                                   SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                   SelectionChanged="City_SelectionChanged"/>       
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1" Grid.Row="2" Margin="15,0,0,15">
+                            <ComboBox Name="District"
+                                   Header="District:"
+                                   Width="380"
+                                   DisplayMemberPath="name"
+                                   SelectedValuePath="code"
+                                   SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>       
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="0" Grid.Row="3" Margin="0,0,10,15">
+                            <TextBox Name="Street" Header="Street:" Text="{Binding Street}" Width="380"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                        <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
+                        <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0" Click="CancelButton_Click"/>
+                    </StackPanel>
+
+
+                    <StackPanel x:Name="TutorSection" 
+                                Orientation="Vertical" HorizontalAlignment="Center">
+                        <TextBox Name="Description"  Header="Description" Text="{Binding Description}" Width="800" Margin="0,10,0,15" />
+                        <TextBox Name="Degree" Header="Degree" Text="{Binding Degree}" Width="800" Margin="0,10,0,15" />
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
+                            <Button Content="Save Tutor Data" Width="150" Click="SaveTutorButton_Click" />
+                        </StackPanel>
+
+                    </StackPanel>
+
+                </StackPanel>
             </StackPanel>
+           
+        </ScrollViewer>
 
-            <StackPanel Grid.Column="1" Grid.Row="0" Margin="10,0,0,15">
-                <TextBox Name="LastName" Header="Last Name:" Text="{Binding LastName}" Width="380"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="0" Grid.Row="1" Margin="0,0,10,15">
-                <TextBox Name="Dob" Header="Date of Birth:" Text="{Binding Dob}" Width="380"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" Grid.Row="1" Margin="10,0,0,15">
-                <TextBox Name="PhoneNumber" Header="Phone Number:" Text="{Binding PhoneNumber}" Width="380"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="0" Grid.Row="2" Margin="6,0,10,15">
-                <ComboBox Name="City" 
-                          Header="City:" 
-                          Width="380"
-                          ItemsSource="{Binding Provinces}"
-                          DisplayMemberPath="name"
-                          SelectedValuePath="code"
-                          SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                          SelectionChanged="City_SelectionChanged"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="1" Grid.Row="2" Margin="15,0,0,15">
-                <ComboBox Name="District" 
-                          Header="District:" 
-                          Width="380"
-                          DisplayMemberPath="name"
-                          SelectedValuePath="code"
-                          SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
-
-            <StackPanel Grid.Column="0" Grid.Row="3" Margin="0,0,10,15">
-                <TextBox Name="Street" Header="Street:" Text="{Binding Street}" Width="380"/>
+        <!-- Loading Overlay -->
+        <Grid x:Name="LoadingOverlay"
+              Visibility="Collapsed"
+              Background="#80000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="White"
+                        Padding="20">
+                <ProgressRing
+                    x:Name="spinner"
+                    IsActive="True"
+                    Width="50"
+                    Height="50"
+                    Background="LightGray"/>
             </StackPanel>
         </Grid>
-
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-            <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
-            <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0"/>
-        </StackPanel>
-    </StackPanel>
+    </Grid>
 </Page>

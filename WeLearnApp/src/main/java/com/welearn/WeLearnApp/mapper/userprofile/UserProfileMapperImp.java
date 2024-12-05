@@ -57,6 +57,7 @@ public class UserProfileMapperImp implements UserProfileMapper {
     @Override
     public UserProfileResponse toUserProfileResponse(UserProfile userProfile) {
         return UserProfileResponse.builder()
+                .id(userProfile.getId())
                 .firstName(userProfile.getFirstName())
                 .lastName(userProfile.getLastName())
                 .dob(userProfile.getDob())

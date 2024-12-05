@@ -3,8 +3,10 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using TutorApp.Models.ForAPI.Request;
+using TutorApp.Services.Interfaces;
 using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.ViewModels;
 
@@ -17,10 +19,12 @@ namespace TutorApp.Views.HomePage
         private readonly IGradeService _gradeService;
         private readonly ISubjectService _subjectService;
         private readonly ILearningMethodService _learningMethodService;
+        private readonly INavigationService _navigationService;
 
         public CreateSessionPage()
         {
             this.InitializeComponent();
+            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _learningSessionService = ((App)Application.Current).Services.GetRequiredService<ILearningSessionService>();
             _gradeService = ((App)Application.Current).Services.GetRequiredService<IGradeService>();
             _subjectService = ((App)Application.Current).Services.GetRequiredService<ISubjectService>();
@@ -47,15 +51,49 @@ namespace TutorApp.Views.HomePage
         {
             try
             {
-                var selectedDate = DatePicker.SelectedDate;
-                var selectedTime = TimePicker.SelectedTime;
 
-                if (selectedDate.HasValue && selectedTime.HasValue)
+                if (!DatePicker.SelectedDate.HasValue || !TimePicker.SelectedTime.HasValue)
                 {
-                    var request = new LearningSessionCreationRequest
+                    await ShowErrorDialogAsync("Failed", "Please select date and time");
+                    return;
+                }
+
+
+                var selectedDate = DatePicker.SelectedDate.Value;
+                var selectedTime = TimePicker.SelectedTime.Value;
+                var tuition = TuitionTextBox.Text;
+                var duration = DurationNumberBox.Value;
+                var grade = GradeTextBox.SelectedValue.ToString();
+                var subject = SubjectTextBox.SelectedValue.ToString();
+                var learningMethod = LearningMethodTextBox.SelectedValue.ToString();
+
+                var dateString = selectedDate.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
+                var timeString = $"{selectedTime.Hours:D2}:{selectedTime.Minutes:D2}:{selectedTime.Seconds:D2}";
+
+
+                // Validate tất cả input
+                string validationResult = _viewModel.ValidateInput(
+                    tuition,
+                    grade,
+                    learningMethod,
+                    dateString,
+                    timeString,
+                    duration.ToString(),
+                    subject
+                );
+
+               
+                if (!string.IsNullOrEmpty(validationResult))
+                {
+                    await ShowErrorDialogAsync("Failed", validationResult);
+                    return;
+                }
+
+                LoadingOverlay.Visibility = Visibility.Visible;
+                LearningSessionCreationRequest request = new LearningSessionCreationRequest
                     {
-                        StartTime = new DateTime(selectedDate.Value.Year, selectedDate.Value.Month, selectedDate.Value.Day,
-                                                 selectedTime.Value.Hours, selectedTime.Value.Minutes, selectedTime.Value.Seconds),
+                        StartTime = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day,
+                                                 selectedTime.Hours, selectedTime.Minutes, selectedTime.Seconds),
                         Duration = (int)DurationNumberBox.Value,
                         Grade = _viewModel.SelectedGrade,
                         Subject = _viewModel.SelectedSubject,
@@ -64,21 +102,18 @@ namespace TutorApp.Views.HomePage
                     };
 
                     var response = await _learningSessionService.CreateLearningSession(request);
-
+                LoadingOverlay.Visibility = Visibility.Collapsed;
                     if (response != null)
                     {
                         await ShowErrorDialogAsync("Success", "Add session sucessfully");
 
                     }
-                }
-                else
-                {
-                    await ShowErrorDialogAsync("Failed", "Add session failed");
-                }
+               
+           
             }
             catch (Exception ex)
             {
-                var contentDialog = new ContentDialog
+                ContentDialog contentDialog = new ContentDialog
                 {
                     Title = "Error",
                     Content = $"An error occurred: {ex.Message}",
@@ -100,5 +135,9 @@ namespace TutorApp.Views.HomePage
             await dialog.ShowAsync();
         }
 
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _navigationService.NavigateTo("DashboardForTutor");
+        }
     }
 }

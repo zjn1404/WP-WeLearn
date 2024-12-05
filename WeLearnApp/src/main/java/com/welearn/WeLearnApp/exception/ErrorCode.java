@@ -18,9 +18,14 @@ public enum ErrorCode {
     REQUIRED_EMAIL(2003, HttpStatus.BAD_REQUEST, "Email is required"),
     INVALID_VERIFICATION_CODE(2004, HttpStatus.BAD_REQUEST, "Invalid verification code"),
     INVALID_PHONE_NUMBER(2005, HttpStatus.BAD_REQUEST, "Phone number should have 10 digits"),
+    TUTOR_NOT_MATCH(2006, HttpStatus.BAD_REQUEST, "Tutor not match"),
+    INVALID_GRADE(2007, HttpStatus.BAD_REQUEST, "Grade should be between 1 and 12"),
+    INVALID_TUITION(2008, HttpStatus.BAD_REQUEST, "Tuition should be greater than or equal to 0"),
     //    Existed Error 3xxx
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),
+    LEARNING_SESSION_ALREADY_EXIST(3003, HttpStatus.BAD_REQUEST, "Learning session already exist"),
+    ORDER_ALREADY_EXISTS(3004, HttpStatus.BAD_REQUEST, "Order already exists"),
     //    Not Found Error 4xxx
     USER_NOT_FOUND(4001, HttpStatus.NOT_FOUND, "User not found"),
     ROLE_NOT_FOUND(4002, HttpStatus.NOT_FOUND, "Role not found"),
@@ -30,6 +35,8 @@ public enum ErrorCode {
     SUBJECT_NOT_FOUND(4006, HttpStatus.NOT_FOUND, "Subject not found"),
     LEARNING_SESSION_NOT_FOUND(4007, HttpStatus.NOT_FOUND, "Learning session not found"),
     LEARNING_METHOD_NOT_FOUND(4008, HttpStatus.NOT_FOUND, "Learning method not found"),
+    ORDER_NOT_FOUND(4009, HttpStatus.NOT_FOUND, "Order not found"),
+    TUTOR_NOT_FOUND(4010, HttpStatus.NOT_FOUND, "Tutor not found"),
     // Authentication Error 5xxx
     AUTHENTICATION_FAIL(5001, HttpStatus.UNAUTHORIZED, "Invalid username or password"),
     INVALID_TOKEN(5002, HttpStatus.UNAUTHORIZED, "Invalid token"),
@@ -37,6 +44,7 @@ public enum ErrorCode {
     NOT_VERIFIED(5004, HttpStatus.UNAUTHORIZED, "User not verified"),
     //    Authorization Error 6xxx
     UNAUTHORIZED(6001, HttpStatus.FORBIDDEN, "Unauthorized"),
+    TUTOR_CANNOT_ORDER(6002, HttpStatus.FORBIDDEN, "Tutor cannot order"),
     ;
 
     final Integer code;

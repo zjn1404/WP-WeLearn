@@ -11,7 +11,8 @@ using TutorApp.ViewModels;
 using TutorApp.Helpers;
 using System.Text.Json;
 using TutorApp.Models.ForAPI;
-using TutorApp.Models;  
+using TutorApp.Models.ForAPI.Request;
+using System.Diagnostics;
 
 namespace TutorApp.Views
 {
@@ -33,17 +34,22 @@ namespace TutorApp.Views
             string username = usernameTextBox.Text;
             string password = passwordBox.Password;
 
-            // Kiểm tra đầu vào
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
-            {
-                await ShowErrorDialogAsync("Please type user and password.");
+            
+            var validationMessage = _viewModel.ValidateInput(new LoginRequest { username=username,password = password});
+            if (validationMessage != null) {
+                await ShowErrorDialogAsync(validationMessage);
                 return;
             }
 
-            // Gọi hàm đăng nhập từ ViewModel
+           
+            LoadingOverlay.Visibility = Visibility.Visible;
+           
+           
             try
             {
+               
                 var response = await _viewModel.LoginAsync(username, password);
+                LoadingOverlay.Visibility = Visibility.Collapsed;
                 if (response.Success)
                 {
                     //// Lưu token vào LocalSettings
@@ -59,7 +65,14 @@ namespace TutorApp.Views
                     var localSettings = ApplicationData.Current.LocalSettings;
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
-                    
+
+                    Debug.WriteLine($"Access Token: {jwtTokens.accessToken}");
+                    Debug.WriteLine($"Extracted Role: {role}");
+                    Debug.WriteLine($"LocalSettings Role Before Save: {localSettings.Values["role"]}");
+                    localSettings.Values["role"] = role;
+                    Debug.WriteLine($"LocalSettings Role After Save: {localSettings.Values["role"]}");
+
+
                     // Điều hướng đến Dashboard
                     _navigationService.NavigateTo("Dashboard");
                 }
@@ -73,7 +86,7 @@ namespace TutorApp.Views
                     }
                     else
                     {
-                    await ShowErrorDialogAsync("Login Failed. Please try again.");
+                    await ShowErrorDialogAsync(response.Message.ToString());
 
                     }
                 }
@@ -82,6 +95,7 @@ namespace TutorApp.Views
             {
                 await ShowErrorDialogAsync($"Error: {ex.Message}");
             }
+           
         }
 
         private async Task ShowErrorDialogAsync(string message)

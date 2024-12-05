@@ -24,18 +24,20 @@ namespace TutorApp.Views.HomePage
     {
         public UserProfileViewModel _viewModel { get; set; }
         private readonly IUserService _userService;
+        private readonly ITutorService _tutorService;
         private readonly IThirdPartyService _thirdPartyService;
         private StorageFile _selectedAvatarFile;
-
+        private readonly INavigationService _navigationService;
         public AccountPage()
         {
             this.InitializeComponent();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _tutorService = ((App)Application.Current).Services.GetRequiredService<ITutorService>();
+            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>();
-
+            
         }
 
-        // Override OnNavigatedTo for async data loading
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -46,46 +48,29 @@ namespace TutorApp.Views.HomePage
             }
             else
             {
-                // Create new viewModel if none was passed
-                _viewModel = new UserProfileViewModel(_userService, _thirdPartyService);
+                _viewModel = new UserProfileViewModel(_userService, _tutorService, _thirdPartyService);
             }
             DataContext = _viewModel;
             await _viewModel.InitializeAsync();
+
+            if (ApplicationData.Current.LocalSettings.Values["role"] as string != "TUTOR")
+            {
+                TutorSection.Visibility = Visibility.Collapsed;
+            }
+
         }
 
-        //private async Task LoadProvincesAsync()
-        //{
-        //    try
-        //    {
-        //        // Fetch province list from the third-party service
-        //        List<Province> provinces = await _thirdPartyService.GetProvinceList();
-
-        //        if (provinces != null && provinces.Any())
-        //        {
-        //            City.ItemsSource = provinces;
-        //            City.DisplayMemberPath = "name";      // Property to display
-        //            City.SelectedValuePath = "code";      // Value property for selection
-        //        }
-        //        else
-        //        {
-        //            Console.WriteLine("Failed to load provinces.");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await ShowErrorDialogAsync("Error", $"Đã xảy ra lỗi: {ex.Message}");
-        //    }
-        //}
 
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                LoadingOverlay.Visibility = Visibility.Visible;
                 string _avatarUrl = null;
                 if (_selectedAvatarFile != null)
                 {
                     CloudinaryUploader cloudinaryUploader = new CloudinaryUploader();
-                    _avatarUrl = await cloudinaryUploader.UploadImageAsync(_selectedAvatarFile.Path); // Adjust this based on your upload method
+                    _avatarUrl = await cloudinaryUploader.UploadImageAsync(_selectedAvatarFile.Path);
                 }
 
                 var request = new UpdateProfileRequest
@@ -106,18 +91,20 @@ namespace TutorApp.Views.HomePage
 
                 var response = await _viewModel.UpdateProfile(request);
 
+                LoadingOverlay.Visibility= Visibility.Collapsed;
+
                 if (response.Success)
                 {
-                    await ShowErrorDialogAsync("Update user profile successfully", "Cập nhật thông tin thành công.");
+                    await ShowErrorDialogAsync("Announcement", "Update information successfully.");
                 }
                 else
                 {
-                    await ShowErrorDialogAsync("Update user profile failed", "Cập nhật thông tin không thành công. Vui lòng thử lại.");
+                    await ShowErrorDialogAsync("Announcement", "Update information failed. Please try again.");
                 }
             }
             catch (Exception ex)
             {
-                await ShowErrorDialogAsync("Error", $"Đã xảy ra lỗi: {ex.Message}");
+                await ShowErrorDialogAsync("Error", $"Error: {ex.Message}");
             }
         }
 
@@ -148,7 +135,6 @@ namespace TutorApp.Views.HomePage
                     {
                         District.ItemsSource = districts;
 
-                        // After loading new districts, try to reselect the saved district code
                         var selectedDistrict = districts.FirstOrDefault(d => d.code == _viewModel.SelectedDistrictCode);
                         if (selectedDistrict != null)
                         {
@@ -190,7 +176,6 @@ namespace TutorApp.Views.HomePage
                     await bitmapImage.SetSourceAsync(stream);
                 }
 
-                // Assuming avatarUrl refers to the ImageBrush for displaying the avatar
                 avatarUrl.ImageSource = bitmapImage;
             }
             else
@@ -198,5 +183,43 @@ namespace TutorApp.Views.HomePage
                 Console.WriteLine("No file selected.");
             }
         }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            _navigationService.NavigateTo("Dashboard");
+        }
+
+        private async void SaveTutorButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                LoadingOverlay.Visibility = Visibility.Visible;
+
+                var request = new UpdateTutorSpecificFieldsRequest
+                {
+                    degree = Degree.Text,
+                    description = Description.Text,
+                };
+
+                Debug.WriteLine($"Update tutor specific fields request: Degree: {request.degree}, Description: {request.description}");
+                var response = await _viewModel.UpdateTutorSpecificFields(request);
+
+                LoadingOverlay.Visibility = Visibility.Collapsed;
+
+                if (response.Success)
+                {
+                    await ShowErrorDialogAsync("Announcement", "Update information successfully.");
+                }
+                else
+                {
+                    await ShowErrorDialogAsync("Announcement", "Update information failed. Please try again.");
+                }
+            }
+            catch (Exception ex)
+            {
+                await ShowErrorDialogAsync("Error", $"Error: {ex.Message}");
+            }
+        }
+
     }
 }

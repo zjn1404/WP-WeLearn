@@ -34,6 +34,8 @@ namespace TutorApp.Views.LoginAndRegisterPage
         private readonly IUserService _userService;
         private UserViewModel UserViewModel { get; set; }
         private string _id;
+        private bool isDropdownOpen = false;
+        private string token;
 
 
         public PageLoginTokenRequire()
@@ -49,6 +51,19 @@ namespace TutorApp.Views.LoginAndRegisterPage
             _navigationService.GoBack();
         }
 
+
+        private async Task ShowErrorDialogAsync(string message)
+        {
+            ContentDialog dialog = new ContentDialog()
+            {
+                Title = "Announcement",
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = this.XamlRoot
+            };
+
+            await dialog.ShowAsync();
+        }
 
         //nhận dữ liệu từ page khác
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -73,36 +88,30 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 userId = _id,
             };
             
+            LoadingOverlay.Visibility = Visibility.Visible;
+
             var isVerify = await UserViewModel.Verify(request);
 
+            LoadingOverlay.Visibility = Visibility.Collapsed;
             if (isVerify.Success)
             {
-                await ShowErrorDialogAsync("Verify successfully. Please login again");
+                await ShowErrorDialogAsync("Success. Please login again");
 
                 _navigationService.GoBack();
             } else
             {
-                await ShowErrorDialogAsync("Verify fail. Please verify again");
+                await ShowErrorDialogAsync("Failed. Please verify again");
             }
 
         }
 
-        private async Task ShowErrorDialogAsync(string message)
-        {
-            ContentDialog dialog = new ContentDialog()
-            {
-                Title = "Announcement",
-                Content = message,
-                CloseButtonText = "OK",
-                XamlRoot = this.XamlRoot
-            };
-
-            await dialog.ShowAsync();
-        }
 
         private async void Resend_Click(object sender, RoutedEventArgs e)
         {
+
+            LoadingOverlay.Visibility = Visibility.Visible;
             var response =  await UserViewModel.ResendVerifyToken(_id);
+            LoadingOverlay.Visibility = Visibility.Collapsed;
             if (!response.IsSuccess)
             {
                 await ShowErrorDialogAsync("Resend Error. Please try again");
@@ -111,5 +120,63 @@ namespace TutorApp.Views.LoginAndRegisterPage
                 await ShowErrorDialogAsync("Resend successfully. Please check your mail");
             }
         }
+
+     
+
+        private async void EmailDropdownButton_Click(object sender, RoutedEventArgs e)
+        {
+            isDropdownOpen = !isDropdownOpen;
+
+            if (isDropdownOpen)
+            {
+                EmailDropdownContent.Visibility = Visibility.Visible;
+                ShowDropdownAnimation.Begin();
+
+
+                LoadingOverlay.Visibility = Visibility.Visible;
+                var response = await UserViewModel.GetTokenUnverifiedEmail(_id);
+                LoadingOverlay.Visibility = Visibility.Collapsed;
+
+                if (response.isSuccess)
+                {
+                    token = response.token;
+                }
+            }
+            else
+            {
+                EmailDropdownContent.Visibility = Visibility.Collapsed;
+                EmailDropdownContent.Opacity = 0;
+     
+            }
+        }
+
+        private async void UpdateEmail_Click(object sender, RoutedEventArgs e)
+        {
+            string newEmail = EmailBox.Text.Trim();
+
+            if (String.IsNullOrEmpty(newEmail))
+            {
+                await ShowErrorDialogAsync("Email text box not empty");
+            }
+
+            if (!UserViewModel.IsValidEmail(newEmail))
+            {
+                await ShowErrorDialogAsync("Email is invalid");
+            }
+
+
+            LoadingOverlay.Visibility = Visibility.Visible;
+            var response = await UserViewModel.UpdateEmailByUser(new UpdateEmailRequest { email = newEmail, token = token });
+            LoadingOverlay.Visibility = Visibility.Collapsed;    
+
+            await ShowErrorDialogAsync(response.StatusMessage);
+       
+            
+            isDropdownOpen = false;
+            EmailDropdownContent.Visibility = Visibility.Collapsed;
+            EmailDropdownContent.Opacity = 0;
+        }
+
+      
     }
 }

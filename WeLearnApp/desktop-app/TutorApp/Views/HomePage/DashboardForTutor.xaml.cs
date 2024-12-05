@@ -32,6 +32,7 @@ namespace TutorApp.Views.HomePage
     {
         private readonly INavigationService _navigationService;
         private readonly IUserService _userService;
+        private readonly ITutorService _tutorService;
         private readonly IThirdPartyService _thirdPartyService;
         private readonly LogoutViewModel _viewModel;
         private readonly UserProfileViewModel _userProfileViewModel;
@@ -41,10 +42,11 @@ namespace TutorApp.Views.HomePage
             this.InitializeComponent();
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
+            _tutorService = ((App)Application.Current).Services.GetRequiredService<ITutorService>();
             _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>(); // Make sure this service is registered
 
             _viewModel = new LogoutViewModel(_userService);
-            _userProfileViewModel = new UserProfileViewModel(_userService, _thirdPartyService); // Pass both services
+            _userProfileViewModel = new UserProfileViewModel(_userService, _tutorService, _thirdPartyService); // Pass both services
             DataContext = _userProfileViewModel;
 
             InitializeAsync(); ;

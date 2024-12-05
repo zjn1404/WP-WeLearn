@@ -31,6 +31,14 @@ namespace TutorApp.ViewModels
             }
         }
 
+
+        /// <summary>
+        /// this is a method for validation Input
+        /// </summary>
+        /// <param name="registerRequest">A register request containg username, password, email, firstname,lastname</param>
+        /// <returns>
+        /// Return a string if having a error, otherwise, return null
+        /// </returns>
         public string ValidateInput(RegisterRequest registerRequest)
         {
             if (string.IsNullOrEmpty(registerRequest.Username) ||
@@ -41,6 +49,12 @@ namespace TutorApp.ViewModels
             {
                 return "Please fill in all the information";
             }
+
+            if (!IsValidUser(registerRequest.Username))
+            {
+                return "Username must be at least 5 characters";
+            }
+
 
             if (!IsValidEmail(registerRequest.Email))
             {
@@ -53,6 +67,11 @@ namespace TutorApp.ViewModels
             }
 
             return null; 
+        }
+
+        private bool IsValidUser(string user)
+        {
+            return user.Length >= 5;
         }
 
         private bool IsValidEmail(string email)

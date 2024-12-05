@@ -9,48 +9,73 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Orientation="Vertical"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                Padding="50,40"
-                CornerRadius="20"
-                BorderThickness="1"
-                BorderBrush="Black"
-                Background="#FFFFFFFF"
-                >
-        <TextBlock TextAlignment="Center" Margin="0,0,0,2" FontSize="25" FontWeight="Bold" Text="REGISTER"/>
-        <FontIcon Glyph="&#xE7BE;" FontSize="80"/>
-        <TextBlock TextAlignment="Center" Margin="0,0,0,50" FontSize="15" FontWeight="Bold" Text="WELCOME TO WELEARN"/>
 
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
-                <TextBox Width="160" Name="firstnameTextBox"
-                         Header="Firstname:"  PlaceholderText="Enter your firstname"/>
-                <TextBox Width="160" Name="lastnameTextBox"
-                         Header="Lastname:" PlaceholderText="Enter your lastname"/>
+    <Grid>
+
+
+        <StackPanel Orientation="Vertical"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Padding="50,40"
+                    CornerRadius="20"
+                    BorderThickness="1"
+                    BorderBrush="Black"
+                    Background="#FFFFFFFF"
+                    >
+            <TextBlock TextAlignment="Center" Margin="0,0,0,2" FontSize="25" FontWeight="Bold" Text="REGISTER"/>
+            <FontIcon Glyph="&#xE7BE;" FontSize="80"/>
+            <TextBlock TextAlignment="Center" Margin="0,0,0,50" FontSize="15" FontWeight="Bold" Text="WELCOME TO WELEARN"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="5">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="10">
+                    <TextBox Width="160" Name="firstnameTextBox"
+                             Header="Firstname:"  PlaceholderText="Enter your firstname"/>
+                    <TextBox Width="160" Name="lastnameTextBox"
+                             Header="Lastname:" PlaceholderText="Enter your lastname"/>
+
+                </StackPanel>
+                <TextBox Name="usernameTextBox"
+                         Header="Username:"
+                         PlaceholderText="Enter your username"/>
+                <TextBox Name="emailTextBox"
+                         Header="Email:"
+                         PlaceholderText="Enter your email"/>
+                <PasswordBox Name="passwordTextBox"
+                             Header="Password:"
+                             PlaceholderText="Enter your password"/>
+                <PasswordBox Name="confirmPasswordTextBox"
+                             Header="Confirm Password:"
+                             PlaceholderText="Enter confirm password"/>
+
 
             </StackPanel>
-            <TextBox Name="usernameTextBox"
-                     Header="Username:"
-                     PlaceholderText="Enter your username"/>
-            <TextBox Name="emailTextBox"
-                     Header="Email:"
-                     PlaceholderText="Enter your email"/>
-            <PasswordBox Name="passwordTextBox"
-                         Header="Password:"
-                         PlaceholderText="Enter your password"/>
-            <PasswordBox Name="confirmPasswordTextBox"
-                         Header="Confirm Password:"
-                         PlaceholderText="Enter confirm password"/>
-
-
+            <StackPanel Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <TextBlock Text="You have an account?" VerticalAlignment="Center"/>
+                <HyperlinkButton VerticalAlignment="Center" x:Name="loginButton"
+                                 Margin="140,0,0,0" HorizontalAlignment="Right" Click="loginButton_Click">Login</HyperlinkButton>
+            </StackPanel>
+            <Button x:Name="registerButton" Height="40"
+                    Click="registerButton_Click" Width="Auto" HorizontalAlignment="Stretch">Register</Button>
         </StackPanel>
-        <StackPanel Margin="10,0,0,0" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-            <TextBlock Text="You have an account?" VerticalAlignment="Center"/>
-            <HyperlinkButton VerticalAlignment="Center" x:Name="loginButton"
-                             Margin="140,0,0,0" HorizontalAlignment="Right" Click="loginButton_Click">Login</HyperlinkButton>
-        </StackPanel>
-        <Button x:Name="registerButton" Height="40"
-                Click="registerButton_Click" Width="Auto" HorizontalAlignment="Stretch">Register</Button>
-    </StackPanel>
+
+        <!-- Loading Overlay -->
+        <Grid x:Name="LoadingOverlay"
+              Visibility="Collapsed"
+              Background="#80000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="White"
+                        Padding="20">
+                <ProgressRing
+                    x:Name="spinner"
+                    IsActive="True"
+                    Width="50"
+                    Height="50"
+                    Background="LightGray"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+
 </Page>

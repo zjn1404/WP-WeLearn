@@ -3,8 +3,10 @@ package com.welearn.WeLearnApp.mapper.tutor;
 import com.welearn.WeLearnApp.dto.request.tutor.TutorUpdateRequest;
 import com.welearn.WeLearnApp.dto.response.TutorResponse;
 import com.welearn.WeLearnApp.entity.Tutor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+@Slf4j
 @Component
 public class TutorMapperImpl implements TutorMapper {
     @Override

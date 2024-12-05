@@ -5,96 +5,158 @@
     xmlns:local="using:TutorApp.Views.HomePage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewmodels="using:TutorApp.ViewModels"
+    xmlns:controls="using:TutorApp.Controls"
     xmlns:models="using:TutorApp.Models"
-    xmlns:helpers="using:TutorApp.Helpers"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.Resources>
+
+        <SolidColorBrush x:Key="PrimaryColor" Color="#E6F3FF"/>
+        <SolidColorBrush x:Key="PrimaryBorderColor" Color="#0078D4"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#0078D4"/>
+
         <Style x:Key="TutorCardStyle" TargetType="Grid">
-            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="8"/>
+        </Style>
+
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
+            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="16,8"/>
+            <Setter Property="CornerRadius" Value="4"/>
         </Style>
     </Page.Resources>
 
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-     
-        <TextBlock Text="Tutors"
-                 Style="{StaticResource TitleLargeTextBlockStyle}"
-                 Margin="0,0,0,20"/>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBox
+                PlaceholderText="Search Tutor:"
+                Width="300"
+                Name="SearchTutorBox"
+                />
+            <Button Content="Search" Click="SearchTutor_Click"/>
+        </StackPanel>
 
-      
-        <GridView Grid.Row="1"
-                  ItemsSource="{x:Bind ViewModel.tutors, Mode=OneWay}"
+
+        <controls:TutorFilterControl
+            x:Name="TutorFilter"
+            FilterChanged="TutorFilter_FilterChanged"
+            Grid.Row="1"
+            />
+
+
+
+
+        <GridView Grid.Row="2"
+                  ItemsSource="{x:Bind _viewModel.Tutors, Mode=OneWay}"
                   SelectionMode="Single"
                   IsItemClickEnabled="True"
-                  Margin="-4,0">
+                  Margin="-4,0"
+                  ItemClick="TutorCard_ItemClick">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Tutor">
                     <Grid Style="{StaticResource TutorCardStyle}"
                           Width="300"
-                          Height="200"
+                          Height="270"
                           Padding="16"
-                          Margin="4">
+                          Margin="4"
+                          >
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                      
-                        <StackPanel Grid.Row="0">
-                            <TextBlock Text="{x:Bind FirstName}"
-                                     Style="{ThemeResource TitleTextBlockStyle}"
-                                     TextTrimming="CharacterEllipsis"/>
-                            <TextBlock Text="{x:Bind LastName}"
-                                     Style="{ThemeResource SubtitleTextBlockStyle}"
-                                     TextTrimming="CharacterEllipsis"
-                                     Opacity="0.8"/>
-                        </StackPanel>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Row="1"
-                                 Text="{x:Bind Id}"
-                                 Style="{ThemeResource CaptionTextBlockStyle}"
-                                 Opacity="0.6"
-                                 Margin="0,8,0,0"/>
+                            <PersonPicture Width="60"
+                                           Height="60"
+                                           ProfilePicture="{Binding avatarUrl}"/>
 
-                        <StackPanel Grid.Row="2" 
-                                  VerticalAlignment="Bottom"
-                                  Spacing="4">
-                          
-                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
-                                <Run Text="Birth Date: "/>
-                                <Run Text="{x:Bind DateOfBirth}"/>
+                            <StackPanel Grid.Column="1"
+                                        Margin="12,0,0,0"
+                                        VerticalAlignment="Center">
+                                <TextBlock Text="{Binding firstName,TargetNullValue='No Information'}"
+                                           Style="{ThemeResource BodyStrongTextBlockStyle}"
+                                           Foreground="{StaticResource PrimaryTextColor}"/>
+                                <TextBlock Text="{Binding lastName,TargetNullValue='No Information'}"
+                                           Style="{ThemeResource BodyTextBlockStyle}"
+                                           Foreground="{StaticResource PrimaryTextColor}"
+                                           Opacity="0.8"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel Grid.Row="1"
+                                    Spacing="8"
+                                    Margin="0,12,0,0">
+                            <TextBlock Foreground="{StaticResource PrimaryTextColor}">
+                                <Run Text="Date of Birth: "/>
+                                <Run Text="{Binding dob,TargetNullValue='No Information'}"/>
                             </TextBlock>
+                            <StackPanel>
+                                <TextBlock Text="Location: " Foreground="{StaticResource PrimaryTextColor}"/>
+                                <StackPanel Margin="20,0,0,0">
+                                    <TextBlock Foreground="{StaticResource PrimaryTextColor}">
+                                        <Run Text="+ City: "/>
+                                        <Run Text="{Binding location.city,TargetNullValue='No Information'}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="{StaticResource PrimaryTextColor}">
+                                        <Run Text="+ District: "/>
+                                        <Run Text="{Binding location.district,TargetNullValue='No Information'}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="{StaticResource PrimaryTextColor}">
+                                        <Run Text="+ Street: "/>
+                                        <Run Text="{Binding location.street,TargetNullValue='No Information'}"/>
+                                    </TextBlock>
+                                </StackPanel>
 
-                          
-                            <TextBlock Style="{ThemeResource BodyTextBlockStyle}">
-                                <Run Text="Location: "/>
-                                <Run Text="{x:Bind LocationId}"/>
+                            </StackPanel>
+                            <TextBlock Foreground="{StaticResource PrimaryTextColor}">
+                                <Run Text="PhoneNumber: "/>
+                                <Run Text="{Binding phoneNumber,TargetNullValue='No Information'}"/>
                             </TextBlock>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
-
-           
-            <GridView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <ItemsWrapGrid Orientation="Horizontal" 
-                                 HorizontalAlignment="Center"
-                                 MaximumRowsOrColumns="4"/>
-                </ItemsPanelTemplate>
-            </GridView.ItemsPanel>
         </GridView>
 
+
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="8"
+                    Margin="0,16,0,0">
+            <Button Content="Previous"
+                    Command="{Binding PreviousPageCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+            <TextBlock VerticalAlignment="Center"
+                       Foreground="{StaticResource PrimaryTextColor}">
+                <Run Text="Page "/>
+                <Run Text="{x:Bind _viewModel.CurrentPage, Mode=OneWay}"/>
+                <Run Text=" of "/>
+                <Run Text="{x:Bind _viewModel.TotalPages, Mode=OneWay}"/>
+            </TextBlock>
+            <Button Content="Next"
+                    Command="{Binding NextPageCommand}"
+                    Style="{StaticResource PrimaryButtonStyle}"/>
+        </StackPanel>
     </Grid>
 </Page>

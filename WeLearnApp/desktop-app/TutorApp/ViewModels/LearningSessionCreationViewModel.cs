@@ -36,6 +36,73 @@ namespace TutorApp.ViewModels
         public List<Subject> Subjects { get; set; }
 
 
+
+
+        /// <summary>
+        /// this is a method for validation Input
+        /// </summary>
+        /// <param name="tuition">a string tuition </param>
+        /// <param name="grade">a string grade</param>
+        /// <param name="learningMethod"> a string learning method</param>
+        /// <param name="startDate">a string start date</param>
+        /// <param name="startTime">a string start time</param>
+        /// <param name="duration">a string duration</param>
+        /// <param name="subject">a string subject</param>
+        /// <returns>
+        /// Return a string if having a error, otherwise, return null
+        /// </returns>
+        public string ValidateInput(
+          string tuition,
+          string grade,
+          string learningMethod,
+          string startDate,
+          string startTime,
+          string duration,
+          string subject)
+            {
+                if (string.IsNullOrEmpty(tuition?.Trim()) ||
+                    string.IsNullOrEmpty(grade?.Trim()) ||
+                    string.IsNullOrEmpty(learningMethod?.Trim()) ||
+                    string.IsNullOrEmpty(startTime?.Trim()) ||
+                    string.IsNullOrEmpty(duration?.Trim()) ||
+                    string.IsNullOrEmpty(subject?.Trim()) ||
+                    string.IsNullOrEmpty(startDate?.Trim()))
+                {
+                    return "Please fill in all the information";
+                }
+
+                if (!decimal.TryParse(tuition, out decimal tuitionValue) || tuitionValue < 0)
+                {
+                    return "Tuition must be a valid number greater than or equal to 0";
+                }
+
+                if (!int.TryParse(duration, out int durationValue) || durationValue < 0)
+                {
+                    return "Duration must be a valid number greater than 0 or equal to 0";
+                }
+
+                if (!DateTime.TryParse(startDate, out DateTime startDateValue) ||
+                    startDateValue.Date < DateTime.Now.Date)
+                {
+                    return "Start date must be from today onwards";
+                }
+
+                if (!DateTime.TryParse(startTime, out DateTime startTimeValue))
+                {
+                    return "Invalid time format";
+                }
+
+                DateTime fullStartDateTime = startDateValue.Date.Add(startTimeValue.TimeOfDay);
+
+
+                if (fullStartDateTime < DateTime.Now)
+                {
+                    return "Start date and time must be in the future";
+                }
+
+                return null;
+        }
+
         protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
