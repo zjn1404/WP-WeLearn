@@ -23,6 +23,7 @@ namespace TutorApp.MockData
                     Duration = 60,
                     GradeId = 1,
                     SubjectName = "Math",
+                    Tuition = 100,
                     LearningMethodName = "Online"
                 },
                 new()
@@ -33,6 +34,7 @@ namespace TutorApp.MockData
                     Duration = 60,
                     GradeId = 2,
                     SubjectName = "Math",
+                    Tuition = 10000,
                     LearningMethodName = "Offline"
                 },
                 new()
@@ -43,6 +45,7 @@ namespace TutorApp.MockData
                     Duration = 60,
                     GradeId = 3,
                     SubjectName = "Computer Science",
+                    Tuition = 10000000,
                     LearningMethodName = "Online"
                 }
             };

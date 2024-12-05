@@ -66,7 +66,17 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <param name="lastname">The last name of the tutor to search for.</param>
         /// <param name="token">The authentication token for API access.</param>
         /// <returns>A paginated list of tutors matching the search criteria.</returns>
-        public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string firstName, string lastname, string token);
+        public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token);
+
+
+
+        /// <summary>
+        /// Retrieves a deatail info of tutors
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="token"></param>
+        /// <returns>Retrieves a deatail info of tutors</returns>
+        public Task<TutorDetail> GetDetailTutorService(string id, string token);
 
 
 

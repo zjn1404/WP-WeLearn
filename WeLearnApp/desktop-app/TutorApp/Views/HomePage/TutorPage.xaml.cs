@@ -34,11 +34,13 @@ namespace TutorApp.Views.HomePage
     {
         public TutorViewModel _viewModel { get; }
         private readonly ITutorService _tutorService;
+        private readonly INavigationService _navigationService;
 
         public TutorPage()
         {
             this.InitializeComponent();
             _tutorService = ((App)Application.Current).Services.GetRequiredService<ITutorService>();
+            _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _viewModel = new TutorViewModel(_tutorService);
             DataContext = _viewModel;
         }
@@ -68,6 +70,14 @@ namespace TutorApp.Views.HomePage
             {
                  await _viewModel.getListTutorBySearch(value);
 
+            }
+        }
+
+        private void TutorCard_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e.ClickedItem is Tutor selectedTutor)
+            {
+                _navigationService.NavigateTo("DetailTutor", selectedTutor);
             }
         }
     }

@@ -33,13 +33,14 @@ namespace TutorApp.Helpers
             navigationService.RegisterPage("Register", typeof(Register));
             navigationService.RegisterPage("RegisterForTutor", typeof(RegisterForTutor));
             navigationService.RegisterPage("LoginForTutor", typeof(LoginForTutor));
-            navigationService.RegisterPage("LoginForStudent",typeof(Login));
+            navigationService.RegisterPage("LoginForStudent", typeof(Login));
             navigationService.RegisterPage("PageLoginTokenRequire", typeof(PageLoginTokenRequire));
             navigationService.RegisterPage("MySessions", typeof(MySessions));
             navigationService.RegisterPage("SessionPage", typeof(SessionPage));
 
 
             // Add more pages as needed
+            navigationService.RegisterPage("DetailTutor", typeof(DetailTutor));
         }
     }
 }

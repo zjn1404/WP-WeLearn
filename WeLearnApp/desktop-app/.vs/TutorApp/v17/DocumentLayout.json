@@ -1,0 +1,1008 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\sessionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\sessionpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\paymentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\paymentresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\paymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\thirdpartyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\thirdpartyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\tutorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\tutorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\subjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\ipaymentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\tutorpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\tutorpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\tutorfiltercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\tutorfiltercontrol.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\fodyweavers.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\fodyweavers.xml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\itutorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\itutorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\tutorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\tutorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\userprofileviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\navigationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\tutorfiltercontrolvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\tutorfiltercontrolvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\accountpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\accountpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\dashboard.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\sessionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\sessionpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\mockdata\\mockdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\mockdata\\mockdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\mockdata\\idao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\mockdata\\idao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\learningsessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\learningsessionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\homepage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\httpservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\helpers\\cloudinaryuploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\helpers\\cloudinaryuploader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\viewmodels\\learningsessioncreationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\viewmodels\\learningsessioncreationviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\learningsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\learningsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\isubjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\isubjectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\ilearningsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\ilearningsessionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\ilearningmethodservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\ilearningmethodservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\ithirdpartyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\ithirdpartyservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\interfaces\\forapi\\igradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\interfaces\\forapi\\igradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\request\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\request\\paymentrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\request\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\request\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\request\\logoutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\request\\logoutrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\request\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\request\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\jsonresponse\\jsonresponsetutorspecificfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\jsonresponse\\jsonresponsetutorspecificfields.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\jsonresponse\\jsonresponseverify.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\jsonresponse\\jsonresponseverify.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\registerresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\resendtokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\resendtokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\verifyresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\verifyresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\userprofileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\userprofileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\updateprofileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\updateprofileresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\updateemailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\updateemailresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\tutorspecificfieldsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\tutorspecificfieldsresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\locationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\locationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\logoutresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\logoutresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\models\\forapi\\response\\pageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\models\\forapi\\response\\pageresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\learningmethodservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\learningmethodservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\services\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\services\\gradeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\homepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\home.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|c:\\users\\sau hung\\desktop\\hk5 2024 - 2025\\window programing\\welearn\\wp-welearn\\welearnapp\\desktop-app\\tutorapp\\views\\homepage\\accountpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B0CB97E4-C27D-4850-8279-C3D2B5F50484}|TutorApp\\TutorApp.csproj|solutionrelative:tutorapp\\views\\homepage\\accountpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 100,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 8,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TutorFilterControl.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorFilterControl.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\TutorFilterControl.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorFilterControl.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\TutorFilterControl.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T04:34:29.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FodyWeavers.xml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\FodyWeavers.xml",
+              "RelativeDocumentMoniker": "TutorApp\\FodyWeavers.xml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\FodyWeavers.xml",
+              "RelativeToolTip": "TutorApp\\FodyWeavers.xml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2024-12-04T04:31:54.719Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\App.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml.cs",
+              "RelativeToolTip": "TutorApp\\App.xaml.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAkwE4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T04:20:59.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "App.xaml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\App.xaml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\App.xaml",
+              "RelativeToolTip": "TutorApp\\App.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-04T04:20:56.266Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "NavigationService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\NavigationService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\NavigationService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\NavigationService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\NavigationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:08:02.948Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TutorFilterControlVM.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\TutorFilterControlVM.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\TutorFilterControlVM.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\TutorFilterControlVM.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\TutorFilterControlVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T02:07:55.768Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "MockDao.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\MockDao.cs",
+              "RelativeDocumentMoniker": "TutorApp\\MockData\\MockDao.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\MockDao.cs",
+              "RelativeToolTip": "TutorApp\\MockData\\MockDao.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwDgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:59:16.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IDAO.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\IDAO.cs",
+              "RelativeDocumentMoniker": "TutorApp\\MockData\\IDAO.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\MockData\\IDAO.cs",
+              "RelativeToolTip": "TutorApp\\MockData\\IDAO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:59:06.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TutorPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\TutorPage.xaml.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAqwDUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:49:27.365Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SessionPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\SessionPage.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\SessionPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\SessionPage.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\SessionPage.xaml.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAA0wEIAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:48:55.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AccountPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\AccountPage.xaml.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAApwCQAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:40:36.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Dashboard.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Dashboard.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\Dashboard.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Dashboard.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\Dashboard.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:40:32.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "LearningSessionCreationViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\LearningSessionCreationViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\LearningSessionCreationViewModel.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\LearningSessionCreationViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\LearningSessionCreationViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:39:26.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "CloudinaryUploader.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\CloudinaryUploader.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Helpers\\CloudinaryUploader.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Helpers\\CloudinaryUploader.cs",
+              "RelativeToolTip": "TutorApp\\Helpers\\CloudinaryUploader.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwDsAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:39:07.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "ILearningMethodService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ILearningMethodService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\ILearningMethodService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ILearningMethodService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\ILearningMethodService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:28:04.56Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TutorService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\TutorService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\TutorService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\TutorService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\TutorService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwCUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:18:41.089Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ThirdPartyService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\ThirdPartyService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\ThirdPartyService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\ThirdPartyService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\ThirdPartyService.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAQwDcAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:16:26.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SubjectService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\SubjectService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\SubjectService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\SubjectService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\SubjectService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:13:35.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\PaymentService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\PaymentService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\PaymentService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\PaymentService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAADwvycAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:12:48.018Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "IGradeService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IGradeService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\IGradeService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IGradeService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\IGradeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:12:29.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "LogoutRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\LogoutRequest.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Request\\LogoutRequest.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\LogoutRequest.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Request\\LogoutRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:11:01.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "LoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\LoginRequest.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Request\\LoginRequest.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\LoginRequest.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Request\\LoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:10:58.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Request\\RegisterRequest.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\RegisterRequest.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Request\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:10:54.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "PaymentRequest.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\PaymentRequest.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Request\\PaymentRequest.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Request\\PaymentRequest.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Request\\PaymentRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:10:52.614Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "JsonResponseTutorSpecificFields.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseTutorSpecificFields.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseTutorSpecificFields.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseTutorSpecificFields.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseTutorSpecificFields.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:10:39.702Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "JsonResponseVerify.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseVerify.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseVerify.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseVerify.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\JsonResponse\\JsonResponseVerify.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:10:37.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "ResendTokenResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\ResendTokenResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\ResendTokenResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\ResendTokenResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\ResendTokenResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:59.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "UserProfileResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UserProfileResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\UserProfileResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UserProfileResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\UserProfileResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:55.063Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "VerifyResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\VerifyResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\VerifyResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\VerifyResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\VerifyResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:53.208Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "UpdateProfileResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateProfileResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\UpdateProfileResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateProfileResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\UpdateProfileResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:49.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "UpdateEmailResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\UpdateEmailResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:47.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "TutorSpecificFieldsResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\TutorSpecificFieldsResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\TutorSpecificFieldsResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\TutorSpecificFieldsResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\TutorSpecificFieldsResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:34.95Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "LocationResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LocationResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\LocationResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LocationResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\LocationResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:31.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\LoginResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LoginResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:28.574Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "LogoutResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LogoutResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\LogoutResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\LogoutResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\LogoutResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:27.425Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "PageResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\PageResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\PageResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\PageResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\PageResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:25.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "RegisterResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\RegisterResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:22.868Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaymentResponse.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\PaymentResponse.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Models\\ForAPI\\Response\\PaymentResponse.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Models\\ForAPI\\Response\\PaymentResponse.cs",
+              "RelativeToolTip": "TutorApp\\Models\\ForAPI\\Response\\PaymentResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:09:21.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "IThirdPartyService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IThirdPartyService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\IThirdPartyService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IThirdPartyService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\IThirdPartyService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAzwA8AAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:08:41.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "ISubjectService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ISubjectService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\ISubjectService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ISubjectService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\ISubjectService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:08:09.997Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IPaymentService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IPaymentService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\IPaymentService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\IPaymentService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\IPaymentService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:07:55.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\UserService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\UserService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\UserService.cs",
+              "ViewState": "AgIAAD0BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:05:49.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "LearningSessionService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\LearningSessionService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\LearningSessionService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\LearningSessionService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\LearningSessionService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwIcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:04:57.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "LearningMethodService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\LearningMethodService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\LearningMethodService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\LearningMethodService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\LearningMethodService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:04:55.401Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "HttpService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\HttpService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\HttpService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\HttpService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\HttpService.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAuwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:04:53.886Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "GradeService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\GradeService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\GradeService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\GradeService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\GradeService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:04:49.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "LearningSessionViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\LearningSessionViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\LearningSessionViewModel.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\LearningSessionViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\LearningSessionViewModel.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAD4vxkAAABnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:04:23.939Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "ILearningSessionService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ILearningSessionService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\ILearningSessionService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ILearningSessionService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\ILearningSessionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:03:59.148Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ITutorService.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ITutorService.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Services\\Interfaces\\ForAPI\\ITutorService.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Services\\Interfaces\\ForAPI\\ITutorService.cs",
+              "RelativeToolTip": "TutorApp\\Services\\Interfaces\\ForAPI\\ITutorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T01:03:46.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SessionPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\SessionPage.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\SessionPage.xaml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\SessionPage.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\SessionPage.xaml",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAwwIAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T08:34:38.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "HomePage.xaml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\HomePage.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\HomePage.xaml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\HomePage.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\HomePage.xaml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T08:34:10.404Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "HomePage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\HomePage.xaml.cs",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\HomePage.xaml.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\HomePage.xaml.cs",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\HomePage.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:34:08.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "Home.xaml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Home.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\Home.xaml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\Home.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\Home.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T08:34:01.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "AccountPage.xaml",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml",
+              "RelativeDocumentMoniker": "TutorApp\\Views\\HomePage\\AccountPage.xaml",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\Views\\HomePage\\AccountPage.xaml",
+              "RelativeToolTip": "TutorApp\\Views\\HomePage\\AccountPage.xaml",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAHMAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-12-03T08:31:56.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "UserProfileViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\UserProfileViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAABqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:30:52.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "TutorViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\TutorViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\TutorViewModel.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\TutorViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\TutorViewModel.cs",
+              "ViewState": "AgIAAFAAAAAAAAAAAAAMwE0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:30:27.984Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "TutorApp\\ViewModels\\UserViewModel.cs",
+              "ToolTip": "C:\\Users\\Sau Hung\\Desktop\\HK5 2024 - 2025\\Window Programing\\WeLearn\\WP-WeLearn\\WeLearnApp\\desktop-app\\TutorApp\\ViewModels\\UserViewModel.cs",
+              "RelativeToolTip": "TutorApp\\ViewModels\\UserViewModel.cs",
+              "ViewState": "AgIAAJgAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-03T08:30:26.436Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
