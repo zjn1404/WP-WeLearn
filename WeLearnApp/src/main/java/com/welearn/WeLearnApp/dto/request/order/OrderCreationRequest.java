@@ -10,5 +10,6 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class OrderCreationRequest {
+    String userId;
     String learningSessionId;
 }

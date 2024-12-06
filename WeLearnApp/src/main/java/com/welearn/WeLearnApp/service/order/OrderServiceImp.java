@@ -21,8 +21,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -50,9 +48,7 @@ public class OrderServiceImp implements OrderService {
             throw new AppException(ErrorCode.ORDER_ALREADY_EXISTS);
         }
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        UserProfile student = userProfileRepository.findById(authentication.getName())
+        UserProfile student = userProfileRepository.findById(request.getUserId())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
         LearningSession learningSession = learningSessionRepository.findById(request.getLearningSessionId())
                 .orElseThrow(() -> new AppException(ErrorCode.LEARNING_SESSION_NOT_FOUND));
