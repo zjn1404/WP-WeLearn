@@ -21,6 +21,8 @@ public enum ErrorCode {
     TUTOR_NOT_MATCH(2006, HttpStatus.BAD_REQUEST, "Tutor not match"),
     INVALID_GRADE(2007, HttpStatus.BAD_REQUEST, "Grade should be between 1 and 12"),
     INVALID_TUITION(2008, HttpStatus.BAD_REQUEST, "Tuition should be greater than or equal to 0"),
+    INVALID_RATING(2009, HttpStatus.BAD_REQUEST, "Rating should be greater than 0"),
+    INVALID_COMMENT(2010, HttpStatus.BAD_REQUEST, "Review is required"),
     //    Existed Error 3xxx
     USER_EXISTED(3001, HttpStatus.BAD_REQUEST, "User existed"),
     USER_PROFILE_EXISTED(3002, HttpStatus.BAD_REQUEST, "User profile existed"),

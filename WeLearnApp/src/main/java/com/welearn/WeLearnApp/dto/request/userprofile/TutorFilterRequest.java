@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Min;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+@ToString
 @Getter
 @Setter
 @Builder

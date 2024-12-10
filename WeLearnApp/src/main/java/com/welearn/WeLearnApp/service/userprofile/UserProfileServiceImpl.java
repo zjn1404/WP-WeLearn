@@ -126,7 +126,7 @@ public class UserProfileServiceImpl implements UserProfileService {
     @Override
     public PageResponse<UserProfileResponse> filterProfiles(TutorFilterRequest request, int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
-
+        log.info("Filtering profiles with request: {}", request);
         Page<UserProfile> userProfiles = userProfileRepository.findAllByLocationAndGradeAndSubject(
                 ERole.TUTOR.getName(),
                 request.getCity(),
@@ -137,7 +137,7 @@ public class UserProfileServiceImpl implements UserProfileService {
                 request.getLearningMethod(),
                 request.getTuition()
                 , pageable);
-
+        log.info("Found {} profiles", userProfiles.getTotalElements());
         return buildPageUserProfileResponse(userProfiles);
     }
 

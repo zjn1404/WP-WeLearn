@@ -8,6 +8,7 @@ import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
 import com.welearn.WeLearnApp.mapper.learningsession.LearningSessionMapper;
+import com.welearn.WeLearnApp.mapper.location.LocationMapper;
 import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
 import com.welearn.WeLearnApp.repository.*;
 import lombok.*;
@@ -36,6 +37,7 @@ public class LearningSessionServiceImp implements LearningSessionService {
     UserProfileRepository userProfileRepository;
 
     LearningSessionMapper learningSessionMapper;
+    LocationMapper locationMapper;
     UserProfileMapper userProfileMapper;
 
     @Override
@@ -116,6 +118,7 @@ public class LearningSessionServiceImp implements LearningSessionService {
     private LearningSessionResponse buildLearningSessionResponse(LearningSession learningSession) {
         LearningSessionResponse response = learningSessionMapper.toLearningSessionResponse(learningSession);
         response.setTutor(userProfileMapper.toUserProfileResponse(learningSession.getTutor()));
+        response.getTutor().setLocation(locationMapper.toLocationResponse(learningSession.getTutor().getLocation()));
         return response;
     }
 }
