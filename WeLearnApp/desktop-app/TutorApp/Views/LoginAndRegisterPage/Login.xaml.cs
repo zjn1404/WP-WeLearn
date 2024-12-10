@@ -118,14 +118,8 @@ namespace TutorApp.Views
 
         private void registerButtonForTutor_Click(object sender, RoutedEventArgs e)
         {
-            // Tạo cửa sổ mới và điều hướng đến trang LoginForTutor
-            var window = _navigationService.NavigateToNewWindow(
-                "TutorLoginWindow",  // Khóa cửa sổ
-                "LoginForTutor"      // Khóa trang
-            );
+            _navigationService.NavigateTo("LoginForTutor");
 
-            // Tùy chọn: Thiết lập thuộc tính cửa sổ
-            window.Title = "login For Tutor";
         }
     }
 }

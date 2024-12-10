@@ -166,7 +166,7 @@ namespace TutorApp.Views.HomePage
                 ContentDialog errorDialog = new ContentDialog
                 {
                     Title = "Error",
-                    Content = "An unexpected error occurred. Please try again later.",
+                    Content = ex.Message,
                     CloseButtonText = "OK",
                     XamlRoot = this.XamlRoot
                 };

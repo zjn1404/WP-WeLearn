@@ -47,12 +47,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
 
         private void navigateToPageStudent(object sender, RoutedEventArgs e)
         {
-            // Tạo window mới cho Student Login
-            var window = _navigationService.NavigateToNewWindow(
-                "StudentLoginWindow",  // Window key
-                "LoginForStudent"      // Page key
-            );
-            window.Title = "Student Login";
+            _navigationService.NavigateTo("Login");
         }
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
