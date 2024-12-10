@@ -42,6 +42,14 @@ public class EvaluationServiceImp implements EvaluationService {
         UserProfile tutor = userProfileRepository.findById(request.getTutorId())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
 
+        if (request.getStar() == null || request.getStar() <= 0) {
+            throw new AppException(ErrorCode.INVALID_RATING);
+        }
+
+        if (request.getComment() == null || request.getComment().isEmpty()) {
+            throw new AppException(ErrorCode.INVALID_COMMENT);
+        }
+
         Evaluation evaluation = evaluationMapper.toEvaluation(request);
         evaluation.setStudent(student);
         evaluation.setTutor(tutor);

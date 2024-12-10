@@ -34,18 +34,18 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
     List<UserProfile> findTopThreeTutorsByGradeAndSubject(int grade, String subject);
 
     @Query("""
-    SELECT u FROM UserProfile u
+    SELECT DISTINCT u FROM UserProfile u
     JOIN User us ON u.id = us.id
     LEFT JOIN LearningSession l ON u.id = l.tutor.id
     LEFT JOIN Location loc ON u.location.id = loc.id
     WHERE us.role.name = :role
-      AND (:city IS NULL OR loc IS NULL OR :city = loc.city)
-      AND (:district IS NULL OR loc IS NULL OR :district = loc.district)
-      AND (:street IS NULL OR loc IS NULL OR :street = loc.street)
-      AND (:grade IS NULL OR l IS NULL OR :grade = l.grade.id)
-      AND (:subject IS NULL OR l IS NULL OR :subject = l.subject.name)
-      AND (:learningMethod IS NULL OR l IS NULL OR :learningMethod = l.learningMethod.name)
-      AND (:tuition IS NULL OR l IS NULL OR :tuition = l.tuition)
+      AND (:city IS NULL OR :city = loc.city)
+      AND (:district IS NULL OR :district = loc.district)
+      AND (:street IS NULL OR :street = loc.street)
+      AND (:grade IS NULL OR :grade = l.grade.id)
+      AND (:subject IS NULL OR :subject = l.subject.name)
+      AND (:learningMethod IS NULL OR :learningMethod = l.learningMethod.name)
+      AND (:tuition IS NULL OR :tuition = l.tuition)
     """)
     Page<UserProfile> findAllByLocationAndGradeAndSubject(
             @Param("role") String role,
