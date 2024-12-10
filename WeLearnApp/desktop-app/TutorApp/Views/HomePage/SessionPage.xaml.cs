@@ -20,6 +20,7 @@ using TutorApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using System.Diagnostics;
+using TutorApp.Models.ForAPI.Response;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -32,26 +33,35 @@ namespace TutorApp.Views.HomePage
     public sealed partial class SessionPage : Page
     {
         public LearningSessionViewModel ViewModel { get; }
-        public LearningSession SelectedSession { get; set; }
+        public LearningSessionResponse SelectedSession { get; set; }
         private readonly IPaymentService _paymentService;
+        private readonly ILearningSessionService _learningSessionService;
 
         public SessionPage()
         {
             this.InitializeComponent();
             var navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _paymentService = ((App)Application.Current).Services.GetRequiredService<IPaymentService>();
+            _learningSessionService = ((App)Application.Current).Services.GetRequiredService<ILearningSessionService>();
 
-            ViewModel = new LearningSessionViewModel();
-            DataContext = this;
+            ViewModel = new LearningSessionViewModel(_learningSessionService);
+            DataContext = ViewModel;
+
+
+            this.Loaded += (s, e) =>
+            {
+                Debug.WriteLine($"Sessions count: {ViewModel.learningSessions?.Count ?? 0}");
+            };
         }
 
         private async void OnSessionCardClicked(object sender, ItemClickEventArgs e)
         {
-            // Get the clicked session
-            if (e.ClickedItem is LearningSession session)
+            Debug.WriteLine($"Clicked item: {e.ClickedItem}");
+            if (e.ClickedItem is LearningSessionResponse session)
             {
+                Debug.WriteLine($"Selected session: {session.Subject} at {session.StartTime}");
                 SelectedSession = session;
-                SessionDetailsDialog.DataContext = this; // Bind to this page to access SelectedSession
+                SessionDetailsDialog.DataContext = this;
                 await SessionDetailsDialog.ShowAsync();
             }
         }
@@ -60,10 +70,11 @@ namespace TutorApp.Views.HomePage
         {
             try
             {
-                string amount = SelectedSession?.Tuition.ToString() ?? "0";
+                string amount = ((int)SelectedSession?.Tuition).ToString() ?? "0";
+                string learningSessionId = SelectedSession?.Id.ToString() ?? "";
                 string token = ApplicationData.Current.LocalSettings.Values["accessToken"] as string;
 
-                string paymentUrl = await _paymentService.CreatePayment(amount, token);
+                string paymentUrl = await _paymentService.CreatePayment(amount, learningSessionId, token);
                 Debug.WriteLine("paymentUrl", paymentUrl);
                 if (!string.IsNullOrEmpty(paymentUrl))
                 {

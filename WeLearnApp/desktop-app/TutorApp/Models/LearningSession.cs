@@ -21,3 +21,4 @@ namespace TutorApp.Models
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
+
