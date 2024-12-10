@@ -95,7 +95,9 @@ namespace TutorApp.Services
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 var response = await _httpClient.GetAsync(string.Format("/api/learning-session?page={0}&size={1}", page, size));
                 var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = (PageResponse<LearningSessionResponse>)JsonSerializer.Deserialize<ApiResponse>(responseContent).data;
+
+                var apiResponse = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+                var responseData = JsonSerializer.Deserialize<PageResponse<LearningSessionResponse>>(apiResponse.data.ToString());
 
                 return responseData;
             }

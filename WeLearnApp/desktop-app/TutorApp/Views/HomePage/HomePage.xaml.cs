@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TutorApp.Services.Interfaces;
+using TutorApp.Services.Interfaces.ForAPI;
 using TutorApp.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -32,7 +33,10 @@ namespace TutorApp.Views.HomePage
         {
             this.InitializeComponent();
             var navigationService = App.Current.Services.GetService<INavigationService>();
-            ViewModel = new LearningSessionViewModel();
+            var learningSessionService = App.Current.Services.GetService <ILearningSessionService>();
+
+            ViewModel = new LearningSessionViewModel(learningSessionService);
+            
             DataContext = this;
         }
     }

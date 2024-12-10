@@ -102,6 +102,5 @@ namespace TutorApp
             navigationService.NavigateTo("Login");
         }
 
-
     }
 }

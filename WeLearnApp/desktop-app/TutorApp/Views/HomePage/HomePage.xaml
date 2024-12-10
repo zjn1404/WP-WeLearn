@@ -6,7 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:TutorApp.ViewModels"
-    xmlns:models="using:TutorApp.Models"
+    xmlns:models="using:TutorApp.Models.ForAPI.Response"
     xmlns:helpers="using:TutorApp.Helpers"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -29,7 +29,7 @@
               HorizontalAlignment="Left"
               Margin="-4,0">
             <GridView.ItemTemplate>
-                <DataTemplate x:DataType="models:LearningSession">
+                <DataTemplate x:DataType="models:LearningSessionResponse">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
                           Width="200"
                           Height="200"
@@ -50,13 +50,13 @@
                                    FontWeight="Bold"
                                    Foreground="Gray">
                                 <Run Text="Grade: "/>
-                                <Run Text="{x:Bind GradeId}" />
+                                <Run Text="{x:Bind Grade}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"
-                                   Text="{x:Bind SubjectName}"
+                                   Text="{x:Bind Subject}"
                                    FontSize="16"
                                    FontWeight="Bold"
                                    TextAlignment="Center" />
@@ -71,7 +71,7 @@
                         <TextBlock Grid.Row="3"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom" 
-                                   Text="{x:Bind LearningMethodName}"
+                                   Text="{x:Bind LearningMethod}"
                                    FontSize="14"
                                    Foreground="Gray" />
 
