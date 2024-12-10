@@ -26,6 +26,10 @@ namespace TutorApp.Services
 
         public async Task<EvaluationResponse> evaluate(EvaluationRequest request, string token)
         {
+            if (request.star <= 0)
+            {
+                throw new Exception("Star must be greater than 0");
+            }
             try
             {
                 using (var client = _httpService.CreateClient(token))

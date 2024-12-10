@@ -43,6 +43,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
@@ -82,11 +83,11 @@
                                    VerticalAlignment="Bottom" 
                                    FontSize="14"
                                    Foreground="Gray">
-                                <Run Text="Duration: "/>
+                                <Run Text="Price: "/>
                                 <Run Text="{x:Bind Tuition}" />
                         </TextBlock>
                         
-                        <TextBlock Grid.Row="4"
+                        <TextBlock Grid.Row="5"
                                    HorizontalAlignment="Right"
                                    VerticalAlignment="Bottom" 
                                    FontSize="14"
