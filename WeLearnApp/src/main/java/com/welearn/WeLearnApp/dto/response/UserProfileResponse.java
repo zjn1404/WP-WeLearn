@@ -18,5 +18,6 @@ public class UserProfileResponse {
     LocalDate dob;
     String phoneNumber;
     LocationResponse location;
+    String email;
     String avatarUrl;
 }
