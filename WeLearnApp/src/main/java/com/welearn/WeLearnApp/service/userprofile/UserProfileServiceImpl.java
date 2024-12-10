@@ -7,6 +7,7 @@ import com.welearn.WeLearnApp.dto.response.LocationResponse;
 import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.Location;
+import com.welearn.WeLearnApp.entity.User;
 import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.exception.AppException;
@@ -159,7 +160,11 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     private PageResponse<UserProfileResponse> buildPageUserProfileResponse(Page<UserProfile> userProfiles) {
-        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(this::buildUserProfileResponse).toList();
+        List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(profile -> {
+            UserProfileResponse userProfileResponse = userProfileMapper.toUserProfileResponse(profile);
+            userProfileResponse.setEmail(profile.getUser().getEmail());
+            return userProfileResponse;
+        }).toList();
 
         return PageResponse.<UserProfileResponse>builder()
                 .currentPage(userProfiles.getNumber() + 1)
