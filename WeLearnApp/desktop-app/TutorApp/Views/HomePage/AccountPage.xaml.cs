@@ -50,8 +50,45 @@ namespace TutorApp.Views.HomePage
             {
                 _viewModel = new UserProfileViewModel(_userService, _tutorService, _thirdPartyService);
             }
+
             DataContext = _viewModel;
             await _viewModel.InitializeAsync();
+
+            if (DateTime.TryParse(_viewModel.Dob.ToString(), out DateTime parsedDate))
+            {
+                Dob.Date = parsedDate;
+            }
+            else
+            {
+                Debug.WriteLine("Invalid date format");
+            }
+
+
+
+            if (_viewModel.Provinces != null && _viewModel.UserProfileResponse?.location?.city != null)
+            {
+                var province = _viewModel.Provinces.FirstOrDefault(p =>
+                    string.Equals(p.name, _viewModel.UserProfileResponse.location.city,
+                    StringComparison.OrdinalIgnoreCase));
+
+                if (province != null)
+                {
+                    City.SelectedItem = province;
+                    await LoadDistrictsForProvince(province);
+
+                    if (_viewModel.Districts != null && _viewModel.UserProfileResponse?.location?.district != null)
+                    {
+                        var district = _viewModel.Districts.FirstOrDefault(d =>
+                            string.Equals(d.name, _viewModel.UserProfileResponse.location.district,
+                            StringComparison.OrdinalIgnoreCase));
+
+                        if (district != null)
+                        {
+                            District.SelectedItem = district;
+                        }
+                    }
+                }
+            }
 
             if (ApplicationData.Current.LocalSettings.Values["role"] as string != "TUTOR")
             {
@@ -60,7 +97,19 @@ namespace TutorApp.Views.HomePage
 
         }
 
-
+        private async Task LoadDistrictsForProvince(Province province)
+        {
+            try
+            {
+                var districts = await _thirdPartyService.GetDistrictList(province.code);
+                _viewModel.Districts = districts;
+                District.ItemsSource = districts;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading districts: {ex.Message}");
+            }
+        }
         private async void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -73,11 +122,13 @@ namespace TutorApp.Views.HomePage
                     _avatarUrl = await cloudinaryUploader.UploadImageAsync(_selectedAvatarFile.Path);
                 }
 
+                var selectedDate = Dob.SelectedDate.Value;
+
                 var request = new UpdateProfileRequest
                 {
                     firstName = FirstName.Text,
                     lastName = LastName.Text,
-                    dob = DateTime.TryParse(Dob.Text, out var dob) ? dob : null,
+                    dob = new DateTime(selectedDate.Year, selectedDate.Month, selectedDate.Day),
                     phoneNumber = PhoneNumber.Text,
                     city = (City.SelectedItem as Province)?.name,
                     district = (District.SelectedItem as District)?.name,
@@ -128,25 +179,7 @@ namespace TutorApp.Views.HomePage
             {
                 try
                 {
-                    Debug.WriteLine($"Loading districts for province code: {selectedProvince.code}");
-                    var districts = await _thirdPartyService.GetDistrictList(selectedProvince.code);
-
-                    if (districts != null && districts.Any())
-                    {
-                        District.ItemsSource = districts;
-
-                        var selectedDistrict = districts.FirstOrDefault(d => d.code == _viewModel.SelectedDistrictCode);
-                        if (selectedDistrict != null)
-                        {
-                            District.SelectedValue = selectedDistrict.code;
-                            Debug.WriteLine($"Reselected district with code: {selectedDistrict.code}");
-                        }
-                    }
-                    else
-                    {
-                        Debug.WriteLine("No districts found for the selected province");
-                        District.ItemsSource = null;
-                    }
+                    await LoadDistrictsForProvince(selectedProvince);
                 }
                 catch (Exception ex)
                 {
@@ -186,7 +219,14 @@ namespace TutorApp.Views.HomePage
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            _navigationService.NavigateTo("Dashboard");
+            if (ApplicationData.Current.LocalSettings.Values["role"] as string == "TUTOR")
+            {
+                _navigationService.NavigateTo("DashboardForTutor");
+            }
+            else
+            {
+                _navigationService.NavigateTo("Dashboard");
+            }
         }
 
         private async void SaveTutorButton_Click(object sender, RoutedEventArgs e)

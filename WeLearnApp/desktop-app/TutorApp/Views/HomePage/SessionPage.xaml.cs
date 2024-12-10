@@ -21,6 +21,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using System.Diagnostics;
 using TutorApp.Models.ForAPI.Response;
+using System.Text.Json;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -47,7 +48,6 @@ namespace TutorApp.Views.HomePage
             ViewModel = new LearningSessionViewModel(_learningSessionService);
             DataContext = ViewModel;
 
-
             this.Loaded += (s, e) =>
             {
                 Debug.WriteLine($"Sessions count: {ViewModel.learningSessions?.Count ?? 0}");
@@ -60,6 +60,8 @@ namespace TutorApp.Views.HomePage
             if (e.ClickedItem is LearningSessionResponse session)
             {
                 Debug.WriteLine($"Selected session: {session.Subject} at {session.StartTime}");
+                Debug.WriteLine($"Selected session: {JsonSerializer.Serialize(session.Tutor.location)}");
+
                 SelectedSession = session;
                 SessionDetailsDialog.DataContext = this;
                 await SessionDetailsDialog.ShowAsync();
