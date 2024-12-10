@@ -119,7 +119,7 @@
                 <NavigationViewItem Content="Home" Tag="HomePage" Icon="Home" />
                 <NavigationViewItem Content="Messages" Tag="MessagesPage" Icon="Mail" />
                 <NavigationViewItemSeparator />
-                <NavigationViewItemHeader Content="Your Sessions" />
+                <NavigationViewItemHeader Content="My Sessions" />
                 <NavigationViewItem Content="Session 1" Tag="SessionPage" Icon="Bookmarks" />
                 <NavigationViewItem Content="Session 2" Tag="SessionPage" Icon="Bookmarks" />
             </NavigationView.MenuItems>

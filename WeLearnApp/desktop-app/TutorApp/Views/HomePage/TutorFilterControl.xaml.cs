@@ -123,7 +123,7 @@ namespace TutorApp.Controls
                     District = (DistrictComboBox.SelectedItem as District)?.name,
                     Street = string.IsNullOrWhiteSpace(Street.Text) ? null : Street.Text,
                     Grade = int.TryParse((GradeTextBox.SelectedItem as Grade)?.Id?.ToString(), out var grade) ? grade : (int?)null, 
-                    Subject = (SubjectTextBox.SelectedItem as Subject)?.Name,
+                    Subject = (SubjectTextBox.SelectedItem as Subject)?.name,
                     LearningMethod = (LearningMethodTextBox.SelectedItem as LearningMethod)?.Name,
                     TuitionRange = string.IsNullOrWhiteSpace(TuitionFilter.Text) ? (int?)null :
                    (int.TryParse(TuitionFilter.Text, out var tuition) ? tuition : (int?)null),

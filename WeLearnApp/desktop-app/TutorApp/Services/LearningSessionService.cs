@@ -105,6 +105,26 @@ namespace TutorApp.Services
             }
         }
 
+
+        public async Task<List<LearningSessionResponse>> GetMyLearningSessionList()
+        {
+            try
+            {
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                var token = localSettings.Values["accessToken"] as string;
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var response = await _httpClient.GetAsync(string.Format("/api/learning-session/my-session"));
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = (List<LearningSessionResponse>)JsonSerializer.Deserialize<ApiResponse>(responseContent).data;
+
+                return responseData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+        }
+
         private async Task<LearningSessionResponse> buildLearningSessionResponse(HttpResponseMessage response)
         {
             var responseContent = await response.Content.ReadAsStringAsync();

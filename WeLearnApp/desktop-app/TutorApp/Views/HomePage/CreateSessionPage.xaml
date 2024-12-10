@@ -41,9 +41,9 @@
 
                     <ComboBox x:Name="SubjectTextBox" Header="Subject" Width="300" Margin="0,0,0,10"
                               SelectedValue="{Binding SelectedSubject, Mode=TwoWay}"
-                              SelectedValuePath="Name"
+                              SelectedValuePath="name"
                               ItemsSource="{Binding Subjects}"
-                              DisplayMemberPath="Name"/>
+                              DisplayMemberPath="name"/>
 
                     <ComboBox x:Name="LearningMethodTextBox" Header="Learning Method" Width="300" Margin="0,0,0,10"
                               SelectedValue="{Binding SelectedLearningMethod, Mode=TwoWay}"

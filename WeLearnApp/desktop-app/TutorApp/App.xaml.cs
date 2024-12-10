@@ -64,7 +64,7 @@ namespace TutorApp
             services.AddSingleton<IUserService>(new UserService(httpService));
             services.AddSingleton<IThirdPartyService, ThirdPartyService>();
             services.AddSingleton<IGradeService, GradeService>();
-            services.AddSingleton<ISubjectService, SubjectService>();
+            services.AddSingleton<ISubjectService>(new SubjectService(httpService));
             services.AddSingleton<ILearningMethodService, LearningMethodService>();
             services.AddSingleton<ILearningSessionService>(new LearningSessionService(baseUrl));
             services.AddSingleton<ITutorService>(new TutorService(httpService));

@@ -24,6 +24,12 @@ namespace TutorApp.Services.Interfaces.ForAPI
         Task<PageResponse<LearningSessionResponse>> GetLearningSessionList(int page, int size);
 
         /// <summary>
+        /// Asynchronously retrieves a list of learning sessions for the current user.
+        /// </summary>
+        /// <returns>A `Task` representing the asynchronous operation, with a `List<LearningSessionResponse>` object</returns>
+        Task<List<LearningSessionResponse>> GetMyLearningSessionList();
+
+        /// <summary>
         /// Asynchronously retrieves a specific learning session by its ID.
         /// </summary>
         /// <param name="id">The ID of the learning session to retrieve.</param>

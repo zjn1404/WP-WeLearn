@@ -12,6 +12,16 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <Style x:Key="LearningSessionCardStyle" TargetType="Grid">
+            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+        </Style>
+        <helpers:DateTimeConverter x:Key="DateTimeConverter"></helpers:DateTimeConverter>
+    </Page.Resources>
+
     <Grid Padding="20">
         <GridView 
           ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
@@ -23,19 +33,27 @@
                 <DataTemplate x:DataType="models:LearningSession">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
                       Width="200"
-                      Height="100"
+                      Height="200"
                       Padding="16"
                       Margin="4">
-                        <!-- Session ID in the top-left -->
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
                         <TextBlock Grid.Row="0"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Top"
-                               Text="{x:Bind Id}"
                                FontSize="14"
                                FontWeight="Bold"
-                               Foreground="Gray" />
+                               Foreground="Gray">
+                            <Run Text="Grade: "/>
+                            <Run Text="{x:Bind GradeId}" />
+                        </TextBlock>
 
-                        <!-- Subject name in the center -->
                         <TextBlock Grid.Row="1"
                                HorizontalAlignment="Center"
                                VerticalAlignment="Center"
@@ -44,7 +62,6 @@
                                FontWeight="Bold"
                                TextAlignment="Center" />
 
-                        <!-- Start time in the bottom-left -->
                         <TextBlock Grid.Row="2"
                                HorizontalAlignment="Left"
                                VerticalAlignment="Bottom"
@@ -52,14 +69,23 @@
                                FontSize="14"
                                Foreground="Gray" />
 
-                        <!-- Learning method in the bottom-right -->
                         <TextBlock Grid.Row="3"
-                               HorizontalAlignment="Right"
+                               HorizontalAlignment="Left"
                                VerticalAlignment="Bottom" 
                                Text="{x:Bind LearningMethodName}"
                                FontSize="14"
                                Foreground="Gray" />
+
+                        <TextBlock Grid.Row="4"
+                               HorizontalAlignment="Right"
+                               VerticalAlignment="Bottom" 
+                               FontSize="14"
+                               Foreground="Gray">
+                            <Run Text="Duration: "/>
+                            <Run Text="{x:Bind Duration}" />
+                        </TextBlock>
                     </Grid>
+
                 </DataTemplate>
             </GridView.ItemTemplate>
 
