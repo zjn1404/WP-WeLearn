@@ -7,6 +7,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.Mac;
@@ -34,13 +36,16 @@ public class VNPAYServiceImp implements VNPAYService {
 
     VNPAYConfig vnpayConfig;
 
-    // params: amount, bankCode, language
+    // params: amount, bankCode, language, learningSessionId
     @Override
     public VNPAYResponse createPayment(HttpServletRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String learningSessionId = request.getParameter("learningSessionId");
         long amount = Integer.parseInt(request.getParameter("amount")) * 100L;
         String bankCode = request.getParameter("bankCode");
         String vnpIpAddress = getIpAddress(request);
-        String vnpTxnRef = UUID.randomUUID().toString();
+        String vnpTxnRef = String.format("%s-sessionId-%s-userId-%s", UUID.randomUUID(), learningSessionId,
+                authentication.getName());
 
         Map<String, String> vnpParams = vnpayConfig.getVNPAYConfigs();
         vnpParams.put("vnp_Amount", String.valueOf(amount));

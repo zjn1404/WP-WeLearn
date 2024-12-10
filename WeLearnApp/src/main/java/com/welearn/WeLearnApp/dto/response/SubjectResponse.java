@@ -1,4 +1,4 @@
-package com.welearn.WeLearnApp.dto.request.order;
+package com.welearn.WeLearnApp.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -9,7 +9,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderCreationRequest {
-    String userId;
-    String learningSessionId;
+public class SubjectResponse {
+    String name;
 }

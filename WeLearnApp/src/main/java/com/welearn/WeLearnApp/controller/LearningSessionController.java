@@ -12,6 +12,8 @@ import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/learning-session")
 @RequiredArgsConstructor
@@ -43,6 +45,13 @@ public class LearningSessionController {
                                                                                     @RequestParam("size") int size) {
         return ApiResponse.<PageResponse<LearningSessionResponse>>builder()
                 .data(learningSessionService.getLearningSessions(page, size))
+                .build();
+    }
+
+    @GetMapping("/my-session")
+    public ApiResponse<List<LearningSessionResponse>> getMyLearningSessions() {
+        return ApiResponse.<List<LearningSessionResponse>>builder()
+                .data(learningSessionService.getMyLearningSessions())
                 .build();
     }
 

@@ -20,6 +20,8 @@ public class SecurityConfig {
     private static final String[] PUBLIC_GET_ENDPOINTS = {
             "/auth/refresh",
             "/user/unverified-email-invitation",
+            "/payment/vnp/callback",
+            "/subject/all",
     };
 
     private static final String[] PUBLIC_POST_ENDPOINTS = {

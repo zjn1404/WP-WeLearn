@@ -70,3 +70,4 @@ payment:
     url: ${VNP_URL}
     vnp-success-code: ${VNP_SUCCESS_CODE}
     client-payment-success-url: ${CLIENT_PAYMENT_SUCCESS_URL}
+    client-payment-fail-url: ${CLIENT_PAYMENT_FAIL_URL}
