@@ -91,6 +91,17 @@ public class LearningSessionServiceImp implements LearningSessionService {
     }
 
     @Override
+    public List<LearningSessionResponse> getMyLearningSessions() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserProfile userProfile = userProfileRepository.findById(authentication.getName())
+                .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
+
+        List<LearningSession> learningSessions = learningSessionRepository.findAllByTutor(userProfile);
+
+        return learningSessions.stream().map(this::buildLearningSessionResponse).toList();
+    }
+
+    @Override
     public LearningSessionResponse getLearningSession(String sessionId) {
         return learningSessionRepository.findById(sessionId)
                 .map(this::buildLearningSessionResponse)

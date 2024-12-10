@@ -9,9 +9,12 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public interface LearningSessionRepository extends JpaRepository<LearningSession, String> {
+
+    List<LearningSession> findAllByTutor(UserProfile tutor);
 
     @Modifying
     @Query(value = "DELETE FROM learning_session WHERE DATE_ADD(start_time, INTERVAL duration MINUTE) < :now", nativeQuery = true)

@@ -21,6 +21,7 @@ public class SecurityConfig {
             "/auth/refresh",
             "/user/unverified-email-invitation",
             "/payment/vnp/callback",
+            "/subject/all",
     };
 
     private static final String[] PUBLIC_POST_ENDPOINTS = {

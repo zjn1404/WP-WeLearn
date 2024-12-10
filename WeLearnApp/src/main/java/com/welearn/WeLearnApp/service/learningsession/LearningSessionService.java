@@ -4,9 +4,12 @@ import com.welearn.WeLearnApp.dto.request.learningsession.LearningSessionCreatio
 import com.welearn.WeLearnApp.dto.response.LearningSessionResponse;
 import com.welearn.WeLearnApp.dto.response.PageResponse;
 
+import java.util.List;
+
 public interface LearningSessionService {
     LearningSessionResponse createLearningSession(LearningSessionCreationRequest request);
     LearningSessionResponse getLearningSession(String sessionId);
     PageResponse<LearningSessionResponse> getLearningSessions(int page, int size);
+    List<LearningSessionResponse> getMyLearningSessions();
     void deleteLearningSession(String sessionId);
 }
