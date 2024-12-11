@@ -86,7 +86,7 @@
                                       ItemsSource="{Binding Provinces}"
                                       DisplayMemberPath="name"
                                       SelectedValuePath="code"
-                                      SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay}"
+                                      SelectedValue="{Binding SelectedProvinceCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=-1}"
                                       SelectionChanged="City_SelectionChanged"/>
                         </StackPanel>
 
@@ -96,7 +96,7 @@
                                       Width="380"
                                       DisplayMemberPath="name"
                                       SelectedValuePath="code"
-                                      SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                      SelectedValue="{Binding SelectedDistrictCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=-1}"/>
                         </StackPanel>
 
                         <StackPanel Grid.Column="0" Grid.Row="3" Margin="0,0,10,15">
