@@ -22,6 +22,7 @@ using Windows.Foundation.Collections;
 using System.Diagnostics;
 using TutorApp.Models.ForAPI.Response;
 using System.Text.Json;
+using System.ComponentModel;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,10 +32,30 @@ namespace TutorApp.Views.HomePage
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class SessionPage : Page
+    public sealed partial class SessionPage : Page, INotifyPropertyChanged
     {
         public LearningSessionViewModel ViewModel { get; }
-        public LearningSessionResponse SelectedSession { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private LearningSessionResponse _selectedSession;
+        public LearningSessionResponse SelectedSession
+        {
+            get => _selectedSession;
+            set
+            {
+                _selectedSession = value;
+                OnPropertyChanged(nameof(SelectedSession));
+            }
+        }
+
+
+
         private readonly IPaymentService _paymentService;
         private readonly ILearningSessionService _learningSessionService;
 
@@ -63,6 +84,7 @@ namespace TutorApp.Views.HomePage
                 Debug.WriteLine($"Selected session: {JsonSerializer.Serialize(session.Tutor.location)}");
 
                 SelectedSession = session;
+                SessionDetailsDialog.DataContext = null;
                 SessionDetailsDialog.DataContext = this;
                 await SessionDetailsDialog.ShowAsync();
             }
