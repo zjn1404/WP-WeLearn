@@ -162,6 +162,7 @@ public class UserProfileServiceImpl implements UserProfileService {
         List<UserProfileResponse> userProfileResponses = userProfiles.stream().map(profile -> {
             UserProfileResponse userProfileResponse = userProfileMapper.toUserProfileResponse(profile);
             userProfileResponse.setEmail(profile.getUser().getEmail());
+            userProfileResponse.setLocation(locationMapper.toLocationResponse(profile.getLocation()));
             return userProfileResponse;
         }).toList();
 
