@@ -42,6 +42,10 @@ public class LocationMapperImp implements LocationMapper {
 
     @Override
     public LocationResponse toLocationResponse(Location location) {
+        if (location == null) {
+            return null;
+        }
+
         return LocationResponse.builder()
                 .city(location.getCity())
                 .district(location.getDistrict())
