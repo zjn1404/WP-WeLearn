@@ -7,7 +7,6 @@ import com.welearn.WeLearnApp.dto.response.LocationResponse;
 import com.welearn.WeLearnApp.dto.response.PageResponse;
 import com.welearn.WeLearnApp.dto.response.UserProfileResponse;
 import com.welearn.WeLearnApp.entity.Location;
-import com.welearn.WeLearnApp.entity.User;
 import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.enums.ERole;
 import com.welearn.WeLearnApp.exception.AppException;
@@ -115,10 +114,10 @@ public class UserProfileServiceImpl implements UserProfileService {
     }
 
     @Override
-    public PageResponse<UserProfileResponse> searchProfiles(String keyword, int page, int size) {
+    public PageResponse<UserProfileResponse> searchTutorProfiles(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
-        Page<UserProfile> userProfiles = userProfileRepository.findAllByNameContainingIgnoreCase(keyword, pageable);
+        Page<UserProfile> userProfiles = userProfileRepository.findAllTutorProfileByNameContainingIgnoreCase(keyword, pageable);
 
         return buildPageUserProfileResponse(userProfiles);
     }
