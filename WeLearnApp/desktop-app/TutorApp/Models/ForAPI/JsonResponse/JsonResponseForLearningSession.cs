@@ -59,10 +59,23 @@ namespace TutorApp.Models.ForAPI.JsonResponse
         public string PhoneNumber { get; set; }
 
         [JsonProperty("location")]
-        public string Location { get; set; }
+        public Location Location { get; set; }
 
         [JsonProperty("avatarUrl")]
         public string AvatarUrl { get; set; }
+    }
+
+    public class Location
+    {
+
+        [JsonProperty("city")]
+        public string City { get; set; }
+
+        [JsonProperty("district")]
+        public string District { get; set; }
+
+        [JsonProperty("street")]
+        public string Street { get; set; }
     }
 
 }

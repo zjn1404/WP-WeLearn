@@ -117,7 +117,8 @@ namespace TutorApp.Views.HomePage
                 {
                     Title = "Error",
                     Content = $"An error occurred: {ex.Message}",
-                    PrimaryButtonText = "OK"
+                    PrimaryButtonText = "OK",
+                    XamlRoot = this.XamlRoot
                 };
                 await contentDialog.ShowAsync();
             }

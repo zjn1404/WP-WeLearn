@@ -6,15 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    Background="#E0F7FA">
+    <!-- Light Blue Background -->
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
 
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -61,7 +60,6 @@
                     Margin="0,0,10,0"
                     Click="Notification_Click">
                 <FontIcon Glyph="&#xEA8F;" />
-
             </Button>
 
             <Button Grid.Column="4"
@@ -69,7 +67,6 @@
                     Click="Messages_Click">
                 <FontIcon Glyph="&#xE8BD;" />
             </Button>
-
 
             <DropDownButton Grid.Column="5"
                             AutomationProperties.Name="User"
@@ -107,7 +104,6 @@
             </DropDownButton>
         </Grid>
 
-
         <NavigationView Grid.Row="1"
                         x:Name="nvSample9"
                         IsPaneOpen="True"
@@ -120,17 +116,12 @@
                 <NavigationViewItem Content="Home" Tag="HomePage" Icon="Home" />
                 <NavigationViewItem Content="Messages" Tag="MessagesPage" Icon="Mail" />
                 <NavigationViewItemSeparator />
-                <NavigationViewItemHeader Content="Your Sessions" />
-                <NavigationViewItem Content="Session 1" Tag="SessionPage" Icon="Bookmarks" />
-                <NavigationViewItem Content="Session 2" Tag="SessionPage" Icon="Bookmarks" />
             </NavigationView.MenuItems>
-
 
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Content="Session" Tag="SessionPage" Icon="Shop" />
                 <NavigationViewItem Content="Tutor" Tag="TutorPage" Icon="OtherUser" />
                 <NavigationViewItem Content="Account" Tag="AccountPage" Icon="Contact" />
-                <NavigationViewItem Content="Help" Tag="HelpPage" Icon="Help" />
             </NavigationView.FooterMenuItems>
 
             <Frame x:Name="contentFrame" Background="AntiqueWhite"/>

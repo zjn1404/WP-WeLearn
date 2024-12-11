@@ -82,7 +82,7 @@ namespace TutorApp.Views.HomePage
                     switch (pageName)
                     {
                         case "HomePage":
-                            contentFrame.Navigate(typeof(HomePage));
+                            contentFrame.Navigate(typeof(SessionPage));
                             break;
                         case "AccountPage":
                             contentFrame.Navigate(typeof(AccountPage), _userProfileViewModel);

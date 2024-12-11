@@ -8,12 +8,12 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="#E0F7FA">
+        <!-- Light Blue Background for the Main Grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
 
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -26,59 +26,59 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Column="0"
-           Text="WeLearn"
-           TextAlignment="Left"
-           FontSize="30"
-           FontWeight="SemiBold"
-           Margin="30,10,30,10"/>
+                       Text="WeLearn"
+                       TextAlignment="Left"
+                       FontSize="30"
+                       FontWeight="SemiBold"
+                       Margin="30,10,30,10"/>
 
             <Grid Grid.Column="1">
-                <AutoSuggestBox x:Name="SearchBox" 
-                    PlaceholderText="Search"
-                    Width="300"
-                    Height="30"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    QuerySubmitted="SearchBox_QuerySubmitted"
-                    TextChanged="SearchBox_TextChanged"/>
+                <AutoSuggestBox x:Name="SearchBox"
+                                PlaceholderText="Search"
+                                Width="300"
+                                Height="30"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                QuerySubmitted="SearchBox_QuerySubmitted"
+                                TextChanged="SearchBox_TextChanged"/>
             </Grid>
 
             <Grid Grid.Column="2"
-              HorizontalAlignment="Center"
-              VerticalAlignment="Center"
-              Margin="0, 0, 20, 0">
-                <ComboBox x:Name="CategoryFilter" 
-                      SelectionChanged="CategoryFilter_SelectionChanged"
-                      Width="200"
-                      Height="30">
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Margin="0, 0, 20, 0">
+                <ComboBox x:Name="CategoryFilter"
+                          SelectionChanged="CategoryFilter_SelectionChanged"
+                          Width="200"
+                          Height="30">
                     <ComboBoxItem Content="Start time"/>
                     <ComboBoxItem Content="Subject name"/>
                 </ComboBox>
             </Grid>
 
-            <Button Grid.Column="3" 
-            Margin="0,0,10,0" 
-            Click="Notification_Click">
+            <Button Grid.Column="3"
+                    Margin="0,0,10,0"
+                    Background="#B3E5FC"
+                    Click="Notification_Click">
                 <FontIcon Glyph="&#xEA8F;" />
-
             </Button>
 
-            <Button Grid.Column="4" 
-            Margin="0,0,10,0" 
-            Click="Messages_Click">
+            <Button Grid.Column="4"
+                    Margin="0,0,10,0"
+                    Background="#B3E5FC"
+                    Click="Messages_Click">
                 <FontIcon Glyph="&#xE8BD;" />
             </Button>
 
-
             <DropDownButton Grid.Column="5"
-            AutomationProperties.Name="User"
-            Width="100">
+                            AutomationProperties.Name="User"
+                            Width="100">
                 <DropDownButton.Content>
-                    <Ellipse Width="30" 
-                     Height="30" 
-                     Stroke="Gray" 
-                     StrokeThickness="1" 
-                     Margin="0,0,20,0">
+                    <Ellipse Width="30"
+                             Height="30"
+                             Stroke="Gray"
+                             StrokeThickness="1"
+                             Margin="0,0,20,0">
                         <Ellipse.Fill>
                             <ImageBrush x:Name="avatarUrl" ImageSource="{Binding AvatarUrl, FallbackValue='Assets/avatar.png'}" Stretch="UniformToFill"/>
                         </Ellipse.Fill>
@@ -106,13 +106,12 @@
             </DropDownButton>
         </Grid>
 
-
         <NavigationView Grid.Row="1"
-                    x:Name="nvSample9"
-                    IsPaneOpen="True"
-                    OpenPaneLength="150" 
-                    PaneDisplayMode="LeftCompact"
-                    SelectionChanged="NavigationView_SelectionChanged">
+                        x:Name="nvSample9"
+                        IsPaneOpen="True"
+                        OpenPaneLength="150"
+                        PaneDisplayMode="LeftCompact"
+                        SelectionChanged="NavigationView_SelectionChanged">
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Main" />
@@ -120,20 +119,14 @@
                 <NavigationViewItem Content="Messages" Tag="MessagesPage" Icon="Mail" />
                 <NavigationViewItemSeparator />
                 <NavigationViewItemHeader Content="Your Sessions" />
-                <NavigationViewItem Content="Session 1" Tag="SessionPage" Icon="Bookmarks" />
-                <NavigationViewItem Content="Session 2" Tag="SessionPage" Icon="Bookmarks" />
             </NavigationView.MenuItems>
-
 
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Content="Add Session" Tag="CreateSessionPage" Icon="Calendar" />
                 <NavigationViewItem Content="Account" Tag="AccountPage" Icon="Contact" />
-                <NavigationViewItem Content="Help" Tag="HelpPage" Icon="Help" />
             </NavigationView.FooterMenuItems>
 
             <Frame x:Name="contentFrame" Background="AntiqueWhite"/>
-
         </NavigationView>
-
     </Grid>
 </Page>
