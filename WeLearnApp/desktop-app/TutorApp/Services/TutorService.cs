@@ -208,7 +208,12 @@ namespace TutorApp.Services
 
                         };
                     }
-                    throw new Exception($"Failed to retrieve profile: {responseContent}");
+                    return new TutorSpecificFieldsResponse
+                    {
+                        Degree = "",
+                        Description = "",
+
+                    };
                 }
             }
             catch (Exception ex)
