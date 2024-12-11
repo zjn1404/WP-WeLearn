@@ -20,7 +20,7 @@ public interface UserProfileRepository extends JpaRepository<UserProfile, String
     WHERE us.role.name = 'TUTOR'
     AND LOWER(CONCAT(u.firstName, ' ', u.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%'))
     """)
-    Page<UserProfile> findAllByNameContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
+    Page<UserProfile> findAllTutorProfileByNameContainingIgnoreCase(@Param("keyword") String keyword, Pageable pageable);
 
     @Query("""
     SELECT u FROM UserProfile u

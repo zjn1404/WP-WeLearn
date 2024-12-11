@@ -66,7 +66,7 @@ public class UserProfileController {
 
 
         return ApiResponse.<PageResponse<UserProfileResponse>>builder()
-                .data(userProfileService.searchProfiles(keyword, page, size))
+                .data(userProfileService.searchTutorProfiles(keyword, page, size))
                 .build();
     }
 
