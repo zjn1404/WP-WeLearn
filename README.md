@@ -3,22 +3,29 @@
 An application that connects students and tutors, allowing students to search for and hire tutors by the hour. The classes offered range from grade 1 to grade 12, covering both natural sciences and social sciences in accordance with the curriculum standards of the Ministry of Education and Training of Vietnam.
 
 ## Table of Contents
-- [Tech Stack](#i-tech-stack)
-- [Features](#ii-features)
-- [UI/UX](#iii-uiux)
-- [Design patterns / architecture](#iv-design-patterns--architecture)
-- [Advanced topics](#v-advanced-topics)
-- [Teamwork - Git flow](#vi-teamwork---git-flow)
-- [Quality assurance](#vii-quality-assurance)
-- [Running Instruction](#viii-running-instruction)
+- [Tech Stack](#tech-stack)
+- [Milestone 1](#amilestone-1)
+  - [Features](#i-features)
+  - [UI/UX](#ii-uiux)
+  - [Design Pattern / Architecture](#iii-design-pattern--architecture)
+  - [Advanced topics](#iv-advanced-topics)
+  - [Teamwork - Git flow](#v-teamwork---git-flow)
+  - [Quality assurance](#vi-quality-assurance)
+- [Milestone 2](#b-milestone-2)
+  - [Features](#i-features-1)
+  - [UI/UX](#ii-uiux-1)
+  - [Design Pattern / Architecture](#iii-design-pattern--architecture-1)
+- [Running Instruction](#c-running-instruction)
 
-## I. Tech Stack
+## Tech Stack
 - **Languages**: C#, Java
 - **Frameworks & Libraries**: WinUI, Spring Boot
 - **Database**: MySQL
 - **Tools**: Git, GitHub, Postman, Visual Studio, IntelliJ IDEA
 - **API Document**: APIDog
-## II. Features
+# A.Milestone 1
+
+## I. Features
 - Registration
   - Registration Workflow
   ![registration-workflow](https://res.cloudinary.com/dlksshukq/image/upload/v1730888141/Milestone%201/kek7dvxck7as6monsvnc.png)
@@ -34,7 +41,7 @@ An application that connects students and tutors, allowing students to search fo
 - Verify account
 - Update user profile
 - Tutor Session Creation
-## III. UI/UX
+## II. UI/UX
 - Use WinUI 3 Gallery
 - Error Notification
 - Some images:
@@ -61,7 +68,7 @@ An application that connects students and tutors, allowing students to search fo
 - Why we have 2 pages for logging in and registration
   - Role-Specific User Experience
   - Facilitates Future Role-Specific Features
-## IV. Design patterns / architecture
+## III. Design Pattern / Architecture
 ### 1. Architecture:
 - 3-Layer:
   - Definition:
@@ -98,7 +105,7 @@ An application that connects students and tutors, allowing students to search fo
   - Why we use it?
     - Loose Module Dependency
     - Enhance Maintainability
-## V. Advanced topics
+## IV. Advanced topics
 ### 1. Client Server Architecture
 - Develop a server to manage most of the resources and services to be consumed by the client.
 - Client is responsible for interacting with the server and displaying information to users.
@@ -151,7 +158,7 @@ An application that connects students and tutors, allowing students to search fo
 | Unauthorized          | Client                                    | 3xxx       |
 | Forbidden             | Client                                    | 4xxx       |
 | Not Found             | Client                                    | 5xxx       |
-## VI. Teamwork - Git flow
+## V. Teamwork - Git flow
 - Use github Projects Tool for managing team
 - Use Git feature branch workflow
   - Git Roadmap:
@@ -164,11 +171,96 @@ An application that connects students and tutors, allowing students to search fo
   ![one-drive](https://res.cloudinary.com/duf2t1pkp/image/upload/v1730895761/8571ea91-f7ed-4bbc-bb19-e32db1b74d97.png)
 - Use Google Meet for planning
 - Use Messenger for discussion
-## VII. Quality assurance
+## VI. Quality assurance
 - Manual testing for each feature
 - Test on both server and client
 - [Test Documentation](https://studenthcmusedu-my.sharepoint.com/:x:/g/personal/22120413_student_hcmus_edu_vn/EcE-oijGE4VDnLwWLsgeUPgBTezcQoKNgbB-F4P8m_w2kw?e=JqaGqE)
-## VIII. Running Instruction
+
+# B. Milestone 2
+## I. Features
+- Search Tutor By Name
+- Filter Tutor By Location, Grade, Subject
+![search-tutor](https://res.cloudinary.com/daartoyul/image/upload/v1733907954/WP/MS2/Flow/w87jh8855vxx1sbb2yk1.png)
+- Evaluate Tutor
+![evaluate-tutor](https://res.cloudinary.com/daartoyul/image/upload/v1733907954/WP/MS2/Flow/keg83jjvyv0tgy0gv2vu.png)
+- Pay For Learning Session
+![payment](https://res.cloudinary.com/daartoyul/image/upload/v1733907954/WP/MS2/Flow/ovvhgfkxivsheexmwxem.png)
+## II. UI/UX
+- Use WinUI 3 Gallery
+- Error Notification
+- Some Images:
+  - Search And Filter Tutor Page
+  ![search-filter-page]()
+  - Tutor Detail Information Page
+  ![tutor-detail-page]()
+  - Tutor Evaluation Page
+  ![tutor-evaluation-page]()
+  - Payment Page
+  ![payment-page]()
+## III. Design Pattern / Architecture
+- Mapper Pattern
+  - Definition: This is a design pattern that separates the in-memory objects from the database. Its responsibility is to transfer data between the two and also to isolate them from each other.
+  - Why we use it?
+    - Promote the Single Responsibility Principal
+    - Improve Separation of Concerns
+## IV. Advanced Topics
+1. VNPAY Integration
+- Use VNPAY as third party service to pay for learning session
+- Why don't we create own sending mail service?
+  - Reduce server's workload
+  - Enhance security
+2. RelayCommand
+- Use RelayCommand for pagination
+- Why we use it for pagination?
+  - Decoupling UI from Logic
+  - Improve Testability
+  - Enhance Reusability
+  - Adherence to MVVM Principles
+3. Mapper Pattern
+- Use to transfer request into entity and transfer entity into response
+4. Direct From Windows Application To Web Application
+- Use Windows.System.Launcher.LaunchUriAsync(uri); to direct to VNPAY page
+## V. Teamwork - Git flow
+- Use github Projects Tool for managing team
+- Use Git feature branch workflow
+  - Git Roadmap:
+    ![milestone2-roadmap](https://res.cloudinary.com/daartoyul/image/upload/v1733911162/WP/MS2/GitFlow/hn79kuyleflipry5zu1y.png)
+  - Git Contribution Tracking:
+    ![git-contribution-tracking](https://res.cloudinary.com/daartoyul/image/upload/v1733911206/WP/MS2/GitFlow/napnp9tzwictyw7ferx1.png)
+  - Git Branching:
+    ![git-branching](https://res.cloudinary.com/daartoyul/image/upload/v1733911767/WP/MS2/GitFlow/uwoypbbmbvpuhy12ppos.png)
+- Use OneDrive for Sharing Document:
+![one-drive](https://res.cloudinary.com/daartoyul/image/upload/v1733911777/WP/MS2/GitFlow/vsib3wf0xvnezewixih9.png)
+- Use Google Meet for planning
+- Use Messenger for discussion
+## VI. Quality assurance
+- Manual testing for each feature
+- Test on both server and client
+- [Test Documentation](https://studenthcmusedu-my.sharepoint.com/:x:/g/personal/22120118_student_hcmus_edu_vn/EVQFri5ZUatKunFpOr82-uoBhm6j60kEJ7BJR0I2CfpRdA?e=GOSXaw)
+
+## VII. Member Evaluation
+
+Below is the table evaluating team members based on the tasks assigned to them.
+
+| Member Name       | Task                          | Completion Status | Contribution (%) |
+|--------------------|-------------------------------|-------------------|------------------|
+| Nguyễn Quốc Tường          | Implement tutor filtering and searching API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement tutor evaluation API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement VNPAY integration on Server| Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement tutor evaluation feature on Client | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement all tutor's evaluations page | Completed         | 100%             |
+| Phan Tấn Phát        | Implement tutor searching and filtering feature on Client            | Completed       | 100%              |
+| Phan Tấn Phát        | Implement tutor detail page            | Completed       | 100%              |
+| Phan Tấn Phát        | Decorate UI            | Completed       | 100%              |
+| Vòng Sau Hùng        | Implement session payment feature on Client         | Completed         | 100%             |
+| Vòng Sau Hùng        | Implement tutor's achievement update feature on Client         | Completed         | 100%             |
+
+
+**Key:**
+- **Completion Status:** Indicates whether the task is *Not Started*, *In Progress*, or *Completed*.
+- **Contribution (%):** Reflects the member's individual contribution to the task.
+
+# C. Running Instruction
 ### 1. Migration
 - Step 1: Open folder milestone1
 - Step 2: Open folder migration
@@ -195,7 +287,7 @@ knex migrate:latest
 knex seed:run
 ```
 ### 2. Run Server
-- Step 1: Download server via [server](https://studenthcmusedu-my.sharepoint.com/:f:/g/personal/22120413_student_hcmus_edu_vn/EqophLSQYoZBg5hopkUMLtYBjPwofKhu1d0oAyMnJXeLYg?e=Xy7AeE)
+- Step 1: Download server via [server](https://drive.google.com/file/d/1fXFNHVGJNhFoweUc60I_nmvpL3gQ2eBs/view?usp=sharing)
 - Step 2: Open terminal
 - Step 3: Run server with command
 ```
