@@ -56,10 +56,19 @@ namespace TutorApp.Views.HomePage
 
                 tutor = selectedTutor;
                 var response = await _viewModel.GetDetailTutor(tutor.id);
-                tutor.degree = response.degree;
-                tutor.description = response.description;
 
-                
+                if (response != null)
+                {
+                    tutor.degree = string.IsNullOrEmpty(response.degree) ? "" : response.degree;
+                    tutor.description = string.IsNullOrEmpty(response.description) ? "" : response.description;
+                }
+                else
+                {
+                    tutor.degree = "";
+                    tutor.description = "";
+                }
+
+
 
                 DataContext = _viewModel;
                 _viewModel.Tutor = tutor;

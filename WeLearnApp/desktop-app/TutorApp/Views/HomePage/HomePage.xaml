@@ -22,12 +22,12 @@
     </Page.Resources>
 
     <Grid Padding="20">
-        <GridView 
-              ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
-              SelectionMode="Single"
-              IsItemClickEnabled="True"
-              HorizontalAlignment="Left"
-              Margin="-4,0">
+        <GridView
+            ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
+            SelectionMode="Single"
+            IsItemClickEnabled="True"
+            HorizontalAlignment="Center"
+            Margin="-4,0">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:LearningSessionResponse">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
@@ -49,8 +49,8 @@
                                    FontSize="14"
                                    FontWeight="Bold"
                                    Foreground="Gray">
-                                <Run Text="Grade: "/>
-                                <Run Text="{x:Bind Grade}" />
+                            <Run Text="Grade: "/>
+                            <Run Text="{x:Bind Grade}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
@@ -70,18 +70,18 @@
 
                         <TextBlock Grid.Row="3"
                                    HorizontalAlignment="Left"
-                                   VerticalAlignment="Bottom" 
+                                   VerticalAlignment="Bottom"
                                    Text="{x:Bind LearningMethod}"
                                    FontSize="14"
                                    Foreground="Gray" />
 
                         <TextBlock Grid.Row="4"
                                    HorizontalAlignment="Right"
-                                   VerticalAlignment="Bottom" 
+                                   VerticalAlignment="Bottom"
                                    FontSize="14"
                                    Foreground="Gray">
-                                <Run Text="Duration: "/>
-                                <Run Text="{x:Bind Duration}" />
+                            <Run Text="Duration: "/>
+                            <Run Text="{x:Bind Duration}" />
                         </TextBlock>
                     </Grid>
 
