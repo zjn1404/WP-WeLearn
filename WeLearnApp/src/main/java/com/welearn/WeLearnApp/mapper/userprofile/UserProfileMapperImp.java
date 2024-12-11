@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+
 @Component
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -28,11 +30,16 @@ public class UserProfileMapperImp implements UserProfileMapper {
 
     @Override
     public UserProfile toUserProfile(UserCreationRequest request) {
-        return UserProfile.builder()
+        UserProfile userProfile = UserProfile.builder()
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .dob(request.getDob())
                 .build();
+
+        if (userProfile.getDob() == null) {
+            userProfile.setDob(LocalDate.parse("1900-01-01"));
+        }
+        return userProfile;
     }
 
     @Override
@@ -45,6 +52,8 @@ public class UserProfileMapperImp implements UserProfileMapper {
         }
         if (request.getDob() != null) {
             userProfile.setDob(request.getDob());
+        } else {
+            userProfile.setDob(LocalDate.parse("1900-01-01"));
         }
         if (request.getAvatarUrl() != null) {
             userProfile.setAvatarUrl(request.getAvatarUrl());
