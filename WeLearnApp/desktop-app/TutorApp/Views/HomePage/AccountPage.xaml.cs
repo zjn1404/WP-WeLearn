@@ -103,6 +103,7 @@ namespace TutorApp.Views.HomePage
             {
                 var districts = await _thirdPartyService.GetDistrictList(province.code);
                 _viewModel.Districts = districts;
+                _viewModel.SelectedDistrictCode = districts[0].code;
                 District.ItemsSource = districts;
             }
             catch (Exception ex)
@@ -180,6 +181,7 @@ namespace TutorApp.Views.HomePage
                 try
                 {
                     await LoadDistrictsForProvince(selectedProvince);
+                    District.SelectedValue = _viewModel.SelectedDistrictCode;
                 }
                 catch (Exception ex)
                 {

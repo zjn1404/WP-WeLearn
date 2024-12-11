@@ -63,7 +63,7 @@ namespace TutorApp.ViewModels
             get => _selectedProvinceCode;
             set
             {
-                _selectedProvinceCode = value;
+                _selectedProvinceCode = value != 0 ? value : -1;
                 OnPropertyChanged(nameof(SelectedProvinceCode));
                 Debug.WriteLine($"SelectedProvinceCode set to: {value}");
             }
@@ -73,7 +73,7 @@ namespace TutorApp.ViewModels
             get => _selectedDistrictCode;
             set
             {
-                _selectedDistrictCode = value;
+                _selectedDistrictCode = value != 0 ? value : -1;
                 OnPropertyChanged(nameof(SelectedDistrictCode));
                 Debug.WriteLine($"SelectedDistrictCode set to: {value}");
             }
@@ -98,6 +98,9 @@ namespace TutorApp.ViewModels
             _userService = userService;
             _tutorService = tutorService;
             _thirdPartyService = thirdPartyService;
+
+            _selectedProvinceCode = -1;
+            _selectedDistrictCode = -1;
         }
         public async Task InitializeAsync()
         {
