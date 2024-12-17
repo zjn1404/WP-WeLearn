@@ -11,10 +11,15 @@ An application that connects students and tutors, allowing students to search fo
   - [Advanced topics](#iv-advanced-topics)
   - [Teamwork - Git flow](#v-teamwork---git-flow)
   - [Quality assurance](#vi-quality-assurance)
+  - [Member Validation](#vii-member-evaluation)
 - [Milestone 2](#b-milestone-2)
   - [Features](#i-features-1)
   - [UI/UX](#ii-uiux-1)
   - [Design Pattern / Architecture](#iii-design-pattern--architecture-1)
+  - [Avanced topics](#iv-advanced-topics-1)
+  - [Teamwork - Git flow](#v-teamwork---git-flow-1)
+  - [Quality assurance](#vi-quality-assurance-1)
+  - [Member Validation](#vii-member-evaluation-1)
 - [Running Instruction](#c-running-instruction)
 
 ## Tech Stack
@@ -160,6 +165,10 @@ An application that connects students and tutors, allowing students to search fo
 | Not Found             | Client                                    | 5xxx       |
 ## V. Teamwork - Git flow
 - Use github Projects Tool for managing team
+- Github username:
+    - zjn1404: Nguyễn Quốc Tường
+    - FATU29: Phan Tấn Phát
+    - Shungisme: Vòng Sau Hùng
 - Use Git feature branch workflow
   - Git Roadmap:
   ![git-roadmap](https://res.cloudinary.com/dlksshukq/image/upload/v1730888727/Milestone%201/odwgbnbs0lu6a2d9pqjw.png)
@@ -176,6 +185,27 @@ An application that connects students and tutors, allowing students to search fo
 - Test on both server and client
 - [Test Documentation](https://studenthcmusedu-my.sharepoint.com/:x:/g/personal/22120413_student_hcmus_edu_vn/EcE-oijGE4VDnLwWLsgeUPgBTezcQoKNgbB-F4P8m_w2kw?e=JqaGqE)
 
+## VII. Member Evaluation
+
+Below is the table evaluating team members based on the tasks assigned to them.
+
+| Member Name       | Task                          | Completion Status | Contribution (%) |
+|--------------------|-------------------------------|-------------------|------------------|
+| Nguyễn Quốc Tường          | Create Database | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement register API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement authentication API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement send verification email API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement crud user profile API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement crud tutor API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement crud learning session API | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement tutor learning session creation page | Completed         | 100%             |
+| Phan Tấn Phát        | Implement login page            | Completed       | 100%              |
+| Phan Tấn Phát        | Implement register page            | Completed       | 100%              |
+| Phan Tấn Phát        | Implement verification page            | Completed       | 100%              |
+| Vòng Sau Hùng        | Implement dashboard         | Completed         | 100%             |
+| Vòng Sau Hùng        | Implement log out feature on Client         | Completed         | 100%             |
+| Vòng Sau Hùng        | Implement homepage on Client         | Completed         | 100%             |
+
 # B. Milestone 2
 ## I. Features
 - Search Tutor By Name
@@ -190,13 +220,13 @@ An application that connects students and tutors, allowing students to search fo
 - Error Notification
 - Some Images:
   - Search And Filter Tutor Page
-  ![search-filter-page]()
+  ![search-filter-page](https://res.cloudinary.com/dlksshukq/image/upload/v1733914224/Milestone2/bappi7ljpgegtjiwnfa5.png)
   - Tutor Detail Information Page
-  ![tutor-detail-page]()
+  ![tutor-detail-page](https://res.cloudinary.com/dlksshukq/image/upload/v1733914322/Milestone2/pevroa89bbl31mohw3lz.png)
   - Tutor Evaluation Page
-  ![tutor-evaluation-page]()
+  ![tutor-evaluation-page](https://res.cloudinary.com/dlksshukq/image/upload/v1733914412/Milestone2/dqffm5mwqr0olrqmpfap.png)
   - Payment Page
-  ![payment-page]()
+  ![payment-page](https://res.cloudinary.com/dlksshukq/image/upload/v1733914467/Milestone2/cglfbyowa23i4o5azry2.png)
 ## III. Design Pattern / Architecture
 - Mapper Pattern
   - Definition: This is a design pattern that separates the in-memory objects from the database. Its responsibility is to transfer data between the two and also to isolate them from each other.
@@ -222,6 +252,10 @@ An application that connects students and tutors, allowing students to search fo
 - Use Windows.System.Launcher.LaunchUriAsync(uri); to direct to VNPAY page
 ## V. Teamwork - Git flow
 - Use github Projects Tool for managing team
+- Github username:
+    - zjn1404: Nguyễn Quốc Tường
+    - FATU29: Phan Tấn Phát
+    - Shungisme: Vòng Sau Hùng
 - Use Git feature branch workflow
   - Git Roadmap:
     ![milestone2-roadmap](https://res.cloudinary.com/daartoyul/image/upload/v1733911162/WP/MS2/GitFlow/hn79kuyleflipry5zu1y.png)
@@ -229,6 +263,11 @@ An application that connects students and tutors, allowing students to search fo
     ![git-contribution-tracking](https://res.cloudinary.com/daartoyul/image/upload/v1733911206/WP/MS2/GitFlow/napnp9tzwictyw7ferx1.png)
   - Git Branching:
     ![git-branching](https://res.cloudinary.com/daartoyul/image/upload/v1733911767/WP/MS2/GitFlow/uwoypbbmbvpuhy12ppos.png)
+  - Git Log:
+    - ![git-log1](https://res.cloudinary.com/daartoyul/image/upload/v1733926448/WP/MS2/GitLog/twa0b9rtlpugy8tuexah.png)
+    - ![git-log2](https://res.cloudinary.com/daartoyul/image/upload/v1733926448/WP/MS2/GitLog/diorbyb7kqzcyr2jubgw.png)
+    - ![git-log3](https://res.cloudinary.com/daartoyul/image/upload/v1733926448/WP/MS2/GitLog/glmasoh2cq7nsdtszctv.png)
+    - ![git-log4](https://res.cloudinary.com/daartoyul/image/upload/v1733926448/WP/MS2/GitLog/kal9gjifv6qsxqxu7l4g.png)
 - Use OneDrive for Sharing Document:
 ![one-drive](https://res.cloudinary.com/daartoyul/image/upload/v1733911777/WP/MS2/GitFlow/vsib3wf0xvnezewixih9.png)
 - Use Google Meet for planning
