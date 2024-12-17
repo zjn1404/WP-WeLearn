@@ -20,7 +20,7 @@ namespace TutorApp.Services
     {
         private readonly HttpClient _httpClient;
         private readonly string _baseUrl;
-        
+
         public LearningSessionService(string baseUrl)
         {
             _baseUrl = baseUrl;
@@ -53,8 +53,8 @@ namespace TutorApp.Services
                 throw new Exception("Error" + ex.Message);
             }
         }
-        
-        public async Task DeleteLearningSession( string id)
+
+        public async Task DeleteLearningSession(string id)
         {
             try
             {
@@ -63,7 +63,7 @@ namespace TutorApp.Services
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 await _httpClient.DeleteAsync(string.Format("/api/learning-session/%s", id));
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 throw new Exception("Error" + ex.Message);
             }
@@ -77,7 +77,7 @@ namespace TutorApp.Services
                 var token = localSettings.Values["accessToken"] as string;
                 _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
                 var response = await _httpClient.GetAsync(string.Format("/api/learning-session/%s", id));
-                
+
                 return buildLearningSessionResponse(response).Result;
             }
             catch (Exception ex)
@@ -100,6 +100,27 @@ namespace TutorApp.Services
                 var responseData = JsonSerializer.Deserialize<PageResponse<LearningSessionResponse>>(apiResponse.data.ToString());
 
                 return responseData;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+        }
+
+
+        public async Task<List<LearningSessionResponse>> GetMyLearningSessionList()
+        {
+            try
+            {
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                var token = localSettings.Values["accessToken"] as string;
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var response = await _httpClient.GetAsync(string.Format("/api/learning-session/my-session"));
+                var responseContent = await response.Content.ReadAsStringAsync();
+                var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+                var learningSessions = JsonSerializer.Deserialize<List<LearningSessionResponse>>(responseData.data.ToString());
+
+                return learningSessions;
             }
             catch (Exception ex)
             {

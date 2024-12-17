@@ -10,8 +10,8 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="#E0F7FA">
-        <!-- Light Blue Background for the Main Grid -->
+
+    <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center"
@@ -41,9 +41,9 @@
 
                     <ComboBox x:Name="SubjectTextBox" Header="Subject" Width="300" Margin="0,0,0,10"
                               SelectedValue="{Binding SelectedSubject, Mode=TwoWay}"
-                              SelectedValuePath="Name"
+                              SelectedValuePath="name"
                               ItemsSource="{Binding Subjects}"
-                              DisplayMemberPath="Name"/>
+                              DisplayMemberPath="name"/>
 
                     <ComboBox x:Name="LearningMethodTextBox" Header="Learning Method" Width="300" Margin="0,0,0,10"
                               SelectedValue="{Binding SelectedLearningMethod, Mode=TwoWay}"
@@ -55,13 +55,10 @@
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-                <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click" Background="#B3E5FC"/>
-                <!-- Light Blue -->
-                <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0" Click="CancelButton_Click" Background="#B3E5FC"/>
-                <!-- Light Blue -->
+                <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
+                <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0"  Click="CancelButton_Click"/>
             </StackPanel>
         </StackPanel>
-
         <!-- Loading Overlay -->
         <Grid x:Name="LoadingOverlay"
               Visibility="Collapsed"

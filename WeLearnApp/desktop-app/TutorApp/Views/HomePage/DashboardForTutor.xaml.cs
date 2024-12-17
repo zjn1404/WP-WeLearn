@@ -57,7 +57,7 @@ namespace TutorApp.Views.HomePage
             try
             {
                 await _userProfileViewModel.InitializeAsync();
-                contentFrame.Navigate(typeof(HomePage));
+                contentFrame.Navigate(typeof(MySessions));
             }
             catch (Exception ex)
             {
@@ -77,7 +77,7 @@ namespace TutorApp.Views.HomePage
                     switch (pageName)
                     {
                         case "HomePage":
-                            contentFrame.Navigate(typeof(HomePage));
+                            contentFrame.Navigate(typeof(MySessions));
                             break;
                         case "AccountPage":
                             contentFrame.Navigate(typeof(AccountPage), _userProfileViewModel);
