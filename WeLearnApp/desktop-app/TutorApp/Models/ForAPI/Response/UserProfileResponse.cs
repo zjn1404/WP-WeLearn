@@ -10,6 +10,7 @@ namespace TutorApp.Models.ForAPI.Response
 {
     public class UserProfileResponse
     {
+        public string? id { get; set; }
         public string? firstName { get; set; }
         public string? lastName { get; set; }
         public DateTime? dob { get; set; }
