@@ -29,6 +29,15 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <returns>A `Task` representing the asynchronous operation, with a `List<LearningSessionResponse>` object</returns>
         Task<List<LearningSessionResponse>> GetMyLearningSessionList();
 
+
+        /// <summary>
+        /// Asynchronously retrieves a paginated list of learning sessions for the current user's orders.
+        /// </summary>
+        /// <param name="page">The page number for pagination.</param>
+        /// <param name="size">The number of learning sessions per page.</param>
+        /// <returns>A `Task` representing the asynchronous operation, with a `PageResponse<LearningSessionResponse>` object</returns>
+        Task<PageResponse<OrderResponse>> GetMyOrderedLearningSession(int page, int size);
+
         /// <summary>
         /// Asynchronously retrieves a specific learning session by its ID.
         /// </summary>

@@ -90,8 +90,8 @@ namespace TutorApp.Views.HomePage
                         case "TutorPage":
                             contentFrame.Navigate(typeof(TutorPage));
                             break;
-                        case "SessionPage":
-                            contentFrame.Navigate(typeof(SessionPage));
+                        case "MyOrderedSessionPage":
+                            contentFrame.Navigate(typeof(MyOrderedSessionPage));
                             break;
                     }
                 }
