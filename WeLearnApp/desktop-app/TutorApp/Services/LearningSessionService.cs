@@ -86,6 +86,8 @@ namespace TutorApp.Services
             }
         }
 
+        
+
         public async Task<PageResponse<LearningSessionResponse>> GetLearningSessionList(int page, int size)
         {
             try
@@ -121,6 +123,27 @@ namespace TutorApp.Services
                 var learningSessions = JsonSerializer.Deserialize<List<LearningSessionResponse>>(responseData.data.ToString());
 
                 return learningSessions;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error" + ex.Message);
+            }
+        }
+
+        public async Task<PageResponse<OrderResponse>> GetMyOrderedLearningSession(int page, int size)
+        {
+            try
+            {
+                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
+                var token = localSettings.Values["accessToken"] as string;
+                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var response = await _httpClient.GetAsync(string.Format("/api/order/my-orders?page={0}&size={1}", page, size));
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                var apiResponse = JsonSerializer.Deserialize<ApiResponse>(responseContent);
+                var responseData = JsonSerializer.Deserialize<PageResponse<OrderResponse>>(apiResponse.data.ToString());
+
+                return responseData;
             }
             catch (Exception ex)
             {
