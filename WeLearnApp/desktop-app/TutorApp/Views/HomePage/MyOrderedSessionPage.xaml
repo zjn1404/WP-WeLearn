@@ -182,13 +182,5 @@
                 </StackPanel>
             </Grid>
         </ContentDialog>
-
-        <Button 
-            Grid.Row="2"
-            Content="Load More" 
-            HorizontalAlignment="Center"
-            Margin="0,20,0,0"
-            Command="{Binding LoadMoreCommand}"
-        />
     </Grid>
 </Page>
