@@ -43,6 +43,20 @@ namespace TutorApp.Views.LoginAndRegisterPage
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
             _viewModel = new LoginViewModel(_userService);
+
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+
+            if (localSettings.Values.ContainsKey("username") && localSettings.Values.ContainsKey("password"))
+            {
+                usernameTextBox.Text = localSettings.Values["username"] as string;
+                passwordBox.Password = localSettings.Values["password"] as string;
+                rememberCheckBox.IsChecked = true;
+            }
+            else
+            {
+                rememberCheckBox.IsChecked = false;
+            }
         }
 
         private void navigateToPageStudent(object sender, RoutedEventArgs e)
@@ -54,6 +68,7 @@ namespace TutorApp.Views.LoginAndRegisterPage
         {
             string username = usernameTextBox.Text;
             string password = passwordBox.Password;
+            Boolean rememberMe = rememberCheckBox.IsChecked ?? false;
 
             // Kiểm tra đầu vào
             var validationMessage = _viewModel.ValidateInput(new LoginRequest { username = username, password = password });
@@ -87,6 +102,13 @@ namespace TutorApp.Views.LoginAndRegisterPage
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
                     localSettings.Values["role"] = role;
+                    if (rememberMe)
+                    {
+                        localSettings.Values["username"] = username;
+                        localSettings.Values["password"] = password;
+                    }
+
+
 
                     // Điều hướng đến DashboardForTutor
                     _navigationService.NavigateTo("DashboardForTutor");

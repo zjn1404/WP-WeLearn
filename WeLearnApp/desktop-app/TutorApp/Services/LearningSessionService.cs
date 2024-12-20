@@ -18,24 +18,19 @@ namespace TutorApp.Services
 
     public class LearningSessionService : ILearningSessionService
     {
-        private readonly HttpClient _httpClient;
-        private readonly string _baseUrl;
+        private readonly HttpService _httpService;
 
-        public LearningSessionService(string baseUrl)
+        public LearningSessionService(HttpService httpService)
         {
-            _baseUrl = baseUrl;
-            _httpClient = new HttpClient();
-            _httpClient.BaseAddress = new Uri(_baseUrl);
+            _httpService = httpService;
         }
 
         public async Task<LearningSessionResponse> CreateLearningSession(LearningSessionCreationRequest request)
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                Debug.WriteLine(request);
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+             
                 var options = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -43,7 +38,7 @@ namespace TutorApp.Services
                 var json = JsonSerializer.Serialize(request, options);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsync("/api/learning-session", content);
+                var response = await httpClient.PostAsync("/api/learning-session", content);
 
                 return buildLearningSessionResponse(response).Result;
 
@@ -58,10 +53,8 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                await _httpClient.DeleteAsync(string.Format("/api/learning-session/%s", id));
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+                await httpClient.DeleteAsync(string.Format("/api/learning-session/%s", id));
             }
             catch (Exception ex)
             {
@@ -73,10 +66,8 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await _httpClient.GetAsync(string.Format("/api/learning-session/%s", id));
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+                var response = await httpClient.GetAsync(string.Format("/api/learning-session/%s", id));
 
                 return buildLearningSessionResponse(response).Result;
             }
@@ -92,10 +83,8 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await _httpClient.GetAsync(string.Format("/api/learning-session?page={0}&size={1}", page, size));
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+                var response = await httpClient.GetAsync(string.Format("/api/learning-session?page={0}&size={1}", page, size));
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 var apiResponse = JsonSerializer.Deserialize<ApiResponse>(responseContent);
@@ -114,10 +103,8 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await _httpClient.GetAsync(string.Format("/api/learning-session/my-session"));
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+                var response = await httpClient.GetAsync(string.Format("/api/learning-session/my-session"));
                 var responseContent = await response.Content.ReadAsStringAsync();
                 var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
                 var learningSessions = JsonSerializer.Deserialize<List<LearningSessionResponse>>(responseData.data.ToString());
@@ -134,10 +121,8 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var token = localSettings.Values["accessToken"] as string;
-                _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-                var response = await _httpClient.GetAsync(string.Format("/api/order/my-orders?page={0}&size={1}", page, size));
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
+                var response = await httpClient.GetAsync(string.Format("/api/order/my-orders?page={0}&size={1}", page, size));
                 var responseContent = await response.Content.ReadAsStringAsync();
 
                 var apiResponse = JsonSerializer.Deserialize<ApiResponse>(responseContent);

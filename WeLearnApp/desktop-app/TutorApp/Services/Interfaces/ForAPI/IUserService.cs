@@ -72,7 +72,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <returns>
         /// A `Task` representing the asynchronous operation, with a `UserProfileResponse` object.
         /// </returns>
-        Task<UserProfileResponse> GetMyProfile(string token);
+        Task<UserProfileResponse> GetMyProfile();
 
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <returns>
         /// A `Task` representing the asynchronous operation, with an `UpdateProfileResponse` object.
         /// </returns>
-        Task<UpdateProfileResponse> UpdateMyProfile(string token, UpdateProfileRequest request);
+        Task<UpdateProfileResponse> UpdateMyProfile(UpdateProfileRequest request);
 
 
 

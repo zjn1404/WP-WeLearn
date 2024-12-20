@@ -24,7 +24,7 @@ namespace TutorApp.Services
             _httpService = httpService;
         }
 
-        public async Task<EvaluationResponse> evaluate(EvaluationRequest request, string token)
+        public async Task<EvaluationResponse> evaluate(EvaluationRequest request)
         {
             if (request.star <= 0)
             {
@@ -32,7 +32,7 @@ namespace TutorApp.Services
             }
             try
             {
-                using (var client = _httpService.CreateClient(token))
+                using (var client = await _httpService.AuthenticatedCallAPI())
                 {
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -56,11 +56,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<EvaluationResponse>> getAllEvaluation(string tutorId, int page, int size, string token)
+        public async Task<PageResponse<EvaluationResponse>> getAllEvaluation(string tutorId, int page, int size)
         {
             try
             {
-                using (var httpClient = _httpService.CreateClient(token))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
                     var url = $"/api/evaluate/tutor?tutorId={tutorId}&page={page}&size={size}";
 

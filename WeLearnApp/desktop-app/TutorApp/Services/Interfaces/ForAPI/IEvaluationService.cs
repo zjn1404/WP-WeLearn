@@ -11,7 +11,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
 {
     public interface IEvaluationService
     {
-        public Task<PageResponse<EvaluationResponse>> getAllEvaluation(string tutorId, int page, int size, string token);
-        public Task<EvaluationResponse> evaluate(EvaluationRequest request, string token);
+        public Task<PageResponse<EvaluationResponse>> getAllEvaluation(string tutorId, int page, int size);
+        public Task<EvaluationResponse> evaluate(EvaluationRequest request);
     }
 }

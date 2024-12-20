@@ -88,7 +88,7 @@ namespace TutorApp.ViewModels
         {
             try
             {
-                var pageResponse = await _evaluationService.getAllEvaluation(_tutorId, page, PageSize, _token);
+                var pageResponse = await _evaluationService.getAllEvaluation(_tutorId, page, PageSize);
 
                 if (pageResponse != null)
                 {

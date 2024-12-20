@@ -227,7 +227,7 @@ namespace TutorApp.ViewModels
         {
             try
             {
-                return await _userService.GetMyProfile(accessToken);
+                return await _userService.GetMyProfile();
             }
             catch (Exception ex)
             {
@@ -240,7 +240,7 @@ namespace TutorApp.ViewModels
             try
             {
                 Debug.WriteLine("req", request.firstName + request.firstName + request.city + request.district + request.street);
-                return await _userService.UpdateMyProfile(accessToken, request);
+                return await _userService.UpdateMyProfile(request);
             }
             catch (Exception ex)
             {
@@ -254,7 +254,7 @@ namespace TutorApp.ViewModels
                 Debug.WriteLine("access token", accessToken);
                 Debug.WriteLine("claims", JwtParser.GetAllClaims(accessToken));
                 Debug.WriteLine("id", JwtParser.GetId(accessToken));
-                return await _tutorService.GetTutorSpecificFields(accessToken, JwtParser.GetId(accessToken));
+                return await _tutorService.GetTutorSpecificFields(JwtParser.GetId(accessToken));
             }
             catch (Exception ex)
             {
@@ -266,7 +266,7 @@ namespace TutorApp.ViewModels
         {
             try
             {
-                return await _tutorService.UpdateTutorSpecificFields(accessToken, request);
+                return await _tutorService.UpdateTutorSpecificFields(request);
             }
             catch (Exception ex)
             {

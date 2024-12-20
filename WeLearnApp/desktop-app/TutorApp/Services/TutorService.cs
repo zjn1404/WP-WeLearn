@@ -25,14 +25,15 @@ namespace TutorApp.Services
             _httpService = httpService;
         }
 
-        public async Task<TutorDetail> GetDetailTutorService(string id, string token)
+        public async Task<TutorDetail> GetDetailTutorService(string id)
         {
             try
             {
-                using (var httpClient = _httpService.CreateClient(token))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
                     var url = $"/api/tutor/{id}";
 
+                    if (httpClient == null) return null;
                     var response = await httpClient.GetAsync(url);
                     var responseContent = await response.Content.ReadAsStringAsync();
 
@@ -57,11 +58,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<Tutor>> getListTutor(int page, int size,string token)
+        public async Task<PageResponse<Tutor>> getListTutor(int page, int size)
         {
             try
             {
-                using (var httpClient = _httpService.CreateClient(token))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
                     var url = $"/api/user-profile/filter?page={page}&size={size}";
 
@@ -95,11 +96,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters, string token)
+        public async Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters)
         {
             try
             {
-                using (var httpClient = _httpService.CreateClient(token))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
                     var url = $"/api/user-profile/filter?page={page}&size={size}";
 
@@ -140,11 +141,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token)
+        public async Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name)
         {
             try
             {
-                using (var httpClient = _httpService.CreateClient(token))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
                     var url = $"/api/user-profile/search?page={page}&size={size}&keyword={name}";
 
@@ -186,11 +187,11 @@ namespace TutorApp.Services
         }
 
 
-        public async Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string token, string id)
+        public async Task<TutorSpecificFieldsResponse> GetTutorSpecificFields( string id)
         {
             try
             {
-                using (var client = _httpService.CreateClient(token))
+                using (var client = await _httpService.AuthenticatedCallAPI())
                 {
 
                     var response = await client.GetAsync($"/api/tutor/{id}");
@@ -222,11 +223,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<UpdateProfileResponse> UpdateTutorSpecificFields(string token, UpdateTutorSpecificFieldsRequest request)
+        public async Task<UpdateProfileResponse> UpdateTutorSpecificFields(UpdateTutorSpecificFieldsRequest request)
         {
             try
             {
-                using (var client = _httpService.CreateClient(token))
+                using (var client = await _httpService.AuthenticatedCallAPI())
                 {
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");

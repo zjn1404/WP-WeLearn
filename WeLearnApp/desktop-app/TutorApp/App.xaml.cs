@@ -8,7 +8,8 @@ using System;
 using TutorApp.Services.Interfaces.ForAPI;
 using DotNetEnv;
 using System.Diagnostics;
-using System.IO; 
+using System.IO;
+using System.Net.Http;
 
 namespace TutorApp
 {
@@ -52,37 +53,43 @@ namespace TutorApp
         {
             var services = new ServiceCollection();
 
-            var baseUrl = Env.GetString("BASE_URL") ?? "http://localhost:8080"; // Use BASE_URL from .env file
+            
+            var baseUrl = Env.GetString("BASE_URL") ?? "http://localhost:8080";
+            Debug.WriteLine("test env", baseUrl);
 
-            Debug.WriteLine("test env", Env.GetString("BASE_URL"));
-
-            HttpService httpService = new HttpService(baseUrl);
-
-            // Core services
+      
             services.AddHttpClient();
             services.AddSingleton<INavigationService>(sp => new NavigationService(rootFrame));
-            services.AddSingleton<IUserService>(new UserService(httpService));
+
+
+            services.AddScoped<ITokenService>(provider =>
+            {
+                var httpClient = provider.GetRequiredService<HttpClient>();
+                return new TokenService(httpClient); 
+            });
+
+            
+            services.AddScoped<HttpService>(provider =>
+            {
+                var tokenService = provider.GetRequiredService<ITokenService>();
+                var navigation = provider.GetService<INavigationService>();
+                return new HttpService(baseUrl, tokenService,navigation); 
+            });
+
+          
+            
+            services.AddSingleton<IUserService>(sp => new UserService(sp.GetRequiredService<HttpService>()));
             services.AddSingleton<IThirdPartyService, ThirdPartyService>();
             services.AddSingleton<IGradeService, GradeService>();
-            services.AddSingleton<ISubjectService>(new SubjectService(httpService));
+            services.AddSingleton<ISubjectService>(sp => new SubjectService(sp.GetRequiredService<HttpService>()));
             services.AddSingleton<ILearningMethodService, LearningMethodService>();
-            services.AddSingleton<ILearningSessionService>(new LearningSessionService(baseUrl));
-            services.AddSingleton<ITutorService>(new TutorService(httpService));
-            services.AddSingleton<IPaymentService>(new PaymentService(httpService));
-            services.AddSingleton<IEvaluationService>(new EvaluationService(httpService));
-
-
-            // Application services
-
-
-
-            // Register ViewModels if needed
-            // services.AddTransient<HomeViewModel>();
-            // Add other ViewModels as needed
+            services.AddSingleton<ILearningSessionService>(sp => new LearningSessionService(sp.GetRequiredService<HttpService>()));
+            services.AddSingleton<ITutorService>(sp => new TutorService(sp.GetRequiredService<HttpService>()));
+            services.AddSingleton<IPaymentService>(sp => new PaymentService(sp.GetRequiredService<HttpService>()));
+            services.AddSingleton<IEvaluationService>(sp => new EvaluationService(sp.GetRequiredService<HttpService>()));
 
             return services.BuildServiceProvider();
         }
-
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();

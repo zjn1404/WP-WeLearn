@@ -200,11 +200,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<UserProfileResponse> GetMyProfile(string token)
+        public async Task<UserProfileResponse> GetMyProfile()
         {
             try
             {
-                using (var client = _httpService.CreateClient(token))
+                using (var client = await _httpService.AuthenticatedCallAPI())
                 {
 
                     var response = await client.GetAsync("/api/user-profile/me");
@@ -234,11 +234,11 @@ namespace TutorApp.Services
             }
         }
 
-        public async Task<UpdateProfileResponse> UpdateMyProfile(string token, UpdateProfileRequest request)
+        public async Task<UpdateProfileResponse> UpdateMyProfile(UpdateProfileRequest request)
         {
             try
             {
-                using (var client = _httpService.CreateClient(token))
+                using (var client = await _httpService.AuthenticatedCallAPI())
                 {
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");

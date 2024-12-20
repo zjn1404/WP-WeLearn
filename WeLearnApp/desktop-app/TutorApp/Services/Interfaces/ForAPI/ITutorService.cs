@@ -29,7 +29,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// Retrieves a list of all tutors.
         /// </summary>
         /// <returns>A task that represents the asynchronous operation. The task result contains a list of tutors.</returns>
-        public Task<PageResponse<Tutor>> getListTutor(int page, int size, string token);
+        public Task<PageResponse<Tutor>> getListTutor(int page, int size);
 
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// </returns>
         /// <exception cref="UnauthorizedException">Thrown when the authentication token is invalid or expired</exception>
         /// <exception cref="ArgumentException">Thrown when page or size parameters are invalid</exception>
-        public Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters, string token);
+        public Task<PageResponse<Tutor>> GetListTutorByFilters(int page, int size, FilterTutor filters);
 
 
 
@@ -66,7 +66,7 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <param name="lastname">The last name of the tutor to search for.</param>
         /// <param name="token">The authentication token for API access.</param>
         /// <returns>A paginated list of tutors matching the search criteria.</returns>
-        public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name, string token);
+        public Task<PageResponse<Tutor>> GetListTutorBySearch(int page, int size, string name);
 
 
 
@@ -76,13 +76,13 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// <param name="id"></param>
         /// <param name="token"></param>
         /// <returns>Retrieves a deatail info of tutors</returns>
-        public Task<TutorDetail> GetDetailTutorService(string id, string token);
+        public Task<TutorDetail> GetDetailTutorService(string id);
 
 
 
-        public Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string token, string id);
+        public Task<TutorSpecificFieldsResponse> GetTutorSpecificFields(string id);
 
-        public Task<UpdateProfileResponse> UpdateTutorSpecificFields(string token, UpdateTutorSpecificFieldsRequest request);
+        public Task<UpdateProfileResponse> UpdateTutorSpecificFields( UpdateTutorSpecificFieldsRequest request);
 
     }
 }

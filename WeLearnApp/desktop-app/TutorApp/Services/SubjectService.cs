@@ -26,10 +26,9 @@ namespace TutorApp.Services
         {
             try
             {
-                var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
-                var accessToken = localSettings.Values["accessToken"]?.ToString();
+               
 
-                using (var httpClient = _httpService.CreateClient(accessToken))
+                using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
 
                     var url = $"/api/subject/all";
