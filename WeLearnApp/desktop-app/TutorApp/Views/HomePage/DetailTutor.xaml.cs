@@ -141,7 +141,7 @@ namespace TutorApp.Views.HomePage
                     comment = reviewText
                 };
 
-                var response = await _evaluationService.evaluate(evaluationRequest, accessToken);
+                var response = await _evaluationService.evaluate(evaluationRequest);
                 
                 if (response != null)
                 {

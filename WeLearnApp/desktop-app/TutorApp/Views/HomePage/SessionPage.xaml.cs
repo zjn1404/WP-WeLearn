@@ -96,9 +96,9 @@ namespace TutorApp.Views.HomePage
             {
                 string amount = ((int)SelectedSession?.Tuition).ToString() ?? "0";
                 string learningSessionId = SelectedSession?.Id.ToString() ?? "";
-                string token = ApplicationData.Current.LocalSettings.Values["accessToken"] as string;
+     
 
-                string paymentUrl = await _paymentService.CreatePayment(amount, learningSessionId, token);
+                string paymentUrl = await _paymentService.CreatePayment(amount, learningSessionId);
                 Debug.WriteLine("paymentUrl", paymentUrl);
                 if (!string.IsNullOrEmpty(paymentUrl))
                 {

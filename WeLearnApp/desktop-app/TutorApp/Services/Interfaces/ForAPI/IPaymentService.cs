@@ -11,6 +11,6 @@ namespace TutorApp.Services.Interfaces.ForAPI
 {
     public interface IPaymentService
     {
-        Task<string> CreatePayment(string amount, string learningSessionId, string token);
+        Task<string> CreatePayment(string amount, string learningSessionId);
     }
 }

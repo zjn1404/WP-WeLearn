@@ -23,11 +23,11 @@ namespace TutorApp.Services
         {
             _httpService = httpService;
         }
-        public async Task<string> CreatePayment(string amount, string learningSessionId, string token)
+        public async Task<string> CreatePayment(string amount, string learningSessionId)
         {
             try
             {
-                using var httpClient = _httpService.CreateClient(token);
+                using var httpClient = await _httpService.AuthenticatedCallAPI();
 
                 var url = $"/api/payment/create-payment?amount={Uri.EscapeDataString(amount)}&learningSessionId={Uri.EscapeDataString(learningSessionId)}";
 

@@ -91,9 +91,8 @@ public class TutorViewModel : INotifyPropertyChanged
     {
         try
         {
-            var localSettings = ApplicationData.Current.LocalSettings;
-            var accessToken = localSettings.Values["accessToken"]?.ToString();
-            var response = await _tutorService.getListTutor(CurrentPage, PerPage, accessToken);
+          
+            var response = await _tutorService.getListTutor(CurrentPage, PerPage);
 
 
             Tutors.Clear();
@@ -115,9 +114,9 @@ public class TutorViewModel : INotifyPropertyChanged
     {
         try
         {
-            var localSettings = ApplicationData.Current.LocalSettings;
-            var accessToken = localSettings.Values["accessToken"]?.ToString();
-            var response = await _tutorService.GetListTutorByFilters(CurrentPage,PerPage,filters, accessToken);
+            
+         
+            var response = await _tutorService.GetListTutorByFilters(CurrentPage,PerPage,filters);
 
 
             if(response != null)
@@ -143,9 +142,7 @@ public class TutorViewModel : INotifyPropertyChanged
         try
         {
             
-            var localSettings = ApplicationData.Current.LocalSettings;
-            var accessToken = localSettings.Values["accessToken"]?.ToString();
-            PageResponse<Tutor> response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, name, accessToken); 
+            PageResponse<Tutor> response = await _tutorService.GetListTutorBySearch(CurrentPage, PerPage, name); 
 
             if (response != null)
             {
@@ -173,9 +170,8 @@ public class TutorViewModel : INotifyPropertyChanged
         try
         {
 
-            var localSettings = ApplicationData.Current.LocalSettings;
-            var accessToken = localSettings.Values["accessToken"]?.ToString();
-            var response = await _tutorService.GetDetailTutorService(id, accessToken);
+    
+            var response = await _tutorService.GetDetailTutorService(id);
             return response;
         }
         catch (Exception ex)

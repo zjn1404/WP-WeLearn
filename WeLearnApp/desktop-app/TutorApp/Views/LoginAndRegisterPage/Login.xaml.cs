@@ -27,14 +27,30 @@ namespace TutorApp.Views
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
             _viewModel = new LoginViewModel(_userService);
+            var localSettings = ApplicationData.Current.LocalSettings;
+
+           
+            if (localSettings.Values.ContainsKey("username") && localSettings.Values.ContainsKey("password"))
+            {
+                usernameTextBox.Text = localSettings.Values["username"] as string;
+                passwordBox.Password = localSettings.Values["password"] as string;
+                rememberCheckBox.IsChecked = true;
+            }
+            else
+            {
+                rememberCheckBox.IsChecked = false;
+            }
+
         }
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
             string username = usernameTextBox.Text;
             string password = passwordBox.Password;
+            Boolean rememberMe = rememberCheckBox.IsChecked ?? false;
 
-            
+
+
             var validationMessage = _viewModel.ValidateInput(new LoginRequest { username=username,password = password});
             if (validationMessage != null) {
                 await ShowErrorDialogAsync(validationMessage);
@@ -65,6 +81,12 @@ namespace TutorApp.Views
                     var localSettings = ApplicationData.Current.LocalSettings;
                     localSettings.Values["accessToken"] = jwtTokens.accessToken;
                     localSettings.Values["refreshToken"] = jwtTokens.refreshToken;
+                    if (rememberMe)
+                    {
+                        localSettings.Values["username"] = username;
+                        localSettings.Values["password"] = password;
+                    }
+                    
 
                     Debug.WriteLine($"Access Token: {jwtTokens.accessToken}");
                     Debug.WriteLine($"Extracted Role: {role}");
