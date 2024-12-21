@@ -1,6 +1,5 @@
 package com.welearn.WeLearnApp.repository;
 
-import com.welearn.WeLearnApp.entity.LearningSession;
 import com.welearn.WeLearnApp.entity.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
