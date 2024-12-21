@@ -16,9 +16,10 @@ import com.welearn.WeLearnApp.repository.httpclient.MailClient;
 import com.welearn.WeLearnApp.utils.EmailBuilder;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -26,7 +27,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class VerificationCodeServiceImpl implements VerificationCodeService {
 
@@ -48,6 +48,18 @@ public class VerificationCodeServiceImpl implements VerificationCodeService {
 
     VerificationCodeRepository verificationCodeRepository;
     UserRepository userRepository;
+
+    @Autowired
+    public VerificationCodeServiceImpl(
+            MailClient mailClient,
+            @Qualifier("verificationEmailBuilderImp") EmailBuilder emailBuilder,
+            VerificationCodeRepository verificationCodeRepository,
+            UserRepository userRepository) {
+        this.mailClient = mailClient;
+        this.emailBuilder = emailBuilder;
+        this.verificationCodeRepository = verificationCodeRepository;
+        this.userRepository = userRepository;
+    }
 
     @Transactional
     @Override
