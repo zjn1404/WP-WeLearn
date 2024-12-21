@@ -13,6 +13,7 @@ import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
 import com.welearn.WeLearnApp.repository.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,8 +21,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+@Slf4j
 @Service
 @Getter
 @Setter
@@ -33,7 +37,7 @@ public class LearningSessionServiceImp implements LearningSessionService {
     GradeRepository gradeRepository;
     SubjectRepository subjectRepository;
     LearningMethodRepository learningMethodRepository;
-
+    OrderRepository orderRepository;
     UserProfileRepository userProfileRepository;
 
     LearningSessionMapper learningSessionMapper;
@@ -81,7 +85,12 @@ public class LearningSessionServiceImp implements LearningSessionService {
     public PageResponse<LearningSessionResponse> getLearningSessions(int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
         Page<LearningSession> learningSessions = learningSessionRepository.findAll(pageable);
-        List<LearningSessionResponse> responses = learningSessions.map(this::buildLearningSessionResponse).getContent();
+        Set<LearningSession> orderedSessions = new HashSet<>(orderRepository.findAll().stream()
+                .map(order -> order.getOrderDetail().getLearningSession())
+                .toList());
+        List<LearningSessionResponse> responses = learningSessions.stream()
+                .filter(learningSession -> !orderedSessions.contains(learningSession))
+                .map(this::buildLearningSessionResponse).toList();
 
         return PageResponse.<LearningSessionResponse>builder()
                 .currentPage(page)
