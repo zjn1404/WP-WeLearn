@@ -21,9 +21,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Set;
 
 @Slf4j
 @Service
@@ -106,7 +106,11 @@ public class LearningSessionServiceImp implements LearningSessionService {
         UserProfile userProfile = userProfileRepository.findById(authentication.getName())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
 
-        List<LearningSession> learningSessions = learningSessionRepository.findAllByTutor(userProfile);
+        List<LearningSession> learningSessions = learningSessionRepository.findAllByTutor(userProfile)
+                .stream().filter(learningSession -> learningSession.getStartTime()
+                        .plusMinutes(learningSession.getDuration())
+                        .isAfter(LocalDateTime.now()))
+                .toList();
 
         return learningSessions.stream().map(this::buildLearningSessionResponse).toList();
     }
