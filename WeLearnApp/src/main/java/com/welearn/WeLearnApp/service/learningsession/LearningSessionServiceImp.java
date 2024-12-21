@@ -84,12 +84,11 @@ public class LearningSessionServiceImp implements LearningSessionService {
     @Override
     public PageResponse<LearningSessionResponse> getLearningSessions(int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
-        Page<LearningSession> learningSessions = learningSessionRepository.findAll(pageable);
-        Set<LearningSession> orderedSessions = new HashSet<>(orderRepository.findAll().stream()
-                .map(order -> order.getOrderDetail().getLearningSession())
-                .toList());
+        List<String> orderedSessionIds = orderRepository.findAll().stream()
+                .map(order -> order.getOrderDetail().getLearningSession().getId())
+                .toList();
+        Page<LearningSession> learningSessions = learningSessionRepository.findAllByIdNotIn(orderedSessionIds, pageable);
         List<LearningSessionResponse> responses = learningSessions.stream()
-                .filter(learningSession -> !orderedSessions.contains(learningSession))
                 .map(this::buildLearningSessionResponse).toList();
 
         return PageResponse.<LearningSessionResponse>builder()

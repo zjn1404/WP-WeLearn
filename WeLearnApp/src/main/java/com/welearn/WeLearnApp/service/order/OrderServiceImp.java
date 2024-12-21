@@ -79,7 +79,7 @@ public class OrderServiceImp implements OrderService {
     public PageResponse<OrderResponse> getMyOrders(int page, int size) {
         Pageable pageable = PageRequest.of(page - 1, size);
 
-        Page<Order> orders = orderRepository.findAll(pageable);
+        Page<Order> orders = orderRepository.findAllByLearningSessionEndTimeAfter(LocalDateTime.now(), pageable);
 
         List<OrderResponse> orderResponses = orders.stream().map(orderMapper::toOrderResponse).toList();
 
