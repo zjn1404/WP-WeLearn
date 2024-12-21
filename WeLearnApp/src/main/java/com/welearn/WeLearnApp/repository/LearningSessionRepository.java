@@ -2,6 +2,8 @@ package com.welearn.WeLearnApp.repository;
 
 import com.welearn.WeLearnApp.entity.LearningSession;
 import com.welearn.WeLearnApp.entity.UserProfile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -21,4 +23,6 @@ public interface LearningSessionRepository extends JpaRepository<LearningSession
     void deleteExpiredLearningSessions(@Param("now") LocalDateTime now);
 
     boolean existsByStartTimeAndTutor(LocalDateTime startTime, UserProfile tutor);
+
+    Page<LearningSession> findAllByIdNotIn(List<String> ids, Pageable pageable);
 }

@@ -1,6 +1,5 @@
 package com.welearn.WeLearnApp.service.cleanup;
 
-import com.welearn.WeLearnApp.repository.LearningMethodRepository;
 import com.welearn.WeLearnApp.repository.LearningSessionRepository;
 import jakarta.transaction.Transactional;
 import lombok.AccessLevel;
