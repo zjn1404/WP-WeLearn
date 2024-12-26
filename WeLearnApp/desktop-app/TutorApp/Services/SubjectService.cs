@@ -30,6 +30,10 @@ namespace TutorApp.Services
 
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
 
                     var url = $"/api/subject/all";
 

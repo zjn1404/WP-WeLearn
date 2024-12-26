@@ -58,15 +58,13 @@
             Grid.Row="1"
             />
 
-
-
-
         <GridView Grid.Row="2"
                   ItemsSource="{x:Bind _viewModel.Tutors, Mode=OneWay}"
                   SelectionMode="Single"
                   IsItemClickEnabled="True"
                   Margin="-4,0"
-                  ItemClick="TutorCard_ItemClick">
+                  ItemClick="TutorCard_ItemClick"
+                  HorizontalAlignment="Center">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:Tutor">
                     <Grid Style="{StaticResource TutorCardStyle}"

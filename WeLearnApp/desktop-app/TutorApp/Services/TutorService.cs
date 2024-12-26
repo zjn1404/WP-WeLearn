@@ -12,6 +12,9 @@ using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Models.ForAPI.Request;
 using TutorApp.Models.ForAPI.Response;
 using TutorApp.Services.Interfaces.ForAPI;
+using Windows.Web.Http;
+using HttpMethod = System.Net.Http.HttpMethod;
+using HttpRequestMessage = System.Net.Http.HttpRequestMessage;
 
 namespace TutorApp.Services
 {
@@ -31,6 +34,10 @@ namespace TutorApp.Services
             {
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
                     var url = $"/api/tutor/{id}";
 
                     if (httpClient == null) return null;
@@ -64,6 +71,10 @@ namespace TutorApp.Services
             {
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
                     var url = $"/api/user-profile/filter?page={page}&size={size}";
 
                     var body = new StringContent("{}", Encoding.UTF8, "application/json");
@@ -102,6 +113,10 @@ namespace TutorApp.Services
             {
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
                     var url = $"/api/user-profile/filter?page={page}&size={size}";
 
 
@@ -147,6 +162,10 @@ namespace TutorApp.Services
             {
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
                     var url = $"/api/user-profile/search?page={page}&size={size}&keyword={name}";
 
 
@@ -193,6 +212,10 @@ namespace TutorApp.Services
             {
                 using (var client = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (client == null)
+                    {
+                        return null;
+                    }
 
                     var response = await client.GetAsync($"/api/tutor/{id}");
                     var responseContent = await response.Content.ReadAsStringAsync();
@@ -229,6 +252,10 @@ namespace TutorApp.Services
             {
                 using (var client = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (client == null)
+                    {
+                        return null;
+                    }
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 

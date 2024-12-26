@@ -28,6 +28,10 @@ namespace TutorApp.Services
             try
             {
                 using var httpClient = await _httpService.AuthenticatedCallAPI();
+                if (httpClient == null)
+                {
+                    return null;
+                }
 
                 var url = $"/api/payment/create-payment?amount={Uri.EscapeDataString(amount)}&learningSessionId={Uri.EscapeDataString(learningSessionId)}";
 

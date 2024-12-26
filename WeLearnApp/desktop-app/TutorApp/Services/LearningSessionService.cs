@@ -30,7 +30,11 @@ namespace TutorApp.Services
             try
             {
                 using var httpClient = await _httpService.AuthenticatedCallAPI();
-             
+                if (httpClient == null)
+                {
+                    return null;
+                }
+
                 var options = new JsonSerializerOptions
                 {
                     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
@@ -77,24 +81,38 @@ namespace TutorApp.Services
             }
         }
 
-        
+
 
         public async Task<PageResponse<LearningSessionResponse>> GetLearningSessionList(int page, int size)
         {
+            if (page < 0 || size <= 0)
+                throw new ArgumentException("Invalid pagination parameters");
+
             try
             {
                 using var httpClient = await _httpService.AuthenticatedCallAPI();
-                var response = await httpClient.GetAsync(string.Format("/api/learning-session?page={0}&size={1}", page, size));
+                var url = string.Format("/api/learning-session?page={0}&size={1}", page, size);
+                var response = await httpClient.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    throw new Exception($"Error: {response.StatusCode}, {response.ReasonPhrase}, {await response.Content.ReadAsStringAsync()}");
+                }
+
                 var responseContent = await response.Content.ReadAsStringAsync();
-
                 var apiResponse = JsonSerializer.Deserialize<ApiResponse>(responseContent);
-                var responseData = JsonSerializer.Deserialize<PageResponse<LearningSessionResponse>>(apiResponse.data.ToString());
 
+                if (apiResponse?.data == null)
+                {
+                    throw new Exception("API response data is null");
+                }
+
+                var responseData = JsonSerializer.Deserialize<PageResponse<LearningSessionResponse>>(apiResponse.data.ToString());
                 return responseData;
             }
             catch (Exception ex)
             {
-                throw new Exception("Error" + ex.Message);
+                throw new Exception($"Error fetching learning sessions: {ex.Message}");
             }
         }
 

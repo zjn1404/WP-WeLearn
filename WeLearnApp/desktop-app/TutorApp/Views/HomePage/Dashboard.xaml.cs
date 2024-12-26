@@ -49,10 +49,10 @@ namespace TutorApp.Views.HomePage
             _navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _userService = ((App)Application.Current).Services.GetRequiredService<IUserService>();
             _tutorService = ((App)Application.Current).Services.GetRequiredService<ITutorService>();
-            _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>(); // Make sure this service is registered
+            _thirdPartyService = ((App)Application.Current).Services.GetRequiredService<IThirdPartyService>(); 
 
             _viewModel = new LogoutViewModel(_userService);
-            _userProfileViewModel = new UserProfileViewModel(_userService, _tutorService, _thirdPartyService); // Pass both services
+            _userProfileViewModel = new UserProfileViewModel(_userService, _tutorService, _thirdPartyService); 
             DataContext = _userProfileViewModel;
 
             InitializeAsync();
@@ -62,7 +62,7 @@ namespace TutorApp.Views.HomePage
             try
             {
                 await _userProfileViewModel.InitializeAsync();
-                contentFrame.Navigate(typeof(HomePage));
+                contentFrame.Navigate(typeof(SessionPage));
             }
             catch (Exception ex)
             {

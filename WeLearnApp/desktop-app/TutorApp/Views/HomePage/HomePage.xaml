@@ -11,30 +11,21 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Page.Resources>
-        <Style x:Key="LearningSessionCardStyle" TargetType="Grid">
-            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="8"/>
-        </Style>
-        <helpers:DateTimeConverter x:Key="DateTimeConverter"></helpers:DateTimeConverter>
-    </Page.Resources>
 
     <Grid Padding="20">
         <GridView
-            ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
+            ItemsSource="{x:Bind ViewModel.LearningSession, Mode=OneWay}"
             SelectionMode="Single"
             IsItemClickEnabled="True"
             HorizontalAlignment="Center"
             Margin="-4,0">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:LearningSessionResponse">
-                    <Grid Style="{StaticResource LearningSessionCardStyle}"
-                          Width="200"
-                          Height="200"
-                          Padding="16"
-                          Margin="4">
+                    <Grid
+                        Width="200"
+                        Height="200"
+                        Padding="16"
+                        Margin="4">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>

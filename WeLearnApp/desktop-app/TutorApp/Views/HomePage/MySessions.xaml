@@ -6,7 +6,7 @@
     xmlns:local="using:TutorApp.Views.HomePage"
     xmlns:viewmodels="using:TutorApp.ViewModels"
     xmlns:models="using:TutorApp.Models"
-    xmlns:helpers="using:TutorApp.Helpers"    
+    xmlns:helpers="using:TutorApp.Helpers"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
@@ -23,19 +23,19 @@
     </Page.Resources>
 
     <Grid Padding="20">
-        <GridView 
-          ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
-          SelectionMode="Single"
-          IsItemClickEnabled="True"
-          HorizontalAlignment="Left"
-          Margin="-4,0">
+        <GridView
+            ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
+            SelectionMode="Single"
+            IsItemClickEnabled="True"
+            HorizontalAlignment="Center"
+            Margin="-4,0">
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:LearningSession">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
-                      Width="200"
-                      Height="200"
-                      Padding="16"
-                      Margin="4">
+                          Width="200"
+                          Height="200"
+                          Padding="16"
+                          Margin="4">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -45,42 +45,42 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock Grid.Row="0"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Top"
-                               FontSize="14"
-                               FontWeight="Bold"
-                               Foreground="Gray">
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"
+                                   FontSize="14"
+                                   FontWeight="Bold"
+                                   Foreground="Gray">
                             <Run Text="Grade: "/>
                             <Run Text="{x:Bind GradeId}" />
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
-                               HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               Text="{x:Bind SubjectName}"
-                               FontSize="16"
-                               FontWeight="Bold"
-                               TextAlignment="Center" />
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Text="{x:Bind SubjectName}"
+                                   FontSize="16"
+                                   FontWeight="Bold"
+                                   TextAlignment="Center" />
 
                         <TextBlock Grid.Row="2"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom"
-                               Text="{x:Bind StartTime}"
-                               FontSize="14"
-                               Foreground="Gray" />
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   Text="{x:Bind StartTime}"
+                                   FontSize="14"
+                                   Foreground="Gray" />
 
                         <TextBlock Grid.Row="3"
-                               HorizontalAlignment="Left"
-                               VerticalAlignment="Bottom" 
-                               Text="{x:Bind LearningMethodName}"
-                               FontSize="14"
-                               Foreground="Gray" />
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Bottom"
+                                   Text="{x:Bind LearningMethodName}"
+                                   FontSize="14"
+                                   Foreground="Gray" />
 
                         <TextBlock Grid.Row="4"
-                               HorizontalAlignment="Right"
-                               VerticalAlignment="Bottom" 
-                               FontSize="14"
-                               Foreground="Gray">
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Bottom"
+                                   FontSize="14"
+                                   Foreground="Gray">
                             <Run Text="Duration: "/>
                             <Run Text="{x:Bind Duration}" />
                         </TextBlock>
@@ -92,8 +92,8 @@
             <GridView.ItemsPanel>
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Orientation="Horizontal"
-                               HorizontalAlignment="Center"
-                               MaximumRowsOrColumns="4" />
+                                   HorizontalAlignment="Center"
+                                   MaximumRowsOrColumns="4" />
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>

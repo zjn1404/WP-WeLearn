@@ -61,18 +61,14 @@ namespace TutorApp.Views.HomePage
 
         public SessionPage()
         {
-            this.InitializeComponent();
             var navigationService = ((App)Application.Current).Services.GetRequiredService<INavigationService>();
             _paymentService = ((App)Application.Current).Services.GetRequiredService<IPaymentService>();
             _learningSessionService = ((App)Application.Current).Services.GetRequiredService<ILearningSessionService>();
 
             ViewModel = new LearningSessionViewModel(_learningSessionService);
             DataContext = ViewModel;
-
-            this.Loaded += (s, e) =>
-            {
-                Debug.WriteLine($"Sessions count: {ViewModel.learningSessions?.Count ?? 0}");
-            };
+          
+            this.InitializeComponent();
         }
 
         private async void OnSessionCardClicked(object sender, ItemClickEventArgs e)
