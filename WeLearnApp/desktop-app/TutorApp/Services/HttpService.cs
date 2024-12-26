@@ -97,7 +97,7 @@ namespace TutorApp.Services
             if (!JwtParser.IsTokenValid(accessToken))
             {
                 
-                accessToken = await _tokenService.refreshToken();
+                accessToken = await _tokenService.refreshToken(_baseUrl);
                 if (string.IsNullOrEmpty(accessToken))
                 {
                     throw new Exception("Unable to refresh token");

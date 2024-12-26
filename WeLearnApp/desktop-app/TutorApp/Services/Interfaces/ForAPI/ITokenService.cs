@@ -13,6 +13,6 @@ namespace TutorApp.Services.Interfaces.ForAPI
         /// refresh accessToken when itseft exprired
         /// </summary>
         /// <returns>accessToken</returns>
-        Task<string> refreshToken();
+        Task<string> refreshToken(string url);
     }
 }
