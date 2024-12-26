@@ -22,10 +22,11 @@ namespace TutorApp.Services
         public TokenService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+
         }
 
 
-        public async Task<string> refreshToken()
+        public async Task<string> refreshToken(string url)
         {
             var localSettings = ApplicationData.Current.LocalSettings;
             _refreshToken = localSettings.Values["refreshToken"] as string;
@@ -37,19 +38,20 @@ namespace TutorApp.Services
 
             try
             {
-                var request = new RefreshTokenRequest { RefreshToken = _refreshToken };
+                var request = new RefreshTokenRequest { refreshToken = _refreshToken };
+                var api = url + "/api/auth/refresh";
                 var json = JsonSerializer.Serialize(request);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync("api/auth/refresh-token",content);
+                var response = await _httpClient.PostAsync(api,content);
 
                 var responseContent = await response.Content.ReadAsStringAsync();
-                var responseData = JsonSerializer.Deserialize<RefreshTokenResponse>(responseContent);
+                var responseData = JsonSerializer.Deserialize<ApiResponse>(responseContent);
 
 
                 if (response.IsSuccessStatusCode)
                 {
            
-                    var newAccessToken = responseData?.accessToken;
+                    var newAccessToken = JsonSerializer.Deserialize<RefreshTokenResponse>(responseData?.data.ToString()).accessToken;
              
 
                     if (!string.IsNullOrEmpty(newAccessToken))
@@ -82,6 +84,6 @@ namespace TutorApp.Services
     }
     public class RefreshTokenRequest
     {
-        public string RefreshToken { get; set; }
+        public string refreshToken { get; set; }
     }
 }

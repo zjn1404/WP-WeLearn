@@ -19,17 +19,23 @@
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="8"/>
         </Style>
-        <helpers:DateTimeConverter x:Key="DateTimeConverter"></helpers:DateTimeConverter>
+        <helpers:DateTimeConverter x:Key="DateTimeConverter"/>
     </Page.Resources>
 
     <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
         <GridView
-            ItemsSource="{x:Bind ViewModel.learningSessions, Mode=OneWay}"
+            Grid.Row="0"
+            ItemsSource="{x:Bind ViewModel.LearningSessions, Mode=OneWay}"
             SelectionMode="Single"
             IsItemClickEnabled="True"
             ItemClick="OnSessionCardClicked"
             HorizontalAlignment="Center"
             Margin="-4,0">
+
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:LearningSessionResponse">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
@@ -37,6 +43,7 @@
                           Height="200"
                           Padding="16"
                           Margin="4">
+
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
@@ -53,7 +60,7 @@
                                    FontWeight="Bold"
                                    Foreground="Gray">
                             <Run Text="Grade: "/>
-                            <Run Text="{x:Bind Grade}" />
+                            <Run Text="{x:Bind Grade}"/>
                         </TextBlock>
 
                         <TextBlock Grid.Row="1"
@@ -62,21 +69,21 @@
                                    Text="{x:Bind Subject}"
                                    FontSize="16"
                                    FontWeight="Bold"
-                                   TextAlignment="Center" />
+                                   TextAlignment="Center"/>
 
                         <TextBlock Grid.Row="2"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Text="{x:Bind StartTime}"
                                    FontSize="14"
-                                   Foreground="Gray" />
+                                   Foreground="Gray"/>
 
                         <TextBlock Grid.Row="3"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Bottom"
                                    Text="{x:Bind LearningMethod}"
                                    FontSize="14"
-                                   Foreground="Gray" />
+                                   Foreground="Gray"/>
 
                         <TextBlock Grid.Row="4"
                                    HorizontalAlignment="Left"
@@ -84,7 +91,7 @@
                                    FontSize="14"
                                    Foreground="Gray">
                             <Run Text="Price: "/>
-                            <Run Text="{x:Bind Tuition}" />
+                            <Run Text="{x:Bind Tuition}"/>
                         </TextBlock>
 
                         <TextBlock Grid.Row="5"
@@ -93,10 +100,9 @@
                                    FontSize="14"
                                    Foreground="Gray">
                             <Run Text="Duration: "/>
-                            <Run Text="{x:Bind Duration}" />
+                            <Run Text="{x:Bind Duration}"/>
                         </TextBlock>
                     </Grid>
-
                 </DataTemplate>
             </GridView.ItemTemplate>
 
@@ -104,7 +110,7 @@
                 <ItemsPanelTemplate>
                     <ItemsWrapGrid Orientation="Horizontal"
                                    HorizontalAlignment="Center"
-                                   MaximumRowsOrColumns="4" />
+                                   MaximumRowsOrColumns="4"/>
                 </ItemsPanelTemplate>
             </GridView.ItemsPanel>
         </GridView>
@@ -116,10 +122,11 @@
             PrimaryButtonText="Proceed to Payment"
             PrimaryButtonClick="OnProceedToPayment"
             Width="1000">
+
             <Grid Padding="20" ColumnSpacing="20">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0" Spacing="15">
@@ -127,26 +134,31 @@
                                FontSize="20"
                                FontWeight="Bold"
                                Foreground="Gray"
-                               Margin="0,0,0,10" />
+                               Margin="0,0,0,10"/>
+
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Subject:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Subject}" />
+                        <TextBlock Text="Subject:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Subject}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Start Time:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.StartTime}" />
+                        <TextBlock Text="Start Time:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.StartTime}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Learning Method:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.LearningMethod}" />
+                        <TextBlock Text="Learning Method:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.LearningMethod}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Duration:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Duration}" />
+                        <TextBlock Text="Duration:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Duration}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Price:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Tuition}" />
+                        <TextBlock Text="Price:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Tuition}"/>
                     </StackPanel>
                 </StackPanel>
 
@@ -155,30 +167,50 @@
                                FontSize="20"
                                FontWeight="Bold"
                                Foreground="Gray"
-                               Margin="0,0,0,10" />
+                               Margin="0,0,0,10"/>
+
                     <Border Width="120" Height="120" HorizontalAlignment="Center" CornerRadius="60">
                         <Image Source="{Binding SelectedSession.Tutor.avatarUrl}"
                                Width="120"
                                Height="120"
-                               Stretch="UniformToFill" />
+                               Stretch="UniformToFill"/>
                     </Border>
+
                     <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Name:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Tutor.firstName}" />
+                        <TextBlock Text="Name:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Tutor.firstName}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Contact:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Tutor.phoneNumber}" />
+                        <TextBlock Text="Contact:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Tutor.phoneNumber}"/>
                     </StackPanel>
+
                     <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Location:" FontWeight="Bold" />
-                        <TextBlock Text="{Binding SelectedSession.Tutor.location.city}" />
+                        <TextBlock Text="Location:" FontWeight="Bold"/>
+                        <TextBlock Text="{Binding SelectedSession.Tutor.location.city}"/>
                     </StackPanel>
                 </StackPanel>
             </Grid>
         </ContentDialog>
 
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="8"
+                    Margin="0,16,0,0">
+            <Button Content="Previous"
+                    Command="{Binding PreviousPageCommand}"/>
 
+            <TextBlock VerticalAlignment="Center">
+                <Run Text="Page "/>
+                <Run Text="{x:Bind ViewModel.CurrentPage, Mode=OneWay}"/>
+                <Run Text=" of "/>
+                <Run Text="{x:Bind ViewModel.TotalPages, Mode=OneWay}"/>
+            </TextBlock>
 
+            <Button Content="Next"
+                    Command="{Binding NextPageCommand}"/>
+        </StackPanel>
     </Grid>
 </Page>

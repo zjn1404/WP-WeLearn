@@ -80,7 +80,7 @@ public class TutorViewModel : INotifyPropertyChanged
         _tutorService = tutorService;
 
         _currentPage = 1;
-        _perPage = 3;
+        _perPage = 6;
 
         _ = LoadTutorsAsync();
     }

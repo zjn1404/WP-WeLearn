@@ -12,6 +12,7 @@ using TutorApp.Models.ForAPI.JsonResponse;
 using TutorApp.Models.ForAPI.Request;
 using TutorApp.Models.ForAPI.Response;
 using TutorApp.Services.Interfaces.ForAPI;
+using Windows.Media.Protection.PlayReady;
 
 namespace TutorApp.Services
 {
@@ -34,6 +35,11 @@ namespace TutorApp.Services
             {
                 using (var client = await _httpService.AuthenticatedCallAPI())
                 {
+
+                    if (client == null)
+                    {
+                        return null;
+                    }
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
@@ -62,6 +68,11 @@ namespace TutorApp.Services
             {
                 using (var httpClient = await _httpService.AuthenticatedCallAPI())
                 {
+                    if (httpClient == null)
+                    {
+                        return null;
+                    }
+
                     var url = $"/api/evaluate/tutor?tutorId={tutorId}&page={page}&size={size}";
 
                     var body = new StringContent("{}", Encoding.UTF8, "application/json");

@@ -32,8 +32,8 @@ namespace TutorApp.Services
         {
             var handler = new HttpClientHandler
             {
-                UseDefaultCredentials = false, // Tắt credentials mặc định
-                AutomaticDecompression = DecompressionMethods.None, // Tắt nén tự động
+                UseDefaultCredentials = false, 
+                AutomaticDecompression = DecompressionMethods.None, 
             };
 
             var client = new HttpClient(handler)
@@ -45,10 +45,10 @@ namespace TutorApp.Services
             }
             };
 
-            // Clear tất cả header mặc định
+        
             client.DefaultRequestHeaders.Clear();
 
-            // Chỉ thêm token nếu có
+       
             if (!string.IsNullOrEmpty(token))
             {
                 client.DefaultRequestHeaders.Authorization =
@@ -83,21 +83,21 @@ namespace TutorApp.Services
 
                 if(role == "USER")
                 {
-                    _navigationService.NavigateTo("login");
+                    _navigationService.NavigateTo("LoginForStudent");
                 } else
                 {
-                    _navigationService.NavigateTo("loginForTutor");
+                    _navigationService.NavigateTo("LoginForTutor");
 
                 }
 
-                return null;
+                return CreateClient();
                 
             }
 
             if (!JwtParser.IsTokenValid(accessToken))
             {
                 
-                accessToken = await _tokenService.refreshToken();
+                accessToken = await _tokenService.refreshToken(_baseUrl);
                 if (string.IsNullOrEmpty(accessToken))
                 {
                     throw new Exception("Unable to refresh token");

@@ -28,6 +28,7 @@ namespace TutorApp.Services
             {
                 using (var client = _httpService.CreateClient())
                 {
+
                     var json = JsonSerializer.Serialize(request);
                     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
