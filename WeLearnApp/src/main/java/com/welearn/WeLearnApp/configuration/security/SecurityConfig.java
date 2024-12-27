@@ -2,6 +2,7 @@ package com.welearn.WeLearnApp.configuration.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,6 +23,9 @@ public class SecurityConfig {
             "/user/unverified-email-invitation",
             "/payment/vnp/callback",
             "/subject/all",
+            "/script.js",
+            "/chat-room.html/**",
+            "/session-room/**"
     };
 
     private static final String[] PUBLIC_POST_ENDPOINTS = {
@@ -48,6 +52,8 @@ public class SecurityConfig {
                 .requestMatchers(PUBLIC_POST_ENDPOINTS)
                 .permitAll()
                 .requestMatchers(PUBLIC_PATCH_ENDPOINTS)
+                .permitAll()
+                .requestMatchers(HttpMethod.OPTIONS, "/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated());
