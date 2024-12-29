@@ -17,7 +17,7 @@ namespace TutorApp.ViewModels
     public class TutorLearningSessionViewModel : INotifyPropertyChanged
     {
         private readonly ILearningSessionService _learningSessionService;
-        public FullObservableCollection<LearningSession> learningSessions { get; set; }
+        public FullObservableCollection<LearningSessionResponse> learningSessions { get; set; }
 
         public TutorLearningSessionViewModel(ILearningSessionService learningSessionService)
         {
@@ -28,19 +28,19 @@ namespace TutorApp.ViewModels
         private async void LoadLearningSessionsAsync()
         {
             var learningSessionResponses = await _learningSessionService.GetMyLearningSessionList();
-            var learningSessionList = learningSessionResponses.Select(response => new LearningSession
+            var learningSessionList = learningSessionResponses.Select(response => new LearningSessionResponse
             {
                 Id = response.Id,
-                TutorId = response.Tutor.id,
+                Tutor = response.Tutor,
                 StartTime = response.StartTime,
                 Duration = response.Duration,
-                GradeId = response.Grade,
-                SubjectName = response.Subject,
-                LearningMethodName = response.LearningMethod,
+                Grade = response.Grade,
+                Subject = response.Subject,
+                LearningMethod = response.LearningMethod,
                 Tuition = response.Tuition
             }).ToList();
 
-            learningSessions = new FullObservableCollection<LearningSession>(learningSessionList);
+            learningSessions = new FullObservableCollection<LearningSessionResponse>(learningSessionList);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

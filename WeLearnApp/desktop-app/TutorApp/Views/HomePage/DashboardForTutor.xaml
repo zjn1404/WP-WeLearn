@@ -117,7 +117,6 @@
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Main" />
                 <NavigationViewItem Content="Home" Tag="HomePage" Icon="Home" />
-                <NavigationViewItem Content="Messages" Tag="MessagesPage" Icon="Mail" />
             </NavigationView.MenuItems>
 
 

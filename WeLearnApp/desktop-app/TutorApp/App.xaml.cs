@@ -87,6 +87,7 @@ namespace TutorApp
             services.AddSingleton<ITutorService>(sp => new TutorService(sp.GetRequiredService<HttpService>()));
             services.AddSingleton<IPaymentService>(sp => new PaymentService(sp.GetRequiredService<HttpService>()));
             services.AddSingleton<IEvaluationService>(sp => new EvaluationService(sp.GetRequiredService<HttpService>()));
+            services.AddSingleton<IVideoCallService>(sp => new VideoCallService(sp.GetRequiredService<HttpService>()));
 
             return services.BuildServiceProvider();
         }
