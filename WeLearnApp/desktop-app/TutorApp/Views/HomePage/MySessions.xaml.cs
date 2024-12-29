@@ -30,7 +30,7 @@ namespace TutorApp.Views.HomePage
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MySessions : Page
+    public sealed partial class MySessions : Page, INotifyPropertyChanged
     {
         private readonly IVideoCallService _videoCallService;
         public TutorLearningSessionViewModel ViewModel { get; }
@@ -54,8 +54,8 @@ namespace TutorApp.Views.HomePage
         }
 
 
-        private LearningSession _selectedSession;
-        public LearningSession SelectedSession
+        private LearningSessionResponse _selectedSession;
+        public LearningSessionResponse SelectedSession
         {
             get => _selectedSession;
             set
@@ -68,7 +68,7 @@ namespace TutorApp.Views.HomePage
         private async void OnSessionCardClicked(object sender, ItemClickEventArgs e)
         {
             Debug.WriteLine($"Clicked item: {e.ClickedItem}");
-            if (e.ClickedItem is LearningSession session)
+            if (e.ClickedItem is LearningSessionResponse session)
             {
                 SelectedSession = session;
                 SessionDetailsDialog.DataContext = null;
