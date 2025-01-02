@@ -10,16 +10,19 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#D7D3BF"
+    RequestedTheme="Light">
 
     <Page.Resources>
-        <Style x:Key="LearningSessionCardStyle" TargetType="Grid">
-            <Setter Property="Background" Value="{ThemeResource CardBackgroundFillColorDefaultBrush}"/>
-            <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="CornerRadius" Value="8"/>
-        </Style>
-        <helpers:DateTimeConverter x:Key="DateTimeConverter"/>
+        <ResourceDictionary>
+            <Style x:Key="LearningSessionCardStyle" TargetType="Grid">
+                <Setter Property="Background" Value="#ECEBDE"/>
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeColorDefaultBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="8"/>
+            </Style>
+            <helpers:DateTimeConverter x:Key="DateTimeConverter"/>
+        </ResourceDictionary>
     </Page.Resources>
 
     <Grid Padding="20">
@@ -36,13 +39,45 @@
             HorizontalAlignment="Center"
             Margin="-4,0">
 
+            <GridView.ItemContainerStyle>
+                <Style TargetType="GridViewItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="GridViewItem">
+                                <Grid x:Name="RootGrid" Background="{TemplateBinding Background}">
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="Normal"/>
+                                            <VisualState x:Name="PointerOver">
+                                                <VisualState.Setters>
+                                                    <Setter Target="RootGrid.BorderBrush" Value="#A59D84"/>
+                                                    <Setter Target="RootGrid.BorderThickness" Value="1"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="Selected">
+                                                <VisualState.Setters>
+                                                    <Setter Target="RootGrid.BorderBrush" Value="#A59D84"/>
+                                                    <Setter Target="RootGrid.BorderThickness" Value="2"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <ContentPresenter/>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </GridView.ItemContainerStyle>
+
             <GridView.ItemTemplate>
                 <DataTemplate x:DataType="models:LearningSessionResponse">
                     <Grid Style="{StaticResource LearningSessionCardStyle}"
                           Width="200"
                           Height="200"
                           Padding="16"
-                          Margin="4">
+                          Margin="4"
+                          Background="#ECEBDE">
 
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -115,85 +150,156 @@
             </GridView.ItemsPanel>
         </GridView>
 
-        <ContentDialog
-            x:Name="SessionDetailsDialog"
-            Title="Session Details"
-            CloseButtonText="Close"
-            PrimaryButtonText="Proceed to Payment"
-            PrimaryButtonClick="OnProceedToPayment"
-            Width="1000">
+            <ContentDialog
+                x:Name="SessionDetailsDialog"
+                CloseButtonText="Close"
+                PrimaryButtonText="Proceed to Payment"
+                PrimaryButtonClick="OnProceedToPayment"
+                Width="1000"
+                CornerRadius="12">
 
-            <Grid Padding="20" ColumnSpacing="20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="3*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0" Spacing="15">
-                    <TextBlock Text="Session Information"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               Foreground="Gray"
-                               Margin="0,0,0,10"/>
+            <ContentDialog.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="ContentDialog">
+                        <Setter Property="Background" Value="#ECEBDE"/>
+                    </Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#4CAF50"/>
+                        <Setter Property="Foreground" Value="White"/>
+                    </Style>
+                </ResourceDictionary>
+            </ContentDialog.Resources>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Subject:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Subject}"/>
-                    </StackPanel>
+            <ContentDialog.Title>
+                <TextBlock Text="Session Details" 
+                   FontSize="25" 
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"/>
+            </ContentDialog.Title>
+                
+            <ContentDialog.PrimaryButtonStyle>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#4CAF50"/>
+                    <Setter Property="Foreground" Value="#ECEBDE"/>
+                    <Setter Property="CornerRadius" Value="6"/>
+                    <Setter Property="Padding" Value="16,8"/>
+                </Style>
+            </ContentDialog.PrimaryButtonStyle>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Start Time:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.StartTime}"/>
-                    </StackPanel>
+            <ContentDialog.CloseButtonStyle>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#A59D84"/>
+                    <Setter Property="Foreground" Value="#ECEBDE"/>
+                    <Setter Property="CornerRadius" Value="6"/>
+                    <Setter Property="Padding" Value="16,8"/>
+                </Style>
+            </ContentDialog.CloseButtonStyle>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Learning Method:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.LearningMethod}"/>
-                    </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Grid Padding="24" RowSpacing="32" Background="#ECEBDE">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Duration:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Duration}"/>
-                    </StackPanel>
+                    <!-- Session Information -->
+                    <Grid Grid.Row="0" RowSpacing="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="Price:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Tuition}"/>
-                    </StackPanel>
-                </StackPanel>
+                        <TextBlock Text="Session Information" 
+                            Style="{StaticResource SectionTitleStyle}"/>
 
-                <StackPanel Grid.Column="1" Spacing="15">
-                    <TextBlock Text="Tutor Information"
-                               FontSize="20"
-                               FontWeight="Bold"
-                               Foreground="Gray"
-                               Margin="0,0,0,10"/>
+                        <Border Grid.Row="1" 
+                                Background="#F5F4EA" 
+                                CornerRadius="8" 
+                                Padding="20">
+                            <StackPanel Spacing="16">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
 
-                    <Border Width="120" Height="120" HorizontalAlignment="Center" CornerRadius="60">
-                        <Image Source="{Binding SelectedSession.Tutor.avatarUrl}"
-                               Width="120"
-                               Height="120"
-                               Stretch="UniformToFill"/>
-                    </Border>
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Subject:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedSession.Subject}" Style="{StaticResource InfoValueStyle}"/>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Name:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Tutor.firstName}"/>
-                    </StackPanel>
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Start Time:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedSession.StartTime}" Style="{StaticResource InfoValueStyle}"/>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Contact:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Tutor.phoneNumber}"/>
-                    </StackPanel>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Learning Method:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedSession.LearningMethod}" Style="{StaticResource InfoValueStyle}"/>
 
-                    <StackPanel Orientation="Horizontal" Spacing="10" HorizontalAlignment="Center">
-                        <TextBlock Text="Location:" FontWeight="Bold"/>
-                        <TextBlock Text="{Binding SelectedSession.Tutor.location.city}"/>
-                    </StackPanel>
-                </StackPanel>
-            </Grid>
+                                    <TextBlock Grid.Row="3" Grid.Column="0" Text="Duration:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding SelectedSession.Duration}" Style="{StaticResource InfoValueStyle}"/>
+
+                                    <TextBlock Grid.Row="4" Grid.Column="0" Text="Price:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding SelectedSession.Tuition}" Style="{StaticResource InfoValueStyle}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+
+                    <!-- Tutor Information -->
+                    <Grid Grid.Row="1" RowSpacing="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Text="Tutor Information" 
+                            Style="{StaticResource SectionTitleStyle}"/>
+
+                        <Border Grid.Row="1" 
+                                Background="#F5F4EA" 
+                                CornerRadius="8" 
+                                Padding="20">
+                            <StackPanel Spacing="16" HorizontalAlignment="Center">
+                                <Border Width="120" Height="120" 
+                                CornerRadius="60"
+                                BorderThickness="4"
+                                BorderBrush="#FFFFFF">
+                                    <Image Source="{Binding SelectedSession.Tutor.avatarUrl}"
+                                    Stretch="UniformToFill"/>
+                                </Border>
+
+                                <Grid HorizontalAlignment="Center" RowSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding SelectedSession.Tutor.firstName}" Style="{StaticResource InfoValueStyle}"/>
+
+                                    <TextBlock Grid.Row="1" Grid.Column="0" Text="Contact:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SelectedSession.Tutor.phoneNumber}" Style="{StaticResource InfoValueStyle}"/>
+
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Text="Location:" Style="{StaticResource InfoLabelStyle}"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding SelectedSession.Tutor.location.city}" Style="{StaticResource InfoValueStyle}"/>
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+
         </ContentDialog>
-
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
