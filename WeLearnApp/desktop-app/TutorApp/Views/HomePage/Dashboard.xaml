@@ -6,8 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="#E0F7FA">
-    <!-- Light Blue Background -->
+    Background="#A59D84">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -32,7 +31,7 @@
                        FontWeight="SemiBold"
                        Margin="30,10,30,10"/>
 
-            <Grid Grid.Column="1">
+            <!--<Grid Grid.Column="1">
                 <AutoSuggestBox x:Name="SearchBox"
                                 PlaceholderText="Search"
                                 Width="300"
@@ -41,9 +40,9 @@
                                 VerticalAlignment="Center"
                                 QuerySubmitted="SearchBox_QuerySubmitted"
                                 TextChanged="SearchBox_TextChanged"/>
-            </Grid>
+            </Grid>-->
 
-            <Grid Grid.Column="2"
+            <!--<Grid Grid.Column="2"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Margin="0, 0, 20, 0">
@@ -54,7 +53,7 @@
                     <ComboBoxItem Content="Start time"/>
                     <ComboBoxItem Content="Subject name"/>
                 </ComboBox>
-            </Grid>
+            </Grid>-->
 
             <Button Grid.Column="3"
                     Margin="0,0,10,0"
@@ -123,7 +122,7 @@
                 <NavigationViewItem Content="Account" Tag="AccountPage" Icon="Contact" />
             </NavigationView.FooterMenuItems>
 
-            <Frame x:Name="contentFrame" Background="AntiqueWhite"/>
+            <Frame x:Name="contentFrame" Background="#D7D3BF"/>
 
         </NavigationView>
 
