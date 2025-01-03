@@ -120,11 +120,11 @@ namespace TutorApp.Views.HomePage
             // Handle messages button click
             // You can show a messages panel or navigate to the messages page
         }
-        private void CategoryFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Update the filter with the selected category
-            var selectedCategory = (CategoryFilter.SelectedItem as ComboBoxItem)?.Content?.ToString();
-        }
+        //private void CategoryFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    // Update the filter with the selected category
+        //    var selectedCategory = (CategoryFilter.SelectedItem as ComboBoxItem)?.Content?.ToString();
+        //}
 
         private async void DropdownOptionLogOut_Select(object sender, RoutedEventArgs e)
         {
