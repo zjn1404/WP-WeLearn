@@ -4,6 +4,7 @@ import com.welearn.WeLearnApp.dto.response.ApiResponse;
 import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
+import com.welearn.WeLearnApp.repository.LearningSessionRepository;
 import com.welearn.WeLearnApp.repository.UserProfileRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +31,16 @@ public class SessionRoomController {
 
     UserProfileRepository userProfileRepository;
 
+    LearningSessionRepository learningSessionRepository;
+
     @GetMapping("/{id}")
     public ApiResponse<String> joinLearningSession(@PathVariable("id") String id) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!learningSessionRepository.existsById(id)) {
+            throw new AppException(ErrorCode.LEARNING_SESSION_NOT_FOUND);
+        }
+
         UserProfile userProfile = userProfileRepository.findById(authentication.getName())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_PROFILE_NOT_FOUND));
 

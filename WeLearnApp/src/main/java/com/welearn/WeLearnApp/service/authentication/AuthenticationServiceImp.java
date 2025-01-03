@@ -27,6 +27,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.text.ParseException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -149,7 +150,9 @@ public class AuthenticationServiceImp implements AuthenticationService{
 
             return signedJWT;
 
-        } catch (Exception e) {
+        } catch (ParseException e) {
+            throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
+        } catch (JOSEException e) {
             throw new AppException(ErrorCode.UNCATEGORIZED_EXCEPTION);
         }
     }
