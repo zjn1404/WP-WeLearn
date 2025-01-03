@@ -1,6 +1,7 @@
 package com.welearn.WeLearnApp.repository;
 
 import com.welearn.WeLearnApp.entity.Order;
+import com.welearn.WeLearnApp.entity.OrderDetail;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -38,4 +39,6 @@ public interface OrderRepository extends JpaRepository<Order, String> {
     WHERE FUNCTION('ADDTIME', :time, FUNCTION('SEC_TO_TIME', 30 * 60)) >= o.orderDetail.learningSession.startTime
     """)
     List<Order> findAllUpcomingLearningSessions(@Param("time") LocalDateTime time);
+
+    Order findByOrderDetail(OrderDetail orderDetail);
 }
