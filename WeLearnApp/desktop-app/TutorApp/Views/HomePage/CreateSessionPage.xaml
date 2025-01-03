@@ -6,23 +6,42 @@
     xmlns:viewmodel="using:TutorApp.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:common="using:TutorApp.Common" d:DataContext="{d:DesignInstance Type=common:FullObservableCollection}"
+    xmlns:common="using:TutorApp.Common" 
+    d:DataContext="{d:DesignInstance Type=common:FullObservableCollection}"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#D7D3BF"
+    RequestedTheme="Light">
 
+
+    <Page.Resources>
+        <Style x:Key="InputControlStyle" TargetType="Control">
+            <Setter Property="Width" Value="300" />
+            <Setter Property="Margin" Value="0,0,0,15" />
+            <Setter Property="Background" Value="#ECEBDE" />
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="150" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Background" Value="#A59D84" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="20" />
+        </Style>
+    </Page.Resources>
 
     <Grid>
-        <StackPanel Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Width="Auto"
-                    Margin="20"
-                    Height="Auto">
+        <StackPanel Orientation="Vertical" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Center">
 
-            <TextBlock Text="Create New Session" FontSize="24" FontWeight="Bold" Margin="0,0,0,0" HorizontalAlignment="Center"/>
+                <TextBlock Text="Create New Session" 
+                          FontSize="28" 
+                          FontWeight="SemiBold" 
+                          Margin="0,0,0,30" 
+                          HorizontalAlignment="Center"
+                          Foreground="#A59D84"/>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,30,30,0">
                     <DatePicker x:Name="DatePicker" Header="Start Date" Width="300" Margin="0,0,0,10"/>
                     <TimePicker x:Name="TimePicker" Header="Start Time" Width="300" Margin="0,0,0,10"/>
@@ -54,27 +73,33 @@
 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,30,0,0">
-                <Button Content="Save" Width="150" Height="40" Margin="0,0,10,0" Click="SaveButton_Click"/>
-                <Button Content="Cancel" Width="150" Height="40" Margin="10,0,0,0"  Click="CancelButton_Click"/>
+                <StackPanel Orientation="Horizontal" 
+                           HorizontalAlignment="Center" 
+                           Margin="0,30,0,0">
+                    <Button Content="Save" 
+                            Style="{StaticResource ButtonStyle}"
+                            Margin="0,0,15,0" 
+                            Click="SaveButton_Click"/>
+                    <Button Content="Cancel" 
+                            Style="{StaticResource ButtonStyle}"
+                            Background="#C1BAA1"
+                            Click="CancelButton_Click"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
-        <!-- Loading Overlay -->
+
         <Grid x:Name="LoadingOverlay"
               Visibility="Collapsed"
-              Background="#80000000"
-              HorizontalAlignment="Stretch"
-              VerticalAlignment="Stretch">
+              Background="#80000000">
             <StackPanel VerticalAlignment="Center"
                         HorizontalAlignment="Center"
-                        Background="White"
+                        Background="#ECEBDE"
+                        CornerRadius="10"
                         Padding="20">
-                <ProgressRing
-                    x:Name="spinner"
-                    IsActive="True"
-                    Width="50"
-                    Height="50"
-                    Background="LightGray"/>
+                <ProgressRing x:Name="spinner"
+                             IsActive="True"
+                             Width="50"
+                             Height="50"
+                             Foreground="#A59D84"/>
             </StackPanel>
         </Grid>
     </Grid>

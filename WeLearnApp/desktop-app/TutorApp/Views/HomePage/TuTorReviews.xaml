@@ -9,85 +9,132 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local1="using:TutorApp.Models.ForAPI.Response"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#D7D3BF">
 
     <Page.Resources>
         <local:StarRatingConverter x:Key="StarRatingConverter"/>
-        <SolidColorBrush x:Key="PrimaryColor" Color="#E6F3FF"/>
-        <SolidColorBrush x:Key="PrimaryBorderColor" Color="#0078D4"/>
-        <SolidColorBrush x:Key="PrimaryTextColor" Color="#0078D4"/>
+        <SolidColorBrush x:Key="PrimaryColor" Color="#ECEBDE"/>
+        <SolidColorBrush x:Key="PrimaryBorderColor" Color="#A59D84"/>
+        <SolidColorBrush x:Key="PrimaryTextColor" Color="#A59D84"/>
 
         <Style x:Key="PrimaryButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource PrimaryColor}"/>
-            <Setter Property="Foreground" Value="{StaticResource PrimaryTextColor}"/>
-            <Setter Property="BorderBrush" Value="{StaticResource PrimaryBorderColor}"/>
-            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#A59D84"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Padding" Value="16,8"/>
-            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="CornerRadius" Value="20"/>
+            <Setter Property="MinWidth" Value="100"/>
+        </Style>
+
+        <Style x:Key="ReviewCardStyle" TargetType="StackPanel">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="BorderBrush" Value="#C1BAA1"/>
+            <Setter Property="BorderThickness" Value="1"/>
         </Style>
     </Page.Resources>
 
-    <Grid Padding="20">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#ECEBDE" Offset="0"/>
+                <GradientStop Color="#D7D3BF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-
-        <StackPanel Orientation="Vertical" Margin="20">
+        <Grid Padding="24" MaxWidth="1200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
             <Button Content="← Back" 
-        HorizontalAlignment="Left"
-        VerticalAlignment="Top"
-        Style="{StaticResource PrimaryButtonStyle}"
-        Click="BackButton_Click"
-        Margin="0,0,0,10"/>
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Click="BackButton_Click"
+                    Margin="0,0,0,24"/>
 
-
-            <ListView 
-            x:Name="ReviewsListView"
-            ItemsSource="{Binding Reviews}"
-            Grid.Row="0">
+            <ListView x:Name="ReviewsListView"
+                      ItemsSource="{Binding Reviews}"
+                      Grid.Row="1"
+                      Background="Transparent"
+                      SelectionMode="None"
+                      IsItemClickEnabled="False">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="0,0,0,16"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="local1:EvaluationResponse">
-                        <StackPanel Orientation="Vertical" Margin="0,10">
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <TextBlock Text="Student: " FontWeight="Bold"/>
-                                <TextBlock Text="{x:Bind studentName}" Margin="8,0,0,0" />
+                        <Border Background="White" 
+                                CornerRadius="12" 
+                                BorderBrush="#C1BAA1" 
+                                BorderThickness="1"
+                                Padding="20">
+                            <StackPanel Orientation="Vertical" Spacing="8">
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="Student:" 
+                                             FontWeight="SemiBold" 
+                                             Foreground="#A59D84"/>
+                                    <TextBlock Text="{x:Bind studentName}" 
+                                             Foreground="#4A4639"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Horizontal" Spacing="8">
+                                    <TextBlock Text="Rating:" 
+                                             FontWeight="SemiBold" 
+                                             Foreground="#A59D84"/>
+                                    <TextBlock Foreground="#4A4639">
+                                        <Run Text="{x:Bind star}"/>
+                                        <Run Text="/5"/>
+                                    </TextBlock>
+                                </StackPanel>
+
+                                <TextBlock Text="{x:Bind comment}" 
+                                         TextWrapping="Wrap"
+                                         LineHeight="24"
+                                         Foreground="#4A4639"
+                                         Margin="0,8,0,0"/>
                             </StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                                <TextBlock Text="Rating: " FontWeight="Bold"/>
-                                <TextBlock Text="{x:Bind star}" Margin="8,0,0,0" />
-                                <TextBlock Text="/5"/>
-                            </StackPanel>
-                            <TextBlock 
-                Text="{x:Bind comment}" 
-                TextWrapping="Wrap" 
-                Margin="0,5,0,0"/>
-                        </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-        </StackPanel>
-        <StackPanel Grid.Row="3"
-            Orientation="Horizontal"
-            HorizontalAlignment="Center"
-            Spacing="8"
-            Margin="0,16,0,0">
-                        <Button Content="Previous"
-            Command="{Binding PreviousPageCommand}"
-            Style="{StaticResource PrimaryButtonStyle}"/>
-                        <TextBlock VerticalAlignment="Center"
-               Foreground="{StaticResource PrimaryTextColor}">
-                <Run Text="Page "/>
-                <Run Text="{x:Bind _viewModel.CurrentPage, Mode=OneWay}"/>
-                <Run Text=" of "/>
-                <Run Text="{x:Bind _viewModel.TotalPages, Mode=OneWay}"/>
-                        </TextBlock>
-                        <Button Content="Next"
-            Command="{Binding NextPageCommand}"
-            Style="{StaticResource PrimaryButtonStyle}"/>
-        </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Spacing="16"
+                        Margin="0,24,0,0">
+                <Button Content="Previous"
+                        Command="{Binding PreviousPageCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"/>
+
+                <Border Background="White" 
+                        CornerRadius="20" 
+                        Padding="16,8" 
+                        BorderBrush="#C1BAA1" 
+                        BorderThickness="1">
+                    <TextBlock VerticalAlignment="Center"
+                             Foreground="#A59D84"
+                             FontWeight="SemiBold">
+                        <Run Text="Page "/>
+                        <Run Text="{x:Bind _viewModel.CurrentPage, Mode=OneWay}"/>
+                        <Run Text=" of "/>
+                        <Run Text="{x:Bind _viewModel.TotalPages, Mode=OneWay}"/>
+                    </TextBlock>
+                </Border>
+
+                <Button Content="Next"
+                        Command="{Binding NextPageCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>

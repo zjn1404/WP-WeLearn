@@ -6,14 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#A59D84">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
 
         <Grid Grid.Column="0">
             <Grid.ColumnDefinitions>
@@ -32,7 +31,7 @@
                        FontWeight="SemiBold"
                        Margin="30,10,30,10"/>
 
-            <Grid Grid.Column="1">
+            <!--<Grid Grid.Column="1">
                 <AutoSuggestBox x:Name="SearchBox"
                                 PlaceholderText="Search"
                                 Width="300"
@@ -41,9 +40,9 @@
                                 VerticalAlignment="Center"
                                 QuerySubmitted="SearchBox_QuerySubmitted"
                                 TextChanged="SearchBox_TextChanged"/>
-            </Grid>
+            </Grid>-->
 
-            <Grid Grid.Column="2"
+            <!--<Grid Grid.Column="2"
                   HorizontalAlignment="Center"
                   VerticalAlignment="Center"
                   Margin="0, 0, 20, 0">
@@ -54,13 +53,12 @@
                     <ComboBoxItem Content="Start time"/>
                     <ComboBoxItem Content="Subject name"/>
                 </ComboBox>
-            </Grid>
+            </Grid>-->
 
             <Button Grid.Column="3"
                     Margin="0,0,10,0"
                     Click="Notification_Click">
                 <FontIcon Glyph="&#xEA8F;" />
-
             </Button>
 
             <Button Grid.Column="4"
@@ -68,7 +66,6 @@
                     Click="Messages_Click">
                 <FontIcon Glyph="&#xE8BD;" />
             </Button>
-
 
             <DropDownButton Grid.Column="5"
                             AutomationProperties.Name="User"
@@ -106,7 +103,6 @@
             </DropDownButton>
         </Grid>
 
-
         <NavigationView Grid.Row="1"
                         x:Name="nvSample9"
                         IsPaneOpen="True"
@@ -128,6 +124,24 @@
             <Frame x:Name="contentFrame" Background="AntiqueWhite"/>
 
         </NavigationView>
+
+        <Grid x:Name="LoadingOverlay"
+              Visibility="Collapsed"
+              Background="#80000000"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Stretch">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Background="White"
+                        Padding="20">
+                <ProgressRing
+                    x:Name="spinner"
+                    IsActive="True"
+                    Width="50"
+                    Height="50"
+                    Background="LightGray"/>
+            </StackPanel>
+        </Grid>
 
     </Grid>
 </Page>
