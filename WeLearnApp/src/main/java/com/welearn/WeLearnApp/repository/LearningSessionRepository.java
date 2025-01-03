@@ -22,6 +22,9 @@ public interface LearningSessionRepository extends JpaRepository<LearningSession
     @Query(value = "DELETE FROM learning_session WHERE DATE_ADD(start_time, INTERVAL duration MINUTE) < :now", nativeQuery = true)
     void deleteExpiredLearningSessions(@Param("now") LocalDateTime now);
 
+    @Query(value = "SELECT * FROM learning_session WHERE DATE_ADD(start_time, INTERVAL duration MINUTE) < :now", nativeQuery = true)
+    List<LearningSession> findAllExpiredLearningSessions(@Param("now") LocalDateTime now);
+
     boolean existsByStartTimeAndTutor(LocalDateTime startTime, UserProfile tutor);
 
     Page<LearningSession> findAllByIdNotIn(List<String> ids, Pageable pageable);
