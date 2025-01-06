@@ -62,7 +62,7 @@ namespace TutorApp.Views.HomePage
             try
             {
                 await _userProfileViewModel.InitializeAsync();
-                contentFrame.Navigate(typeof(SessionPage));
+                contentFrame.Navigate(typeof(MyOrderedSessionPage));
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace TutorApp.Views.HomePage
                     switch (pageName)
                     {
                         case "HomePage":
-                            contentFrame.Navigate(typeof(SessionPage));
+                            contentFrame.Navigate(typeof(MyOrderedSessionPage));
                             break;
                         case "AccountPage":
                             contentFrame.Navigate(typeof(AccountPage), _userProfileViewModel);
@@ -90,8 +90,8 @@ namespace TutorApp.Views.HomePage
                         case "TutorPage":
                             contentFrame.Navigate(typeof(TutorPage));
                             break;
-                        case "MyOrderedSessionPage":
-                            contentFrame.Navigate(typeof(MyOrderedSessionPage));
+                        case "SessionPage":
+                            contentFrame.Navigate(typeof(SessionPage));
                             break;
                     }
                 }
