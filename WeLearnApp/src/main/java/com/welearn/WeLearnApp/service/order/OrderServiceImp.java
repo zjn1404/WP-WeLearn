@@ -11,13 +11,16 @@ import com.welearn.WeLearnApp.entity.UserProfile;
 import com.welearn.WeLearnApp.exception.AppException;
 import com.welearn.WeLearnApp.exception.ErrorCode;
 import com.welearn.WeLearnApp.mapper.learningsession.LearningSessionMapper;
+import com.welearn.WeLearnApp.mapper.location.LocationMapper;
 import com.welearn.WeLearnApp.mapper.order.OrderMapper;
+import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
 import com.welearn.WeLearnApp.repository.LearningSessionRepository;
 import com.welearn.WeLearnApp.repository.OrderRepository;
 import com.welearn.WeLearnApp.repository.UserProfileRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +30,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -41,6 +45,10 @@ public class OrderServiceImp implements OrderService {
     OrderMapper orderMapper;
 
     LearningSessionMapper learningSessionMapper;
+
+    UserProfileMapper userProfileMapper;
+
+    LocationMapper locationMapper;
 
     @Override
     public OrderResponse createOrder(OrderCreationRequest request) {
@@ -81,7 +89,7 @@ public class OrderServiceImp implements OrderService {
 
         Page<Order> orders = orderRepository.findAllByLearningSessionEndTimeAfter(LocalDateTime.now(), pageable);
 
-        List<OrderResponse> orderResponses = orders.stream().map(orderMapper::toOrderResponse).toList();
+        List<OrderResponse> orderResponses = orders.stream().map(this::buildOrderResponse).toList();
 
         return PageResponse.<OrderResponse>builder()
                 .currentPage(page)
@@ -117,5 +125,14 @@ public class OrderServiceImp implements OrderService {
                 .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_FOUND));
 
         orderRepository.delete(order);
+    }
+
+    private OrderResponse buildOrderResponse(Order order) {
+        OrderResponse response = orderMapper.toOrderResponse(order);
+        response.setTutor(userProfileMapper.toUserProfileResponse(order.getTutor()));
+        response.getTutor().setLocation(locationMapper.toLocationResponse(order.getTutor().getLocation()));
+        response.getOrderDetail().getLearningSession().setTutor(response.getTutor());
+
+        return response;
     }
 }
