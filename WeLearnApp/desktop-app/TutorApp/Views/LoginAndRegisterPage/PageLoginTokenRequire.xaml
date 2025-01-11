@@ -7,7 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="#ECEBDE">
 
     <Page.Resources>
         <Storyboard x:Name="ShowDropdownAnimation">
@@ -19,109 +19,141 @@
     </Page.Resources>
 
     <Grid>
-        <StackPanel Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
-                    Spacing="10"
-                    Padding="50,25"
-                    CornerRadius="20"
-                    BorderThickness="1"
-                    BorderBrush="Black"
-                    Background="#FFFFFFFF" >
+        <Grid HorizontalAlignment="Center"
+      VerticalAlignment="Center"
+      MaxWidth="800"
+      Padding="40,30"
+      CornerRadius="24"
+      BorderThickness="1"
+      BorderBrush="#C1BAA1"
+      Background="#FFFFFF">
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <HyperlinkButton Name="GoBack" Click="GoBack_Click"
-                                 Foreground="#0078D4">Go Back</HyperlinkButton>
-            </StackPanel>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20"/>
+                <!-- Spacing between columns -->
+                <ColumnDefinition Width="400"/>
+            </Grid.ColumnDefinitions>
 
-            <StackPanel Margin="0,0,0,20" Spacing="10">
+            <!-- Left Column - Icon and Title -->
+            <StackPanel Grid.Column="0" 
+                VerticalAlignment="Center"
+                Margin="20,0,0,0"
+                MinWidth="250">
+                <FontIcon FontSize="120"
+                 Glyph="&#xF32A;"
+                 HorizontalAlignment="Center"
+                 Foreground="#A59D84"/>
                 <TextBlock TextAlignment="Center"
-                           FontSize="20"
-                           FontWeight="SemiBold">EMAIL VERIFICATION</TextBlock>
-                <FontIcon FontSize="80"
-                          Glyph="&#xF32A;"
-                          HorizontalAlignment="Center"
-                          Foreground="#0078D4"/>
+                  FontSize="24"
+                  FontWeight="SemiBold"
+                  Margin="0,20,0,0"
+                  Foreground="#A59D84"
+                  TextWrapping="Wrap">EMAIL VERIFICATION</TextBlock>
             </StackPanel>
 
-            <!-- Email Section -->
-            <StackPanel x:Name="EmailSection" Spacing="8">
-                <TextBlock Text="Email:"
-                           Margin="0,0,0,4"
-                           FontWeight="SemiBold"/>
+            <!-- Right Column - Form -->
+            <StackPanel Grid.Column="2" 
+                Spacing="16">
+                <StackPanel Orientation="Horizontal" 
+                    HorizontalAlignment="Right">
+                    <HyperlinkButton Name="GoBack" 
+                            Click="GoBack_Click"
+                            Foreground="#A59D84">Go Back</HyperlinkButton>
+                </StackPanel>
 
-                <Button x:Name="EmailDropdownButton"
-                        Click="EmailDropdownButton_Click"
-                        HorizontalAlignment="Stretch"
-                        Background="Transparent"
-                        BorderBrush="#E1E1E1"
-                        BorderThickness="1"
-                        Padding="12,8"
-                        CornerRadius="4">
-                    <Grid HorizontalAlignment="Stretch">
-                        <TextBlock Text="Change Email"
-                                   Foreground="#0078D4"/>
-                    </Grid>
-                </Button>
+                <!-- Email Section -->
+                <StackPanel x:Name="EmailSection" 
+                    Spacing="10"
+                    Margin="0,20,0,0">
+                    <TextBlock Text="Email:"
+                      Margin="0,0,0,4"
+                      FontWeight="SemiBold"
+                      Foreground="#A59D84"/>
 
-                <StackPanel x:Name="EmailDropdownContent"
-                            Visibility="Collapsed"
-                            Opacity="0"
-                            Spacing="8"
-                            Margin="0,8,0,0">
-                    <TextBox Name="EmailBox"
-                             PlaceholderText="Enter your email"
-                             Height="32"/>
-                    <Button Content="Update Email"
-                            Click="UpdateEmail_Click"
-                            HorizontalAlignment="Right"
-                            Background="#0078D4"
-                            Foreground="White"
-                            Padding="16,8"/>
+                    <Button x:Name="EmailDropdownButton"
+                   Click="EmailDropdownButton_Click"
+                   HorizontalAlignment="Stretch"
+                   Background="#A59D84"
+                   Foreground="White"
+                   BorderThickness="1"
+                   Padding="14,10"
+                   CornerRadius="8"
+                   Content="Change Email">
+                    </Button>
+
+                    <StackPanel x:Name="EmailDropdownContent"
+                      Visibility="Collapsed"
+                      Opacity="0"
+                      Spacing="5"
+                      Margin="0,8,0,0">
+                        <TextBox Name="EmailBox"
+                        PlaceholderText="Enter your email"
+                        Height="40"
+                        CornerRadius="8"
+                        BorderBrush="#C1BAA1"
+                        Background="#ECEBDE"/>
+                        <Button Content="Update Email"
+                        Click="UpdateEmail_Click"
+                        HorizontalAlignment="Right"
+                        Background="#A59D84"
+                        Foreground="White"
+                        CornerRadius="8"
+                        Padding="20,10"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Your Code:"
+                      FontWeight="SemiBold"
+                      Margin="0,0,0,4"
+                      Foreground="#A59D84"/>
+                    <TextBox Name="yourTokenBox"
+                     PlaceholderText="Enter your token"
+                     Height="40"
+                     CornerRadius="8"
+                     BorderBrush="#C1BAA1"
+                     Background="#ECEBDE"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                   Margin="0,20,0,0"
+                   HorizontalAlignment="Center"
+                   Spacing="20">
+                    <Button Content="Resend"
+                    Click="Resend_Click"
+                    Width="140"
+                    Height="40"
+                    Background="Transparent"
+                    BorderBrush="#A59D84"
+                    Foreground="#A59D84"
+                    CornerRadius="8"/>
+                    <Button Content="Next"
+                    Click="Verify_Click"
+                    Width="140"
+                    Height="40"
+                    Background="#A59D84"
+                    Foreground="White"
+                    CornerRadius="8"/>
                 </StackPanel>
             </StackPanel>
-
-            <StackPanel Margin="0,16,0,0" Spacing="8">
-                <TextBlock Text="Your Code:"
-                           FontWeight="SemiBold"
-                           Margin="0,0,0,4"/>
-                <TextBox Name="yourTokenBox"
-                         PlaceholderText="Enter your token"
-                         Height="32"/>
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal"
-                        Margin="0,20,0,0"
-                        HorizontalAlignment="Stretch">
-                <Button Content="Resend"
-                        Click="Resend_Click"
-                        Width="120"
-                        Background="Transparent"
-                        BorderBrush="#0078D4"
-                        Foreground="#0078D4"/>
-                <Button Content="Next"
-                        Click="Verify_Click"
-                        Width="120"
-                        Margin="100,0,0,0"
-                        Background="#0078D4"
-                        Foreground="White"/>
-            </StackPanel>
-        </StackPanel>
+        </Grid>
 
         <!-- Loading Overlay -->
         <Grid x:Name="LoadingOverlay"
               Visibility="Collapsed"
-              Background="#80000000">
+              Background="#80ECEBDE">
             <StackPanel VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        Background="White"
-                        Padding="20"
-                        CornerRadius="8">
+                       HorizontalAlignment="Center"
+                       Background="White"
+                       Padding="24"
+                       CornerRadius="12">
                 <ProgressRing
                     x:Name="spinner"
                     IsActive="True"
-                    Width="50"
-                    Height="50"/>
+                    Width="60"
+                    Height="60"
+                    Foreground="#A59D84"/>
             </StackPanel>
         </Grid>
     </Grid>
