@@ -12,6 +12,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.NonFinal;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,6 +25,7 @@ import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
+@Slf4j
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class EmailReminderService {
@@ -55,34 +57,39 @@ public class EmailReminderService {
         this.emailBuilder = emailBuilder;
     }
 
-    @Scheduled(fixedDelay = 600000) // ms
     @Transactional
+    @Scheduled(fixedDelay = 600000)
     public void sendEmailReminder() {
-        List<Order> upcomingLearningSessions = orderRepository.findAllUpcomingLearningSessions(LocalDateTime.now());
+        LocalDateTime now = LocalDateTime.now();
+        List<Order> upcomingLearningSessions = orderRepository.findAllUpcomingLearningSessions(now);
+
         Sender sender = Sender.builder()
                 .name(SENDER_NAME)
                 .email(SENDER_EMAIL)
                 .build();
 
         for (Order order : upcomingLearningSessions) {
-            long remainingMinutes = Duration.between(LocalDateTime.now(), order.getOrderDetail()
-                    .getLearningSession().getStartTime()).toMinutes();
+            long remainingMinutes = Duration.between(now,
+                    order.getOrderDetail().getLearningSession().getStartTime()).toMinutes();
 
-            String mailContent = emailBuilder.buildEmail(order.getStudent().getUser())
-                    .replace("{{time}}", remainingMinutes + " minutes");
-            Recipient recipient = Recipient.builder()
-                    .userId(order.getStudent().getUser().getId())
-                    .name(order.getStudent().getUser().getUsername())
-                    .email(order.getStudent().getUser().getEmail())
-                    .build();
+            log.info("remaining minutes: {}", remainingMinutes);
 
+            if (remainingMinutes > 0) {
+                String mailContent = emailBuilder.buildEmail(order.getStudent().getUser())
+                        .replace("{{time}}", remainingMinutes + " minutes");
+                Recipient recipient = Recipient.builder()
+                        .userId(order.getStudent().getUser().getId())
+                        .name(order.getStudent().getUser().getUsername())
+                        .email(order.getStudent().getUser().getEmail())
+                        .build();
 
-            mailClient.sendEmail(API_KEY, MailRequest.builder()
-                    .to(List.of(recipient))
-                    .sender(sender)
-                    .htmlContent(mailContent)
-                    .subject("[WeLearn] Upcoming Learning Session")
-                    .build());
+                mailClient.sendEmail(API_KEY, MailRequest.builder()
+                        .to(List.of(recipient))
+                        .sender(sender)
+                        .htmlContent(mailContent)
+                        .subject("[WeLearn] Upcoming Learning Session")
+                        .build());
+            }
         }
     }
 

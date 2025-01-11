@@ -20,6 +20,14 @@ An application that connects students and tutors, allowing students to search fo
   - [Teamwork - Git flow](#v-teamwork---git-flow-1)
   - [Quality assurance](#vi-quality-assurance-1)
   - [Member Validation](#vii-member-evaluation-1)
+- [Milestone 3](#c-milestone-3)
+  - [Features](#i-features-2)
+  - [UI/UX](#ii-uiux-2)
+  - [Design Pattern / Architecture](#iii-design-pattern--architecture-2)
+  - [Avanced topics](#iv-advanced-topics-2)
+  - [Teamwork - Git flow](#v-teamwork---git-flow-2)
+  - [Quality assurance](#vi-quality-assurance-2)
+  - [Member Validation](#vii-member-evaluation-2)
 - [Running Instruction](#c-running-instruction)
 
 ## Tech Stack
@@ -294,6 +302,113 @@ Below is the table evaluating team members based on the tasks assigned to them.
 | Vòng Sau Hùng        | Implement session payment feature on Client         | Completed         | 100%             |
 | Vòng Sau Hùng        | Implement tutor's achievement update feature on Client         | Completed         | 100%             |
 
+
+**Key:**
+- **Completion Status:** Indicates whether the task is *Not Started*, *In Progress*, or *Completed*.
+- **Contribution (%):** Reflects the member's individual contribution to the task.
+# C. Milestone 3
+## I. Features
+- Refresh token
+![refresh-token](https://res.cloudinary.com/daartoyul/image/upload/v1735893277/refresh_token_diagram_vg1uvq.png)
+- Joining Learning Session Room (Video Call)
+![joining-session-room](https://res.cloudinary.com/daartoyul/image/upload/v1735893277/Joining_Learning_Session_Room_jmv42w.png)
+- Reminder Email: The server will check every 10 minutes and send a reminder email if any learning sessions are scheduled to begin within the next 30 minutes.
+- Expiration Token Cleanup: The server will clean up expiration tokens in database every 24 hours.
+- Expiration Learning Session, Order, Order Details Clean Up: The server will clean up the learning sessions, order, order details in database every 1 year.
+## II. UI/UX
+- Redecorate all pages of the application
+  - Login
+  ![login-page](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153669/b5097e09-63f5-439b-b88c-d9003c9dd149.png)
+  - Registration
+  ![registration-page](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153708/51d34fda-7a27-4a9d-b3f4-0130bec6c1c3.png)
+  - Account Verification
+  ![account-verification](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154476/bee63831-e671-4b76-b769-9ba6a00b64c4.png)
+  - Homepage
+  ![homepage](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153751/312ce187-fe86-4af2-acd0-eb923f857d5f.png)
+  - My Ordered Session
+  ![my-ordered-session1](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153800/e6dbf822-85e1-412e-9bf9-5fcb8a8de0d7.png)
+  ![my-ordered-session2](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153832/3cb9528f-e3d3-40c4-bcb3-e9d40625077c.png)
+  - Sessions
+  ![sessions](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153873/7266cd1a-adb4-42e3-a9c6-4c9c546662fd.png)
+  - Session Purchasing
+  ![session-purchasing1](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153908/814bb740-5e4c-4612-a42b-8b13c7b75960.png)
+  ![session-purchasing2](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153935/cba30c51-e285-42d1-a94d-ab823648c8f5.png)
+  - Tutors
+  ![tutors](https://res.cloudinary.com/dleqlbrku/image/upload/v1736153986/1e0ced98-e6ee-43df-9ae3-126860ece1f4.png)
+  - Tutor Detail
+  ![tutor-detail1](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154021/21adc811-f7d2-40b4-98e5-9c81076c438d.png)
+  ![tutor-detail2](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154052/86d5f035-f697-43e6-aecc-0a59a8902174.png)
+  - Reviews
+  ![reviews](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154077/06584579-10a1-41c4-98f0-b4c55235f014.png)
+  - UserProfile
+  ![user-profile1](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154110/4e26d949-9668-4baa-b014-9e6a47662388.png)
+  ![user-profile2](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154147/a2548d98-36a2-4380-9824-79a5f4dbfc75.png)
+  - Session Creation
+  ![session-creation](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154268/4b897aa5-05f7-4cea-b983-b4427f25bc18.png)
+  - Session Room
+  ![session-room1](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154544/83ffba72-bffe-477a-9f12-5c444c050a1f.png)
+  ![session-room2](https://res.cloudinary.com/dleqlbrku/image/upload/v1736154588/a8fde672-f455-490f-bb20-4231c9af56c0.png)
+## III. Design Pattern / Architecture
+- Strategy Pattern:
+  - This pattern is used to build emails, as we have two types of emails: verification email and reminder email. Each type has its own structure and logic, which are encapsulated in separate classes for better flexibility and maintainability.
+  - Why we use this pattern?
+    - Separation of Concerns
+    - Flexibility
+    - Reusability
+    - Scalability
+## IV. Advanced Topics
+1. Refresh Token
+- Enhance user's experience
+- Provides a secure way to handle session expiration without exposing sensitive credentials.
+- Supports long-lived sessions while maintaining security best practices.
+2. Expiration Token Cleanup:
+- Improved Security
+- Database Efficiency
+3. Joining Learning Session Room (Video Call):
+- Integrate with ZegoCloud that supports conference room with video call, screen sharing, chat box and limit participants.
+## V. Teamwork - Git flow
+- Use github Projects Tool for managing team
+- Github username:
+    - zjn1404: Nguyễn Quốc Tường
+    - FATU29: Phan Tấn Phát
+    - Shungisme: Vòng Sau Hùng
+- Use Git feature branch workflow
+  - Git Roadmap:
+    ![milestone3-roadmap1](https://res.cloudinary.com/daartoyul/image/upload/v1735893911/git_roadmap_1_tqolrw.png)
+    ![milestone3-roadmap2](https://res.cloudinary.com/daartoyul/image/upload/v1735893911/git_roadmap_2_ecwkg1.png)
+  - Git Contribution Tracking:
+    ![git-contribution-tracking](https://res.cloudinary.com/daartoyul/image/upload/v1735894086/Git_Contribution_Tracking_mrbwax.png)
+  - Git Branching:
+    ![git-branching](https://res.cloudinary.com/daartoyul/image/upload/v1735893764/git_branch_ms3_wp_htaf4z.png)
+  - Git Log:
+    ![git-log1](https://res.cloudinary.com/daartoyul/image/upload/v1735893552/git_log_1_k709ur.png)
+    ![git-log2](https://res.cloudinary.com/daartoyul/image/upload/v1735893553/git_log_2_arfua8.png)
+- Use OneDrive for Sharing Document:
+![one-drive](https://res.cloudinary.com/daartoyul/image/upload/v1735894631/onedrive_ms3_n9pmzo.png)
+- Use Google Meet for planning
+- Use Messenger for discussion
+## VI. Quality assurance
+- Manual testing for each feature
+- Test on both server and client
+- [Test Documentation](https://studenthcmusedu-my.sharepoint.com/:x:/g/personal/22120118_student_hcmus_edu_vn/EX8t0AOUamtDgLuvklOzzq4BATYWCMNJBF-IUHVtNFcKvg?e=pIk1xp)
+
+## VII. Member Evaluation
+
+Below is the table evaluating team members based on the tasks assigned to them.
+
+| Member Name       | Task                          | Completion Status | Contribution (%) |
+|--------------------|-------------------------------|-------------------|------------------|
+| Nguyễn Quốc Tường          | Integrate User's Ordered Sessions Page | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Integrate Tutor's Session Homepage | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement Reminder Email On Server | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement Refresh Token On Server | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement Joining Sessions Room On Server | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement Expiration Token Clean Up | Completed         | 100%             |
+| Nguyễn Quốc Tường          | Implement Sessions, Orders, Order Details Clean Up | Completed         | 100%             |
+| Phan Tấn Phát        | Integrate User's Session Homepage | Completed       | 100%              |
+| Phan Tấn Phát        | Implement Refresh Token On Client | Completed       | 100%              |
+| Vòng Sau Hùng        | Integrate Joining Session Room On Client         | Completed         | 100%             |
+| Vòng Sau Hùng        | Redecorate Full UI         | Completed         | 100%             |
 
 **Key:**
 - **Completion Status:** Indicates whether the task is *Not Started*, *In Progress*, or *Completed*.

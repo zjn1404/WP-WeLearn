@@ -17,6 +17,7 @@ import com.welearn.WeLearnApp.mapper.userprofile.UserProfileMapper;
 import com.welearn.WeLearnApp.repository.LearningSessionRepository;
 import com.welearn.WeLearnApp.repository.OrderRepository;
 import com.welearn.WeLearnApp.repository.UserProfileRepository;
+import com.welearn.WeLearnApp.service.emailreminder.EmailReminderService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -26,6 +27,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -42,6 +44,8 @@ public class OrderServiceImp implements OrderService {
 
     UserProfileRepository userProfileRepository;
 
+    EmailReminderService emailReminderService;
+
     OrderMapper orderMapper;
 
     LearningSessionMapper learningSessionMapper;
@@ -49,6 +53,8 @@ public class OrderServiceImp implements OrderService {
     UserProfileMapper userProfileMapper;
 
     LocationMapper locationMapper;
+
+    long TIME_BEFORE_START = 30;
 
     @Override
     public OrderResponse createOrder(OrderCreationRequest request) {
@@ -65,11 +71,12 @@ public class OrderServiceImp implements OrderService {
             throw new AppException(ErrorCode.TUTOR_CANNOT_ORDER);
         }
 
+        LocalDateTime now = LocalDateTime.now();
         Order order = Order.builder()
                 .id(UUID.randomUUID().toString())
                 .student(student)
                 .tutor(learningSession.getTutor())
-                .orderTime(LocalDateTime.now())
+                .orderTime(now)
                 .build();
 
         order.setOrderDetail(OrderDetail.builder()
@@ -79,6 +86,11 @@ public class OrderServiceImp implements OrderService {
                 .build());
 
         orderRepository.save(order);
+
+        if (Duration.between(now,
+                order.getOrderDetail().getLearningSession().getStartTime()).toMinutes() <= TIME_BEFORE_START) {
+            emailReminderService.sendEmailReminder();
+        }
 
         return orderMapper.toOrderResponse(order);
     }
